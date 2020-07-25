@@ -7,13 +7,10 @@
 	<artifactId>jxm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
 	<name>jxm</name>
-	<url>http://maven.apache.org</url>
-
 	<description>A Java library that provides functions to handle material related to X operations.</description>
 	<url>https://github.com/Dabasan/jxm</url>
-
+	
 	<licenses>
 		<license>
 			<name>MIT</name>
