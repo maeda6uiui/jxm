@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.dabasan</groupId>
@@ -9,7 +11,7 @@
 	<name>jxm</name>
 	<description>A Java library that provides functions to handle material related to X operations.</description>
 	<url>https://github.com/Dabasan/jxm</url>
-	
+
 	<licenses>
 		<license>
 			<name>MIT</name>
@@ -124,10 +126,12 @@
 			<version>1.2.3</version>
 		</dependency>
 	</dependencies>
-  <modules>
-    <module>jxm-bd1</module>
-    <module>jxm-pd1</module>
-    <module>jxm-mif</module>
-    <module>jxm-properties</module>
-  </modules>
+
+	<modules>
+		<module>jxm-bd1</module>
+		<module>jxm-pd1</module>
+		<module>jxm-mif</module>
+		<module>jxm-properties</module>
+		<module>jxm-bintools</module>
+	</modules>
 </project>
