@@ -290,4 +290,50 @@ public class ByteFunctions {
 			bin.set(pos + i, buffer[i]);
 		}
 	}
+
+	/**
+	 * Returns a float value from a byte representation.
+	 * 
+	 * @param bin
+	 *            Array
+	 * @param pos
+	 *            Position
+	 * @return Float value
+	 */
+	public static float getFloatValueFromBinLE(byte[] bin, int pos) {
+		byte[] buffer = new byte[]{bin[pos], bin[pos + 1], bin[pos + 2], bin[pos + 3]};
+		float ret = ByteFunctions.bytesToFloatLE(buffer);
+
+		return ret;
+	}
+	/**
+	 * Returns a short value from a byte representation.
+	 * 
+	 * @param bin
+	 *            Array
+	 * @param pos
+	 *            Position
+	 * @return Short value
+	 */
+	public static short getShortValueFromBinLE(byte[] bin, int pos) {
+		byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
+		short ret = ByteFunctions.bytesToShortLE(buffer);
+
+		return ret;
+	}
+	/**
+	 * Returns an unsigned short value from a byte representation.
+	 * 
+	 * @param bin
+	 *            Array
+	 * @param pos
+	 *            Position
+	 * @return Unsigned short value
+	 */
+	public static int getUnsignedShortValueFromBinLE(byte[] bin, int pos) {
+		byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
+		int ret = ByteFunctions.bytesToUnsignedShortLE(buffer);
+
+		return ret;
+	}
 }
