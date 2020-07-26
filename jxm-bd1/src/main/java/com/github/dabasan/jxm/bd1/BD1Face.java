@@ -30,7 +30,7 @@ class BD1Face {
 	public SimpleMatrix getNormal() {
 		return normal;
 	}
-	public UV[] getUvs() {
+	public UV[] getUVs() {
 		return uvs;
 	}
 
@@ -40,7 +40,7 @@ class BD1Face {
 	public void setNormal(SimpleMatrix normal) {
 		this.normal = normal;
 	}
-	public void setUvs(UV[] uvs) {
+	public void setUVs(UV[] uvs) {
 		this.uvs = uvs;
 	}
 }

@@ -56,7 +56,7 @@ class BD1Writer {
 			}
 
 			// UVs
-			UV[] uvs = block.getUvs();
+			UV[] uvs = block.getUVs();
 
 			// U
 			for (int j = 0; j < 24; j++) {

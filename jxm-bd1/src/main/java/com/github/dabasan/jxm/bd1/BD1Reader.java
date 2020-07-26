@@ -117,7 +117,7 @@ class BD1Reader {
 				uvs[j].setV(vs[j]);
 			}
 
-			block.setUvs(uvs);
+			block.setUVs(uvs);
 
 			// Texture IDs
 			int[] textureIDs = new int[6];

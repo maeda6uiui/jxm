@@ -34,7 +34,7 @@ public class BD1Block {
 	public SimpleMatrix[] getVertexPositions() {
 		return vertexPositions;
 	}
-	public UV[] getUvs() {
+	public UV[] getUVs() {
 		return uvs;
 	}
 	public int[] getTextureIDs() {
@@ -47,7 +47,7 @@ public class BD1Block {
 	public void setVertexPositions(SimpleMatrix[] vertexPositions) {
 		this.vertexPositions = vertexPositions;
 	}
-	public void setUvs(UV[] uvs) {
+	public void setUVs(UV[] uvs) {
 		this.uvs = uvs;
 	}
 	public void setTextureIDs(int[] textureIDs) {
