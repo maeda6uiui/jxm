@@ -18,14 +18,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.ejml</groupId>
-			<artifactId>ejml-all</artifactId>
-			<version>0.39</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.github.dabasan</groupId>
 			<artifactId>jxm-bintools</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.dabasan</groupId>
+			<artifactId>jxm-vectools</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

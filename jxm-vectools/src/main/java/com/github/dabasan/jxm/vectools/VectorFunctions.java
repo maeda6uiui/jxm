@@ -39,8 +39,30 @@ public class VectorFunctions {
 		elements[1][0] = a3 * b1 - b3 * a1;
 		elements[2][0] = a1 * b2 - b1 * a2;
 
-		var ret = new SimpleMatrix(elements);
+		return new SimpleMatrix(elements);
+	}
+	/**
+	 * Subtraction
+	 * 
+	 * @param v1
+	 *            3-dimensional vector
+	 * @param v2
+	 *            3-dimensional vector
+	 * @return v1 - v2
+	 */
+	public static SimpleMatrix sub(SimpleMatrix v1, SimpleMatrix v2) {
+		if (!(v1.numRows() == 3 && v1.numCols() == 1)) {
+			return null;
+		}
+		if (!(v2.numRows() == 3 && v2.numCols() == 1)) {
+			return null;
+		}
 
-		return ret;
+		double[][] elements = new double[3][1];
+		elements[0][0] = v1.get(0, 0) - v2.get(0, 0);
+		elements[1][0] = v1.get(1, 0) - v2.get(1, 0);
+		elements[2][0] = v1.get(2, 0) - v2.get(2, 0);
+
+		return new SimpleMatrix(elements);
 	}
 }

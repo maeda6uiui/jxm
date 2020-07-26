@@ -35,12 +35,25 @@ public class VectorFunctionsTest {
 		assertArrayEquals(expected, flattenCross, 1.0E-6f);
 	}
 	@Test
-	public void testCross_InvalidSize() {
-		var v1 = new SimpleMatrix(4, 4);
-		var v2 = new SimpleMatrix(4, 4);
+	public void testSub() {
+		double[][] elements1 = new double[3][1];
+		elements1[0][0] = 3.0;
+		elements1[1][0] = 4.0;
+		elements1[2][0] = 1.0;
 
-		var cross = VectorFunctions.cross(v1, v2);
+		double[][] elements2 = new double[3][1];
+		elements2[0][0] = 3.0;
+		elements2[1][0] = 7.0;
+		elements2[2][0] = 5.0;
 
-		assertEquals(null, cross);
+		var v1 = new SimpleMatrix(elements1);
+		var v2 = new SimpleMatrix(elements2);
+
+		var sub = VectorFunctions.sub(v1, v2);
+		double[] flattenSub = new double[]{sub.get(0, 0), sub.get(1, 0), sub.get(2, 0)};
+
+		double[] expected = new double[]{0.0, -3.0, -4.0};
+
+		assertArrayEquals(expected, flattenSub, 1.0E-6f);
 	}
 }
