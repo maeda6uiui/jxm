@@ -32,11 +32,11 @@ class BD1Writer {
 		this.addTextureFilenamesToBin(bin, textureFilenames);
 
 		// Number of blocks
-		int blockNum = blocks.size();
-		ByteFunctions.addUnsignedShortValueToBinLE(bin, blockNum);
+		int numBlocks = blocks.size();
+		ByteFunctions.addUnsignedShortValueToBinLE(bin, numBlocks);
 
 		// Blocks
-		for (int i = 0; i < blockNum; i++) {
+		for (int i = 0; i < numBlocks; i++) {
 			var block = blocks.get(i);
 
 			// Vertex positions

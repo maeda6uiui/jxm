@@ -61,11 +61,11 @@ class BD1Reader {
 		}
 
 		// Number of blocks
-		int blockNum = ByteFunctions.getUnsignedShortValueFromBinLE(bin, pos);
+		int numBlocks = ByteFunctions.getUnsignedShortValueFromBinLE(bin, pos);
 		pos += 2;
 
 		// Blocks
-		for (int i = 0; i < blockNum; i++) {
+		for (int i = 0; i < numBlocks; i++) {
 			var block = new BD1Block();
 
 			// Vertex positions
