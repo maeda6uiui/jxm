@@ -28,11 +28,11 @@ public class VectorFunctionsTest {
 		var v2 = new SimpleMatrix(elements2);
 
 		var cross = VectorFunctions.cross(v1, v2);
-		double[] flattenCross = new double[]{cross.get(0, 0), cross.get(1, 0), cross.get(2, 0)};
+		double[] actuals = new double[]{cross.get(0, 0), cross.get(1, 0), cross.get(2, 0)};
 
 		double[] expected = new double[]{13.0, -12.0, 9.0};
 
-		assertArrayEquals(expected, flattenCross, 1.0E-6f);
+		assertArrayEquals(expected, actuals, 1.0E-6f);
 	}
 	@Test
 	public void testSub() {
@@ -50,10 +50,27 @@ public class VectorFunctionsTest {
 		var v2 = new SimpleMatrix(elements2);
 
 		var sub = VectorFunctions.sub(v1, v2);
-		double[] flattenSub = new double[]{sub.get(0, 0), sub.get(1, 0), sub.get(2, 0)};
+		double[] actuals = new double[]{sub.get(0, 0), sub.get(1, 0), sub.get(2, 0)};
 
 		double[] expected = new double[]{0.0, -3.0, -4.0};
 
-		assertArrayEquals(expected, flattenSub, 1.0E-6f);
+		assertArrayEquals(expected, actuals, 1.0E-6f);
+	}
+	@Test
+	public void testNormalize() {
+		double[][] elements = new double[3][1];
+		elements[0][0] = 3.0;
+		elements[1][0] = 4.0;
+		elements[2][0] = 1.0;
+
+		var v = new SimpleMatrix(elements);
+
+		var normalized = VectorFunctions.normalize(v);
+		double[] actuals = new double[]{normalized.get(0, 0), normalized.get(1, 0),
+				normalized.get(2, 0)};
+
+		double[] expected = new double[]{0.5883, 0.7845, 0.1961};
+
+		assertArrayEquals(expected, actuals, 1.0E-3f);
 	}
 }

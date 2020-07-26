@@ -10,7 +10,7 @@ import org.ejml.simple.SimpleMatrix;
  */
 public class VectorFunctions {
 	/**
-	 * Computes cross product.<br>
+	 * Cross product<br>
 	 * Returns null if input is not a 3-dimensional vector.
 	 * 
 	 * @param v1
@@ -63,6 +63,32 @@ public class VectorFunctions {
 		elements[0][0] = v1.get(0, 0) - v2.get(0, 0);
 		elements[1][0] = v1.get(1, 0) - v2.get(1, 0);
 		elements[2][0] = v1.get(2, 0) - v2.get(2, 0);
+
+		return new SimpleMatrix(elements);
+	}
+	/**
+	 * Normalization<br>
+	 * Returns null if input is not a 3-dimensional vector.
+	 * 
+	 * @param v
+	 *            3-dimensional vector
+	 * @return Normalized vector
+	 */
+	public static SimpleMatrix normalize(SimpleMatrix v) {
+		if (!(v.numRows() == 3 && v.numCols() == 1)) {
+			return null;
+		}
+
+		double x = v.get(0, 0);
+		double y = v.get(1, 0);
+		double z = v.get(2, 0);
+
+		double size = Math.sqrt(x * x + y * y + z * z);
+
+		double[][] elements = new double[3][1];
+		elements[0][0] = x / size;
+		elements[1][0] = y / size;
+		elements[2][0] = z / size;
 
 		return new SimpleMatrix(elements);
 	}
