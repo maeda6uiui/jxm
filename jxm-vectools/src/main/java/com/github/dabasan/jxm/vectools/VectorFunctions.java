@@ -11,7 +11,7 @@ import org.ejml.simple.SimpleMatrix;
 public class VectorFunctions {
 	/**
 	 * Computes cross product.<br>
-	 * Returns null if input vectors do not satisfy the requirements.
+	 * Returns null if input is not a 3-dimensional vector.
 	 * 
 	 * @param v1
 	 *            3-dimensional vector
@@ -42,7 +42,8 @@ public class VectorFunctions {
 		return new SimpleMatrix(elements);
 	}
 	/**
-	 * Subtraction
+	 * Subtraction<br>
+	 * Returns null if input is not a 3-dimensional vector.
 	 * 
 	 * @param v1
 	 *            3-dimensional vector
