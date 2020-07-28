@@ -41,12 +41,14 @@ public class BD1Manipulator {
 		this.readConstructorBase(is);
 	}
 	public BD1Manipulator(File file) throws IOException {
-		var fis = new FileInputStream(file);
-		this.readConstructorBase(fis);
+		try (var fis = new FileInputStream(file)) {
+			this.readConstructorBase(fis);
+		}
 	}
 	public BD1Manipulator(String filepath) throws IOException {
-		var fis = new FileInputStream(filepath);
-		this.readConstructorBase(fis);
+		try (var fis = new FileInputStream(filepath)) {
+			this.readConstructorBase(fis);
+		}
 	}
 	private void readConstructorBase(InputStream is) throws IOException {
 		var reader = new BD1Reader(is);
@@ -151,7 +153,7 @@ public class BD1Manipulator {
 		for (var block : blocks) {
 			Vector[] vertexPositions = block.getVertexPositions();
 			for (int i = 0; i < vertexPositions.length; i++) {
-				vertexPositions[i].transform(mat);
+				vertexPositions[i] = vertexPositions[i].transform(mat);
 			}
 		}
 	}
