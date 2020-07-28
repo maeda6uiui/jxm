@@ -29,8 +29,8 @@ class MIFWriter {
 		lines.add(String.valueOf(missionInfo.getSkyImage().ordinal()));
 
 		int flags = 0;
-		boolean extraCollision = missionInfo.getExtraCollision();
-		boolean darkScreen = missionInfo.getDarkScreen();
+		boolean extraCollision = missionInfo.isExtraCollision();
+		boolean darkScreen = missionInfo.isDarkScreen();
 		if (extraCollision == true) {
 			flags = flags | 0b00000001;
 		}

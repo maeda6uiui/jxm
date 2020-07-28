@@ -110,10 +110,10 @@ public class MissionInfo {
 	public SkyImage getSkyImage() {
 		return skyImage;
 	}
-	public boolean getExtraCollision() {
+	public boolean isExtraCollision() {
 		return extraCollision;
 	}
-	public boolean getDarkScreen() {
+	public boolean isDarkScreen() {
 		return darkScreen;
 	}
 	public String getPathnameOfObj() {
