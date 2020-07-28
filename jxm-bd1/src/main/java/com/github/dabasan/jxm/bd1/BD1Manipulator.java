@@ -362,7 +362,7 @@ public class BD1Manipulator {
 	 * Saves the blocks as a BD1 file.
 	 * 
 	 * @param filepath
-	 *            Filename
+	 *            Filepath
 	 * @return -1: error 0: success
 	 */
 	public int saveAsBD1(String filepath) {
