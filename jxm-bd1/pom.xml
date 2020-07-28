@@ -22,11 +22,6 @@
 			<artifactId>jxm-bintools</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.github.dabasan</groupId>
-			<artifactId>jxm-vectools</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 		<dependency>
 			<groupId>de.javagl</groupId>
