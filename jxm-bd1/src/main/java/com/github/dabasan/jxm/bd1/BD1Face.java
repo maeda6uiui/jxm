@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.bd1;
 
-import org.ejml.simple.SimpleMatrix;
+import com.github.dabasan.ejml_3dtools.Vector;
 
 /**
  * BD1 face
@@ -9,35 +9,35 @@ import org.ejml.simple.SimpleMatrix;
  *
  */
 class BD1Face {
-	private SimpleMatrix[] vertexPositions;
-	private SimpleMatrix normal;
+	private Vector[] vertexPositions;
+	private Vector normal;
 	private UV[] uvs;
 
 	public BD1Face() {
-		vertexPositions = new SimpleMatrix[4];
-		normal = new SimpleMatrix(3, 1);
+		vertexPositions = new Vector[4];
+		normal = new Vector();
 		uvs = new UV[4];
 
 		for (int i = 0; i < 4; i++) {
-			vertexPositions[i] = new SimpleMatrix(3, 1);
+			vertexPositions[i] = new Vector();
 			uvs[i] = new UV();
 		}
 	}
 
-	public SimpleMatrix[] getVertexPositions() {
+	public Vector[] getVertexPositions() {
 		return vertexPositions;
 	}
-	public SimpleMatrix getNormal() {
+	public Vector getNormal() {
 		return normal;
 	}
 	public UV[] getUVs() {
 		return uvs;
 	}
 
-	public void setVertexPositions(SimpleMatrix[] vertexPositions) {
+	public void setVertexPositions(Vector[] vertexPositions) {
 		this.vertexPositions = vertexPositions;
 	}
-	public void setNormal(SimpleMatrix normal) {
+	public void setNormal(Vector normal) {
 		this.normal = normal;
 	}
 	public void setUVs(UV[] uvs) {

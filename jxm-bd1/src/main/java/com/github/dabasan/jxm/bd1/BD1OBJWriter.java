@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ejml.simple.SimpleMatrix;
-
-import com.github.dabasan.jxm.vectools.VectorFunctions;
+import com.github.dabasan.ejml_3dtools.Vector;
 
 import de.javagl.obj.Mtl;
 import de.javagl.obj.MtlWriter;
@@ -30,33 +28,31 @@ class BD1OBJWriter {
 
 	}
 
-	public void Write(OutputStream osObj, OutputStream osMtl, List<String> mtlFilenames,
+	public void Write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
 			List<BD1Block> blocks, Map<Integer, String> textureFilenames) throws IOException {
 		// Prepare faces.
 		var facesMap = new HashMap<Integer, List<BD1Face>>();
 
 		for (var block : blocks) {
-			SimpleMatrix[] vertexPositions = block.getVertexPositions();
+			Vector[] vertexPositions = block.getVertexPositions();
 			UV[] uvs = block.getUVs();
 			int[] textureIDs = block.getTextureIDs();
 
 			// Calculate normals.
-			SimpleMatrix[] normals = new SimpleMatrix[6];
+			var normals = new Vector[6];
 
 			for (int i = 0; i < 6; i++) {
 				int[] vertexIndices = BD1Functions.getFaceCorrespondingVertexIndices(i);
 
-				var v1 = VectorFunctions.sub(vertexPositions[vertexIndices[3]],
-						vertexPositions[vertexIndices[0]]);
-				var v2 = VectorFunctions.sub(vertexPositions[vertexIndices[1]],
-						vertexPositions[vertexIndices[0]]);
+				var v1 = vertexPositions[vertexIndices[3]].sub(vertexPositions[vertexIndices[0]]);
+				var v2 = vertexPositions[vertexIndices[1]].sub(vertexPositions[vertexIndices[0]]);
 
-				normals[i] = VectorFunctions.cross(v1, v2);
-				normals[i] = VectorFunctions.normalize(normals[i]);
+				normals[i] = v1.cross(v2);
+				normals[i] = normals[i].normalize();
 			}
 
 			// Generate faces.
-			BD1Face[] faces = new BD1Face[6];
+			var faces = new BD1Face[6];
 			for (int i = 0; i < 6; i++) {
 				faces[i] = new BD1Face();
 			}
@@ -65,8 +61,8 @@ class BD1OBJWriter {
 				int[] vertexIndices = BD1Functions.getFaceCorrespondingVertexIndices(i);
 				int[] uvIndices = BD1Functions.getFaceCorrespondingUVIndices(i);
 
-				SimpleMatrix[] faceVertexPositions = new SimpleMatrix[4];
-				UV[] faceUVs = new UV[4];
+				var faceVertexPositions = new Vector[4];
+				var faceUVs = new UV[4];
 				for (int j = 0; j < 4; j++) {
 					faceVertexPositions[j] = vertexPositions[vertexIndices[j]];
 					faceUVs[j] = uvs[uvIndices[j]];
@@ -94,7 +90,7 @@ class BD1OBJWriter {
 		Obj obj = Objs.create();
 		var mtls = new ArrayList<Mtl>();
 
-		obj.setMtlFileNames(mtlFilenames);
+		obj.setMtlFileNames(Arrays.asList(mtlFilename));
 		obj.setActiveGroupNames(Arrays.asList("map"));
 
 		int count = 0;
@@ -124,17 +120,15 @@ class BD1OBJWriter {
 
 			var faces = entry.getValue();
 			for (var face : faces) {
-				SimpleMatrix[] vertexPositions = face.getVertexPositions();
-				SimpleMatrix normal = face.getNormal();
+				Vector[] vertexPositions = face.getVertexPositions();
+				Vector normal = face.getNormal();
 				UV[] uvs = face.getUVs();
 
 				for (int i = 3; i >= 0; i--) {
-					obj.addVertex((float) vertexPositions[i].get(0, 0),
-							(float) vertexPositions[i].get(1, 0),
-							(float) vertexPositions[i].get(2, 0));
-					obj.addNormal((float) normal.get(0, 0), (float) normal.get(1, 0),
-							(float) normal.get(2, 0));
-					obj.addTexCoord(uvs[i].getU(), uvs[i].getV() * (-1.0f));
+					obj.addVertex(vertexPositions[i].getXFloat(), vertexPositions[i].getYFloat(),
+							vertexPositions[i].getZFloat());
+					obj.addNormal(normal.getXFloat(), normal.getYFloat(), normal.getZFloat());
+					obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat() * (-1.0f));
 				}
 
 				int[] indices = new int[]{count, count + 1, count + 2, count + 3};

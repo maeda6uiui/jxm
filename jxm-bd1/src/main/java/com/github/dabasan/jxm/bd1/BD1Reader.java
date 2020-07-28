@@ -8,8 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ejml.simple.SimpleMatrix;
-
+import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
@@ -86,14 +85,10 @@ class BD1Reader {
 				pos += 4;
 			}
 
-			SimpleMatrix[] vertexPositions = new SimpleMatrix[8];
+			var vertexPositions = new Vector[8];
 			for (int j = 0; j < 8; j++) {
-				float[][] elements = new float[3][1];
-				elements[0][0] = vertexPositionXs[j];
-				elements[1][0] = vertexPositionYs[j];
-				elements[2][0] = vertexPositionZs[j];
-
-				vertexPositions[j] = new SimpleMatrix(elements);
+				vertexPositions[j] = new Vector(vertexPositionXs[j], vertexPositionYs[j],
+						vertexPositionZs[j]);
 			}
 
 			block.setVertexPositions(vertexPositions);
@@ -111,7 +106,7 @@ class BD1Reader {
 				pos += 4;
 			}
 
-			UV[] uvs = new UV[24];
+			var uvs = new UV[24];
 			for (int j = 0; j < 24; j++) {
 				uvs[j].setU(us[j]);
 				uvs[j].setV(vs[j]);

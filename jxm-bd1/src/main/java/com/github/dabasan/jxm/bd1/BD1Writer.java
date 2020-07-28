@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.ejml.simple.SimpleMatrix;
-
+import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
@@ -37,22 +36,22 @@ class BD1Writer {
 
 		// Blocks
 		for (int i = 0; i < numBlocks; i++) {
-			var block = blocks.get(i);
+			BD1Block block = blocks.get(i);
 
 			// Vertex positions
-			SimpleMatrix[] vertexPositions = block.getVertexPositions();
+			Vector[] vertexPositions = block.getVertexPositions();
 
 			// X
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, (float) vertexPositions[j].get(0, 0));
+				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].getXFloat());
 			}
 			// Y
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, (float) vertexPositions[j].get(1, 0));
+				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].getYFloat());
 			}
 			// Z
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, (float) vertexPositions[j].get(2, 0));
+				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].getZFloat());
 			}
 
 			// UVs
@@ -60,11 +59,11 @@ class BD1Writer {
 
 			// U
 			for (int j = 0; j < 24; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, uvs[j].getU());
+				ByteFunctions.addFloatValueToBinLE(bin, uvs[j].getUFloat());
 			}
 			// V
 			for (int j = 0; j < 24; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, uvs[j].getV());
+				ByteFunctions.addFloatValueToBinLE(bin, uvs[j].getVFloat());
 			}
 
 			// Texture IDs
@@ -112,6 +111,9 @@ class BD1Writer {
 			}
 
 			textureCount++;
+			if (textureCount == 10) {
+				break;
+			}
 		}
 
 		for (int i = textureCount; i < 10; i++) {

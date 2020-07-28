@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.bd1;
 
-import org.ejml.simple.SimpleMatrix;
+import com.github.dabasan.ejml_3dtools.Vector;
 
 /**
  * BD1 block
@@ -9,18 +9,18 @@ import org.ejml.simple.SimpleMatrix;
  *
  */
 public class BD1Block {
-	private SimpleMatrix[] vertexPositions;
+	private Vector[] vertexPositions;
 	private UV[] uvs;
 	private int[] textureIDs;
 	private boolean enabled;
 
 	public BD1Block() {
-		vertexPositions = new SimpleMatrix[8];
+		vertexPositions = new Vector[8];
 		uvs = new UV[24];
 		textureIDs = new int[6];
 
 		for (int i = 0; i < 8; i++) {
-			vertexPositions[i] = new SimpleMatrix(3, 1);
+			vertexPositions[i] = new Vector();
 		}
 		for (int i = 0; i < 24; i++) {
 			uvs[i] = new UV();
@@ -31,7 +31,7 @@ public class BD1Block {
 		enabled = true;
 	}
 
-	public SimpleMatrix[] getVertexPositions() {
+	public Vector[] getVertexPositions() {
 		return vertexPositions;
 	}
 	public UV[] getUVs() {
@@ -44,7 +44,7 @@ public class BD1Block {
 		return enabled;
 	}
 
-	public void setVertexPositions(SimpleMatrix[] vertexPositions) {
+	public void setVertexPositions(Vector[] vertexPositions) {
 		this.vertexPositions = vertexPositions;
 	}
 	public void setUVs(UV[] uvs) {
