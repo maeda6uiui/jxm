@@ -6,7 +6,7 @@ package com.github.dabasan.jxm.properties.weapon;
  * @author Daba
  *
  */
-class BinToEnumConverter {
+public class BinToEnumConverter {
 	public static ModelType getModelTypeFromBinSpecifier(int spc) {
 		ModelType modelType;
 
