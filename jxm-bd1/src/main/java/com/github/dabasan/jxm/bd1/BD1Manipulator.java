@@ -18,7 +18,7 @@ import com.github.dabasan.ejml_3dtools.Matrix;
 import com.github.dabasan.ejml_3dtools.Vector;
 
 /**
- * BD1Manipulator
+ * BD1 manipulator
  * 
  * @author Daba
  *
