@@ -72,10 +72,11 @@ public class Config {
 		name = "xopsplayer";
 	}
 
+	/*
 	@Override
 	public String toString() {
 		var sb = new StringBuilder();
-
+	
 		// Turn up
 		sb.append("turnUp=");
 		sb.append(turnUp.toString());
@@ -184,8 +185,22 @@ public class Config {
 		sb.append("name=");
 		sb.append(name);
 		sb.append("\n");
-
+	
 		return sb.toString();
+	}
+	*/
+	@Override
+	public String toString() {
+		return "Config [turnUp=" + turnUp + ", turnDown=" + turnDown + ", turnLeft=" + turnLeft
+				+ ", turnRight=" + turnRight + ", moveForward=" + moveForward + ", moveBackward="
+				+ moveBackward + ", moveLeft=" + moveLeft + ", moveRight=" + moveRight + ", walk="
+				+ walk + ", jump=" + jump + ", reload=" + reload + ", dropWeapon=" + dropWeapon
+				+ ", zoom=" + zoom + ", fireMode=" + fireMode + ", switchWeapon=" + switchWeapon
+				+ ", weapon1=" + weapon1 + ", weapon2=" + weapon2 + ", fire=" + fire
+				+ ", mouseSensitivity=" + mouseSensitivity + ", brightness=" + brightness
+				+ ", windowMode=" + windowMode + ", enableSound=" + enableSound + ", enableBlood="
+				+ enableBlood + ", invertMouse=" + invertMouse + ", frameSkip=" + frameSkip
+				+ ", anotherGunsight=" + anotherGunsight + ", name=" + name + "]";
 	}
 
 	public KeyCode getTurnUp() {
