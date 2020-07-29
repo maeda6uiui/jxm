@@ -36,10 +36,11 @@ public class MissionInfo {
 		briefingText = new ArrayList<>();
 	}
 
+	/*
 	@Override
 	public String toString() {
 		var sb = new StringBuilder();
-
+	
 		// Mission title
 		sb.append("missionTitle=");
 		sb.append(missionTitle);
@@ -80,24 +81,35 @@ public class MissionInfo {
 		sb.append("pathnameOfImage2=");
 		sb.append(pathnameOfImage2);
 		sb.append("\n");
-
+	
 		// Briefing text
 		sb.append("briefingText=");
 		sb.append("\n");
-
+	
 		for (var line : briefingText) {
 			sb.append(line);
 			sb.append("\n");
 		}
-
+	
 		sb.setLength(sb.length() - 1);
-
+	
 		return sb.toString();
+	}
+	*/
+	@Override
+	public String toString() {
+		return "MissionInfo [missionTitle=" + missionTitle + ", missionFullname=" + missionFullname
+				+ ", pathnameOfBlock=" + pathnameOfBlock + ", pathnameOfPoint=" + pathnameOfPoint
+				+ ", skyImage=" + skyImage + ", extraCollision=" + extraCollision + ", darkScreen="
+				+ darkScreen + ", pathnameOfObj=" + pathnameOfObj + ", pathnameOfImage1="
+				+ pathnameOfImage1 + ", pathnameOfImage2=" + pathnameOfImage2 + ", briefingText="
+				+ briefingText + "]";
 	}
 
 	public String getMissionTitle() {
 		return missionTitle;
 	}
+
 	public String getMissionFullname() {
 		return missionFullname;
 	}
