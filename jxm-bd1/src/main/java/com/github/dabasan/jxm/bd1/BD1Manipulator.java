@@ -66,8 +66,7 @@ public class BD1Manipulator {
 		return new ArrayList<>(blocks);
 	}
 	/**
-	 * Sets blocks.<br>
-	 * Null argument is rejected.
+	 * Sets blocks.
 	 * 
 	 * @param blocks
 	 *            Blocks
@@ -111,8 +110,7 @@ public class BD1Manipulator {
 	}
 
 	/**
-	 * Sets the filepath of a texture.<br>
-	 * Null argument is rejected.
+	 * Sets the filepath of a texture.
 	 * 
 	 * @param textureID
 	 *            Texture ID
@@ -128,8 +126,7 @@ public class BD1Manipulator {
 		textureFilenames.put(textureID, textureFilename);
 	}
 	/**
-	 * Sets the filepaths of the textures.<br>
-	 * Null argument is rejected.
+	 * Sets the filepaths of the textures.
 	 * 
 	 * @param textureFilenames
 	 *            Filenames of the textures

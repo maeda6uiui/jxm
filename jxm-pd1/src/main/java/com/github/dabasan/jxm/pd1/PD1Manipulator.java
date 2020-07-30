@@ -56,8 +56,7 @@ public class PD1Manipulator {
 		return new ArrayList<>(points);
 	}
 	/**
-	 * Sets points.<br>
-	 * Null argument is rejected.
+	 * Sets points.
 	 * 
 	 * @param points
 	 *            Points

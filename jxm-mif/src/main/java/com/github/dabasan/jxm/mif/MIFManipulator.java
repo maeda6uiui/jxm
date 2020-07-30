@@ -51,8 +51,7 @@ public class MIFManipulator {
 		return missionInfo;
 	}
 	/**
-	 * Sets mission info.<br>
-	 * Null argument is rejected.
+	 * Sets mission info.
 	 * 
 	 * @param missionInfo
 	 *            Mission info
