@@ -24,8 +24,8 @@ import com.github.dabasan.jxm.properties.weapon.WeaponData;
 class XGSReader {
 	private WeaponData[] weapons;
 
-	public XGSReader(InputStream is) throws IOException {
-		weapons = new WeaponData[23];
+	public XGSReader(InputStream is, int numWeapons) throws IOException {
+		weapons = new WeaponData[numWeapons];
 
 		// Read all bytes from a stream.
 		byte[] bin;
@@ -35,8 +35,7 @@ class XGSReader {
 
 		int pos = 0x0000000E;
 
-		final int NUM_WEAPONS = 23;
-		for (int i = 0; i < NUM_WEAPONS; i++) {
+		for (int i = 0; i < numWeapons; i++) {
 			var weapon = new WeaponData();
 
 			// Attacks
@@ -158,11 +157,11 @@ class XGSReader {
 		// Name
 		pos = 0x00000544;
 
-		for (int i = 0; i < NUM_WEAPONS; i++) {
+		for (int i = 0; i < numWeapons; i++) {
 			String name = this.getNameFromBin(bin, pos);
 			pos += 16;
 
-			weapons[NUM_WEAPONS - 1 - i].setName(name);
+			weapons[numWeapons - 1 - i].setName(name);
 		}
 	}
 	private String getNameFromBin(byte[] bin, int start) {
