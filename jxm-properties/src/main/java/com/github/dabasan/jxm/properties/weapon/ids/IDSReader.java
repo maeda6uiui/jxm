@@ -6,7 +6,7 @@ import java.io.InputStream;
 
 import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
-import com.github.dabasan.jxm.properties.weapon.BinToEnumConverter;
+import com.github.dabasan.jxm.properties.weapon.BinEnumConverter;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.ModelType;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
@@ -89,7 +89,7 @@ class IDSReader {
 		// WeaponP
 		int shootingStanceSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 		pos += 2;
-		ShootingStance shootingStance = BinToEnumConverter
+		ShootingStance shootingStance = BinEnumConverter
 				.getShootingStanceFromBinSpecifier(shootingStanceSpc);
 		weapon.setWeaponP(shootingStance);
 		// Blazing mode
@@ -100,18 +100,18 @@ class IDSReader {
 		// Scope mode
 		int scopeModeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 		pos += 2;
-		ScopeMode scopeMode = BinToEnumConverter.getScopeModeFromBinSpecifier(scopeModeSpc);
+		ScopeMode scopeMode = BinEnumConverter.getScopeModeFromBinSpecifier(scopeModeSpc);
 		weapon.setScopeMode(scopeMode);
 		// Texture
 		int textureTypeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 		pos += 2;
-		TextureType textureType = BinToEnumConverter.getTextureTypeFromBinSpecifier(textureTypeSpc);
+		TextureType textureType = BinEnumConverter.getTextureTypeFromBinSpecifier(textureTypeSpc);
 		String textureFilepath = TextureFilepaths.getTextureFilepath(textureType.ordinal());
 		weapon.setTexture(textureFilepath);
 		// Model
 		int modelTypeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 		pos += 2;
-		ModelType modelType = BinToEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
+		ModelType modelType = BinEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
 		String modelFilepath = ModelFilepaths.getModelFilepath(modelType.ordinal());
 		weapon.setModel(modelFilepath);
 		// Size
