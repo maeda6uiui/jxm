@@ -243,7 +243,7 @@ public class ByteFunctions {
 	}
 
 	/**
-	 * Sets a byte representation of a float value in a list.
+	 * Puts a byte representation of a float value in a list.
 	 * 
 	 * @param bin
 	 *            List
@@ -252,14 +252,14 @@ public class ByteFunctions {
 	 * @param value
 	 *            Float value
 	 */
-	public static void setFloatValueToBinLE(List<Byte> bin, int pos, float value) {
+	public static void putFloatValueToBinLE(List<Byte> bin, int pos, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
 		for (int i = 0; i < 4; i++) {
 			bin.set(pos + i, buffer[i]);
 		}
 	}
 	/**
-	 * Sets a byte representation of a short value in a list.
+	 * Puts a byte representation of a short value in a list.
 	 * 
 	 * @param bin
 	 *            List
@@ -268,14 +268,14 @@ public class ByteFunctions {
 	 * @param value
 	 *            Short value
 	 */
-	public static void setShortValueToBinLE(List<Byte> bin, int pos, short value) {
+	public static void putShortValueToBinLE(List<Byte> bin, int pos, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin.set(pos + i, buffer[i]);
 		}
 	}
 	/**
-	 * Sets a byte representation of an unsigned short value in a list.
+	 * Puts a byte representation of an unsigned short value in a list.
 	 * 
 	 * @param bin
 	 *            List
@@ -284,7 +284,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            Unsigned short value
 	 */
-	public static void setUnsignedShortValueToBinLE(List<Byte> bin, int pos, int value) {
+	public static void putUnsignedShortValueToBinLE(List<Byte> bin, int pos, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin.set(pos + i, buffer[i]);
