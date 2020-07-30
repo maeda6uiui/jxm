@@ -137,8 +137,6 @@ class IDSReader {
 		// Name
 		weapon.setName(this.getNameFromBin(bin, pos));
 		pos += 2;
-		// Change weapon
-		weapon.setChangeWeapon(-1);
 	}
 	private String getNameFromBin(byte[] bin, int start) {
 		var nameBuffer = new byte[16];
