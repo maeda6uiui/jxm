@@ -22,8 +22,13 @@ public class BINWeaponManipulator {
 	public BINWeaponManipulator() {
 		weapons = new WeaponData[NUM_WEAPONS];
 	}
-	public BINWeaponManipulator(byte[] bin, int dataStartPos, int nameStartPos) {
-		var reader = new BINWeaponReader(bin, NUM_WEAPONS, dataStartPos, nameStartPos);
+	public BINWeaponManipulator(List<Byte> bin, int dataStartPos, int nameStartPos) {
+		var binArray = new byte[bin.size()];
+		for (int i = 0; i < bin.size(); i++) {
+			binArray[i] = bin.get(i);
+		}
+
+		var reader = new BINWeaponReader(binArray, NUM_WEAPONS, dataStartPos, nameStartPos);
 		weapons = reader.getWeaponData();
 	}
 
