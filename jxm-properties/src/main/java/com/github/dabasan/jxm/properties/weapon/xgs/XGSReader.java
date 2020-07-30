@@ -6,14 +6,14 @@ import java.io.InputStream;
 
 import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
-import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
-import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
-import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
+import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
 import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
+import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
 /**
  * XGS reader
@@ -115,7 +115,8 @@ class XGSReader {
 			// Model
 			int modelTypeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 			pos += 2;
-			WeaponModelType modelType = WeaponBinEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
+			WeaponModelType modelType = WeaponBinEnumConverter
+					.getModelTypeFromBinSpecifier(modelTypeSpc);
 			String modelFilepath = ModelFilepaths.getModelFilepath(modelType.ordinal());
 			weapon.setModel(modelFilepath);
 			// Size
