@@ -28,7 +28,7 @@ public class WeaponData {
 	private boolean blazingMode;
 	private ScopeMode scopeMode;
 	private float size;
-	private int soundId;
+	private int soundID;
 	private int soundVolume;
 	private boolean silencer;
 	private ShootingStance weaponP;
@@ -55,7 +55,7 @@ public class WeaponData {
 		blazingMode = false;
 		scopeMode = ScopeMode.NONE;
 		size = 1.0f;
-		soundId = 0;
+		soundID = 0;
 		soundVolume = 0;
 		silencer = false;
 		weaponP = ShootingStance.RIFLE;
@@ -71,7 +71,7 @@ public class WeaponData {
 				+ reaction + ", errorRangeMin=" + errorRangeMin + ", errorRangeMax=" + errorRangeMax
 				+ ", m=" + m + ", flash=" + flash + ", yakkyouPosition=" + yakkyouPosition
 				+ ", yakkyouSpeed=" + yakkyouSpeed + ", blazingMode=" + blazingMode + ", scopeMode="
-				+ scopeMode + ", size=" + size + ", soundId=" + soundId + ", soundVolume="
+				+ scopeMode + ", size=" + size + ", soundID=" + soundID + ", soundVolume="
 				+ soundVolume + ", silencer=" + silencer + ", weaponP=" + weaponP
 				+ ", changeWeapon=" + changeWeapon + ", burst=" + burst + "]";
 	}
@@ -133,8 +133,8 @@ public class WeaponData {
 	public float getSize() {
 		return size;
 	}
-	public int getSoundId() {
-		return soundId;
+	public int getSoundID() {
+		return soundID;
 	}
 	public int getSoundVolume() {
 		return soundVolume;
@@ -209,8 +209,8 @@ public class WeaponData {
 	public void setSize(float size) {
 		this.size = size;
 	}
-	public void setSoundId(int soundId) {
-		this.soundId = soundId;
+	public void setSoundID(int soundID) {
+		this.soundID = soundID;
 	}
 	public void setSoundVolume(int soundVolume) {
 		this.soundVolume = soundVolume;
