@@ -22,6 +22,11 @@
 			<artifactId>jxm-bintools</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.dabasan</groupId>
+			<artifactId>ejml-3dtools</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>de.javagl</groupId>
