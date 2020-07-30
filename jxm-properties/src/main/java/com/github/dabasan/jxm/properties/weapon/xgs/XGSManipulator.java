@@ -74,7 +74,7 @@ public class XGSManipulator {
 
 	private void saveAsXGSBase(OutputStream os) throws IOException {
 		var writer = new XGSWriter();
-		writer.write(os, weapons, NUM_WEAPONS);
+		writer.write(os, weapons);
 	}
 	/**
 	 * Saves weapon data as a XGS file.

@@ -28,7 +28,7 @@ class XGSWriter {
 
 	}
 
-	public void write(OutputStream os, WeaponData[] weapons, int numWeapons) throws IOException {
+	public void write(OutputStream os, WeaponData[] weapons) throws IOException {
 		var bin = new ArrayList<Byte>();
 
 		bin.add((byte) 0x58);// X
@@ -46,6 +46,7 @@ class XGSWriter {
 		bin.add((byte) 0x08);
 		bin.add((byte) 0x00);
 
+		int numWeapons = weapons.length;
 		for (int i = 0; i < numWeapons; i++) {
 			// Attacks
 			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getAttacks());
