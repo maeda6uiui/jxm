@@ -316,7 +316,7 @@ public class BD1Manipulator {
 		}
 	}
 
-	private void innerSaveAsBD1(OutputStream os) throws IOException {
+	private void saveAsBD1Base(OutputStream os) throws IOException {
 		var writer = new BD1Writer();
 		writer.write(os, blocks, textureFilenames);
 	}
@@ -331,7 +331,7 @@ public class BD1Manipulator {
 		int ret = 0;
 
 		try {
-			this.innerSaveAsBD1(os);
+			this.saveAsBD1Base(os);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -350,7 +350,7 @@ public class BD1Manipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(file)) {
-			this.innerSaveAsBD1(fos);
+			this.saveAsBD1Base(fos);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -369,7 +369,7 @@ public class BD1Manipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(filepath)) {
-			this.innerSaveAsBD1(fos);
+			this.saveAsBD1Base(fos);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -378,7 +378,7 @@ public class BD1Manipulator {
 		return ret;
 	}
 
-	private void innerSaveAsOBJ(OutputStream osObj, OutputStream osMtl, String mtlFilename)
+	private void saveAsOBJBase(OutputStream osObj, OutputStream osMtl, String mtlFilename)
 			throws IOException {
 		var writer = new BD1OBJWriter();
 		writer.Write(osObj, osMtl, mtlFilename, blocks, textureFilenames);
@@ -398,7 +398,7 @@ public class BD1Manipulator {
 		int ret = 0;
 
 		try {
-			this.innerSaveAsOBJ(osObj, osMtl, mtlFilename);
+			this.saveAsOBJBase(osObj, osMtl, mtlFilename);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -422,7 +422,7 @@ public class BD1Manipulator {
 
 		try (var fosObj = new FileOutputStream(fileObj);
 				var fosMtl = new FileOutputStream(fileMtl)) {
-			this.innerSaveAsOBJ(fosObj, fosMtl, mtlFilename);
+			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -446,7 +446,7 @@ public class BD1Manipulator {
 
 		try (var fosObj = new FileOutputStream(filepathObj);
 				var fosMtl = new FileOutputStream(filepathMtl)) {
-			this.innerSaveAsOBJ(fosObj, fosMtl, mtlFilename);
+			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;

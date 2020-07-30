@@ -66,7 +66,7 @@ public class MIFManipulator {
 		this.missionInfo = missionInfo;
 	}
 
-	private void innerSaveAsMIF(OutputStream os, String encoding) throws IOException {
+	private void saveAsMIFBase(OutputStream os, String encoding) throws IOException {
 		var writer = new MIFWriter();
 		writer.write(os, encoding, missionInfo);
 	}
@@ -83,7 +83,7 @@ public class MIFManipulator {
 		int ret = 0;
 
 		try {
-			this.innerSaveAsMIF(os, encoding);
+			this.saveAsMIFBase(os, encoding);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -104,7 +104,7 @@ public class MIFManipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(file)) {
-			this.innerSaveAsMIF(fos, encoding);
+			this.saveAsMIFBase(fos, encoding);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -125,7 +125,7 @@ public class MIFManipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(filepath)) {
-			this.innerSaveAsMIF(fos, encoding);
+			this.saveAsMIFBase(fos, encoding);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;

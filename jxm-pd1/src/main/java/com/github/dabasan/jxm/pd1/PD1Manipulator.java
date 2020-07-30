@@ -221,7 +221,7 @@ public class PD1Manipulator {
 		}
 	}
 
-	private void innerSaveAsPD1(OutputStream os) throws IOException {
+	private void saveAsPD1Base(OutputStream os) throws IOException {
 		var writer = new PD1Writer();
 		writer.write(os, points);
 	}
@@ -236,7 +236,7 @@ public class PD1Manipulator {
 		int ret = 0;
 
 		try {
-			this.innerSaveAsPD1(os);
+			this.saveAsPD1Base(os);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -255,7 +255,7 @@ public class PD1Manipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(file)) {
-			this.innerSaveAsPD1(fos);
+			this.saveAsPD1Base(fos);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -274,7 +274,7 @@ public class PD1Manipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(filepath)) {
-			this.innerSaveAsPD1(fos);
+			this.saveAsPD1Base(fos);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
