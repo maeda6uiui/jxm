@@ -9,16 +9,16 @@ import java.util.Arrays;
  *
  */
 public class CharacterData {
-	private TextureType texture;
-	private ModelType model;
+	private CharacterTextureType texture;
+	private CharacterModelType model;
 	private int hp;
 	private AILevel aiLevel;
 	private int[] weapons;
 	private CharacterType type;
 
 	public CharacterData() {
-		texture = TextureType.SOLDIER_BLACK;
-		model = ModelType.MALE;
+		texture = CharacterTextureType.SOLDIER_BLACK;
+		model = CharacterModelType.MALE;
 		hp = 100;
 		aiLevel = AILevel.D;
 		weapons = new int[]{0, 0};
@@ -32,16 +32,16 @@ public class CharacterData {
 				+ type + "]";
 	}
 
-	public TextureType getTexture() {
+	public CharacterTextureType getTexture() {
 		return texture;
 	}
-	public ModelType getModel() {
+	public CharacterModelType getModel() {
 		return model;
 	}
-	public int getHp() {
+	public int getHP() {
 		return hp;
 	}
-	public AILevel getAiLevel() {
+	public AILevel getAILevel() {
 		return aiLevel;
 	}
 	public int[] getWeapons() {
@@ -51,16 +51,16 @@ public class CharacterData {
 		return type;
 	}
 
-	public void setTexture(TextureType texture) {
+	public void setTexture(CharacterTextureType texture) {
 		this.texture = texture;
 	}
-	public void setModel(ModelType model) {
+	public void setModel(CharacterModelType model) {
 		this.model = model;
 	}
-	public void setHp(int hp) {
+	public void setHP(int hp) {
 		this.hp = hp;
 	}
-	public void setAiLevel(AILevel aiLevel) {
+	public void setAILevel(AILevel aiLevel) {
 		this.aiLevel = aiLevel;
 	}
 	public void setWeapons(int[] weapons) {

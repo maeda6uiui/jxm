@@ -8,13 +8,13 @@ import java.util.List;
 
 import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
-import com.github.dabasan.jxm.properties.weapon.BinEnumConverter;
+import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
-import com.github.dabasan.jxm.properties.weapon.ModelType;
+import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
-import com.github.dabasan.jxm.properties.weapon.TextureType;
+import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 import com.github.dabasan.jxm.properties.weapon.WeaponData;
 
 /**
@@ -82,7 +82,7 @@ class XGSWriter {
 			ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(yakkyouPosition.getZ()));
 			// WeaponP
 			ShootingStance shootingStance = weapons[i].getWeaponP();
-			int shootingStanceSpc = BinEnumConverter
+			int shootingStanceSpc = WeaponBinEnumConverter
 					.getBinSpecifierFromShootingStance(shootingStance);
 			ByteFunctions.addShortValueToBinLE(bin, (short) shootingStanceSpc);
 			// Blazing mode
@@ -91,17 +91,17 @@ class XGSWriter {
 			ByteFunctions.addShortValueToBinLE(bin, (short) blazingModeSpc);
 			// Scope mode
 			ScopeMode scopeMode = weapons[i].getScopeMode();
-			int scopeModeSpc = BinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
+			int scopeModeSpc = WeaponBinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
 			ByteFunctions.addShortValueToBinLE(bin, (short) scopeModeSpc);
 			// Texture
 			String textureFilepath = weapons[i].getTexture();
-			TextureType textureType = TextureFilepaths.getEnumFromFilepath(textureFilepath);
-			int textureTypeSpc = BinEnumConverter.getBinSpecifierFromTextureType(textureType);
+			WeaponTextureType textureType = TextureFilepaths.getEnumFromFilepath(textureFilepath);
+			int textureTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromTextureType(textureType);
 			ByteFunctions.addShortValueToBinLE(bin, (short) textureTypeSpc);
 			// Model
 			String modelFilepath = weapons[i].getModel();
-			ModelType modelType = ModelFilepaths.getEnumFromFilepath(modelFilepath);
-			int modelTypeSpc = BinEnumConverter.getBinSpecifierFromModelType(modelType);
+			WeaponModelType modelType = ModelFilepaths.getEnumFromFilepath(modelFilepath);
+			int modelTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromModelType(modelType);
 			ByteFunctions.addShortValueToBinLE(bin, (short) modelTypeSpc);
 			// Size
 			ByteFunctions.addShortValueToBinLE(bin,

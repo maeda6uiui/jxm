@@ -6,37 +6,37 @@ package com.github.dabasan.jxm.properties.character;
  * @author Daba
  *
  */
-public class BinEnumConverter {
-	public static ModelType getModelTypeFromBinSpecifier(int spc) {
-		ModelType modelType;
+public class CharacterBinEnumConverter {
+	public static CharacterModelType getModelTypeFromBinSpecifier(int spc) {
+		CharacterModelType modelType;
 
 		switch (spc) {
 			case 0x00 :
-				modelType = ModelType.MALE;
+				modelType = CharacterModelType.MALE;
 				break;
 			case 0x1F :
-				modelType = ModelType.SUN_GLASSES;
+				modelType = CharacterModelType.SUN_GLASSES;
 				break;
 			case 0x21 :
-				modelType = ModelType.POLICEMAN;
+				modelType = CharacterModelType.POLICEMAN;
 				break;
 			case 0x23 :
-				modelType = ModelType.FEMALE;
+				modelType = CharacterModelType.FEMALE;
 				break;
 			case 0x24 :
-				modelType = ModelType.BACK_PACK;
+				modelType = CharacterModelType.BACK_PACK;
 				break;
 			case 0x26 :
-				modelType = ModelType.HELMET;
+				modelType = CharacterModelType.HELMET;
 				break;
 			default :
-				modelType = ModelType.MALE;
+				modelType = CharacterModelType.MALE;
 				break;
 		}
 
 		return modelType;
 	}
-	public static int getBinSpecifierFromModelType(ModelType modelType) {
+	public static int getBinSpecifierFromModelType(CharacterModelType modelType) {
 		int spc = 0x00;
 
 		switch (modelType) {

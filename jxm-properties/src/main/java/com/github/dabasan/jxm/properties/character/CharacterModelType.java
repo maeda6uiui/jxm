@@ -6,6 +6,6 @@ package com.github.dabasan.jxm.properties.character;
  * @author Daba
  *
  */
-public enum ModelType {
+public enum CharacterModelType {
 	MALE, SUN_GLASSES, POLICEMAN, FEMALE, BACK_PACK, HELMET
 }

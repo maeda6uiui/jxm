@@ -62,8 +62,8 @@ public class ModelFilepaths {
 
 		return id;
 	}
-	public static ModelType getEnumFromFilepath(String filepath) {
+	public static WeaponModelType getEnumFromFilepath(String filepath) {
 		int id = getIDFromFilepath(filepath);
-		return (id == -1) ? ModelType.values()[0] : ModelType.values()[id];
+		return (id == -1) ? WeaponModelType.values()[0] : WeaponModelType.values()[id];
 	}
 }

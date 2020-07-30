@@ -6,7 +6,7 @@ package com.github.dabasan.jxm.properties.weapon;
  * @author Daba
  *
  */
-public enum TextureType {
+public enum WeaponTextureType {
 	NONE,
 	MP5,
 	PSG_1,

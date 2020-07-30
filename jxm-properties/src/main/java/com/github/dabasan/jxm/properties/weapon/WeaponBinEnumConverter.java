@@ -6,82 +6,82 @@ package com.github.dabasan.jxm.properties.weapon;
  * @author Daba
  *
  */
-public class BinEnumConverter {
-	public static ModelType getModelTypeFromBinSpecifier(int spc) {
-		ModelType modelType;
+public class WeaponBinEnumConverter {
+	public static WeaponModelType getModelTypeFromBinSpecifier(int spc) {
+		WeaponModelType modelType;
 
 		switch (spc) {
 			case 0x00 :
-				modelType = ModelType.NONE;
+				modelType = WeaponModelType.NONE;
 				break;
 			case 0x0B :
-				modelType = ModelType.MP5;
+				modelType = WeaponModelType.MP5;
 				break;
 			case 0x0A :
-				modelType = ModelType.PSG_1;
+				modelType = WeaponModelType.PSG_1;
 				break;
 			case 0x0D :
-				modelType = ModelType.M92F;
+				modelType = WeaponModelType.M92F;
 				break;
 			case 0x10 :
-				modelType = ModelType.GLOCK;
+				modelType = WeaponModelType.GLOCK;
 				break;
 			case 0x15 :
-				modelType = ModelType.DESERT_EAGLE;
+				modelType = WeaponModelType.DESERT_EAGLE;
 				break;
 			case 0x0E :
-				modelType = ModelType.MAC10;
+				modelType = WeaponModelType.MAC10;
 				break;
 			case 0x1E :
-				modelType = ModelType.UMP;
+				modelType = WeaponModelType.UMP;
 				break;
 			case 0x0F :
-				modelType = ModelType.P90;
+				modelType = WeaponModelType.P90;
 				break;
 			case 0x1D :
-				modelType = ModelType.M4;
+				modelType = WeaponModelType.M4;
 				break;
 			case 0x18 :
-				modelType = ModelType.AK47;
+				modelType = WeaponModelType.AK47;
 				break;
 			case 0x16 :
-				modelType = ModelType.AUG;
+				modelType = WeaponModelType.AUG;
 				break;
 			case 0x1C :
-				modelType = ModelType.M249;
+				modelType = WeaponModelType.M249;
 				break;
 			case 0x17 :
-				modelType = ModelType.GRENADE;
+				modelType = WeaponModelType.GRENADE;
 				break;
 			case 0x19 :
-				modelType = ModelType.MP5SD;
+				modelType = WeaponModelType.MP5SD;
 				break;
 			case 0x20 :
-				modelType = ModelType.CASE;
+				modelType = WeaponModelType.CASE;
 				break;
 			case 0x22 :
-				modelType = ModelType.M1911;
+				modelType = WeaponModelType.M1911;
 				break;
 			case 0x39 :
-				modelType = ModelType.M1;
+				modelType = WeaponModelType.M1;
 				break;
 			case 0x3A :
-				modelType = ModelType.FAMAS;
+				modelType = WeaponModelType.FAMAS;
 				break;
 			case 0x3B :
-				modelType = ModelType.MK23;
+				modelType = WeaponModelType.MK23;
 				break;
 			case 0x3C :
-				modelType = ModelType.MK23SD;
+				modelType = WeaponModelType.MK23SD;
 				break;
 			default :
-				modelType = ModelType.NONE;
+				modelType = WeaponModelType.NONE;
 				break;
 		}
 
 		return modelType;
 	}
-	public static int getBinSpecifierFromModelType(ModelType modelType) {
+	public static int getBinSpecifierFromModelType(WeaponModelType modelType) {
 		int spc = 0x00;
 
 		switch (modelType) {
@@ -153,81 +153,81 @@ public class BinEnumConverter {
 		return spc;
 	}
 
-	public static TextureType getTextureTypeFromBinSpecifier(int spc) {
-		TextureType textureType;
+	public static WeaponTextureType getTextureTypeFromBinSpecifier(int spc) {
+		WeaponTextureType textureType;
 
 		switch (spc) {
 			case 0x00 :
-				textureType = TextureType.NONE;
+				textureType = WeaponTextureType.NONE;
 				break;
 			case 0x10 :
-				textureType = TextureType.MP5;
+				textureType = WeaponTextureType.MP5;
 				break;
 			case 0x0B :
-				textureType = TextureType.PSG_1;
+				textureType = WeaponTextureType.PSG_1;
 				break;
 			case 0x13 :
-				textureType = TextureType.M92F;
+				textureType = WeaponTextureType.M92F;
 				break;
 			case 0x11 :
-				textureType = TextureType.GLOCK18;
+				textureType = WeaponTextureType.GLOCK18;
 				break;
 			case 0x32 :
-				textureType = TextureType.DESERT_EAGLE;
+				textureType = WeaponTextureType.DESERT_EAGLE;
 				break;
 			case 0x28 :
-				textureType = TextureType.MAC10;
+				textureType = WeaponTextureType.MAC10;
 				break;
 			case 0x27 :
-				textureType = TextureType.UMP;
+				textureType = WeaponTextureType.UMP;
 				break;
 			case 0x24 :
-				textureType = TextureType.P90;
+				textureType = WeaponTextureType.P90;
 				break;
 			case 0x26 :
-				textureType = TextureType.M4;
+				textureType = WeaponTextureType.M4;
 				break;
 			case 0x21 :
-				textureType = TextureType.AK47;
+				textureType = WeaponTextureType.AK47;
 				break;
 			case 0x33 :
-				textureType = TextureType.AUG;
+				textureType = WeaponTextureType.AUG;
 				break;
 			case 0x25 :
-				textureType = TextureType.M249;
+				textureType = WeaponTextureType.M249;
 				break;
 			case 0x20 :
-				textureType = TextureType.GRENADE;
+				textureType = WeaponTextureType.GRENADE;
 				break;
 			case 0x22 :
-				textureType = TextureType.MP5SD;
+				textureType = WeaponTextureType.MP5SD;
 				break;
 			case 0x2C :
-				textureType = TextureType.CASE;
+				textureType = WeaponTextureType.CASE;
 				break;
 			case 0x2D :
-				textureType = TextureType.M1911;
+				textureType = WeaponTextureType.M1911;
 				break;
 			case 0x30 :
-				textureType = TextureType.GLOCK17;
+				textureType = WeaponTextureType.GLOCK17;
 				break;
 			case 0x36 :
-				textureType = TextureType.M1;
+				textureType = WeaponTextureType.M1;
 				break;
 			case 0x37 :
-				textureType = TextureType.FAMAS;
+				textureType = WeaponTextureType.FAMAS;
 				break;
 			case 0x38 :
-				textureType = TextureType.MK23;
+				textureType = WeaponTextureType.MK23;
 				break;
 			default :
-				textureType = TextureType.NONE;
+				textureType = WeaponTextureType.NONE;
 				break;
 		}
 
 		return textureType;
 	}
-	public static int getBinSpecifierFromTextureType(TextureType textureType) {
+	public static int getBinSpecifierFromTextureType(WeaponTextureType textureType) {
 		int spc = 0x00;
 
 		switch (textureType) {

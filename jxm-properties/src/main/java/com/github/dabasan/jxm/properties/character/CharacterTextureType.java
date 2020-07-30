@@ -6,7 +6,7 @@ package com.github.dabasan.jxm.properties.character;
  * @author Daba
  *
  */
-public enum TextureType {
+public enum CharacterTextureType {
 	SOLDIER_BLACK,
 	SOLDIER_GREEN,
 	SOLDIER_WHITE,

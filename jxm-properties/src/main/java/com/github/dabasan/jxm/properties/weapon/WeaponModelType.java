@@ -6,7 +6,7 @@ package com.github.dabasan.jxm.properties.weapon;
  * @author Daba
  *
  */
-public enum ModelType {
+public enum WeaponModelType {
 	NONE,
 	MP5,
 	PSG_1,

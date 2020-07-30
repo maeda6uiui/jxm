@@ -62,8 +62,8 @@ public class TextureFilepaths {
 
 		return id;
 	}
-	public static TextureType getEnumFromFilepath(String filepath) {
+	public static WeaponTextureType getEnumFromFilepath(String filepath) {
 		int id = getIDFromFilepath(filepath);
-		return (id == -1) ? TextureType.values()[0] : TextureType.values()[id];
+		return (id == -1) ? WeaponTextureType.values()[0] : WeaponTextureType.values()[id];
 	}
 }
