@@ -27,7 +27,7 @@ public class WeaponData {
 	private Vector yakkyouSpeed;
 	private boolean blazingMode;
 	private ScopeMode scopeMode;
-	private float size;
+	private double size;
 	private int soundID;
 	private int soundVolume;
 	private boolean silencer;
@@ -54,7 +54,7 @@ public class WeaponData {
 		yakkyouSpeed = new Vector();
 		blazingMode = false;
 		scopeMode = ScopeMode.NONE;
-		size = 1.0f;
+		size = 1.0;
 		soundID = 0;
 		soundVolume = 0;
 		silencer = false;
@@ -130,7 +130,7 @@ public class WeaponData {
 	public ScopeMode getScopeMode() {
 		return scopeMode;
 	}
-	public float getSize() {
+	public double getSize() {
 		return size;
 	}
 	public int getSoundID() {
@@ -206,7 +206,7 @@ public class WeaponData {
 	public void setScopeMode(ScopeMode scopeMode) {
 		this.scopeMode = scopeMode;
 	}
-	public void setSize(float size) {
+	public void setSize(double size) {
 		this.size = size;
 	}
 	public void setSoundID(int soundID) {
