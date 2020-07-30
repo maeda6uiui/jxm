@@ -17,10 +17,10 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  * @author Daba
  *
  */
-class EXEWeaponReader {
+class BINWeaponReader {
 	private WeaponData[] weapons;
 
-	public EXEWeaponReader(byte[] bin, int numWeapons, int dataStartPos, int nameStartPos) {
+	public BINWeaponReader(byte[] bin, int numWeapons, int dataStartPos, int nameStartPos) {
 		weapons = new WeaponData[numWeapons];
 
 		int pos = dataStartPos;

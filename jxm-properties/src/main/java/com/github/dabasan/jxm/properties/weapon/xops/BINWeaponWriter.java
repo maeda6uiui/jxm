@@ -19,8 +19,8 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  * @author Daba
  *
  */
-class EXEWeaponWriter {
-	public EXEWeaponWriter() {
+class BINWeaponWriter {
+	public BINWeaponWriter() {
 
 	}
 
