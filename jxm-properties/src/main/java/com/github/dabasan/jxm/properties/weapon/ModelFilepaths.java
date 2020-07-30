@@ -48,4 +48,18 @@ public class ModelFilepaths {
 	public static boolean keyExists(int key) {
 		return modelFilepaths.containsKey(key);
 	}
+
+	public static int getIDFromFilepath(String filepath) {
+		int id = -1;
+
+		for (var entry : modelFilepaths.entrySet()) {
+			String modelFilepath = entry.getValue();
+			if (modelFilepath.equals(filepath)) {
+				id = entry.getKey();
+				break;
+			}
+		}
+
+		return id;
+	}
 }

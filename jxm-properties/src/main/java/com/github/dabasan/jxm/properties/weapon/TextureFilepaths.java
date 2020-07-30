@@ -48,4 +48,18 @@ public class TextureFilepaths {
 	public static boolean keyExists(int key) {
 		return textureFilepaths.containsKey(key);
 	}
+
+	public static int getIDFromFilepath(String filepath) {
+		int id = -1;
+
+		for (var entry : textureFilepaths.entrySet()) {
+			String textureFilepath = entry.getValue();
+			if (textureFilepath.equals(filepath)) {
+				id = entry.getKey();
+				break;
+			}
+		}
+
+		return id;
+	}
 }
