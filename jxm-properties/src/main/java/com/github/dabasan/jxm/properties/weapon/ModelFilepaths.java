@@ -62,4 +62,8 @@ public class ModelFilepaths {
 
 		return id;
 	}
+	public static ModelType getEnumFromFilepath(String filepath) {
+		int id = getIDFromFilepath(filepath);
+		return ModelType.values()[id];
+	}
 }

@@ -62,4 +62,8 @@ public class TextureFilepaths {
 
 		return id;
 	}
+	public static TextureType getEnumFromFilepath(String filepath) {
+		int id = getIDFromFilepath(filepath);
+		return TextureType.values()[id];
+	}
 }
