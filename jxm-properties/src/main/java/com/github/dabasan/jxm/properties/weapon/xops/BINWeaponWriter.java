@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.weapon.xops;
 
-import java.util.List;
-
 import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
@@ -24,7 +22,7 @@ class BINWeaponWriter {
 
 	}
 
-	public void write(List<Byte> bin, WeaponData[] weapons, int dataStartPos, int nameStartPos) {
+	public void write(byte[] bin, WeaponData[] weapons, int dataStartPos, int nameStartPos) {
 		int pos = dataStartPos;
 
 		int numWeapons = weapons.length;
@@ -142,7 +140,7 @@ class BINWeaponWriter {
 			pos += 16;
 		}
 	}
-	private void setNameToBin(List<Byte> bin, int pos, String name) {
+	private void setNameToBin(byte[] bin, int pos, String name) {
 		var nameBuffer = new byte[16];
 		for (int i = 0; i < 16; i++) {
 			nameBuffer[i] = 0;
@@ -156,7 +154,7 @@ class BINWeaponWriter {
 		}
 
 		for (int i = 0; i < 16; i++) {
-			bin.set(pos + i, nameBuffer[i]);
+			bin[pos + i] = nameBuffer[i];
 		}
 	}
 }

@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.weapon.xops;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,13 +20,8 @@ public class BINWeaponManipulator {
 	public BINWeaponManipulator() {
 		weapons = new WeaponData[NUM_WEAPONS];
 	}
-	public BINWeaponManipulator(List<Byte> bin, int dataStartPos, int nameStartPos) {
-		var binArray = new byte[bin.size()];
-		for (int i = 0; i < bin.size(); i++) {
-			binArray[i] = bin.get(i);
-		}
-
-		var reader = new BINWeaponReader(binArray, NUM_WEAPONS, dataStartPos, nameStartPos);
+	public BINWeaponManipulator(byte[] bin, int dataStartPos, int nameStartPos) {
+		var reader = new BINWeaponReader(bin, NUM_WEAPONS, dataStartPos, nameStartPos);
 		weapons = reader.getWeaponData();
 	}
 
@@ -60,16 +53,16 @@ public class BINWeaponManipulator {
 	}
 
 	/**
-	 * Writes out weapon data to a list containing bytes.
+	 * Writes out weapon data to an array containing bytes.
 	 * 
 	 * @param bin
-	 *            List
+	 *            Array
 	 * @param dataStartPos
 	 *            Start position of weapon data
 	 * @param nameStartPos
 	 *            Start position of weapon names
 	 */
-	public void write(List<Byte> bin, int dataStartPos, int nameStartPos) {
+	public void write(byte[] bin, int dataStartPos, int nameStartPos) {
 		var writer = new BINWeaponWriter();
 		writer.write(bin, weapons, dataStartPos, nameStartPos);
 	}

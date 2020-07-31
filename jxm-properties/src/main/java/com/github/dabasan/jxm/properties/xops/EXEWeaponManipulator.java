@@ -6,8 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,28 +25,34 @@ public class EXEWeaponManipulator {
 	private XOPSVersion srcXOPSVersion;
 	private BINWeaponManipulator manipulator;
 
-	public EXEWeaponManipulator(List<Byte> bin) {
+	public EXEWeaponManipulator(byte[] bin) {
 		XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
 		this.constructorBase(bin, version);
 	}
 	public EXEWeaponManipulator(InputStream is) throws IOException {
-		List<Byte> bin = this.readAllBin(is);
+		byte[] bin;
+		try (var bis = new BufferedInputStream(is)) {
+			bin = bis.readAllBytes();
+		}
+
 		XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
 		this.constructorBase(bin, version);
 	}
 	public EXEWeaponManipulator(File file) throws IOException {
-		List<Byte> bin;
-		try (var fis = new FileInputStream(file)) {
-			bin = this.readAllBin(fis);
+		byte[] bin;
+		try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+			bin = bis.readAllBytes();
 		}
+
 		XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
 		this.constructorBase(bin, version);
 	}
 	public EXEWeaponManipulator(String filepath) throws IOException {
-		List<Byte> bin;
-		try (var fis = new FileInputStream(filepath)) {
-			bin = this.readAllBin(fis);
+		byte[] bin;
+		try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+			bin = bis.readAllBytes();
 		}
+
 		XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
 		this.constructorBase(bin, version);
 	}
@@ -111,20 +115,7 @@ public class EXEWeaponManipulator {
 
 		return nameStartPos;
 	}
-	private List<Byte> readAllBin(InputStream is) throws IOException {
-		byte[] binArray;
-		try (var bis = new BufferedInputStream(is)) {
-			binArray = bis.readAllBytes();
-		}
-
-		var bin = new ArrayList<Byte>();
-		for (var b : binArray) {
-			bin.add(b);
-		}
-
-		return bin;
-	}
-	private void constructorBase(List<Byte> bin, XOPSVersion version) {
+	private void constructorBase(byte[] bin, XOPSVersion version) {
 		int dataStartPos = this.getDataStartPos(version);
 		int nameStartPos = this.getNameStartPos(version);
 		manipulator = new BINWeaponManipulator(bin, dataStartPos, nameStartPos);
@@ -162,17 +153,15 @@ public class EXEWeaponManipulator {
 	// Pass a non-null value to fileBackup to make a backup file before
 	// overwriting the file.
 	private void writeBase(File file, File fileBackup) throws IOException {
-		List<Byte> bin;
-		try (var fis = new FileInputStream(file)) {
-			bin = this.readAllBin(fis);
+		byte[] bin;
+		try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+			bin = bis.readAllBytes();
 		}
 
 		// Make a backup file.
 		if (fileBackup != null) {
 			try (var fosBackup = new FileOutputStream(fileBackup)) {
-				for (Byte b : bin) {
-					fosBackup.write(b);
-				}
+				fosBackup.write(bin);
 			}
 		}
 
@@ -184,9 +173,7 @@ public class EXEWeaponManipulator {
 
 		// Overwrite an EXE file of XOPS.
 		try (var fos = new FileOutputStream(file)) {
-			for (Byte b : bin) {
-				fos.write(b);
-			}
+			fos.write(bin);
 		}
 	}
 	/**

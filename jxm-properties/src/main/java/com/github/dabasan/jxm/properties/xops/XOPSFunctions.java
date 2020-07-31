@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.xops;
 
-import java.util.List;
-
 /**
  * XOPS functions
  * 
@@ -15,16 +13,16 @@ class XOPSFunctions {
 	private static final int XOPSOLT18F2_FILE_SIZE = 495616;
 	private static final int XOPSOLT19F2_FILE_SIZE = 598016;
 
-	public static XOPSVersion getXOPSVersion(List<Byte> bin) {
+	public static XOPSVersion getXOPSVersion(byte[] bin) {
 		XOPSVersion version = XOPSVersion.XOPS096;
 
-		int fileSize = bin.size();
+		int fileSize = bin.length;
 
 		if (fileSize == XOPS_096_OR_096T_FILE_SIZE) {
 			byte[] b = new byte[3];
-			b[0] = bin.get(0x00000100);
-			b[1] = bin.get(0x00000101);
-			b[2] = bin.get(0x00000102);
+			b[0] = bin[0x00000100];
+			b[1] = bin[0x00000101];
+			b[2] = bin[0x00000102];
 
 			int[] ub = new int[3];
 			ub[0] = Byte.toUnsignedInt(b[0]);
