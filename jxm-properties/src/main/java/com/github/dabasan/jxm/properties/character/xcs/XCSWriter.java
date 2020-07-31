@@ -46,7 +46,7 @@ class XCSWriter {
 			int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
 			ByteFunctions.addShortValueToBinLE(bin, (short) modelTypeSpc);
 			// HP
-			ByteFunctions.addShortValueToBinLE(bin, (short) characters[i].getHP());
+			ByteFunctions.addUnsignedShortValueToBinLE(bin, (short) characters[i].getHP());
 			// AI level
 			ByteFunctions.addShortValueToBinLE(bin, (short) characters[i].getAILevel().ordinal());
 			// Weapons
