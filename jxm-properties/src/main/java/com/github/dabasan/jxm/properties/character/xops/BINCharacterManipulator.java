@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +20,7 @@ public class BINCharacterManipulator {
 	public BINCharacterManipulator() {
 		characters = new CharacterData[NUM_CHARACTERS];
 	}
-	public BINCharacterManipulator(byte[] bin, int dataStartPos) throws IOException {
+	public BINCharacterManipulator(byte[] bin, int dataStartPos) {
 		var reader = new BINCharacterReader(bin, NUM_CHARACTERS, dataStartPos);
 		characters = reader.getCharacterData();
 	}

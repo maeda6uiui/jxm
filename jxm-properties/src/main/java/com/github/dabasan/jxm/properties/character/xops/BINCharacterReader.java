@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import java.io.IOException;
-
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.character.AILevel;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
@@ -19,7 +17,7 @@ import com.github.dabasan.jxm.properties.character.CharacterType;
 class BINCharacterReader {
 	private CharacterData[] characters;
 
-	public BINCharacterReader(byte[] bin, int numCharacters, int dataStartPos) throws IOException {
+	public BINCharacterReader(byte[] bin, int numCharacters, int dataStartPos) {
 		characters = new CharacterData[numCharacters];
 
 		int pos = dataStartPos;
