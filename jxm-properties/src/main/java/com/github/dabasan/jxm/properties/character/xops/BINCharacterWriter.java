@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import java.util.List;
-
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterData;
@@ -18,7 +16,7 @@ class BINCharacterWriter {
 
 	}
 
-	public void write(List<Byte> bin, CharacterData[] characters, int dataStartPos) {
+	public void write(byte[] bin, CharacterData[] characters, int dataStartPos) {
 		int pos = dataStartPos;
 
 		int numCharacters = characters.length;
