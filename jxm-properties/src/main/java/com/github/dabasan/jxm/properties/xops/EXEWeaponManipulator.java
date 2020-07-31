@@ -56,6 +56,12 @@ public class EXEWeaponManipulator {
 		XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
 		this.constructorBase(bin, version);
 	}
+	private void constructorBase(byte[] bin, XOPSVersion version) {
+		int dataStartPos = this.getDataStartPos(version);
+		int nameStartPos = this.getNameStartPos(version);
+		manipulator = new BINWeaponManipulator(bin, dataStartPos, nameStartPos);
+		srcXOPSVersion = version;
+	}
 
 	private int getDataStartPos(XOPSVersion version) {
 		int dataStartPos;
@@ -114,12 +120,6 @@ public class EXEWeaponManipulator {
 		}
 
 		return nameStartPos;
-	}
-	private void constructorBase(byte[] bin, XOPSVersion version) {
-		int dataStartPos = this.getDataStartPos(version);
-		int nameStartPos = this.getNameStartPos(version);
-		manipulator = new BINWeaponManipulator(bin, dataStartPos, nameStartPos);
-		srcXOPSVersion = version;
 	}
 
 	/**
