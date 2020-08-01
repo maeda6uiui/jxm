@@ -101,10 +101,8 @@ class BD1Writer {
 			String textureFilename = entry.getValue();
 
 			byte[] textureFilenameBuffer = textureFilename.getBytes();
-			if (textureFilenameBuffer.length > 31) {
-				textureFilenameBuffer = Arrays.copyOfRange(textureFilenameBuffer, 0, 31);
-				textureFilenameBuffer[30] = 0;
-			}
+			textureFilenameBuffer = Arrays.copyOfRange(textureFilenameBuffer, 0, 31);
+			textureFilenameBuffer[30] = 0;
 
 			for (int i = 0; i < 31; i++) {
 				bin.add(textureFilenameBuffer[i]);
