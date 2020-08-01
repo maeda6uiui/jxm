@@ -63,7 +63,7 @@ class BINWeaponWriter {
 					(short) Math.round(modelPosition.getZ()));
 			pos += 6;
 			// Flash position
-			Vector flashPosition = weapons[i].getM();
+			Vector flashPosition = weapons[i].getFlash();
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) Math.round(flashPosition.getX()));
 			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
 					(short) Math.round(flashPosition.getY()));
@@ -134,7 +134,7 @@ class BINWeaponWriter {
 		pos = nameStartPos;
 
 		for (int i = 0; i < numWeapons; i++) {
-			String name = weapons[i].getName();
+			String name = weapons[numWeapons - 1 - i].getName();
 			this.setNameToBin(bin, pos, name);
 
 			pos += 16;
