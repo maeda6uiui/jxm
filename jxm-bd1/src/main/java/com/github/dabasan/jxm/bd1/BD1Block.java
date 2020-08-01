@@ -25,7 +25,7 @@ public class BD1Block {
 		for (int i = 0; i < 24; i++) {
 			uvs[i] = new UV();
 		}
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 6; i++) {
 			textureIDs[i] = 0;
 		}
 		enabled = true;
