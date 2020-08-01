@@ -34,6 +34,6 @@ public class XCSManipulatorTest {
 
 	@Test
 	public void testSaveAsXCS() {
-		// manipulator.saveAsXCS("./Data/charactersSave.xcs");
+		manipulator.saveAsXCS("./Data/charactersSave.xcs");
 	}
 }
