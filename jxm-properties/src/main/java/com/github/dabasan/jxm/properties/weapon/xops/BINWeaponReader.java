@@ -57,27 +57,21 @@ class BINWeaponReader {
 			pos += 2;
 			// Model position
 			int mx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int my = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int mz = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
+			int my = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
+			int mz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
+			pos += 6;
 			weapon.setM(new Vector(mx, my, mz));
 			// Flash position
 			int flashx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int flashy = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int flashz = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
+			int flashy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
+			int flashz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
+			pos += 6;
 			weapon.setFlash(new Vector(flashx, flashy, flashz));
 			// Yakkyou position
 			int yakkyouPx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int yakkyouPy = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int yakkyouPz = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
+			int yakkyouPy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
+			int yakkyouPz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
+			pos += 6;
 			weapon.setYakkyouPosition(new Vector(yakkyouPx, yakkyouPy, yakkyouPz));
 			// WeaponP
 			int shootingStanceSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
@@ -114,9 +108,8 @@ class BINWeaponReader {
 			pos += 2;
 			// Yakkyou speed
 			int yakkyouSx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
-			int yakkyouSy = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			pos += 2;
+			int yakkyouSy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
+			pos += 4;
 			weapon.setYakkyouSpeed(new Vector(yakkyouSx, yakkyouSy, 0.0));
 			// Sound ID
 			weapon.setSoundID(ByteFunctions.getShortValueFromBinLE(bin, pos));
