@@ -8,14 +8,14 @@ import java.util.List;
 
 import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
-import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
-import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
-import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
+import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
 import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
+import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
 /**
  * IDS writer
@@ -66,7 +66,7 @@ class IDSWriter {
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(modelPosition.getY()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(modelPosition.getZ()));
 		// Flash position
-		Vector flashPosition = weapon.getM();
+		Vector flashPosition = weapon.getFlash();
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(flashPosition.getX()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(flashPosition.getY()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(flashPosition.getZ()));
@@ -77,7 +77,8 @@ class IDSWriter {
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(yakkyouPosition.getZ()));
 		// WeaponP
 		ShootingStance shootingStance = weapon.getWeaponP();
-		int shootingStanceSpc = WeaponBinEnumConverter.getBinSpecifierFromShootingStance(shootingStance);
+		int shootingStanceSpc = WeaponBinEnumConverter
+				.getBinSpecifierFromShootingStance(shootingStance);
 		ByteFunctions.addShortValueToBinLE(bin, (short) shootingStanceSpc);
 		// Blazing mode
 		boolean blazingMode = weapon.isBlazingMode();
