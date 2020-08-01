@@ -172,7 +172,7 @@ public class BD1Manipulator {
 	}
 
 	/**
-	 * Rotate the blocks around the X-axis.
+	 * Rotates the blocks around the X-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
@@ -182,7 +182,7 @@ public class BD1Manipulator {
 		this.transform(rotMat);
 	}
 	/**
-	 * Rotate the blocks around the Y-axis.
+	 * Rotates the blocks around the Y-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
@@ -192,7 +192,7 @@ public class BD1Manipulator {
 		this.transform(rotMat);
 	}
 	/**
-	 * Rotate the blocks around the Z-axis.
+	 * Rotates the blocks around the Z-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
