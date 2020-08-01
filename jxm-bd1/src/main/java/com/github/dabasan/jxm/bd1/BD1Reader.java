@@ -108,8 +108,8 @@ class BD1Reader {
 
 			var uvs = new UV[24];
 			for (int j = 0; j < 24; j++) {
-				uvs[j].setU(us[j]);
-				uvs[j].setV(vs[j]);
+				var uv = new UV(us[j], vs[j]);
+				uvs[j] = uv;
 			}
 
 			block.setUVs(uvs);
