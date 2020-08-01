@@ -79,7 +79,7 @@ public class PD1Manipulator {
 		return points.size();
 	}
 	/**
-	 * Returns the number of points with a specified value in a parameter.
+	 * Returns the number of points with a specified value in parameters.
 	 * 
 	 * @param paramIndex
 	 *            Index of parameters (0, 1, 2 or 3)
@@ -111,6 +111,8 @@ public class PD1Manipulator {
 		for (var point : points) {
 			Vector position = point.getPosition();
 			position = position.transform(mat);
+
+			point.setPosition(position);
 		}
 	}
 
