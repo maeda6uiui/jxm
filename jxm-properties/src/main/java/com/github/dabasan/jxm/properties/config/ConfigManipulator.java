@@ -65,7 +65,7 @@ public class ConfigManipulator {
 		this.config = config;
 	}
 
-	private void innerSaveAsDAT(OutputStream os) throws IOException {
+	private void saveAsDATBase(OutputStream os) throws IOException {
 		var writer = new ConfigWriter();
 		writer.write(os, config);
 	}
@@ -80,7 +80,7 @@ public class ConfigManipulator {
 		int ret = 0;
 
 		try {
-			this.innerSaveAsDAT(os);
+			this.saveAsDATBase(os);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -99,7 +99,7 @@ public class ConfigManipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(file)) {
-			this.innerSaveAsDAT(fos);
+			this.saveAsDATBase(fos);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -118,7 +118,7 @@ public class ConfigManipulator {
 		int ret = 0;
 
 		try (var fos = new FileOutputStream(filepath)) {
-			this.innerSaveAsDAT(fos);
+			this.saveAsDATBase(fos);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
