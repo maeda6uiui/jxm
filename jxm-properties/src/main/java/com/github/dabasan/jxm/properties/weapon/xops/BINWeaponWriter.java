@@ -55,7 +55,7 @@ class BINWeaponWriter {
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) weapons[i].getErrorRangeMax());
 			pos += 2;
 			// Model position
-			Vector modelPosition = weapons[i].getM();
+			Vector modelPosition = weapons[i].getModelPosition();
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) Math.round(modelPosition.getX()));
 			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
 					(short) Math.round(modelPosition.getY()));
@@ -63,7 +63,7 @@ class BINWeaponWriter {
 					(short) Math.round(modelPosition.getZ()));
 			pos += 6;
 			// Flash position
-			Vector flashPosition = weapons[i].getFlash();
+			Vector flashPosition = weapons[i].getFlashPosition();
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) Math.round(flashPosition.getX()));
 			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
 					(short) Math.round(flashPosition.getY()));

@@ -61,12 +61,12 @@ class IDSWriter {
 		// ErrorRangeMax
 		ByteFunctions.addShortValueToBinLE(bin, (short) weapon.getErrorRangeMax());
 		// Model position
-		Vector modelPosition = weapon.getM();
+		Vector modelPosition = weapon.getModelPosition();
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(modelPosition.getX()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(modelPosition.getY()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(modelPosition.getZ()));
 		// Flash position
-		Vector flashPosition = weapon.getFlash();
+		Vector flashPosition = weapon.getFlashPosition();
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(flashPosition.getX()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(flashPosition.getY()));
 		ByteFunctions.addShortValueToBinLE(bin, (short) Math.round(flashPosition.getZ()));

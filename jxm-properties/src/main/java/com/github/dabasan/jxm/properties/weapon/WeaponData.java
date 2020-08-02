@@ -21,8 +21,8 @@ public class WeaponData {
 	private int reaction;
 	private int errorRangeMin;
 	private int errorRangeMax;
-	private Vector m;
-	private Vector flash;
+	private Vector modelPosition;
+	private Vector flashPosition;
 	private Vector yakkyouPosition;
 	private Vector yakkyouSpeed;
 	private boolean blazingMode;
@@ -48,8 +48,8 @@ public class WeaponData {
 		reaction = 0;
 		errorRangeMin = 0;
 		errorRangeMax = 0;
-		m = new Vector();
-		flash = new Vector();
+		modelPosition = new Vector();
+		flashPosition = new Vector();
 		yakkyouPosition = new Vector();
 		yakkyouSpeed = new Vector();
 		blazingMode = false;
@@ -69,11 +69,12 @@ public class WeaponData {
 				+ ", attacks=" + attacks + ", penetration=" + penetration + ", blazings=" + blazings
 				+ ", speed=" + speed + ", nbsMax=" + nbsMax + ", reloads=" + reloads + ", reaction="
 				+ reaction + ", errorRangeMin=" + errorRangeMin + ", errorRangeMax=" + errorRangeMax
-				+ ", m=" + m + ", flash=" + flash + ", yakkyouPosition=" + yakkyouPosition
-				+ ", yakkyouSpeed=" + yakkyouSpeed + ", blazingMode=" + blazingMode + ", scopeMode="
-				+ scopeMode + ", size=" + size + ", soundID=" + soundID + ", soundVolume="
-				+ soundVolume + ", silencer=" + silencer + ", weaponP=" + weaponP
-				+ ", changeWeapon=" + changeWeapon + ", burst=" + burst + "]";
+				+ ", modelPosition=" + modelPosition + ", flashPosition=" + flashPosition
+				+ ", yakkyouPosition=" + yakkyouPosition + ", yakkyouSpeed=" + yakkyouSpeed
+				+ ", blazingMode=" + blazingMode + ", scopeMode=" + scopeMode + ", size=" + size
+				+ ", soundID=" + soundID + ", soundVolume=" + soundVolume + ", silencer=" + silencer
+				+ ", weaponP=" + weaponP + ", changeWeapon=" + changeWeapon + ", burst=" + burst
+				+ "]";
 	}
 
 	public String getName() {
@@ -112,11 +113,11 @@ public class WeaponData {
 	public int getErrorRangeMax() {
 		return errorRangeMax;
 	}
-	public Vector getM() {
-		return m;
+	public Vector getModelPosition() {
+		return modelPosition;
 	}
-	public Vector getFlash() {
-		return flash;
+	public Vector getFlashPosition() {
+		return flashPosition;
 	}
 	public Vector getYakkyouPosition() {
 		return yakkyouPosition;
@@ -188,11 +189,11 @@ public class WeaponData {
 	public void setErrorRangeMax(int errorRangeMax) {
 		this.errorRangeMax = errorRangeMax;
 	}
-	public void setM(Vector m) {
-		this.m = m;
+	public void setModelPosition(Vector modelPosition) {
+		this.modelPosition = modelPosition;
 	}
-	public void setFlash(Vector flash) {
-		this.flash = flash;
+	public void setFlashPosition(Vector flashPosition) {
+		this.flashPosition = flashPosition;
 	}
 	public void setYakkyouPosition(Vector yakkyouPosition) {
 		this.yakkyouPosition = yakkyouPosition;

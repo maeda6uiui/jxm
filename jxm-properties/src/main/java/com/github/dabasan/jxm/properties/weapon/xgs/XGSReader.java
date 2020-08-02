@@ -70,13 +70,13 @@ class XGSReader {
 			int my = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
 			int mz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
 			pos += 6;
-			weapon.setM(new Vector(mx, my, mz));
+			weapon.setModelPosition(new Vector(mx, my, mz));
 			// Flash position
 			int flashx = ByteFunctions.getShortValueFromBinLE(bin, pos);
 			int flashy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
 			int flashz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
 			pos += 6;
-			weapon.setFlash(new Vector(flashx, flashy, flashz));
+			weapon.setFlashPosition(new Vector(flashx, flashy, flashz));
 			// Yakkyou position
 			int yakkyouPx = ByteFunctions.getShortValueFromBinLE(bin, pos);
 			int yakkyouPy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
