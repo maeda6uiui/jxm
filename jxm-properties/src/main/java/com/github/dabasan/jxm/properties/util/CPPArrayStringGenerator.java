@@ -34,6 +34,9 @@ public class CPPArrayStringGenerator {
 			sb.append("\"");
 			sb.append(value.toString());
 			sb.append("\"");
+		} else if (value instanceof Float) {
+			sb.append(value.toString());
+			sb.append("f");
 		} else {
 			sb.append(value.toString());
 		}
