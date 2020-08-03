@@ -6,14 +6,8 @@ package com.github.dabasan.jxm.properties.util;
  * @author Daba
  *
  */
-class CPPArrayStringGenerator {
-	private String arrayName;
-
-	public CPPArrayStringGenerator(String arrayName) {
-		this.arrayName = arrayName;
-	}
-
-	public String generate(int index, String fieldName, Object value) {
+public class CPPArrayStringGenerator {
+	public static String generate(String arrayName, int index, String fieldName, Object value) {
 		var sb = new StringBuilder();
 
 		sb.append(arrayName);
