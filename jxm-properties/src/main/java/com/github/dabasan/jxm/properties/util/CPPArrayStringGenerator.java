@@ -7,6 +7,19 @@ package com.github.dabasan.jxm.properties.util;
  *
  */
 public class CPPArrayStringGenerator {
+	/**
+	 * Generates a string from an array.
+	 * 
+	 * @param arrayName
+	 *            Name of the array
+	 * @param index
+	 *            Index
+	 * @param fieldName
+	 *            Name of the field
+	 * @param value
+	 *            Value
+	 * @return Generated string
+	 */
 	public static String generate(String arrayName, int index, String fieldName, Object value) {
 		var sb = new StringBuilder();
 
