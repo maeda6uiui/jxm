@@ -20,7 +20,8 @@ public class CPPArrayStringParser {
 	 * 3: Value<br>
 	 * <br>
 	 * Example<br>
-	 * Input: members[3].name="Danya"; Output:[members,3,name,Danya]
+	 * Input: members[3].name="Danya";<br>
+	 * Output: [members,3,name,Danya]
 	 * 
 	 * @param line
 	 *            Line
