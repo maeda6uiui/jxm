@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.properties.util;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 
 /**
  * Parses string representation of an array formatted for C++ code.
@@ -36,7 +37,7 @@ public class CPPArrayStringParser {
 
 		// e.g. members[3].name
 		String lhsString = split[0];
-		String[] lhsSplitByDot = lhsString.split(".");
+		String[] lhsSplitByDot = lhsString.split(Pattern.quote("."));
 		if (lhsSplitByDot.length != 2) {
 			return null;
 		}

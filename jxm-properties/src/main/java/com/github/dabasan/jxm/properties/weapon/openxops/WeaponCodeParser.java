@@ -463,7 +463,7 @@ public class WeaponCodeParser {
 	private String removeTailingF(String parsedString) {
 		String ret = parsedString;
 
-		char lastChar = ret.charAt(ret.charAt(ret.length() - 1));
+		char lastChar = ret.charAt(ret.length() - 1);
 		if (lastChar == 'f' || lastChar == 'F') {
 			ret = ret.substring(0, ret.length() - 1);
 		}
