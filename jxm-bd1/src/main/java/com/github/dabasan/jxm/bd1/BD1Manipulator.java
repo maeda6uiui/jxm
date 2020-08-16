@@ -452,4 +452,16 @@ public class BD1Manipulator {
 		return ret;
 	}
 
+	/**
+	 * Returns buffer representation of BD1 blocks.<br>
+	 * May be useful when rendering blocks with OpenGL.
+	 * 
+	 * @return List containing buffers
+	 */
+	public List<BD1Buffer> getBuffers() {
+		Map<Integer, List<BD1Face>> faces = BD1FaceGenerator.generateFaces(blocks);
+		List<BD1Buffer> buffers = BD1BufferGenerator.generateBuffers(faces);
+
+		return buffers;
+	}
 }
