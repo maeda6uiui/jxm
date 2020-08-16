@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import com.github.dabasan.jxm.properties.weapon.WeaponData;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeParser;
+import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 
 /**
  * Test class for WeaponCodeParser
@@ -21,7 +22,10 @@ import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeParser;
 public class WeaponCodeParserTest {
 	@Test
 	public void testParse() {
-		var parser = new WeaponCodeParser();
+		var settings = new WeaponVariableNameSettings();
+		settings.setModel("モデル");
+
+		var parser = new WeaponCodeParser(settings);
 
 		List<String> lines;
 		try {
