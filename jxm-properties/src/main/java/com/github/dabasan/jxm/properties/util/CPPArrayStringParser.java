@@ -72,6 +72,13 @@ public class CPPArrayStringParser {
 			valueString += rhsString;
 		}
 
+		// Remove comment.
+		int indexOfSemicolon = valueString.lastIndexOf(";");
+		int indexOfSlashes = valueString.lastIndexOf("//");
+		if (indexOfSemicolon != -1 && indexOfSemicolon < indexOfSlashes) {
+			valueString = valueString.substring(0, indexOfSemicolon + 1);
+		}
+
 		// Remove leading and trailing spaces.
 		// e.g. "Danya";
 		valueString = valueString.trim();
