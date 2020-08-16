@@ -15,7 +15,8 @@ import com.github.dabasan.ejml_3dtools.Vector;
  *
  */
 class BD1BufferGenerator {
-	public static List<BD1Buffer> generateBuffers(Map<Integer, List<BD1Face>> facesMap) {
+	public static List<BD1Buffer> generateBuffers(Map<Integer, List<BD1Face>> facesMap,
+			boolean flipV) {
 		var buffers = new ArrayList<BD1Buffer>();
 
 		for (var entry : facesMap.entrySet()) {
@@ -47,7 +48,11 @@ class BD1BufferGenerator {
 					posValues.add(vertexPositions[i].getZFloat());
 					// UV
 					uvValues.add(uvs[i].getUFloat());
-					uvValues.add(uvs[i].getVFloat() * (-1.0f));
+					if (flipV == true) {
+						uvValues.add(uvs[i].getVFloat() * (-1.0f));
+					} else {
+						uvValues.add(uvs[i].getVFloat());
+					}
 					// Normal
 					normValues.add(normal.getXFloat());
 					normValues.add(normal.getYFloat());
