@@ -140,7 +140,7 @@ public class WeaponCodeGenerator {
 			sb.append("\n");
 			// Size
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getSize(),
-					weapon.getSize()));
+					(float) weapon.getSize()));
 			sb.append("\n");
 
 			// SoundID
