@@ -1,5 +1,7 @@
 package com.github.dabasan.jxm.bd1;
 
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,16 +18,11 @@ class BD1BufferGenerator {
 	public static List<BD1Buffer> generateBuffers(Map<Integer, List<BD1Face>> facesMap) {
 		var buffers = new ArrayList<BD1Buffer>();
 
-		var indexValues = new ArrayList<Integer>();
-		var posValues = new ArrayList<Float>();
-		var uvValues = new ArrayList<Float>();
-		var normValues = new ArrayList<Float>();
-
 		for (var entry : facesMap.entrySet()) {
-			var buffer = new BD1Buffer();
-
-			int textureID = entry.getKey();
-			buffer.setTextureID(textureID);
+			var indexValues = new ArrayList<Integer>();
+			var posValues = new ArrayList<Float>();
+			var uvValues = new ArrayList<Float>();
+			var normValues = new ArrayList<Float>();
 
 			int countIndex = 0;
 			for (var face : entry.getValue()) {
@@ -57,6 +54,36 @@ class BD1BufferGenerator {
 					normValues.add(normal.getZFloat());
 				}
 			}
+
+			IntBuffer indexBuffer = IntBuffer.allocate(indexValues.size());
+			FloatBuffer posBuffer = FloatBuffer.allocate(posValues.size());
+			FloatBuffer uvBuffer = FloatBuffer.allocate(uvValues.size());
+			FloatBuffer normBuffer = FloatBuffer.allocate(normValues.size());
+			for (var indexValue : indexValues) {
+				indexBuffer.put(indexValue);
+			}
+			for (var posValue : posValues) {
+				posBuffer.put(posValue);
+			}
+			for (var uvValue : uvValues) {
+				uvBuffer.put(uvValue);
+			}
+			for (var normValue : normValues) {
+				normBuffer.put(normValue);
+			}
+			indexBuffer.flip();
+			posBuffer.flip();
+			uvBuffer.flip();
+			normBuffer.flip();
+
+			var buffer = new BD1Buffer();
+			buffer.setIndexBuffer(indexBuffer);
+			buffer.setPosBuffer(posBuffer);
+			buffer.setUVBuffer(uvBuffer);
+			buffer.setNormBuffer(normBuffer);
+
+			int textureID = entry.getKey();
+			buffer.setTextureID(textureID);
 
 			buffers.add(buffer);
 		}
