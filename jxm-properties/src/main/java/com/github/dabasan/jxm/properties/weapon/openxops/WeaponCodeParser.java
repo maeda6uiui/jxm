@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.properties.weapon.openxops;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -36,16 +37,11 @@ public class WeaponCodeParser {
 	 *            Code
 	 * @return Map containing weapon data
 	 */
-	public Map<Integer, WeaponData> parse(String code) {
+	public Map<Integer, WeaponData> parse(List<String> code) {
 		var ret = new HashMap<Integer, WeaponData>();
 
-		// Replace '\r' with a blank.
-		String rnReplaced = code.replace('\r', ' ');
-		// Split the string per line.
-		String[] lines = rnReplaced.split("\n");
-
-		for (int i = 0; i < lines.length; i++) {
-			var line = lines[i];
+		for (int i = 0; i < code.size(); i++) {
+			var line = code.get(i);
 
 			String[] parsed = CPPArrayStringParser.parse(line);
 			if (parsed == null) {
