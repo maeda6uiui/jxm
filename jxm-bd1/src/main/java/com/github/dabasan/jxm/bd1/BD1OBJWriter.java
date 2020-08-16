@@ -23,11 +23,7 @@ import de.javagl.obj.Objs;
  *
  */
 class BD1OBJWriter {
-	public BD1OBJWriter() {
-
-	}
-
-	public void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
+	public static void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
 			List<BD1Block> blocks, Map<Integer, String> textureFilenames) throws IOException {
 		// Prepare faces.
 		Map<Integer, List<BD1Face>> facesMap = BD1FaceGenerator.generateFaces(blocks);
@@ -48,8 +44,8 @@ class BD1OBJWriter {
 			}
 
 			String materialName;
-			materialName = this.getFilenameWithoutDirectory(textureFilename);
-			materialName = this.getFilepathWithoutExtension(materialName);
+			materialName = getFilenameWithoutDirectory(textureFilename);
+			materialName = getFilepathWithoutExtension(materialName);
 			materialName += "_" + textureID;
 
 			Mtl mtl = Mtls.create(materialName);
@@ -77,7 +73,8 @@ class BD1OBJWriter {
 					obj.addNormal(normal.getXFloat(), normal.getYFloat(), normal.getZFloat());
 				}
 
-				int[] indices = new int[]{countIndex, countIndex + 1, countIndex + 2, countIndex + 3};
+				int[] indices = new int[]{countIndex, countIndex + 1, countIndex + 2,
+						countIndex + 3};
 				obj.addFace(indices, indices, indices);
 
 				countIndex += 4;
@@ -87,7 +84,7 @@ class BD1OBJWriter {
 		ObjWriter.write(obj, osObj);
 		MtlWriter.write(mtls, osMtl);
 	}
-	private String getFilepathWithoutExtension(String filepath) {
+	private static String getFilepathWithoutExtension(String filepath) {
 		int lastDotPos = filepath.lastIndexOf('.');
 		if (lastDotPos == -1) {
 			return filepath;
@@ -95,7 +92,7 @@ class BD1OBJWriter {
 
 		return filepath.substring(0, lastDotPos);
 	}
-	private String getFilenameWithoutDirectory(String filepath) {
+	private static String getFilenameWithoutDirectory(String filepath) {
 		int lastSlashPos = filepath.lastIndexOf('/');
 		if (lastSlashPos == -1) {
 			return filepath;
