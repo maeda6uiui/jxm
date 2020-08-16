@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.github.dabasan.jxm.properties.weapon.WeaponData;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeGenerator;
+import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 
 /**
@@ -21,7 +22,11 @@ public class WeaponCodeGeneratorTest {
 	private List<WeaponData> weapons;
 
 	public WeaponCodeGeneratorTest() {
-		generator = new WeaponCodeGenerator();
+		var settings = new WeaponVariableNameSettings();
+		settings.setArrayName("武器");
+		settings.setModel("モデル");
+
+		generator = new WeaponCodeGenerator(settings);
 
 		XGSManipulator xgsManipulator;
 		try {
