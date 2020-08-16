@@ -375,9 +375,9 @@ public class BD1Manipulator {
 		return ret;
 	}
 
-	private void saveAsOBJBase(OutputStream osObj, OutputStream osMtl, String mtlFilename)
-			throws IOException {
-		BD1OBJWriter.write(osObj, osMtl, mtlFilename, blocks, textureFilenames);
+	private void saveAsOBJBase(OutputStream osObj, OutputStream osMtl, String mtlFilename,
+			boolean flipV) throws IOException {
+		BD1OBJWriter.write(osObj, osMtl, mtlFilename, blocks, textureFilenames, flipV);
 	}
 	/**
 	 * Saves the blocks as an OBJ file.
@@ -388,13 +388,16 @@ public class BD1Manipulator {
 	 *            OutputStream for the MTL file
 	 * @param mtlFilename
 	 *            Filename of the MTL file
+	 * @param flipV
+	 *            Flip texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
-	public int saveAsOBJ(OutputStream osObj, OutputStream osMtl, String mtlFilename) {
+	public int saveAsOBJ(OutputStream osObj, OutputStream osMtl, String mtlFilename,
+			boolean flipV) {
 		int ret = 0;
 
 		try {
-			this.saveAsOBJBase(osObj, osMtl, mtlFilename);
+			this.saveAsOBJBase(osObj, osMtl, mtlFilename, flipV);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -411,14 +414,16 @@ public class BD1Manipulator {
 	 *            File for the MTL file
 	 * @param mtlFilename
 	 *            Filename of the MTL file
+	 * @param flipV
+	 *            Flip texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
-	public int saveAsOBJ(File fileObj, File fileMtl, String mtlFilename) {
+	public int saveAsOBJ(File fileObj, File fileMtl, String mtlFilename, boolean flipV) {
 		int ret = 0;
 
 		try (var fosObj = new FileOutputStream(fileObj);
 				var fosMtl = new FileOutputStream(fileMtl)) {
-			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename);
+			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;
@@ -435,14 +440,17 @@ public class BD1Manipulator {
 	 *            Filepath of the MTL file
 	 * @param mtlFilename
 	 *            Filename of the MTL file
+	 * @param flipV
+	 *            Flip texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
-	public int saveAsOBJ(String filepathObj, String filepathMtl, String mtlFilename) {
+	public int saveAsOBJ(String filepathObj, String filepathMtl, String mtlFilename,
+			boolean flipV) {
 		int ret = 0;
 
 		try (var fosObj = new FileOutputStream(filepathObj);
 				var fosMtl = new FileOutputStream(filepathMtl)) {
-			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename);
+			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
 		} catch (IOException e) {
 			logger.error("Failed to write.", e);
 			ret = -1;

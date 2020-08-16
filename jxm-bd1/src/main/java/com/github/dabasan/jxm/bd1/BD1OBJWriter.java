@@ -24,7 +24,8 @@ import de.javagl.obj.Objs;
  */
 class BD1OBJWriter {
 	public static void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
-			List<BD1Block> blocks, Map<Integer, String> textureFilenames) throws IOException {
+			List<BD1Block> blocks, Map<Integer, String> textureFilenames, boolean flipV)
+			throws IOException {
 		// Prepare faces.
 		Map<Integer, List<BD1Face>> facesMap = BD1FaceGenerator.generateFaces(blocks);
 
@@ -69,7 +70,11 @@ class BD1OBJWriter {
 				for (int i = 3; i >= 0; i--) {
 					obj.addVertex(vertexPositions[i].getXFloat(), vertexPositions[i].getYFloat(),
 							vertexPositions[i].getZFloat());
-					obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat() * (-1.0f));
+					if (flipV == true) {
+						obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat() * (-1.0f));
+					} else {
+						obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat());
+					}
 					obj.addNormal(normal.getXFloat(), normal.getYFloat(), normal.getZFloat());
 				}
 
