@@ -389,7 +389,7 @@ public class BD1Manipulator {
 	 * @param mtlFilename
 	 *            Filename of the MTL file
 	 * @param flipV
-	 *            Flip texture V-coordinate if true
+	 *            Flips texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
 	public int saveAsOBJ(OutputStream osObj, OutputStream osMtl, String mtlFilename,
@@ -415,7 +415,7 @@ public class BD1Manipulator {
 	 * @param mtlFilename
 	 *            Filename of the MTL file
 	 * @param flipV
-	 *            Flip texture V-coordinate if true
+	 *            Flips texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
 	public int saveAsOBJ(File fileObj, File fileMtl, String mtlFilename, boolean flipV) {
@@ -441,7 +441,7 @@ public class BD1Manipulator {
 	 * @param mtlFilename
 	 *            Filename of the MTL file
 	 * @param flipV
-	 *            Flip texture V-coordinate if true
+	 *            Flips texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
 	public int saveAsOBJ(String filepathObj, String filepathMtl, String mtlFilename,
@@ -463,11 +463,14 @@ public class BD1Manipulator {
 	 * Returns buffer representation of BD1 blocks.<br>
 	 * May be useful when rendering blocks with OpenGL.
 	 * 
+	 * @param flipV
+	 *            Flips texture V-coordinate if true
+	 * 
 	 * @return List containing buffers
 	 */
-	public List<BD1Buffer> getBuffers() {
+	public List<BD1Buffer> getBuffers(boolean flipV) {
 		Map<Integer, List<BD1Face>> faces = BD1FaceGenerator.generateFaces(blocks);
-		List<BD1Buffer> buffers = BD1BufferGenerator.generateBuffers(faces);
+		List<BD1Buffer> buffers = BD1BufferGenerator.generateBuffers(faces, flipV);
 
 		return buffers;
 	}
