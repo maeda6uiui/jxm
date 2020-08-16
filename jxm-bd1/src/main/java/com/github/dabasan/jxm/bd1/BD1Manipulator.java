@@ -378,7 +378,7 @@ public class BD1Manipulator {
 	private void saveAsOBJBase(OutputStream osObj, OutputStream osMtl, String mtlFilename)
 			throws IOException {
 		var writer = new BD1OBJWriter();
-		writer.Write(osObj, osMtl, mtlFilename, blocks, textureFilenames);
+		writer.write(osObj, osMtl, mtlFilename, blocks, textureFilenames);
 	}
 	/**
 	 * Saves the blocks as an OBJ file.
@@ -451,4 +451,5 @@ public class BD1Manipulator {
 
 		return ret;
 	}
+
 }

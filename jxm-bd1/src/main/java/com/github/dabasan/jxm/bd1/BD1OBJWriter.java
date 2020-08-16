@@ -28,7 +28,7 @@ class BD1OBJWriter {
 
 	}
 
-	public void Write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
+	public void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
 			List<BD1Block> blocks, Map<Integer, String> textureFilenames) throws IOException {
 		// Prepare faces.
 		var facesMap = new HashMap<Integer, List<BD1Face>>();
