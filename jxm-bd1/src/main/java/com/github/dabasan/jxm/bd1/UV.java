@@ -40,6 +40,11 @@ public class UV {
 		this.v = uv.v;
 	}
 
+	@Override
+	public String toString() {
+		return "(" + u + "," + v + ")";
+	}
+
 	public double getU() {
 		return u;
 	}
