@@ -145,14 +145,17 @@ public class BD1Manipulator {
 	 * 
 	 * @param mat
 	 *            Matrix
+	 * @return This instance
 	 */
-	public void transform(Matrix mat) {
+	public BD1Manipulator transform(Matrix mat) {
 		for (var block : blocks) {
 			Vector[] vertexPositions = block.getVertexPositions();
 			for (int i = 0; i < vertexPositions.length; i++) {
 				vertexPositions[i] = vertexPositions[i].transform(mat);
 			}
 		}
+
+		return this;
 	}
 
 	/**
@@ -164,11 +167,14 @@ public class BD1Manipulator {
 	 *            Translation Y
 	 * @param translationZ
 	 *            Translation Z
+	 * @return This instance
 	 */
-	public void translate(double translationX, double translationY, double translationZ) {
+	public BD1Manipulator translate(double translationX, double translationY, double translationZ) {
 		var translationMat = Matrix.createTranslationMatrix(translationX, translationY,
 				translationZ);
 		this.transform(translationMat);
+
+		return this;
 	}
 
 	/**
@@ -176,30 +182,39 @@ public class BD1Manipulator {
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotX(double th) {
+	public BD1Manipulator rotX(double th) {
 		var rotMat = Matrix.createRotationXMatrix(th);
 		this.transform(rotMat);
+
+		return this;
 	}
 	/**
 	 * Rotates the blocks around the Y-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotY(double th) {
+	public BD1Manipulator rotY(double th) {
 		var rotMat = Matrix.createRotationYMatrix(th);
 		this.transform(rotMat);
+
+		return this;
 	}
 	/**
 	 * Rotates the blocks around the Z-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotZ(double th) {
+	public BD1Manipulator rotZ(double th) {
 		var rotMat = Matrix.createRotationZMatrix(th);
 		this.transform(rotMat);
+
+		return this;
 	}
 	/**
 	 * Rotates the blocks around an arbitrary axis.
@@ -212,10 +227,13 @@ public class BD1Manipulator {
 	 *            Z-component of the axis
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rot(double axisX, double axisY, double axisZ, double th) {
+	public BD1Manipulator rot(double axisX, double axisY, double axisZ, double th) {
 		var rotMat = Matrix.createRotationMatrix(axisX, axisY, axisZ, th);
 		this.transform(rotMat);
+
+		return this;
 	}
 
 	/**
@@ -227,16 +245,21 @@ public class BD1Manipulator {
 	 *            Scale Y
 	 * @param scaleZ
 	 *            Scale Z
+	 * @return This instance
 	 */
-	public void rescale(double scaleX, double scaleY, double scaleZ) {
+	public BD1Manipulator rescale(double scaleX, double scaleY, double scaleZ) {
 		var scaleMat = Matrix.createScalingMatrix(scaleX, scaleY, scaleZ);
 		this.transform(scaleMat);
+
+		return this;
 	}
 
 	/**
 	 * Inverts the level with respect to the Z-axis.
+	 * 
+	 * @return This instance
 	 */
-	public void invertZ() {
+	public BD1Manipulator invertZ() {
 		for (var block : blocks) {
 			Vector[] vertexPositions = block.getVertexPositions();
 			for (int i = 0; i < 8; i++) {
@@ -311,6 +334,8 @@ public class BD1Manipulator {
 
 			block.setTextureIDs(newTextureIDs);
 		}
+
+		return this;
 	}
 
 	private void saveAsBD1Base(OutputStream os) throws IOException {
