@@ -126,7 +126,7 @@ public class BD1ManipulatorTest {
 	@Test
 	public void testSaveAsOBJ() {
 		// manipulator.saveAsOBJ("./Data/map.obj", "./Data/map.mtl", "map.mtl",
-		// true);
+		// false);
 	}
 
 	@Test
