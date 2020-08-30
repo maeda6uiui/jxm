@@ -106,14 +106,17 @@ public class PD1Manipulator {
 	 * 
 	 * @param mat
 	 *            Matrix
+	 * @return This instance
 	 */
-	public void transform(Matrix mat) {
+	public PD1Manipulator transform(Matrix mat) {
 		for (var point : points) {
 			Vector position = point.getPosition();
 			position = position.transform(mat);
 
 			point.setPosition(position);
 		}
+
+		return this;
 	}
 
 	/**
@@ -125,11 +128,14 @@ public class PD1Manipulator {
 	 *            Translation Y
 	 * @param translationZ
 	 *            Translation Z
+	 * @return This instance
 	 */
-	public void translate(double translationX, double translationY, double translationZ) {
+	public PD1Manipulator translate(double translationX, double translationY, double translationZ) {
 		var translationMat = Matrix.createTranslationMatrix(translationX, translationY,
 				translationZ);
 		this.transform(translationMat);
+
+		return this;
 	}
 
 	/**
@@ -137,30 +143,39 @@ public class PD1Manipulator {
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotX(double th) {
+	public PD1Manipulator rotX(double th) {
 		var rotMat = Matrix.createRotationXMatrix(th);
 		this.transform(rotMat);
+
+		return this;
 	}
 	/**
 	 * Rotate the points around the Y-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotY(double th) {
+	public PD1Manipulator rotY(double th) {
 		var rotMat = Matrix.createRotationYMatrix(th);
 		this.transform(rotMat);
+
+		return this;
 	}
 	/**
 	 * Rotate the points around the Z-axis.
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotZ(double th) {
+	public PD1Manipulator rotZ(double th) {
 		var rotMat = Matrix.createRotationZMatrix(th);
 		this.transform(rotMat);
+
+		return this;
 	}
 	/**
 	 * Rotates the points around an arbitrary axis.
@@ -173,10 +188,13 @@ public class PD1Manipulator {
 	 *            Z-component of the axis
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rot(double axisX, double axisY, double axisZ, double th) {
+	public PD1Manipulator rot(double axisX, double axisY, double axisZ, double th) {
 		var rotMat = Matrix.createRotationMatrix(axisX, axisY, axisZ, th);
 		this.transform(rotMat);
+
+		return this;
 	}
 
 	/**
@@ -188,10 +206,13 @@ public class PD1Manipulator {
 	 *            Scale Y
 	 * @param scaleZ
 	 *            Scale Z
+	 * @return This instance
 	 */
-	public void rescale(double scaleX, double scaleY, double scaleZ) {
+	public PD1Manipulator rescale(double scaleX, double scaleY, double scaleZ) {
 		var scaleMat = Matrix.createScalingMatrix(scaleX, scaleY, scaleZ);
 		this.transform(scaleMat);
+
+		return this;
 	}
 
 	/**
@@ -199,18 +220,23 @@ public class PD1Manipulator {
 	 * 
 	 * @param th
 	 *            Rotation angle (radian)
+	 * @return This instance
 	 */
-	public void rotateDirection(double th) {
+	public PD1Manipulator rotateDirection(double th) {
 		for (var point : points) {
 			double rotation = point.getRotation();
 			point.setRotation(rotation + th);
 		}
+
+		return this;
 	}
 
 	/**
 	 * Inverts the points with respect to the Z-axis.
+	 * 
+	 * @return This instance
 	 */
-	public void invertZ() {
+	public PD1Manipulator invertZ() {
 		for (var point : points) {
 			Vector position = point.getPosition();
 			position.setZ(position.getZ() * (-1.0));
@@ -220,6 +246,8 @@ public class PD1Manipulator {
 			rotation += Math.PI;
 			point.setRotation(rotation);
 		}
+
+		return this;
 	}
 
 	private void saveAsPD1Base(OutputStream os) throws IOException {
