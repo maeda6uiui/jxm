@@ -185,7 +185,6 @@ public class ByteFunctions {
 	/**
 	 * Converts an unsigned short value to a 2-byte byte array.
 	 * 
-	 * @see ushort_to_byte(int)
 	 * @param s
 	 *            Unsigned short value
 	 * @return 2-byte byte array (little-endian representation)
