@@ -26,7 +26,7 @@ class MIFWriter {
 		lines.add(missionInfo.getMissionFullname());
 		lines.add(missionInfo.getPathnameOfBlock());
 		lines.add(missionInfo.getPathnameOfPoint());
-		lines.add(String.valueOf(missionInfo.getSkyImage().ordinal()));
+		lines.add(String.valueOf(missionInfo.getSkyType().ordinal()));
 
 		int flags = 0;
 		boolean extraCollision = missionInfo.isExtraCollision();

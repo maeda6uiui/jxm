@@ -14,7 +14,7 @@ public class MissionInfo {
 	private String missionFullname;
 	private String pathnameOfBlock;
 	private String pathnameOfPoint;
-	private SkyImage skyImage;
+	private SkyType skyType;
 	private boolean extraCollision;
 	private boolean darkScreen;
 	private String pathnameOfObj;
@@ -27,7 +27,7 @@ public class MissionInfo {
 		missionFullname = "";
 		pathnameOfBlock = "./";
 		pathnameOfPoint = "./addon/";
-		skyImage = SkyImage.NONE;
+		skyType = SkyType.NONE;
 		extraCollision = false;
 		darkScreen = false;
 		pathnameOfObj = "!";
@@ -36,71 +36,11 @@ public class MissionInfo {
 		briefingText = new ArrayList<>();
 	}
 
-	/*
-	@Override
-	public String toString() {
-		var sb = new StringBuilder();
-	
-		// Mission title
-		sb.append("missionTitle=");
-		sb.append(missionTitle);
-		sb.append("\n");
-		// Mission fullname
-		sb.append("missionFullname=");
-		sb.append(missionFullname);
-		sb.append("\n");
-		// Pathname of block
-		sb.append("pathnameOfBlock=");
-		sb.append(pathnameOfBlock);
-		sb.append("\n");
-		// Pathname of point
-		sb.append("pathnameOfPoint=");
-		sb.append(pathnameOfPoint);
-		sb.append("\n");
-		// Sky image
-		sb.append("skyImage=");
-		sb.append(skyImage.toString());
-		sb.append("\n");
-		// Extra collision
-		sb.append("extraCollision=");
-		sb.append(extraCollision);
-		sb.append("\n");
-		// Dark screen
-		sb.append("darkScreen=");
-		sb.append(darkScreen);
-		sb.append("\n");
-		// Pathname of obj
-		sb.append("pathnameOfObj=");
-		sb.append(pathnameOfObj);
-		sb.append("\n");
-		// Pathname of Image1
-		sb.append("pathnameOfImage1=");
-		sb.append(pathnameOfImage1);
-		sb.append("\n");
-		// Pathname of Image2
-		sb.append("pathnameOfImage2=");
-		sb.append(pathnameOfImage2);
-		sb.append("\n");
-	
-		// Briefing text
-		sb.append("briefingText=");
-		sb.append("\n");
-	
-		for (var line : briefingText) {
-			sb.append(line);
-			sb.append("\n");
-		}
-	
-		sb.setLength(sb.length() - 1);
-	
-		return sb.toString();
-	}
-	*/
 	@Override
 	public String toString() {
 		return "MissionInfo [missionTitle=" + missionTitle + ", missionFullname=" + missionFullname
 				+ ", pathnameOfBlock=" + pathnameOfBlock + ", pathnameOfPoint=" + pathnameOfPoint
-				+ ", skyImage=" + skyImage + ", extraCollision=" + extraCollision + ", darkScreen="
+				+ ", skyType=" + skyType + ", extraCollision=" + extraCollision + ", darkScreen="
 				+ darkScreen + ", pathnameOfObj=" + pathnameOfObj + ", pathnameOfImage1="
 				+ pathnameOfImage1 + ", pathnameOfImage2=" + pathnameOfImage2 + ", briefingText="
 				+ briefingText + "]";
@@ -119,8 +59,8 @@ public class MissionInfo {
 	public String getPathnameOfPoint() {
 		return pathnameOfPoint;
 	}
-	public SkyImage getSkyImage() {
-		return skyImage;
+	public SkyType getSkyType() {
+		return skyType;
 	}
 	public boolean isExtraCollision() {
 		return extraCollision;
@@ -153,8 +93,8 @@ public class MissionInfo {
 	public void setPathnameOfPoint(String pathnameOfPoint) {
 		this.pathnameOfPoint = pathnameOfPoint;
 	}
-	public void setSkyImage(SkyImage skyImage) {
-		this.skyImage = skyImage;
+	public void setSkyType(SkyType skyType) {
+		this.skyType = skyType;
 	}
 	public void setExtraCollision(boolean extraCollision) {
 		this.extraCollision = extraCollision;

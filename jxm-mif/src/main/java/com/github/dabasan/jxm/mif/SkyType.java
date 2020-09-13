@@ -6,6 +6,6 @@ package com.github.dabasan.jxm.mif;
  * @author Daba
  *
  */
-public enum SkyImage {
+public enum SkyType {
 	NONE, SUNNY, CLOUDY, NIGHT, EVENING, WILDERNESS
 }
