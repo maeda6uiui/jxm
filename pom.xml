@@ -6,7 +6,7 @@
 
 	<groupId>com.github.dabasan</groupId>
 	<artifactId>jxm</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>jxm</name>
 	<description>A Java library that provides functions to handle material related to X operations</description>
@@ -125,6 +125,7 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
