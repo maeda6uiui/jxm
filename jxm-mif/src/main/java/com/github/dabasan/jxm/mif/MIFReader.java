@@ -36,9 +36,9 @@ class MIFReader {
 		missionInfo.setPathnameOfBlock(lines.get(2));
 		missionInfo.setPathnameOfPoint(lines.get(3));
 
-		int skyImageIndex = Integer.parseInt(lines.get(4));
-		var skyImage = SkyType.values()[skyImageIndex];
-		missionInfo.setSkyType(skyImage);
+		int skyTypeIndex = Integer.parseInt(lines.get(4));
+		var skyType = SkyType.values()[skyTypeIndex];
+		missionInfo.setSkyType(skyType);
 
 		int flags = Integer.parseInt(lines.get(5));
 		if ((flags & 0b00000010) != 0) {
