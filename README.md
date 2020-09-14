@@ -84,10 +84,7 @@ public class BD1ManipulatorSample {
 
 		// マップを操作する。
 		// ここでは、移動→Y軸回りの回転→スケールの変更
-		manipulator
-            .translate(0.0, 100.0, 0.0)
-            .rotY(Math.PI / 4.0)
-            .rescale(1.0, 2.0, 1.0);
+		manipulator.translate(0.0, 100.0, 0.0).rotY(Math.PI / 4.0).rescale(1.0, 2.0, 1.0);
 
 		// Z軸反転 (鏡像マップの作成)
 		manipulator.invertZ();
