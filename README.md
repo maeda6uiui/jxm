@@ -19,7 +19,7 @@ Maven Centralからダウンロードできます。
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>0.0.1-rc1</version>
+<version>0.0.1-rc2</version>
 ```
 
 ### MIFモジュール
@@ -27,7 +27,7 @@ Maven Centralからダウンロードできます。
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>0.0.1-rc1</version>
+<version>0.0.1-rc2</version>
 ```
 
 ### PD1モジュール
@@ -35,7 +35,7 @@ Maven Centralからダウンロードできます。
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>0.0.1-rc1</version>
+<version>0.0.1-rc2</version>
 ```
 
 ### Propertiesモジュール
@@ -43,6 +43,6 @@ Maven Centralからダウンロードできます。
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>0.0.1-rc1</version>
+<version>0.0.1-rc2</version>
 ```
 
