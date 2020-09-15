@@ -46,7 +46,7 @@ Maven Centralからダウンロードできます。
 <version>0.0.1-rc2</version>
 ```
 
-# サンプルコード
+# 使用例
 
 ```java
 import java.io.IOException;
@@ -97,4 +97,8 @@ public class BD1ManipulatorSample {
 	}
 }
 ```
+
+# サンプルコード
+
+サンプルコードは[jxm-samples](https://github.com/Dabasan/jxm-samples)を参照してください。
 
