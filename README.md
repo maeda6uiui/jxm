@@ -12,8 +12,6 @@ Java ≥ 11
 
 ## Maven
 
-Maven Centralからダウンロードできます。
-
 ### BD1モジュール
 
 ```xml
