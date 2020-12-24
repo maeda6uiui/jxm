@@ -52,7 +52,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import com.github.dabasan.ejml_3dtools.Matrix;
 import com.github.dabasan.jxm.bd1.BD1Block;
 import com.github.dabasan.jxm.bd1.BD1Manipulator;
 
