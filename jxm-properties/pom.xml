@@ -48,9 +48,9 @@
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.dabasan</groupId>
-			<artifactId>ejml-3dtools</artifactId>
-			<version>0.0.1</version>
+			<groupId>org.joml</groupId>
+			<artifactId>joml</artifactId>
+			<version>1.10.0</version>
 		</dependency>
 	</dependencies>
 </project>
