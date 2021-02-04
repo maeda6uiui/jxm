@@ -75,6 +75,23 @@ public class WeaponData {
 		burst = 1;
 	}
 
+	@Override
+	public String toString() {
+		return "WeaponData [name=" + name + ", model=" + model + ", texture=" + texture
+				+ ", attacks=" + attacks + ", penetration=" + penetration + ", blazings=" + blazings
+				+ ", speed=" + speed + ", nbsMax=" + nbsMax + ", reloads=" + reloads + ", reaction="
+				+ reaction + ", errorRangeMin=" + errorRangeMin + ", errorRangeMax=" + errorRangeMax
+				+ ", modelPositionX=" + modelPositionX + ", modelPositionY=" + modelPositionY
+				+ ", modelPositionZ=" + modelPositionZ + ", flashPositionX=" + flashPositionX
+				+ ", flashPositionY=" + flashPositionY + ", flashPositionZ=" + flashPositionZ
+				+ ", yakkyouPositionX=" + yakkyouPositionX + ", yakkyouPositionY="
+				+ yakkyouPositionY + ", yakkyouPositionZ=" + yakkyouPositionZ + ", yakkyouSpeedX="
+				+ yakkyouSpeedX + ", yakkyouSpeedY=" + yakkyouSpeedY + ", blazingMode="
+				+ blazingMode + ", scopeMode=" + scopeMode + ", size=" + size + ", soundID="
+				+ soundID + ", soundVolume=" + soundVolume + ", silencer=" + silencer + ", weaponP="
+				+ weaponP + ", changeWeapon=" + changeWeapon + ", burst=" + burst + "]";
+	}
+
 	public String getName() {
 		return name;
 	}
