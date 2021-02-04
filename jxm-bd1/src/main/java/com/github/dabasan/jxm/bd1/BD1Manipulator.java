@@ -304,13 +304,13 @@ public class BD1Manipulator {
 			// UVs
 			UV[] uvs = block.getUVs();
 
-			// Copy the original UVs.
+			// Copy original UVs
 			var origUVs = new UV[24];
 			for (int i = 0; i < 24; i++) {
 				origUVs[i] = new UV(uvs[i]);
 			}
 
-			// Arrange UVs.
+			// Arrange UVs
 			var newUVs = new UV[24];
 			for (int i = 0; i < 6; i++) {
 				int[] uvIndices;
@@ -330,7 +330,7 @@ public class BD1Manipulator {
 
 			block.setUVs(newUVs);
 
-			// Arrange texture IDs.
+			// Arrange texture IDs
 			int[] textureIDs = block.getTextureIDs();
 			var origTextureIDs = textureIDs.clone();
 
@@ -498,8 +498,7 @@ public class BD1Manipulator {
 	}
 
 	/**
-	 * Returns buffer representation of BD1 blocks.<br>
-	 * May be useful when rendering blocks with OpenGL.
+	 * Returns buffer representation of BD1 blocks.
 	 * 
 	 * @param flipV
 	 *            Flips texture V-coordinate if true
