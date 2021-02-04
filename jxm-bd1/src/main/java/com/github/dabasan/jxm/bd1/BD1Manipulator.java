@@ -179,8 +179,7 @@ public class BD1Manipulator {
 	 * @return This instance
 	 */
 	public BD1Manipulator translate(float translationX, float translationY, float translationZ) {
-		var translationMat = new Matrix4f()
-				.translate(new Vector3f(translationX, translationY, translationZ));
+		var translationMat = new Matrix4f().translate(translationX, translationY, translationZ);
 		this.transform(translationMat);
 
 		return this;
@@ -257,7 +256,7 @@ public class BD1Manipulator {
 	 * @return This instance
 	 */
 	public BD1Manipulator rescale(float scaleX, float scaleY, float scaleZ) {
-		var scaleMat = new Matrix4f().scale(new Vector3f(scaleX, scaleY, scaleZ));
+		var scaleMat = new Matrix4f().scale(scaleX, scaleY, scaleZ);
 		this.transform(scaleMat);
 
 		return this;
