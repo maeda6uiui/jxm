@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>com.github.dabasan</groupId>
 			<artifactId>jxm-bintools</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>
 </project>
