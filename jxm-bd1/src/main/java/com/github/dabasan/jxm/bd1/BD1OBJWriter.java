@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3fc;
 
 import de.javagl.obj.Mtl;
 import de.javagl.obj.MtlWriter;
@@ -63,19 +63,19 @@ class BD1OBJWriter {
 
 			var faces = entry.getValue();
 			for (var face : faces) {
-				Vector[] vertexPositions = face.getVertexPositions();
+				Vector3fc[] vertexPositions = face.getVertexPositions();
 				UV[] uvs = face.getUVs();
-				Vector normal = face.getNormal();
+				Vector3fc normal = face.getNormal();
 
 				for (int i = 3; i >= 0; i--) {
-					obj.addVertex(vertexPositions[i].getXFloat(), vertexPositions[i].getYFloat(),
-							vertexPositions[i].getZFloat());
+					obj.addVertex(vertexPositions[i].x(), vertexPositions[i].y(),
+							vertexPositions[i].z());
 					if (flipV == true) {
 						obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat() * (-1.0f));
 					} else {
 						obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat());
 					}
-					obj.addNormal(normal.getXFloat(), normal.getYFloat(), normal.getZFloat());
+					obj.addNormal(normal.x(), normal.y(), normal.z());
 				}
 
 				int[] indices = new int[]{countIndex, countIndex + 1, countIndex + 2,

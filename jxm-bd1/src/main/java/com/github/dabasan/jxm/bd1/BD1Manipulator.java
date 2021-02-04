@@ -11,11 +11,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
+import org.joml.Vector4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.github.dabasan.ejml_3dtools.Matrix;
-import com.github.dabasan.ejml_3dtools.Vector;
 
 /**
  * BD1 manipulator
@@ -147,12 +149,19 @@ public class BD1Manipulator {
 	 *            Matrix
 	 * @return This instance
 	 */
-	public BD1Manipulator transform(Matrix mat) {
+	public BD1Manipulator transform(Matrix4fc mat) {
 		for (var block : blocks) {
-			Vector[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.getVertexPositions();
 			for (int i = 0; i < vertexPositions.length; i++) {
-				vertexPositions[i] = vertexPositions[i].transform(mat);
+				var vertexPosition4f = new Vector4f(vertexPositions[i].x(), vertexPositions[i].y(),
+						vertexPositions[i].z(), 1.0f);
+				vertexPosition4f = mat.transform(vertexPosition4f);
+
+				vertexPositions[i] = new Vector3f(vertexPosition4f.x(), vertexPosition4f.y(),
+						vertexPosition4f.z());
 			}
+
+			block.setVertexPositions(vertexPositions);
 		}
 
 		return this;
@@ -169,9 +178,9 @@ public class BD1Manipulator {
 	 *            Translation Z
 	 * @return This instance
 	 */
-	public BD1Manipulator translate(double translationX, double translationY, double translationZ) {
-		var translationMat = Matrix.createTranslationMatrix(translationX, translationY,
-				translationZ);
+	public BD1Manipulator translate(float translationX, float translationY, float translationZ) {
+		var translationMat = new Matrix4f()
+				.translate(new Vector3f(translationX, translationY, translationZ));
 		this.transform(translationMat);
 
 		return this;
@@ -184,8 +193,8 @@ public class BD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public BD1Manipulator rotX(double th) {
-		var rotMat = Matrix.createRotationXMatrix(th);
+	public BD1Manipulator rotX(float th) {
+		var rotMat = new Matrix4f().rotate(th, 1.0f, 0.0f, 0.0f);
 		this.transform(rotMat);
 
 		return this;
@@ -197,8 +206,8 @@ public class BD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public BD1Manipulator rotY(double th) {
-		var rotMat = Matrix.createRotationYMatrix(th);
+	public BD1Manipulator rotY(float th) {
+		var rotMat = new Matrix4f().rotate(th, 0.0f, 1.0f, 0.0f);
 		this.transform(rotMat);
 
 		return this;
@@ -210,8 +219,8 @@ public class BD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public BD1Manipulator rotZ(double th) {
-		var rotMat = Matrix.createRotationZMatrix(th);
+	public BD1Manipulator rotZ(float th) {
+		var rotMat = new Matrix4f().rotate(th, 0.0f, 0.0f, 1.0f);
 		this.transform(rotMat);
 
 		return this;
@@ -219,18 +228,18 @@ public class BD1Manipulator {
 	/**
 	 * Rotates the blocks around an arbitrary axis.
 	 * 
+	 * @param th
+	 *            Rotation angle (radian)
 	 * @param axisX
 	 *            X-component of the axis
 	 * @param axisY
 	 *            Y-component of the axis
 	 * @param axisZ
 	 *            Z-component of the axis
-	 * @param th
-	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public BD1Manipulator rot(double axisX, double axisY, double axisZ, double th) {
-		var rotMat = Matrix.createRotationMatrix(axisX, axisY, axisZ, th);
+	public BD1Manipulator rot(float th, float axisX, float axisY, float axisZ) {
+		var rotMat = new Matrix4f().rotate(th, axisX, axisY, axisZ);
 		this.transform(rotMat);
 
 		return this;
@@ -247,8 +256,8 @@ public class BD1Manipulator {
 	 *            Scale Z
 	 * @return This instance
 	 */
-	public BD1Manipulator rescale(double scaleX, double scaleY, double scaleZ) {
-		var scaleMat = Matrix.createScalingMatrix(scaleX, scaleY, scaleZ);
+	public BD1Manipulator rescale(float scaleX, float scaleY, float scaleZ) {
+		var scaleMat = new Matrix4f().scale(new Vector3f(scaleX, scaleY, scaleZ));
 		this.transform(scaleMat);
 
 		return this;
@@ -261,24 +270,28 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator invertZ() {
 		for (var block : blocks) {
-			Vector[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.getVertexPositions();
 			for (int i = 0; i < 8; i++) {
-				vertexPositions[i].setZ(vertexPositions[i].getZ() * (-1.0));
+				var vertexPosition = new Vector3f(vertexPositions[i].x(), vertexPositions[i].y(),
+						vertexPositions[i].z() * (-1.0f));
+				vertexPositions[i] = vertexPosition;
 			}
+
+			block.setVertexPositions(vertexPositions);
 		}
 
 		for (var block : blocks) {
 			// Vertex positions
-			Vector[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.getVertexPositions();
 
-			// Copy the original vertex positions.
-			var origVertexPositions = new Vector[8];
+			// Copy original vertex positions
+			var origVertexPositions = new Vector3fc[8];
 			for (int i = 0; i < 8; i++) {
-				origVertexPositions[i] = new Vector(vertexPositions[i]);
+				origVertexPositions[i] = new Vector3f(vertexPositions[i]);
 			}
 
-			// Reverse the order of the vertices.
-			var newVertexPositions = new Vector[8];
+			// Reverse the order of the vertices
+			var newVertexPositions = new Vector3fc[8];
 			for (int i = 0; i < 4; i++) {
 				newVertexPositions[i] = origVertexPositions[3 - i];
 			}

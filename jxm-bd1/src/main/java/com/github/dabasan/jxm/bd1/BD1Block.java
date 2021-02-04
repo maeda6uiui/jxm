@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.bd1;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
 /**
  * BD1 block
@@ -9,18 +10,18 @@ import com.github.dabasan.ejml_3dtools.Vector;
  *
  */
 public class BD1Block {
-	private Vector[] vertexPositions;
+	private Vector3fc[] vertexPositions;
 	private UV[] uvs;
 	private int[] textureIDs;
 	private boolean enabled;
 
 	public BD1Block() {
-		vertexPositions = new Vector[8];
+		vertexPositions = new Vector3fc[8];
 		uvs = new UV[24];
 		textureIDs = new int[6];
 
 		for (int i = 0; i < 8; i++) {
-			vertexPositions[i] = new Vector();
+			vertexPositions[i] = new Vector3f();
 		}
 		for (int i = 0; i < 24; i++) {
 			uvs[i] = new UV();
@@ -31,7 +32,7 @@ public class BD1Block {
 		enabled = true;
 	}
 
-	public Vector[] getVertexPositions() {
+	public Vector3fc[] getVertexPositions() {
 		return vertexPositions;
 	}
 	public UV[] getUVs() {
@@ -44,7 +45,7 @@ public class BD1Block {
 		return enabled;
 	}
 
-	public void setVertexPositions(Vector[] vertexPositions) {
+	public void setVertexPositions(Vector3fc[] vertexPositions) {
 		this.vertexPositions = vertexPositions;
 	}
 	public void setUVs(UV[] uvs) {

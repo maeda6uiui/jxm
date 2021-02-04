@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3fc;
+
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
@@ -39,19 +40,19 @@ class BD1Writer {
 			BD1Block block = blocks.get(i);
 
 			// Vertex positions
-			Vector[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.getVertexPositions();
 
 			// X
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].getXFloat());
+				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].x());
 			}
 			// Y
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].getYFloat());
+				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].y());
 			}
 			// Z
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].getZFloat());
+				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].z());
 			}
 
 			// UVs

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3fc;
 
 /**
  * BD1 buffer generator
@@ -27,9 +27,9 @@ class BD1BufferGenerator {
 
 			int countIndex = 0;
 			for (var face : entry.getValue()) {
-				Vector[] vertexPositions = face.getVertexPositions();
+				Vector3fc[] vertexPositions = face.getVertexPositions();
 				UV[] uvs = face.getUVs();
-				Vector normal = face.getNormal();
+				Vector3fc normal = face.getNormal();
 
 				// First triangle
 				indexValues.add(countIndex);
@@ -43,9 +43,9 @@ class BD1BufferGenerator {
 
 				for (int i = 3; i >= 0; i--) {
 					// Position
-					posValues.add(vertexPositions[i].getXFloat());
-					posValues.add(vertexPositions[i].getYFloat());
-					posValues.add(vertexPositions[i].getZFloat());
+					posValues.add(vertexPositions[i].x());
+					posValues.add(vertexPositions[i].y());
+					posValues.add(vertexPositions[i].z());
 					// UV
 					uvValues.add(uvs[i].getUFloat());
 					if (flipV == true) {
@@ -54,9 +54,9 @@ class BD1BufferGenerator {
 						uvValues.add(uvs[i].getVFloat());
 					}
 					// Normal
-					normValues.add(normal.getXFloat());
-					normValues.add(normal.getYFloat());
-					normValues.add(normal.getZFloat());
+					normValues.add(normal.x());
+					normValues.add(normal.y());
+					normValues.add(normal.z());
 				}
 			}
 

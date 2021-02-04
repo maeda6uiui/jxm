@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
+
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
@@ -85,9 +87,9 @@ class BD1Reader {
 				pos += 4;
 			}
 
-			var vertexPositions = new Vector[8];
+			var vertexPositions = new Vector3fc[8];
 			for (int j = 0; j < 8; j++) {
-				vertexPositions[j] = new Vector(vertexPositionXs[j], vertexPositionYs[j],
+				vertexPositions[j] = new Vector3f(vertexPositionXs[j], vertexPositionYs[j],
 						vertexPositionZs[j]);
 			}
 

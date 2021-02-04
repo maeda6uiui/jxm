@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
 /**
  * BD1 face generator
@@ -18,21 +19,23 @@ class BD1FaceGenerator {
 		var facesMap = new HashMap<Integer, List<BD1Face>>();
 
 		for (var block : blocks) {
-			Vector[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.getVertexPositions();
 			UV[] uvs = block.getUVs();
 			int[] textureIDs = block.getTextureIDs();
 
 			// Calculate normals.
-			var normals = new Vector[6];
+			var normals = new Vector3f[6];
 
 			for (int i = 0; i < 6; i++) {
 				int[] vertexIndices = BD1Functions.getFaceCorrespondingVertexIndices(i);
 
-				var v1 = vertexPositions[vertexIndices[3]].sub(vertexPositions[vertexIndices[0]]);
-				var v2 = vertexPositions[vertexIndices[1]].sub(vertexPositions[vertexIndices[0]]);
+				var v1 = new Vector3f();
+				var v2 = new Vector3f();
+				vertexPositions[vertexIndices[3]].sub(vertexPositions[vertexIndices[0]], v1);
+				vertexPositions[vertexIndices[1]].sub(vertexPositions[vertexIndices[0]], v2);
 
 				normals[i] = v1.cross(v2);
-				normals[i] = normals[i].normalize();
+				normals[i].normalize(normals[i]);
 			}
 
 			// Generate faces.
@@ -45,7 +48,7 @@ class BD1FaceGenerator {
 				int[] vertexIndices = BD1Functions.getFaceCorrespondingVertexIndices(i);
 				int[] uvIndices = BD1Functions.getFaceCorrespondingUVIndices(i);
 
-				var faceVertexPositions = new Vector[4];
+				var faceVertexPositions = new Vector3fc[4];
 				var faceUVs = new UV[4];
 				for (int j = 0; j < 4; j++) {
 					faceVertexPositions[j] = vertexPositions[vertexIndices[j]];
