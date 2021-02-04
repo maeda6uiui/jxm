@@ -195,7 +195,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getModelPosition().setX(modelPositionX);
+				weapon.setModelPositionX(modelPositionX);
 			}
 			// ModelPositionY
 			else if (parsed[2].equals(settings.getModelPositionY())) {
@@ -209,7 +209,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getModelPosition().setY(modelPositionY);
+				weapon.setModelPositionY(modelPositionY);
 			}
 			// ModelPositionZ
 			else if (parsed[2].equals(settings.getModelPositionZ())) {
@@ -223,7 +223,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getModelPosition().setZ(modelPositionZ);
+				weapon.setModelPositionZ(modelPositionZ);
 			}
 			// FlashPositionX
 			else if (parsed[2].equals(settings.getFlashPositionX())) {
@@ -237,7 +237,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getFlashPosition().setX(flashPositionX);
+				weapon.setFlashPositionX(flashPositionX);
 			}
 			// FlashPositionY
 			else if (parsed[2].equals(settings.getFlashPositionY())) {
@@ -251,7 +251,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getFlashPosition().setY(flashPositionY);
+				weapon.setFlashPositionY(flashPositionY);
 			}
 			// FlashPositionZ
 			else if (parsed[2].equals(settings.getFlashPositionZ())) {
@@ -265,7 +265,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getFlashPosition().setZ(flashPositionZ);
+				weapon.setFlashPositionZ(flashPositionZ);
 			}
 			// YakkyouPositionX
 			else if (parsed[2].equals(settings.getYakkyouPositionX())) {
@@ -279,7 +279,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getYakkyouPosition().setX(yakkyouPositionX);
+				weapon.setYakkyouPositionX(yakkyouPositionX);
 			}
 			// YakkyouPositionY
 			else if (parsed[2].equals(settings.getYakkyouPositionY())) {
@@ -293,7 +293,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getYakkyouPosition().setY(yakkyouPositionY);
+				weapon.setYakkyouPositionY(yakkyouPositionY);
 			}
 			// YakkyouPositionZ
 			else if (parsed[2].equals(settings.getYakkyouPositionZ())) {
@@ -307,7 +307,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getYakkyouPosition().setZ(yakkyouPositionZ);
+				weapon.setYakkyouPositionZ(yakkyouPositionZ);
 			}
 			// YakkyouSpeedX
 			else if (parsed[2].equals(settings.getYakkyouSpeedX())) {
@@ -321,7 +321,7 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getYakkyouSpeed().setX(yakkyouSpeedX);
+				weapon.setYakkyouSpeedX(yakkyouSpeedX);
 			}
 			// YakkyouSpeedY
 			else if (parsed[2].equals(settings.getYakkyouSpeedY())) {
@@ -335,9 +335,9 @@ public class WeaponCodeParser {
 					continue;
 				}
 
-				weapon.getYakkyouSpeed().setY(yakkyouSpeedY);
+				weapon.setYakkyouSpeedY(yakkyouSpeedY);
 			}
-			// Blazing mode
+			// BlazingMode
 			else if (parsed[2].equals(settings.getBlazingMode())) {
 				boolean blazingMode;
 				if (parsed[3].equals("false")) {
@@ -351,7 +351,7 @@ public class WeaponCodeParser {
 
 				weapon.setBlazingMode(blazingMode);
 			}
-			// Scope mode
+			// ScopeMode
 			else if (parsed[2].equals(settings.getScopeMode())) {
 				int scopeModeSpc;
 				try {
@@ -377,7 +377,7 @@ public class WeaponCodeParser {
 
 				weapon.setSize(size);
 			}
-			// Sound ID
+			// SoundID
 			else if (parsed[2].equals(settings.getSoundID())) {
 				int openXOPSSoundID;
 				try {
@@ -391,7 +391,7 @@ public class WeaponCodeParser {
 						.getXOPSSoundIDFromOpenXOPSSoundID(openXOPSSoundID);
 				weapon.setSoundID(xopsSoundID);
 			}
-			// Sound volume
+			// SoundVolume
 			else if (parsed[2].equals(settings.getSoundVolume())) {
 				int soundVolume;
 				try {

@@ -1,6 +1,5 @@
 package com.github.dabasan.jxm.properties.weapon.xops;
 
-import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
@@ -55,36 +54,45 @@ class BINWeaponReader {
 			// ErrorRangeMax
 			weapon.setErrorRangeMax(ByteFunctions.getShortValueFromBinLE(bin, pos));
 			pos += 2;
-			// Model position
-			int mx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			int my = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
-			int mz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
-			pos += 6;
-			weapon.setModelPosition(new Vector(mx, my, mz));
-			// Flash position
-			int flashx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			int flashy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
-			int flashz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
-			pos += 6;
-			weapon.setFlashPosition(new Vector(flashx, flashy, flashz));
-			// Yakkyou position
-			int yakkyouPx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			int yakkyouPy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
-			int yakkyouPz = ByteFunctions.getShortValueFromBinLE(bin, pos + 4);
-			pos += 6;
-			weapon.setYakkyouPosition(new Vector(yakkyouPx, yakkyouPy, yakkyouPz));
+			// ModelPositionX
+			weapon.setModelPositionX(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// ModelPositionY
+			weapon.setModelPositionY(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// ModelPositionZ
+			weapon.setModelPositionZ(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// FlashPositionX
+			weapon.setFlashPositionX(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// FlashPositionY
+			weapon.setFlashPositionY(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// FlashPositionZ
+			weapon.setFlashPositionZ(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// YakkyouPositionX
+			weapon.setYakkyouPositionX(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// YakkyouPositionY
+			weapon.setYakkyouPositionY(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// YakkyouPositionZ
+			weapon.setYakkyouPositionZ(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
 			// WeaponP
 			int shootingStanceSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 			pos += 2;
 			ShootingStance shootingStance = WeaponBinEnumConverter
 					.getShootingStanceFromBinSpecifier(shootingStanceSpc);
 			weapon.setWeaponP(shootingStance);
-			// Blazing mode
+			// BlazingMode
 			int blazingModeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 			pos += 2;
 			boolean blazingMode = (blazingModeSpc == 0) ? true : false;
 			weapon.setBlazingMode(blazingMode);
-			// Scope mode
+			// ScopeMode
 			int scopeModeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
 			pos += 2;
 			ScopeMode scopeMode = WeaponBinEnumConverter.getScopeModeFromBinSpecifier(scopeModeSpc);
@@ -106,15 +114,16 @@ class BINWeaponReader {
 			// Size
 			weapon.setSize(ByteFunctions.getShortValueFromBinLE(bin, pos) * 0.1f);
 			pos += 2;
-			// Yakkyou speed
-			int yakkyouSx = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			int yakkyouSy = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
-			pos += 4;
-			weapon.setYakkyouSpeed(new Vector(yakkyouSx, yakkyouSy, 0.0));
-			// Sound ID
+			// YakkyouSpeedX
+			weapon.setYakkyouSpeedX(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// YakkyouSpeedY
+			weapon.setYakkyouSpeedY(ByteFunctions.getShortValueFromBinLE(bin, pos));
+			pos += 2;
+			// SoundID
 			weapon.setSoundID(ByteFunctions.getShortValueFromBinLE(bin, pos));
 			pos += 2;
-			// Sound volume
+			// SoundVolume
 			weapon.setSoundVolume(ByteFunctions.getShortValueFromBinLE(bin, pos));
 			pos += 2;
 			// Silencer

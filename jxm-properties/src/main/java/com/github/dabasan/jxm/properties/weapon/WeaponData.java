@@ -1,7 +1,5 @@
 package com.github.dabasan.jxm.properties.weapon;
 
-import com.github.dabasan.ejml_3dtools.Vector;
-
 /**
  * Weapon data for X operations
  * 
@@ -21,13 +19,20 @@ public class WeaponData {
 	private int reaction;
 	private int errorRangeMin;
 	private int errorRangeMax;
-	private Vector modelPosition;
-	private Vector flashPosition;
-	private Vector yakkyouPosition;
-	private Vector yakkyouSpeed;
+	private float modelPositionX;
+	private float modelPositionY;
+	private float modelPositionZ;
+	private float flashPositionX;
+	private float flashPositionY;
+	private float flashPositionZ;
+	private float yakkyouPositionX;
+	private float yakkyouPositionY;
+	private float yakkyouPositionZ;
+	private float yakkyouSpeedX;
+	private float yakkyouSpeedY;
 	private boolean blazingMode;
 	private ScopeMode scopeMode;
-	private double size;
+	private float size;
 	private int soundID;
 	private int soundVolume;
 	private boolean silencer;
@@ -48,33 +53,26 @@ public class WeaponData {
 		reaction = 0;
 		errorRangeMin = 0;
 		errorRangeMax = 0;
-		modelPosition = new Vector();
-		flashPosition = new Vector();
-		yakkyouPosition = new Vector();
-		yakkyouSpeed = new Vector();
+		modelPositionX = 0.0f;
+		modelPositionY = 0.0f;
+		modelPositionZ = 0.0f;
+		flashPositionX = 0.0f;
+		flashPositionY = 0.0f;
+		flashPositionZ = 0.0f;
+		yakkyouPositionX = 0.0f;
+		yakkyouPositionY = 0.0f;
+		yakkyouPositionZ = 0.0f;
+		yakkyouSpeedX = 0.0f;
+		yakkyouSpeedY = 0.0f;
 		blazingMode = false;
 		scopeMode = ScopeMode.NONE;
-		size = 1.0;
+		size = 1.0f;
 		soundID = 0;
 		soundVolume = 0;
 		silencer = false;
 		weaponP = ShootingStance.RIFLE;
 		changeWeapon = -1;
 		burst = 1;
-	}
-
-	@Override
-	public String toString() {
-		return "WeaponData [name=" + name + ", model=" + model + ", texture=" + texture
-				+ ", attacks=" + attacks + ", penetration=" + penetration + ", blazings=" + blazings
-				+ ", speed=" + speed + ", nbsMax=" + nbsMax + ", reloads=" + reloads + ", reaction="
-				+ reaction + ", errorRangeMin=" + errorRangeMin + ", errorRangeMax=" + errorRangeMax
-				+ ", modelPosition=" + modelPosition + ", flashPosition=" + flashPosition
-				+ ", yakkyouPosition=" + yakkyouPosition + ", yakkyouSpeed=" + yakkyouSpeed
-				+ ", blazingMode=" + blazingMode + ", scopeMode=" + scopeMode + ", size=" + size
-				+ ", soundID=" + soundID + ", soundVolume=" + soundVolume + ", silencer=" + silencer
-				+ ", weaponP=" + weaponP + ", changeWeapon=" + changeWeapon + ", burst=" + burst
-				+ "]";
 	}
 
 	public String getName() {
@@ -113,17 +111,38 @@ public class WeaponData {
 	public int getErrorRangeMax() {
 		return errorRangeMax;
 	}
-	public Vector getModelPosition() {
-		return modelPosition;
+	public float getModelPositionX() {
+		return modelPositionX;
 	}
-	public Vector getFlashPosition() {
-		return flashPosition;
+	public float getModelPositionY() {
+		return modelPositionY;
 	}
-	public Vector getYakkyouPosition() {
-		return yakkyouPosition;
+	public float getModelPositionZ() {
+		return modelPositionZ;
 	}
-	public Vector getYakkyouSpeed() {
-		return yakkyouSpeed;
+	public float getFlashPositionX() {
+		return flashPositionX;
+	}
+	public float getFlashPositionY() {
+		return flashPositionY;
+	}
+	public float getFlashPositionZ() {
+		return flashPositionZ;
+	}
+	public float getYakkyouPositionX() {
+		return yakkyouPositionX;
+	}
+	public float getYakkyouPositionY() {
+		return yakkyouPositionY;
+	}
+	public float getYakkyouPositionZ() {
+		return yakkyouPositionZ;
+	}
+	public float getYakkyouSpeedX() {
+		return yakkyouSpeedX;
+	}
+	public float getYakkyouSpeedY() {
+		return yakkyouSpeedY;
 	}
 	public boolean isBlazingMode() {
 		return blazingMode;
@@ -131,7 +150,7 @@ public class WeaponData {
 	public ScopeMode getScopeMode() {
 		return scopeMode;
 	}
-	public double getSize() {
+	public float getSize() {
 		return size;
 	}
 	public int getSoundID() {
@@ -189,17 +208,38 @@ public class WeaponData {
 	public void setErrorRangeMax(int errorRangeMax) {
 		this.errorRangeMax = errorRangeMax;
 	}
-	public void setModelPosition(Vector modelPosition) {
-		this.modelPosition = modelPosition;
+	public void setModelPositionX(float modelPositionX) {
+		this.modelPositionX = modelPositionX;
 	}
-	public void setFlashPosition(Vector flashPosition) {
-		this.flashPosition = flashPosition;
+	public void setModelPositionY(float modelPositionY) {
+		this.modelPositionY = modelPositionY;
 	}
-	public void setYakkyouPosition(Vector yakkyouPosition) {
-		this.yakkyouPosition = yakkyouPosition;
+	public void setModelPositionZ(float modelPositionZ) {
+		this.modelPositionZ = modelPositionZ;
 	}
-	public void setYakkyouSpeed(Vector yakkyouSpeed) {
-		this.yakkyouSpeed = yakkyouSpeed;
+	public void setFlashPositionX(float flashPositionX) {
+		this.flashPositionX = flashPositionX;
+	}
+	public void setFlashPositionY(float flashPositionY) {
+		this.flashPositionY = flashPositionY;
+	}
+	public void setFlashPositionZ(float flashPositionZ) {
+		this.flashPositionZ = flashPositionZ;
+	}
+	public void setYakkyouPositionX(float yakkyouPositionX) {
+		this.yakkyouPositionX = yakkyouPositionX;
+	}
+	public void setYakkyouPositionY(float yakkyouPositionY) {
+		this.yakkyouPositionY = yakkyouPositionY;
+	}
+	public void setYakkyouPositionZ(float yakkyouPositionZ) {
+		this.yakkyouPositionZ = yakkyouPositionZ;
+	}
+	public void setYakkyouSpeedX(float yakkyouSpeedX) {
+		this.yakkyouSpeedX = yakkyouSpeedX;
+	}
+	public void setYakkyouSpeedY(float yakkyouSpeedY) {
+		this.yakkyouSpeedY = yakkyouSpeedY;
 	}
 	public void setBlazingMode(boolean blazingMode) {
 		this.blazingMode = blazingMode;
@@ -207,7 +247,7 @@ public class WeaponData {
 	public void setScopeMode(ScopeMode scopeMode) {
 		this.scopeMode = scopeMode;
 	}
-	public void setSize(double size) {
+	public void setSize(float size) {
 		this.size = size;
 	}
 	public void setSoundID(int soundID) {

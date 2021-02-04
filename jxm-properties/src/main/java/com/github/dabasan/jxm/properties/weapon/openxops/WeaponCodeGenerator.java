@@ -2,7 +2,6 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
 
 import java.util.List;
 
-import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringGenerator;
 import com.github.dabasan.jxm.properties.weapon.WeaponData;
 
@@ -84,52 +83,50 @@ public class WeaponCodeGenerator {
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getErrorRangeMax(),
 					weapon.getErrorRangeMax()));
 			sb.append("\n");
-
-			// ModelPosition
-			Vector modelPosition = weapon.getModelPosition();
+			// ModelPositionX
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getModelPositionX(),
-					modelPosition.getXFloat()));
+					weapon.getModelPositionX()));
 			sb.append("\n");
+			// ModelPositionY
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getModelPositionY(),
-					modelPosition.getYFloat()));
+					weapon.getModelPositionY()));
 			sb.append("\n");
+			// ModelPositionZ
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getModelPositionZ(),
-					modelPosition.getZFloat()));
+					weapon.getModelPositionZ()));
 			sb.append("\n");
-
-			// FlashPosition
-			Vector flashPosition = weapon.getFlashPosition();
+			// FlashPositionX
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getFlashPositionX(),
-					flashPosition.getXFloat()));
+					weapon.getFlashPositionX()));
 			sb.append("\n");
+			// FlashPositionY
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getFlashPositionY(),
-					flashPosition.getYFloat()));
+					weapon.getFlashPositionY()));
 			sb.append("\n");
+			// FlashPositionZ
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getFlashPositionZ(),
-					flashPosition.getZFloat()));
+					weapon.getFlashPositionZ()));
 			sb.append("\n");
-
-			// YakkyouPosition
-			Vector yakkyouPosition = weapon.getYakkyouPosition();
+			// YakkyouPositionX
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getYakkyouPositionX(),
-					yakkyouPosition.getXFloat()));
+					weapon.getYakkyouPositionX()));
 			sb.append("\n");
+			// YakkyouPositionY
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getYakkyouPositionY(),
-					yakkyouPosition.getYFloat()));
+					weapon.getYakkyouPositionY()));
 			sb.append("\n");
+			// YakkyouPositionZ
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getYakkyouPositionZ(),
-					yakkyouPosition.getZFloat()));
+					weapon.getYakkyouPositionZ()));
 			sb.append("\n");
-
-			// YakkyouSpeed
-			Vector yakkyouSpeed = weapon.getYakkyouSpeed();
+			// YakkyouSpeedX
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getYakkyouSpeedX(),
-					yakkyouSpeed.getXFloat()));
+					weapon.getYakkyouSpeedX()));
 			sb.append("\n");
+			// YakkyouSpeedY
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getYakkyouSpeedY(),
-					yakkyouSpeed.getYFloat()));
+					weapon.getYakkyouSpeedY()));
 			sb.append("\n");
-
 			// BlazingMode
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getBlazingMode(),
 					weapon.isBlazingMode()));
@@ -140,9 +137,8 @@ public class WeaponCodeGenerator {
 			sb.append("\n");
 			// Size
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getSize(),
-					(float) weapon.getSize()));
+					weapon.getSize()));
 			sb.append("\n");
-
 			// SoundID
 			int soundID = weapon.getSoundID();
 			int openXOPSSoundID = WeaponSpecifierConverter
@@ -150,7 +146,6 @@ public class WeaponCodeGenerator {
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getSoundID(),
 					openXOPSSoundID));
 			sb.append("\n");
-
 			// SoundVolume
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getSoundVolume(),
 					weapon.getSoundVolume()));

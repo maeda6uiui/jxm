@@ -1,6 +1,5 @@
 package com.github.dabasan.jxm.properties.weapon.xops;
 
-import com.github.dabasan.ejml_3dtools.Vector;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
@@ -54,43 +53,45 @@ class BINWeaponWriter {
 			// ErrorRangeMax
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) weapons[i].getErrorRangeMax());
 			pos += 2;
-			// Model position
-			Vector modelPosition = weapons[i].getModelPosition();
-			ByteFunctions.setShortValueToBinLE(bin, pos, (short) Math.round(modelPosition.getX()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
-					(short) Math.round(modelPosition.getY()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 4,
-					(short) Math.round(modelPosition.getZ()));
-			pos += 6;
-			// Flash position
-			Vector flashPosition = weapons[i].getFlashPosition();
-			ByteFunctions.setShortValueToBinLE(bin, pos, (short) Math.round(flashPosition.getX()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
-					(short) Math.round(flashPosition.getY()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 4,
-					(short) Math.round(flashPosition.getZ()));
-			pos += 6;
-			// Yakkyou position
-			Vector yakkyouPosition = weapons[i].getYakkyouPosition();
+			// ModelPositionX
 			ByteFunctions.setShortValueToBinLE(bin, pos,
-					(short) Math.round(yakkyouPosition.getX()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
-					(short) Math.round(yakkyouPosition.getY()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 4,
-					(short) Math.round(yakkyouPosition.getZ()));
-			pos += 6;
+					(short) Math.round(weapons[i].getModelPositionX()));
+			// ModelPositionY
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getModelPositionY()));
+			// ModelPositionZ
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getModelPositionZ()));
+			// FlashPositionX
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getFlashPositionX()));
+			// FlashPositionY
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getFlashPositionY()));
+			// FlashPositionZ
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getFlashPositionZ()));
+			// YakkyouPositionX
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getYakkyouPositionX()));
+			// YakkyouPositionY
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getYakkyouPositionY()));
+			// YakkyouPositionZ
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getYakkyouPositionZ()));
 			// WeaponP
 			ShootingStance shootingStance = weapons[i].getWeaponP();
 			int shootingStanceSpc = WeaponBinEnumConverter
 					.getBinSpecifierFromShootingStance(shootingStance);
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) shootingStanceSpc);
 			pos += 2;
-			// Blazing mode
+			// BlazingMode
 			boolean blazingMode = weapons[i].isBlazingMode();
 			int blazingModeSpc = (blazingMode) ? 0 : 1;
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) blazingModeSpc);
 			pos += 2;
-			// Scope mode
+			// ScopeMode
 			ScopeMode scopeMode = weapons[i].getScopeMode();
 			int scopeModeSpc = WeaponBinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) scopeModeSpc);
@@ -111,16 +112,16 @@ class BINWeaponWriter {
 			ByteFunctions.setShortValueToBinLE(bin, pos,
 					(short) Math.round(weapons[i].getSize() * 10.0));
 			pos += 2;
-			// Yakkyou speed
-			Vector yakkyouSpeed = weapons[i].getYakkyouSpeed();
-			ByteFunctions.setShortValueToBinLE(bin, pos, (short) Math.round(yakkyouSpeed.getX()));
-			ByteFunctions.setShortValueToBinLE(bin, pos + 2,
-					(short) Math.round(yakkyouSpeed.getY()));
-			pos += 4;
-			// Sound ID
+			// YakkyouSpeedX
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getYakkyouSpeedX()));
+			// YakkyouSpeedY
+			ByteFunctions.setShortValueToBinLE(bin, pos,
+					(short) Math.round(weapons[i].getYakkyouSpeedY()));
+			// SoundID
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) weapons[i].getSoundID());
 			pos += 2;
-			// Sound volume
+			// SoundVolume
 			ByteFunctions.setShortValueToBinLE(bin, pos, (short) weapons[i].getSoundVolume());
 			pos += 2;
 			// Silencer
