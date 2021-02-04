@@ -9,11 +9,13 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
+import org.joml.Vector4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.github.dabasan.ejml_3dtools.Matrix;
-import com.github.dabasan.ejml_3dtools.Vector;
 
 /**
  * PD1 manipulator
@@ -108,12 +110,13 @@ public class PD1Manipulator {
 	 *            Matrix
 	 * @return This instance
 	 */
-	public PD1Manipulator transform(Matrix mat) {
+	public PD1Manipulator transform(Matrix4fc mat) {
 		for (var point : points) {
-			Vector position = point.getPosition();
-			position = position.transform(mat);
+			Vector3fc position = point.getPosition();
+			var position4f = new Vector4f(position.x(), position.y(), position.z(), 1.0f);
+			position4f = mat.transform(position4f);
 
-			point.setPosition(position);
+			point.setPosition(new Vector3f(position4f.x(), position4f.y(), position4f.z()));
 		}
 
 		return this;
@@ -130,9 +133,8 @@ public class PD1Manipulator {
 	 *            Translation Z
 	 * @return This instance
 	 */
-	public PD1Manipulator translate(double translationX, double translationY, double translationZ) {
-		var translationMat = Matrix.createTranslationMatrix(translationX, translationY,
-				translationZ);
+	public PD1Manipulator translate(float translationX, float translationY, float translationZ) {
+		var translationMat = new Matrix4f().translate(translationX, translationY, translationZ);
 		this.transform(translationMat);
 
 		return this;
@@ -145,8 +147,8 @@ public class PD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public PD1Manipulator rotX(double th) {
-		var rotMat = Matrix.createRotationXMatrix(th);
+	public PD1Manipulator rotX(float th) {
+		var rotMat = new Matrix4f().rotate(th, 1.0f, 0.0f, 0.0f);
 		this.transform(rotMat);
 
 		return this;
@@ -158,8 +160,8 @@ public class PD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public PD1Manipulator rotY(double th) {
-		var rotMat = Matrix.createRotationYMatrix(th);
+	public PD1Manipulator rotY(float th) {
+		var rotMat = new Matrix4f().rotate(th, 0.0f, 1.0f, 0.0f);
 		this.transform(rotMat);
 
 		return this;
@@ -171,8 +173,8 @@ public class PD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public PD1Manipulator rotZ(double th) {
-		var rotMat = Matrix.createRotationZMatrix(th);
+	public PD1Manipulator rotZ(float th) {
+		var rotMat = new Matrix4f().rotate(th, 0.0f, 0.0f, 1.0f);
 		this.transform(rotMat);
 
 		return this;
@@ -180,18 +182,18 @@ public class PD1Manipulator {
 	/**
 	 * Rotates the points around an arbitrary axis.
 	 * 
+	 * @param th
+	 *            Rotation angle (radian)
 	 * @param axisX
 	 *            X-component of the axis
 	 * @param axisY
 	 *            Y-component of the axis
 	 * @param axisZ
 	 *            Z-component of the axis
-	 * @param th
-	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public PD1Manipulator rot(double axisX, double axisY, double axisZ, double th) {
-		var rotMat = Matrix.createRotationMatrix(axisX, axisY, axisZ, th);
+	public PD1Manipulator rot(float th, float axisX, float axisY, float axisZ) {
+		var rotMat = new Matrix4f().rotate(th, axisZ, axisY, axisZ);
 		this.transform(rotMat);
 
 		return this;
@@ -208,8 +210,8 @@ public class PD1Manipulator {
 	 *            Scale Z
 	 * @return This instance
 	 */
-	public PD1Manipulator rescale(double scaleX, double scaleY, double scaleZ) {
-		var scaleMat = Matrix.createScalingMatrix(scaleX, scaleY, scaleZ);
+	public PD1Manipulator rescale(float scaleX, float scaleY, float scaleZ) {
+		var scaleMat = new Matrix4f().scale(scaleX, scaleY, scaleZ);
 		this.transform(scaleMat);
 
 		return this;
@@ -222,9 +224,9 @@ public class PD1Manipulator {
 	 *            Rotation angle (radian)
 	 * @return This instance
 	 */
-	public PD1Manipulator rotateDirection(double th) {
+	public PD1Manipulator rotateDirection(float th) {
 		for (var point : points) {
-			double rotation = point.getRotation();
+			float rotation = point.getRotation();
 			point.setRotation(rotation + th);
 		}
 
@@ -238,10 +240,11 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator invertZ() {
 		for (var point : points) {
-			Vector position = point.getPosition();
-			position.setZ(position.getZ() * (-1.0));
+			Vector3fc position = point.getPosition();
+			position = new Vector3f(position.x(), position.y(), position.z() * (-1.0f));
+			point.setPosition(position);
 
-			double rotation = point.getRotation();
+			float rotation = point.getRotation();
 			rotation *= (-1.0);
 			rotation += Math.PI;
 			point.setRotation(rotation);

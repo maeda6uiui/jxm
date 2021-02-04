@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.pd1;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
 /**
  * PD1 point
@@ -9,16 +10,16 @@ import com.github.dabasan.ejml_3dtools.Vector;
  *
  */
 public class PD1Point {
-	private Vector position;
-	private double rotation;
+	private Vector3fc position;
+	private float rotation;
 	private int[] parameters;
 
 	/**
 	 * Creates a point.
 	 */
 	public PD1Point() {
-		position = new Vector();
-		rotation = 0.0;
+		position = new Vector3f();
+		rotation = 0.0f;
 		parameters = new int[]{0, 0, 0, 0};
 	}
 	/**
@@ -33,19 +34,19 @@ public class PD1Point {
 		this.parameters = point.parameters.clone();
 	}
 
-	public Vector getPosition() {
+	public Vector3fc getPosition() {
 		return position;
 	}
-	public double getRotation() {
+	public float getRotation() {
 		return rotation;
 	}
 	public int[] getParameters() {
 		return parameters;
 	}
-	public void setPosition(Vector position) {
+	public void setPosition(Vector3fc position) {
 		this.position = position;
 	}
-	public void setRotation(double rotation) {
+	public void setRotation(float rotation) {
 		this.rotation = rotation;
 	}
 	public void setParameters(int[] parameters) {

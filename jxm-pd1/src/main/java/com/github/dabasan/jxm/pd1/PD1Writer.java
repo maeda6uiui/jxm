@@ -6,7 +6,8 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3fc;
+
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
@@ -32,11 +33,11 @@ class PD1Writer {
 			PD1Point point = points.get(i);
 
 			// Position
-			Vector position = point.getPosition();
+			Vector3fc position = point.getPosition();
 
-			ByteFunctions.addFloatValueToBinLE(bin, position.getXFloat());
-			ByteFunctions.addFloatValueToBinLE(bin, position.getYFloat());
-			ByteFunctions.addFloatValueToBinLE(bin, position.getZFloat());
+			ByteFunctions.addFloatValueToBinLE(bin, position.x());
+			ByteFunctions.addFloatValueToBinLE(bin, position.y());
+			ByteFunctions.addFloatValueToBinLE(bin, position.z());
 
 			// Rotation
 			double rotation = point.getRotation();

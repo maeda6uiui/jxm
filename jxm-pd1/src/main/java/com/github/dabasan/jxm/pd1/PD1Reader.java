@@ -6,7 +6,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dabasan.ejml_3dtools.Vector;
+import org.joml.Vector3f;
+
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
@@ -47,7 +48,7 @@ class PD1Reader {
 			float positionZ = ByteFunctions.getFloatValueFromBinLE(bin, pos);
 			pos += 4;
 
-			point.setPosition(new Vector(positionX, positionY, positionZ));
+			point.setPosition(new Vector3f(positionX, positionY, positionZ));
 
 			// Rotation
 			float rotation = ByteFunctions.getFloatValueFromBinLE(bin, pos);
