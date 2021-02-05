@@ -4,8 +4,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 /**
- * Buffer representation of BD1 blocks<br>
- * May be useful when rendering BD1 blocks with OpenGL.
+ * Buffer representation of BD1 blocks
  * 
  * @author Daba
  *
