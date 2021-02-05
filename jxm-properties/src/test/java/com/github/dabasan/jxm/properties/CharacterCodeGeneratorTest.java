@@ -4,15 +4,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
-
 import com.github.dabasan.jxm.properties.character.CharacterData;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeGenerator;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
 
 /**
- * Test class for CharacterCodeGenerator
+ * Test CharacterCodeGenerator
  * 
  * @author Daba
  *
@@ -30,7 +28,7 @@ public class CharacterCodeGeneratorTest {
 
 		XCSManipulator xcsManipulator;
 		try {
-			xcsManipulator = new XCSManipulator("./Data/characters.xcs");
+			xcsManipulator = new XCSManipulator("./Data/Character/characters.xcs");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;
@@ -38,10 +36,7 @@ public class CharacterCodeGeneratorTest {
 
 		CharacterData[] charactersArr = xcsManipulator.getCharacterData();
 		characters = Arrays.asList(charactersArr);
-	}
 
-	@Test
-	public void testGenerate() {
 		String code = generator.generate(characters);
 		System.out.println(code);
 	}

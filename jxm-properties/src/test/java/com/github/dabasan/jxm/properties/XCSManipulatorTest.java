@@ -1,39 +1,42 @@
 package com.github.dabasan.jxm.properties;
 
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
-import org.junit.Test;
-
-import com.github.dabasan.jxm.properties.character.CharacterData;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
 
 /**
- * Test class for XCSManipulator
+ * Test XCSManipulator
  * 
  * @author Daba
  *
  */
 public class XCSManipulatorTest {
+	private final String TARGET_DIR = "./Data/Character";
 	private XCSManipulator manipulator;
 
 	public XCSManipulatorTest() {
+		var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
 		try {
-			manipulator = new XCSManipulator("./Data/characters.xcs");
+			manipulator = new XCSManipulator(srcFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		this.printCharacters();
+		this.saveAsXCS();
 	}
 
-	@Test
-	public void testLoadXCS() {
-		CharacterData[] characters = manipulator.getCharacterData();
-		for (int i = 0; i < characters.length; i++) {
-			// System.out.println(characters[i]);
-		}
+	private void printCharacters() {
+		System.out.println("#Characters");
+		Arrays.asList(manipulator.getCharacterData()).forEach(System.out::println);
 	}
 
-	@Test
-	public void testSaveAsXCS() {
-		manipulator.saveAsXCS("./Data/charactersSave.xcs");
+	private void saveAsXCS() {
+		System.out.println("#saveAsXCS()");
+
+		var saveFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
+		manipulator.saveAsXCS(saveFilepath);
 	}
 }

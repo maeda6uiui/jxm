@@ -7,21 +7,18 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
-
 import com.github.dabasan.jxm.properties.character.CharacterData;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeParser;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 
 /**
- * Test class for CharacterCodeParser
+ * Test CharacterCodeParser
  * 
  * @author Daba
  *
  */
 public class CharacterCodeParserTest {
-	@Test
-	public void testParse() {
+	public CharacterCodeParserTest() {
 		var settings = new CharacterVariableNameSettings();
 		settings.setArrayName("人");
 		settings.setTexture("テクスチャ");
@@ -30,7 +27,7 @@ public class CharacterCodeParserTest {
 
 		List<String> lines;
 		try {
-			lines = Files.readAllLines(Paths.get("./Data/characterCode.txt"),
+			lines = Files.readAllLines(Paths.get("./Data/Character/character_code.txt"),
 					StandardCharsets.UTF_8);
 		} catch (IOException e) {
 			e.printStackTrace();

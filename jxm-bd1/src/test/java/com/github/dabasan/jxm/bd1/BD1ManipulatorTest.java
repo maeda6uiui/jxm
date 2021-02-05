@@ -1,136 +1,177 @@
 package com.github.dabasan.jxm.bd1;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.HashMap;
 
-import org.junit.Test;
+import org.joml.Matrix4f;
 
 /**
- * Test class for BD1Manipulator
+ * Test BD1Manipulator
  * 
  * @author Daba
  *
  */
 public class BD1ManipulatorTest {
+	private final String TARGET_DIR = "./Data/Mission";
 	private BD1Manipulator manipulator;
 
 	public BD1ManipulatorTest() {
+		var srcFilepath = Paths.get(TARGET_DIR, "map.bd1").toString();
 		try {
-			manipulator = new BD1Manipulator("./Data/map.bd1");
+			manipulator = new BD1Manipulator(srcFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		this.printNumBlocks();
+		this.printTextureFilenames();
+		this.createTransform();
+		this.createTranslate();
+		this.createRotX();
+		this.createRotY();
+		this.createRotZ();
+		this.createRot();
+		this.createRescale();
+		this.createInvertZ();
+		this.saveAsOBJ();
 	}
 
-	@Test
-	public void testGetNumBlocks() {
-		int expected = 152;
-		int actual = manipulator.getNumBlocks();
-
-		assertEquals(expected, actual);
+	private void printNumBlocks() {
+		System.out.println("#Number of blocks");
+		System.out.println(manipulator.getNumBlocks());
 	}
-
-	@Test
-	public void testGetTextureFilename() {
-		var expected = new String[]{"floor.jpg", "log.jpg", "log2.jpg", "ornament.jpg",
-				"plaster.jpg", "green.jpg", "stairs.bmp", "grass.jpg", "wood.jpg", "brick.jpg"};
-
+	private void printTextureFilenames() {
+		System.out.println("#Texture filenames");
+		System.out.println("##getTextureFilename()");
 		for (int i = 0; i < 10; i++) {
-			String actual = manipulator.getTextureFilename(i);
-			assertTrue(expected[i].equals(actual));
+			System.out.println(i + ": " + manipulator.getTextureFilename(i));
 		}
-	}
-	@Test
-	public void testGetTextureFilenames() {
-		// System.out.println(manipulator.getTextureFilenames());
-	}
-	@Test
-	public void testSetTextureFilename() {
-		/*
-		var expected = new String[]{"floor.jpg", "loglog.jpg", "log2.jpg", "ornament.jpg",
-				"plaster.jpg", "green.jpg", "stairs.bmp", "grass.jpg", "wood.jpg", "brick.jpg"};
-		
-		manipulator.setTextureFilename(1, "loglog.jpg");
-		
+
+		System.out.println("##getTextureFilenames()");
+		manipulator.getTextureFilenames().forEach((k, v) -> System.out.println(k + ": " + v));
+
+		System.out.println("##setTextureFilename()");
+		System.out.println("New texture filenames are set");
 		for (int i = 0; i < 10; i++) {
-			String actual = manipulator.getTextureFilename(i);
-			assertTrue(expected[i].equals(actual));
+			manipulator.setTextureFilename(i, "tex_" + i + ".jpg");
 		}
-		*/
-	}
-	@Test
-	public void testSetTextureFilenames() {
-		/*
+		manipulator.getTextureFilenames().forEach((k, v) -> System.out.println(k + ": " + v));
+
+		System.out.println("##setTextureFilenames()");
+		System.out.println("New texture filenames are set");
 		var textureFilenames = new HashMap<Integer, String>();
-		textureFilenames.put(0, "floor.jpg");
-		textureFilenames.put(1, "log.jpg");
-		textureFilenames.put(2, "log2.jpg");
+		for (int i = 0; i < 10; i++) {
+			textureFilenames.put(i, "texx_" + i + ".jpg");
+		}
 		manipulator.setTextureFilenames(textureFilenames);
-		
-		System.out.println(manipulator.getTextureFilenames());
-		*/
+		manipulator.getTextureFilenames().forEach((k, v) -> System.out.println(k + ": " + v));
 	}
 
-	@Test
-	public void testTransform() {
-		/*
-		var rotXMat = Matrix.createRotationXMatrix(Math.PI / 4.0);
-		var rotYMat = Matrix.createRotationYMatrix(Math.PI / 4.0);
-		var rotZMat = Matrix.createRotationZMatrix(Math.PI / 4.0);
-		var rotMat = rotZMat.mult(rotYMat).mult(rotXMat);
-		manipulator.transform(rotMat);
-		
-		manipulator.saveAsBD1("./Data/transform.bd1");
-		*/
+	private void createTransform() {
+		System.out.println("#transform()");
+
+		var mat = new Matrix4f().rotate((float) Math.PI / 4.0f, 1.0f, 0.0f, 0.0f)
+				.rotate((float) Math.PI / 4.0f, 0.0f, 1.0f, 0.0f)
+				.rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f).scale(1.0f, 2.0f, 1.0f);
+		manipulator.transform(mat);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "transform.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		var invMat = mat.invert();
+		manipulator.transform(invMat);
+	}
+	private void createTranslate() {
+		System.out.println("#translate()");
+
+		float amountX = 50.0f;
+		float amountY = 50.0f;
+		float amountZ = 50.0f;
+		manipulator.translate(amountX, amountY, amountZ);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "translate.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.translate(-amountX, -amountY, -amountZ);
+	}
+	private void createRotX() {
+		System.out.println("#rotX()");
+
+		float amount = (float) Math.PI / 4.0f;
+		manipulator.rotX(amount);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "rot_x.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.rotX(-amount);
+	}
+	private void createRotY() {
+		System.out.println("#rotY()");
+
+		float amount = (float) Math.PI / 4.0f;
+		manipulator.rotY(amount);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "rot_y.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.rotY(-amount);
+	}
+	private void createRotZ() {
+		System.out.println("#rotZ()");
+
+		float amount = (float) Math.PI / 4.0f;
+		manipulator.rotZ(amount);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "rot_z.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.rotZ(-amount);
+	}
+	private void createRot() {
+		System.out.println("#rot()");
+
+		float amount = (float) Math.PI / 4.0f;
+		manipulator.rot(amount, 1.0f, 1.0f, 1.0f);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "rot.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.rot(-amount, 1.0f, 1.0f, 1.0f);
+	}
+	private void createRescale() {
+		System.out.println("#rescale()");
+
+		float scaleX = 2.0f;
+		float scaleY = 2.0f;
+		float scaleZ = 2.0f;
+		manipulator.rescale(scaleX, scaleY, scaleZ);
+
+		var saveFilepath = Paths.get(TARGET_DIR, "rescale.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.rescale(1.0f / scaleX, 1.0f / scaleY, 1.0f / scaleZ);
+	}
+	private void createInvertZ() {
+		System.out.println("#invertZ()");
+
+		manipulator.invertZ();
+
+		var saveFilepath = Paths.get(TARGET_DIR, "invert_z.bd1").toString();
+		manipulator.saveAsBD1(saveFilepath);
+
+		manipulator.invertZ();
 	}
 
-	@Test
-	public void testTranslate() {
-		// manipulator.translate(50.0, 50.0, 50.0);
-		// manipulator.saveAsBD1("./Data/translate.bd1");
-	}
-	@Test
-	public void testRotX() {
-		// manipulator.rotX(Math.PI / 4.0);
-		// manipulator.saveAsBD1("./Data/rotX.bd1");
-	}
-	@Test
-	public void testRotY() {
-		// manipulator.rotY(Math.PI / 4.0);
-		// manipulator.saveAsBD1("./Data/rotY.bd1");
-	}
-	@Test
-	public void testRotZ() {
-		// manipulator.rotZ(Math.PI / 4.0);
-		// manipulator.saveAsBD1("./Data/rotZ.bd1");
-	}
-	@Test
-	public void testRot() {
-		// manipulator.rot(0.0, 1.0, 0.0, Math.PI / 4.0);
-		// manipulator.saveAsBD1("./Data/rot.bd1");
-	}
+	private void saveAsOBJ() {
+		System.out.println("#saveAsOBJ()");
 
-	@Test
-	public void testRescale() {
-		// manipulator.rescale(2.0, 2.0, 2.0);
-		// manipulator.saveAsBD1("./Data/rescale.bd1");
-	}
+		var objFilepath = Paths.get(TARGET_DIR, "map.obj").toString();
+		var mtlFilepath = Paths.get(TARGET_DIR, "map.mtl").toString();
+		manipulator.saveAsOBJ(objFilepath, mtlFilepath, "map.mtl", false);
 
-	@Test
-	public void testInvertZ() {
-		// manipulator.invertZ();
-		// manipulator.saveAsBD1("./Data/invertZ.bd1");
-	}
-
-	@Test
-	public void testSaveAsOBJ() {
-		// manipulator.saveAsOBJ("./Data/map.obj", "./Data/map.mtl", "map.mtl",
-		// false);
-	}
-
-	@Test
-	public void testGenerateBuffers() {
-		// Test with OpenGL code
+		var objFilepath_2 = Paths.get(TARGET_DIR, "map_2.obj").toString();
+		var mtlFilepath_2 = Paths.get(TARGET_DIR, "map_2.mtl").toString();
+		manipulator.saveAsOBJ(objFilepath_2, mtlFilepath_2, "map_2.mtl", true);
 	}
 }

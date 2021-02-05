@@ -1,35 +1,41 @@
 package com.github.dabasan.jxm.properties;
 
 import java.io.IOException;
-
-import org.junit.Test;
+import java.nio.file.Paths;
 
 import com.github.dabasan.jxm.properties.weapon.ids.IDSManipulator;
 
 /**
- * Test class for IDSManipulator
+ * Test IDSManipulator
  * 
  * @author Daba
  *
  */
 public class IDSManipulatorTest {
+	private final String TARGET_DIR = "./Data/Weapon";
 	private IDSManipulator manipulator;
 
 	public IDSManipulatorTest() {
+		var srcFilepath = Paths.get(TARGET_DIR, "mp5.ids").toString();
 		try {
-			manipulator = new IDSManipulator("./Data/mp5.ids");
+			manipulator = new IDSManipulator(srcFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		this.printWeapon();
+		this.saveAsIDS();
 	}
 
-	@Test
-	public void testLoadIDS() {
-		// System.out.println(manipulator.getWeaponData());
+	private void printWeapon() {
+		System.out.println("#Weapon");
+		System.out.println(manipulator.getWeaponData());
 	}
 
-	@Test
-	public void testSaveAsIDS() {
-		manipulator.saveAsIDS("./Data/mp5Save.ids");
+	private void saveAsIDS() {
+		System.out.println("#saveAsIDS");
+
+		var saveFilepath = Paths.get(TARGET_DIR, "mp5_2.ids").toString();
+		manipulator.saveAsIDS(saveFilepath);
 	}
 }

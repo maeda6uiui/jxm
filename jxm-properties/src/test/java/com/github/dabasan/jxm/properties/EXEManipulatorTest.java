@@ -1,52 +1,53 @@
 package com.github.dabasan.jxm.properties;
 
 import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.Arrays;
 
-import org.junit.Test;
-
-import com.github.dabasan.jxm.properties.character.CharacterData;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
 import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 
 /**
- * Test class for EXEManipulator
+ * Test EXEManipulator
  * 
  * @author Daba
  *
  */
 public class EXEManipulatorTest {
+	private final String TARGET_DIR = "./Data/XOPS";
 	private EXEManipulator manipulator;
 
 	public EXEManipulatorTest() {
+		var srcFilepath = Paths.get(TARGET_DIR, "xops0975t.exe").toString();
 		try {
-			manipulator = new EXEManipulator("./Data/xops0975t.exe");
+			manipulator = new EXEManipulator(srcFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		this.printSrcXOPSVersion();
+		this.printWeapons();
+		this.printCharacters();
+		this.write();
 	}
 
-	@Test
-	public void testGetSrcXOPSVersion() {
-		// System.out.println(manipulator.getSrcXOPSVersion());
+	private void printSrcXOPSVersion() {
+		System.out.println("#Src XOPS version");
+		System.out.println(manipulator.getSrcXOPSVersion());
+	}
+	private void printWeapons() {
+		System.out.println("#Weapons");
+		Arrays.asList(manipulator.getWeaponData()).forEach(System.out::println);
+	}
+	private void printCharacters() {
+		System.out.println("#Characters");
+		Arrays.asList(manipulator.getCharacterData()).forEach(System.out::println);
 	}
 
-	@Test
-	public void testLoadWeaponData() {
-		WeaponData[] weapons = manipulator.getWeaponData();
-		for (var weapon : weapons) {
-			// System.out.println(weapon);
-		}
-	}
-	@Test
-	public void testLoadCharacterData() {
-		CharacterData[] characters = manipulator.getCharacterData();
-		for (var character : characters) {
-			// System.out.println(character);
-		}
-	}
+	private void write() {
+		System.out.println("#write()");
 
-	@Test
-	public void testWrite() {
-		manipulator.write("./Data/xops0975t.exe", "./Data/xops0975tBackup.exe");
+		var saveFilepath = Paths.get(TARGET_DIR, "xops0975t.exe").toString();
+		var backupFilepath = Paths.get(TARGET_DIR, "xops0975t_backup.exe").toString();
+		manipulator.write(saveFilepath, backupFilepath);
 	}
 }

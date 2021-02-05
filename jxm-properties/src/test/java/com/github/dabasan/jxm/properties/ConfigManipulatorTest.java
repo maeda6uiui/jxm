@@ -1,35 +1,50 @@
 package com.github.dabasan.jxm.properties;
 
 import java.io.IOException;
-
-import org.junit.Test;
+import java.nio.file.Paths;
 
 import com.github.dabasan.jxm.properties.config.ConfigManipulator;
+import com.github.dabasan.jxm.properties.config.KeyCode;
 
 /**
- * Test class for ConfigManipulator
+ * Test ConfigManipulator
  * 
  * @author Daba
  *
  */
 public class ConfigManipulatorTest {
+	private final String TARGET_DIR = "./Data/Config";
 	private ConfigManipulator manipulator;
 
 	public ConfigManipulatorTest() {
+		var srcFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
 		try {
-			manipulator = new ConfigManipulator("./Data/config.dat");
+			manipulator = new ConfigManipulator(srcFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		this.printConfig();
+		this.saveAsDAT();
 	}
 
-	@Test
-	public void testLoadConfig() {
-		// System.out.println(manipulator.getConfig());
-	}
+	private void printConfig() {
+		System.out.println("#Config");
+		System.out.println("##Original");
+		System.out.println(manipulator.getConfig());
 
-	@Test
-	public void testSaveAsDAT() {
-		manipulator.saveAsDAT("./Data/configSave.dat");
+		System.out.println("##Modified");
+
+		manipulator.getConfig().setMoveForward(KeyCode.KEY_ENTER);
+		manipulator.getConfig().setBrightness(1000);
+		manipulator.getConfig().setEnableSound(false);
+
+		System.out.println(manipulator.getConfig());
+	}
+	private void saveAsDAT() {
+		System.out.println("#saveAsDAT()");
+
+		var saveFilepath = Paths.get(TARGET_DIR, "config_2.dat").toString();
+		manipulator.saveAsDAT(saveFilepath);
 	}
 }
