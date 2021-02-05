@@ -30,7 +30,7 @@ public class BINWeaponManipulator {
 	 * 
 	 * @return Array containing weapon data
 	 */
-	public WeaponData[] getWeaponData() {
+	public WeaponData[] getWeapons() {
 		return weapons.clone();
 	}
 	/**
@@ -39,7 +39,7 @@ public class BINWeaponManipulator {
 	 * @param weapons
 	 *            Array containing weapon data
 	 */
-	public void setWeaponData(WeaponData[] weapons) {
+	public void setWeapons(WeaponData[] weapons) {
 		if (weapons == null) {
 			logger.warn("Null argument where non-null required.");
 			return;

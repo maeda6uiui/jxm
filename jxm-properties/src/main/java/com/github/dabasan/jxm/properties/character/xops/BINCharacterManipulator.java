@@ -30,7 +30,7 @@ public class BINCharacterManipulator {
 	 * 
 	 * @return Array containing character data
 	 */
-	public CharacterData[] getCharacterData() {
+	public CharacterData[] getCharacters() {
 		return characters.clone();
 	}
 	/**
@@ -39,7 +39,7 @@ public class BINCharacterManipulator {
 	 * @param characters
 	 *            Array containing character data
 	 */
-	public void setCharacterData(CharacterData[] characters) {
+	public void setCharacters(CharacterData[] characters) {
 		if (characters == null) {
 			logger.warn("Null argument where non-null required.");
 			return;

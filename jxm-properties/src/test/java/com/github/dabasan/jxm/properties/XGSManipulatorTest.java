@@ -30,7 +30,7 @@ public class XGSManipulatorTest {
 
 	private void printWeapons() {
 		System.out.println("#Weapons");
-		Arrays.asList(manipulator.getWeaponData()).forEach(System.out::println);
+		Arrays.asList(manipulator.getWeapons()).forEach(System.out::println);
 	}
 
 	private void saveAsXGS() {

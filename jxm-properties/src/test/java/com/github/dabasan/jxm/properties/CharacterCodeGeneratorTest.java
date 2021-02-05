@@ -34,7 +34,7 @@ public class CharacterCodeGeneratorTest {
 			return;
 		}
 
-		CharacterData[] charactersArr = xcsManipulator.getCharacterData();
+		CharacterData[] charactersArr = xcsManipulator.getCharacters();
 		characters = Arrays.asList(charactersArr);
 
 		String code = generator.generate(characters);

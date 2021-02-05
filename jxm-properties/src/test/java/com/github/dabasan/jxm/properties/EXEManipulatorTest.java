@@ -36,11 +36,11 @@ public class EXEManipulatorTest {
 	}
 	private void printWeapons() {
 		System.out.println("#Weapons");
-		Arrays.asList(manipulator.getWeaponData()).forEach(System.out::println);
+		Arrays.asList(manipulator.getWeapons()).forEach(System.out::println);
 	}
 	private void printCharacters() {
 		System.out.println("#Characters");
-		Arrays.asList(manipulator.getCharacterData()).forEach(System.out::println);
+		Arrays.asList(manipulator.getCharacters()).forEach(System.out::println);
 	}
 
 	private void write() {

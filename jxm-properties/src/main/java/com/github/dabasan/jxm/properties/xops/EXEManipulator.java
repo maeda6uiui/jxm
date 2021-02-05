@@ -155,8 +155,8 @@ public class EXEManipulator {
 	 * 
 	 * @return Array containing weapon data
 	 */
-	public WeaponData[] getWeaponData() {
-		return weaponManipulator.getWeaponData();
+	public WeaponData[] getWeapons() {
+		return weaponManipulator.getWeapons();
 	}
 	/**
 	 * Sets weapon data.
@@ -164,16 +164,16 @@ public class EXEManipulator {
 	 * @param weapons
 	 *            Array containing weapon data
 	 */
-	public void setWeaponData(WeaponData[] weapons) {
-		weaponManipulator.setWeaponData(weapons);
+	public void setWeapons(WeaponData[] weapons) {
+		weaponManipulator.setWeapons(weapons);
 	}
 	/**
 	 * Returns character data.
 	 * 
 	 * @return Array containing character data
 	 */
-	public CharacterData[] getCharacterData() {
-		return characterManipulator.getCharacterData();
+	public CharacterData[] getCharacters() {
+		return characterManipulator.getCharacters();
 	}
 	/**
 	 * Sets character data.
@@ -181,8 +181,8 @@ public class EXEManipulator {
 	 * @param characters
 	 *            Array containing character data
 	 */
-	public void setCharacterData(CharacterData[] characters) {
-		characterManipulator.setCharacterData(characters);
+	public void setCharacters(CharacterData[] characters) {
+		characterManipulator.setCharacters(characters);
 	}
 
 	/**

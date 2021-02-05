@@ -49,7 +49,7 @@ public class IDSManipulator {
 	 * 
 	 * @return Weapon data
 	 */
-	public WeaponData getWeaponData() {
+	public WeaponData getWeapon() {
 		return weapon;
 	}
 	/**
@@ -58,7 +58,7 @@ public class IDSManipulator {
 	 * @param weapon
 	 *            Weapon data
 	 */
-	public void setWeaponData(WeaponData weapon) {
+	public void setWeapon(WeaponData weapon) {
 		if (weapon == null) {
 			logger.warn("Null argument where non-null required.");
 			return;

@@ -34,7 +34,7 @@ public class WeaponCodeGeneratorTest {
 			return;
 		}
 
-		WeaponData[] weaponsArr = xgsManipulator.getWeaponData();
+		WeaponData[] weaponsArr = xgsManipulator.getWeapons();
 		weapons = Arrays.asList(weaponsArr);
 
 		String code = generator.generate(weapons);

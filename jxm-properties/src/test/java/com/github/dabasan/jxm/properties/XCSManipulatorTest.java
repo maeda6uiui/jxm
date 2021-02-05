@@ -30,7 +30,7 @@ public class XCSManipulatorTest {
 
 	private void printCharacters() {
 		System.out.println("#Characters");
-		Arrays.asList(manipulator.getCharacterData()).forEach(System.out::println);
+		Arrays.asList(manipulator.getCharacters()).forEach(System.out::println);
 	}
 
 	private void saveAsXCS() {

@@ -29,7 +29,7 @@ public class IDSManipulatorTest {
 
 	private void printWeapon() {
 		System.out.println("#Weapon");
-		System.out.println(manipulator.getWeaponData());
+		System.out.println(manipulator.getWeapon());
 	}
 
 	private void saveAsIDS() {
