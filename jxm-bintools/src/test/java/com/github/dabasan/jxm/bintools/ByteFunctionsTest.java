@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Test class for ByteFunctions
+ * Test ByteFunctions
  * 
  * @author Daba
  *
