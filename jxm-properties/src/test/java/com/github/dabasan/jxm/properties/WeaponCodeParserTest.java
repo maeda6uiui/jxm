@@ -18,6 +18,10 @@ import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSetti
  *
  */
 public class WeaponCodeParserTest {
+	public static void main(String[] args) {
+		new WeaponCodeParserTest();
+	}
+
 	public WeaponCodeParserTest() {
 		var settings = new WeaponVariableNameSettings();
 		settings.setModel("モデル");

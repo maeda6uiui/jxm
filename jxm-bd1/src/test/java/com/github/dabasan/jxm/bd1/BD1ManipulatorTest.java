@@ -16,6 +16,10 @@ public class BD1ManipulatorTest {
 	private final String TARGET_DIR = "./Data/Mission";
 	private BD1Manipulator manipulator;
 
+	public static void main(String[] args) {
+		new BD1ManipulatorTest();
+	}
+
 	public BD1ManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "map.bd1").toString();
 		try {

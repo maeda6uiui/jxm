@@ -16,6 +16,10 @@ public class XGSManipulatorTest {
 	private final String TARGET_DIR = "./Data/Weapon";
 	private XGSManipulator manipulator;
 
+	public static void main(String[] args) {
+		new XGSManipulatorTest();
+	}
+
 	public XGSManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "weapons.xgs").toString();
 		try {

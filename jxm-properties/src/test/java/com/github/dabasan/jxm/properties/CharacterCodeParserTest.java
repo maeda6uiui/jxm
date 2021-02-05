@@ -18,6 +18,10 @@ import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNam
  *
  */
 public class CharacterCodeParserTest {
+	public static void main(String[] args) {
+		new CharacterCodeParserTest();
+	}
+
 	public CharacterCodeParserTest() {
 		var settings = new CharacterVariableNameSettings();
 		settings.setArrayName("人");

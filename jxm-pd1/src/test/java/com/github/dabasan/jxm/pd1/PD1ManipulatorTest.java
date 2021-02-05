@@ -15,6 +15,10 @@ public class PD1ManipulatorTest {
 	private final String TARGET_DIR = "./Data/Mission";
 	private PD1Manipulator manipulator;
 
+	public static void main(String[] args) {
+		new PD1ManipulatorTest();
+	}
+
 	public PD1ManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "point.pd1").toString();
 		try {

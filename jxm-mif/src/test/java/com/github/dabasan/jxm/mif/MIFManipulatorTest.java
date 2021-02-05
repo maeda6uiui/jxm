@@ -14,6 +14,10 @@ public class MIFManipulatorTest {
 	private final String TARGET_DIR = "./Data/MissionInfo";
 	private MIFManipulator manipulator;
 
+	public static void main(String[] args) {
+		new MIFManipulatorTest();
+	}
+
 	public MIFManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "src.mif").toString();
 		try {

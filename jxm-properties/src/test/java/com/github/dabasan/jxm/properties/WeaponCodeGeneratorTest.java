@@ -19,6 +19,10 @@ public class WeaponCodeGeneratorTest {
 	private WeaponCodeGenerator generator;
 	private List<WeaponData> weapons;
 
+	public static void main(String[] args) {
+		new WeaponCodeGeneratorTest();
+	}
+
 	public WeaponCodeGeneratorTest() {
 		var settings = new WeaponVariableNameSettings();
 		settings.setArrayName("武器");

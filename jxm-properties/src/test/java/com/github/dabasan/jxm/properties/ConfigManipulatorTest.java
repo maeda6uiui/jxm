@@ -16,6 +16,10 @@ public class ConfigManipulatorTest {
 	private final String TARGET_DIR = "./Data/Config";
 	private ConfigManipulator manipulator;
 
+	public static void main(String[] args) {
+		new ConfigManipulatorTest();
+	}
+
 	public ConfigManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
 		try {

@@ -19,6 +19,10 @@ public class CharacterCodeGeneratorTest {
 	private CharacterCodeGenerator generator;
 	private List<CharacterData> characters;
 
+	public static void main(String[] args) {
+		new CharacterCodeGeneratorTest();
+	}
+
 	public CharacterCodeGeneratorTest() {
 		var settings = new CharacterVariableNameSettings();
 		settings.setArrayName("キャラクター");

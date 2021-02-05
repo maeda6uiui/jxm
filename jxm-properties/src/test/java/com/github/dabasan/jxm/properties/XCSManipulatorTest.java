@@ -16,6 +16,10 @@ public class XCSManipulatorTest {
 	private final String TARGET_DIR = "./Data/Character";
 	private XCSManipulator manipulator;
 
+	public static void main(String[] args) {
+		new XCSManipulatorTest();
+	}
+
 	public XCSManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
 		try {

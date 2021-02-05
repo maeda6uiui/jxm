@@ -15,6 +15,10 @@ public class IDSManipulatorTest {
 	private final String TARGET_DIR = "./Data/Weapon";
 	private IDSManipulator manipulator;
 
+	public static void main(String[] args) {
+		new IDSManipulatorTest();
+	}
+
 	public IDSManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "mp5.ids").toString();
 		try {

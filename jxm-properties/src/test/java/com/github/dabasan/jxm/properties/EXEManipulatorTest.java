@@ -16,6 +16,10 @@ public class EXEManipulatorTest {
 	private final String TARGET_DIR = "./Data/XOPS";
 	private EXEManipulator manipulator;
 
+	public static void main(String[] args) {
+		new EXEManipulatorTest();
+	}
+
 	public EXEManipulatorTest() {
 		var srcFilepath = Paths.get(TARGET_DIR, "xops0975t.exe").toString();
 		try {
