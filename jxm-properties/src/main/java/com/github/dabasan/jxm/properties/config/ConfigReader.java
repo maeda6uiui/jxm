@@ -17,7 +17,7 @@ class ConfigReader {
 	public ConfigReader(InputStream is) throws IOException {
 		config = new Config();
 
-		// Read all bytes from a stream.
+		// Read all bytes from a stream
 		byte[] bin;
 		try (var bis = new BufferedInputStream(is)) {
 			bin = bis.readAllBytes();

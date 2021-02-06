@@ -46,7 +46,7 @@ class BD1BufferGenerator {
 					posValues.add(vertexPositions[i].x());
 					posValues.add(vertexPositions[i].y());
 					posValues.add(vertexPositions[i].z());
-					// UV
+					// UVs
 					uvValues.add(uvs[i].getUFloat());
 					if (flipV == true) {
 						uvValues.add(uvs[i].getVFloat() * (-1.0f));

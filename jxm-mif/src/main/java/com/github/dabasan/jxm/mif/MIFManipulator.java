@@ -58,7 +58,7 @@ public class MIFManipulator {
 	 */
 	public void setMissionInfo(MissionInfo missionInfo) {
 		if (missionInfo == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
@@ -84,7 +84,7 @@ public class MIFManipulator {
 		try {
 			this.saveAsMIFBase(os, encoding);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -105,7 +105,7 @@ public class MIFManipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.saveAsMIFBase(fos, encoding);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -126,7 +126,7 @@ public class MIFManipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.saveAsMIFBase(fos, encoding);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

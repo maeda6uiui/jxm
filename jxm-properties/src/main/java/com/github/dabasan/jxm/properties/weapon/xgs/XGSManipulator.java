@@ -61,7 +61,7 @@ public class XGSManipulator {
 	 */
 	public void setWeapons(WeaponData[] weapons) {
 		if (weapons == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 		if (weapons.length != NUM_WEAPONS) {
@@ -89,7 +89,7 @@ public class XGSManipulator {
 		try {
 			this.saveAsXGSBase(os);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -108,7 +108,7 @@ public class XGSManipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.saveAsXGSBase(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -127,7 +127,7 @@ public class XGSManipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.saveAsXGSBase(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

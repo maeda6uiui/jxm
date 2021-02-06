@@ -41,7 +41,7 @@ public class BINCharacterManipulator {
 	 */
 	public void setCharacters(CharacterData[] characters) {
 		if (characters == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 		if (characters.length != NUM_CHARACTERS) {

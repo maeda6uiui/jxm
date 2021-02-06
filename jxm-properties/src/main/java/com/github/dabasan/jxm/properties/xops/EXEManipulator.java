@@ -203,7 +203,7 @@ public class EXEManipulator {
 			bin = bis.readAllBytes();
 		}
 
-		// Make a backup file.
+		// Make a backup file
 		if (fileBackup != null) {
 			try (var fosBackup = new FileOutputStream(fileBackup)) {
 				fosBackup.write(bin);
@@ -218,7 +218,7 @@ public class EXEManipulator {
 		weaponManipulator.write(bin, weaponDataStartPos, weaponNameStartPos);
 		characterManipulator.write(bin, characterDataStartPos);
 
-		// Overwrite an EXE file of XOPS.
+		// Overwrite an EXE file of XOPS
 		try (var fos = new FileOutputStream(file)) {
 			fos.write(bin);
 		}
@@ -243,7 +243,7 @@ public class EXEManipulator {
 		try {
 			this.writeBase(file, fileBackup);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			return -1;
 		}
 
@@ -275,7 +275,7 @@ public class EXEManipulator {
 		try {
 			this.writeBase(file, fileBackup);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			return -1;
 		}
 

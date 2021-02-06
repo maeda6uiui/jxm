@@ -22,7 +22,7 @@ class PD1Reader {
 	public PD1Reader(InputStream is) throws IOException {
 		points = new ArrayList<>();
 
-		// Read all bytes from a stream.
+		// Read all bytes from a stream
 		byte[] bin;
 		try (var bis = new BufferedInputStream(is)) {
 			bin = bis.readAllBytes();

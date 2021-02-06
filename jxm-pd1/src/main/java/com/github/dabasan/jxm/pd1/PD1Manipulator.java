@@ -65,7 +65,7 @@ public class PD1Manipulator {
 	 */
 	public void setPoints(List<PD1Point> points) {
 		if (points == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
@@ -246,7 +246,7 @@ public class PD1Manipulator {
 
 			float rotation = point.getRotation();
 			rotation *= (-1.0);
-			rotation += Math.PI;
+			rotation += (float) Math.PI;
 			point.setRotation(rotation);
 		}
 
@@ -270,7 +270,7 @@ public class PD1Manipulator {
 		try {
 			this.saveAsPD1Base(os);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -289,7 +289,7 @@ public class PD1Manipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.saveAsPD1Base(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -308,7 +308,7 @@ public class PD1Manipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.saveAsPD1Base(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

@@ -61,7 +61,7 @@ public class XCSManipulator {
 	 */
 	public void setCharacters(CharacterData[] characters) {
 		if (characters == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 		if (characters.length != NUM_CHARACTERS) {
@@ -90,7 +90,7 @@ public class XCSManipulator {
 		try {
 			this.saveAsXCSBase(os);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -109,7 +109,7 @@ public class XCSManipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.saveAsXCSBase(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -128,7 +128,7 @@ public class XCSManipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.saveAsXCSBase(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

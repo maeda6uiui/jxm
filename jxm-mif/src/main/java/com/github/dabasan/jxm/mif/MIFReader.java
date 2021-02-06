@@ -18,7 +18,7 @@ class MIFReader {
 	public MIFReader(InputStream is, String encoding) throws IOException, NumberFormatException {
 		missionInfo = new MissionInfo();
 
-		// Read all lines from a file.
+		// Read all lines from a file
 		var lines = new ArrayList<String>();
 		try (var br = new BufferedReader(new InputStreamReader(is, encoding))) {
 			while (true) {

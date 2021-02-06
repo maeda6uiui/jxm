@@ -26,10 +26,10 @@ class BD1OBJWriter {
 	public static void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
 			List<BD1Block> blocks, Map<Integer, String> textureFilenames, boolean flipV)
 			throws IOException {
-		// Prepare faces.
+		// Prepare faces
 		Map<Integer, List<BD1Face>> facesMap = BD1FaceGenerator.generateFaces(blocks);
 
-		// Write out into an OBJ file.
+		// Write out into an OBJ file
 		Obj obj = Objs.create();
 		var mtls = new ArrayList<Mtl>();
 

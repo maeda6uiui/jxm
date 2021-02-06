@@ -60,7 +60,7 @@ public class IDSManipulator {
 	 */
 	public void setWeapon(WeaponData weapon) {
 		if (weapon == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
@@ -84,7 +84,7 @@ public class IDSManipulator {
 		try {
 			this.innerSaveAsIDS(os);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -103,7 +103,7 @@ public class IDSManipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.innerSaveAsIDS(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -122,7 +122,7 @@ public class IDSManipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.innerSaveAsIDS(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

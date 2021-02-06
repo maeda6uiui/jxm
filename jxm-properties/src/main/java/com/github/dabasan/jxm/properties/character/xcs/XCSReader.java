@@ -24,7 +24,7 @@ class XCSReader {
 	public XCSReader(InputStream is, int numCharacters) throws IOException {
 		characters = new CharacterData[numCharacters];
 
-		// Read all bytes from a stream.
+		// Read all bytes from a stream
 		byte[] bin;
 		try (var bis = new BufferedInputStream(is)) {
 			bin = bis.readAllBytes();

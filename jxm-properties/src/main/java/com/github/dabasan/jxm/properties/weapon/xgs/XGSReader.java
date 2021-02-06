@@ -26,7 +26,7 @@ class XGSReader {
 	public XGSReader(InputStream is, int numWeapons) throws IOException {
 		weapons = new WeaponData[numWeapons];
 
-		// Read all bytes from a stream.
+		// Read all bytes from a stream
 		byte[] bin;
 		try (var bis = new BufferedInputStream(is)) {
 			bin = bis.readAllBytes();

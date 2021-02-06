@@ -75,7 +75,7 @@ public class BD1Manipulator {
 	 */
 	public void setBlocks(List<BD1Block> blocks) {
 		if (blocks == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
@@ -92,50 +92,50 @@ public class BD1Manipulator {
 	}
 
 	/**
-	 * Returns the filepath of a texture.<br>
+	 * Returns the filename of a texture.<br>
 	 * Returns null if the texture specified does not exist.
 	 * 
 	 * @param textureID
 	 *            Texture ID
-	 * @return Texture filepath
+	 * @return Texture filename
 	 */
 	public String getTextureFilename(int textureID) {
 		return textureFilenames.get(textureID);
 	}
 	/**
-	 * Returns all filepaths of the textures.
+	 * Returns all filenames of the textures.
 	 * 
-	 * @return All filepaths of the textures
+	 * @return All filenames of the textures
 	 */
 	public Map<Integer, String> getTextureFilenames() {
 		return new HashMap<>(textureFilenames);
 	}
 
 	/**
-	 * Sets the filepath of a texture.
+	 * Sets the filename of a texture.
 	 * 
 	 * @param textureID
 	 *            Texture ID
 	 * @param textureFilename
-	 *            Texture filepath
+	 *            Texture filename
 	 */
 	public void setTextureFilename(int textureID, String textureFilename) {
 		if (textureFilename == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
 		textureFilenames.put(textureID, textureFilename);
 	}
 	/**
-	 * Sets the filepaths of the textures.
+	 * Sets the filenames of the textures.
 	 * 
 	 * @param textureFilenames
 	 *            Filenames of the textures
 	 */
 	public void setTextureFilenames(Map<Integer, String> textureFilenames) {
 		if (textureFilenames == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
@@ -303,13 +303,13 @@ public class BD1Manipulator {
 			// UVs
 			UV[] uvs = block.getUVs();
 
-			// Copy original UVs
+			// Copy original UV
 			var origUVs = new UV[24];
 			for (int i = 0; i < 24; i++) {
 				origUVs[i] = new UV(uvs[i]);
 			}
 
-			// Arrange UVs
+			// Arrange UV
 			var newUVs = new UV[24];
 			for (int i = 0; i < 6; i++) {
 				int[] uvIndices;
@@ -367,7 +367,7 @@ public class BD1Manipulator {
 		try {
 			this.saveAsBD1Base(os);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -386,7 +386,7 @@ public class BD1Manipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.saveAsBD1Base(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -405,7 +405,7 @@ public class BD1Manipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.saveAsBD1Base(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -436,7 +436,7 @@ public class BD1Manipulator {
 		try {
 			this.saveAsOBJBase(osObj, osMtl, mtlFilename, flipV);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -462,7 +462,7 @@ public class BD1Manipulator {
 				var fosMtl = new FileOutputStream(fileMtl)) {
 			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -489,7 +489,7 @@ public class BD1Manipulator {
 				var fosMtl = new FileOutputStream(filepathMtl)) {
 			this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

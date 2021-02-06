@@ -58,7 +58,7 @@ public class ConfigManipulator {
 	 */
 	public void setConfig(Config config) {
 		if (config == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 
@@ -82,7 +82,7 @@ public class ConfigManipulator {
 		try {
 			this.saveAsDATBase(os);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -101,7 +101,7 @@ public class ConfigManipulator {
 		try (var fos = new FileOutputStream(file)) {
 			this.saveAsDATBase(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 
@@ -120,7 +120,7 @@ public class ConfigManipulator {
 		try (var fos = new FileOutputStream(filepath)) {
 			this.saveAsDATBase(fos);
 		} catch (IOException e) {
-			logger.error("Failed to write.", e);
+			logger.error(e.toString());
 			ret = -1;
 		}
 

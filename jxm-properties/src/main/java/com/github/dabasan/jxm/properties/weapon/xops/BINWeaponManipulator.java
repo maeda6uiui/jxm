@@ -41,7 +41,7 @@ public class BINWeaponManipulator {
 	 */
 	public void setWeapons(WeaponData[] weapons) {
 		if (weapons == null) {
-			logger.warn("Null argument where non-null required.");
+			logger.warn("Null argument where non-null required");
 			return;
 		}
 		if (weapons.length != NUM_WEAPONS) {

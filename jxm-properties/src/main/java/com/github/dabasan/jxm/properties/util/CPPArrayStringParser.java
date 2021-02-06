@@ -21,15 +21,15 @@ public class CPPArrayStringParser {
 	 * 3: Value<br>
 	 * <br>
 	 * Example<br>
-	 * Input: members[3].name="Danya";<br>
-	 * Output: [members,3,name,Danya]
+	 * Input: members[3].name="Daba";<br>
+	 * Output: [members,3,name,Daba]
 	 * 
 	 * @param line
 	 *            Line
 	 * @return String array
 	 */
 	public static String[] parse(String line) {
-		// e.g. members[3].name = "Danya";
+		// e.g. members[3].name = "Daba";
 		String[] split = line.split("=");
 		if (split.length < 2) {
 			return null;
@@ -62,40 +62,40 @@ public class CPPArrayStringParser {
 		// e.g. name
 		String fieldName = lhsSplitByDot[1].trim();
 
-		// e.g. [ "Danya"; ]
+		// e.g. [ "Daba"; ]
 		String[] rhsStrings = Arrays.copyOfRange(split, 1, split.length);
 
 		// Concatenate strings.
-		// e.g. "Danya";
+		// e.g. "Daba";
 		String valueString = "";
 		for (var rhsString : rhsStrings) {
 			valueString += rhsString;
 		}
 
-		// Remove comment.
+		// Remove comment
 		int indexOfSemicolon = valueString.lastIndexOf(";");
 		int indexOfSlashes = valueString.lastIndexOf("//");
 		if (indexOfSemicolon != -1 && indexOfSemicolon < indexOfSlashes) {
 			valueString = valueString.substring(0, indexOfSemicolon + 1);
 		}
 
-		// Remove leading and trailing spaces.
-		// e.g. "Danya";
+		// Remove leading and trailing spaces
+		// e.g. "Daba";
 		valueString = valueString.trim();
 
 		// Error in case this string does not have a semicolon at the end of the
-		// line.
+		// line
 		char lastChar = valueString.charAt(valueString.length() - 1);
 		if (lastChar != ';') {
 			return null;
 		}
 
-		// Remove the semicolon.
-		// e.g. "Danya"
+		// Remove semicolon
+		// e.g. "Daba"
 		valueString = valueString.substring(0, valueString.length() - 1);
 
-		// Remove quotation marks in case this is a string value.
-		// e.g. Danya
+		// Remove quotation marks in case this is a string value
+		// e.g. Daba
 		if (valueString.charAt(0) == '\"' && valueString.charAt(valueString.length() - 1) == '\"') {
 			valueString = valueString.substring(1, valueString.length() - 1);
 		} else if (valueString.charAt(0) == '\"') {
