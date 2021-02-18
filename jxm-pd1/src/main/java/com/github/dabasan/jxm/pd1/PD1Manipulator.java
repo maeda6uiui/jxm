@@ -93,8 +93,7 @@ public class PD1Manipulator {
 		int pointCount = 0;
 
 		for (var point : points) {
-			int[] parameters = point.getParameters();
-
+			int[] parameters = point.parameters;
 			if (parameters[paramIndex] == value) {
 				pointCount++;
 			}
@@ -112,11 +111,11 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator transform(Matrix4fc mat) {
 		for (var point : points) {
-			Vector3fc position = point.getPosition();
+			Vector3fc position = point.position;
 			var position4f = new Vector4f(position.x(), position.y(), position.z(), 1.0f);
 			position4f = mat.transform(position4f);
 
-			point.setPosition(new Vector3f(position4f.x(), position4f.y(), position4f.z()));
+			point.position = new Vector3f(position4f.x(), position4f.y(), position4f.z());
 		}
 
 		return this;
@@ -226,8 +225,8 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator rotateDirection(float th) {
 		for (var point : points) {
-			float rotation = point.getRotation();
-			point.setRotation(rotation + th);
+			float rotation = point.rotation;
+			point.rotation = rotation + th;
 		}
 
 		return this;
@@ -240,14 +239,14 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator invertZ() {
 		for (var point : points) {
-			Vector3fc position = point.getPosition();
+			Vector3fc position = point.position;
 			position = new Vector3f(position.x(), position.y(), position.z() * (-1.0f));
-			point.setPosition(position);
+			point.position = position;
 
-			float rotation = point.getRotation();
+			float rotation = point.rotation;
 			rotation *= (-1.0);
 			rotation += (float) Math.PI;
-			point.setRotation(rotation);
+			point.rotation = rotation;
 		}
 
 		return this;

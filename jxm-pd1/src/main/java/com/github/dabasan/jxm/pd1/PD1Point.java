@@ -10,9 +10,9 @@ import org.joml.Vector3fc;
  *
  */
 public class PD1Point {
-	private Vector3fc position;
-	private float rotation;
-	private int[] parameters;
+	public Vector3fc position;
+	public float rotation;
+	public int[] parameters;
 
 	/**
 	 * Creates a point.
@@ -32,24 +32,5 @@ public class PD1Point {
 		this.position = point.position;
 		this.rotation = point.rotation;
 		this.parameters = point.parameters.clone();
-	}
-
-	public Vector3fc getPosition() {
-		return position;
-	}
-	public float getRotation() {
-		return rotation;
-	}
-	public int[] getParameters() {
-		return parameters;
-	}
-	public void setPosition(Vector3fc position) {
-		this.position = position;
-	}
-	public void setRotation(float rotation) {
-		this.rotation = rotation;
-	}
-	public void setParameters(int[] parameters) {
-		this.parameters = parameters;
 	}
 }

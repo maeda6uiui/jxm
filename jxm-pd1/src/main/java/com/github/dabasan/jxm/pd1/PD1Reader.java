@@ -1,5 +1,7 @@
 package com.github.dabasan.jxm.pd1;
 
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.joml.Vector3f;
-
-import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
  * PD1 reader
@@ -31,7 +31,7 @@ class PD1Reader {
 		int pos = 0;
 
 		// Number of points
-		int numPoints = ByteFunctions.getUnsignedShortValueFromBinLE(bin, pos);
+		int numPoints = getUnsignedShortValueFromBinLE(bin, pos);
 		pos += 2;
 
 		// Points
@@ -39,22 +39,18 @@ class PD1Reader {
 			var point = new PD1Point();
 
 			// Point position
-			float positionX = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+			float positionX = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-
-			float positionY = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+			float positionY = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-
-			float positionZ = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+			float positionZ = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-
-			point.setPosition(new Vector3f(positionX, positionY, positionZ));
+			point.position = new Vector3f(positionX, positionY, positionZ);
 
 			// Rotation
-			float rotation = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+			float rotation = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-
-			point.setRotation(rotation);
+			point.rotation = rotation;
 
 			// Parameters
 			var parameters = new int[4];
@@ -63,7 +59,7 @@ class PD1Reader {
 				pos++;
 			}
 
-			point.setParameters(parameters);
+			point.parameters = parameters;
 
 			points.add(point);
 		}
