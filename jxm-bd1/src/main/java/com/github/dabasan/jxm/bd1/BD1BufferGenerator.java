@@ -47,11 +47,11 @@ class BD1BufferGenerator {
 					posValues.add(vertexPositions[i].y());
 					posValues.add(vertexPositions[i].z());
 					// UVs
-					uvValues.add(uvs[i].getUFloat());
+					uvValues.add(uvs[i].u);
 					if (flipV == true) {
-						uvValues.add(uvs[i].getVFloat() * (-1.0f));
+						uvValues.add(uvs[i].v * (-1.0f));
 					} else {
-						uvValues.add(uvs[i].getVFloat());
+						uvValues.add(uvs[i].v);
 					}
 					// Normal
 					normValues.add(normal.x());

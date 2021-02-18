@@ -56,11 +56,11 @@ class BD1Writer {
 
 			// U
 			for (int j = 0; j < 24; j++) {
-				addFloatValueToBinLE(bin, uvs[j].getUFloat());
+				addFloatValueToBinLE(bin, uvs[j].u);
 			}
 			// V
 			for (int j = 0; j < 24; j++) {
-				addFloatValueToBinLE(bin, uvs[j].getVFloat());
+				addFloatValueToBinLE(bin, uvs[j].v);
 			}
 
 			// Texture IDs

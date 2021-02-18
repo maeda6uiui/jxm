@@ -71,9 +71,9 @@ class BD1OBJWriter {
 					obj.addVertex(vertexPositions[i].x(), vertexPositions[i].y(),
 							vertexPositions[i].z());
 					if (flipV == true) {
-						obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat() * (-1.0f));
+						obj.addTexCoord(uvs[i].u, uvs[i].v * (-1.0f));
 					} else {
-						obj.addTexCoord(uvs[i].getUFloat(), uvs[i].getVFloat());
+						obj.addTexCoord(uvs[i].u, uvs[i].v);
 					}
 					obj.addNormal(normal.x(), normal.y(), normal.z());
 				}
