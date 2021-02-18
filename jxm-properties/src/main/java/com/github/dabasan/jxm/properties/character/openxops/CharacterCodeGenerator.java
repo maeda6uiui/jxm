@@ -29,8 +29,6 @@ public class CharacterCodeGenerator {
 	 * @return Code
 	 */
 	public String generate(List<CharacterData> characters) {
-		String arrayName = settings.getArrayName();
-
 		var sb = new StringBuilder();
 		for (int i = 0; i < characters.size(); i++) {
 			var character = characters.get(i);
@@ -38,33 +36,33 @@ public class CharacterCodeGenerator {
 			// Texture
 			int openXOPSTextureID = CharacterSpecifierConverter
 					.getOpenXOPSTextureIDFromXOPSTextureType(character.texture);
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getTexture(),
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.texture,
 					openXOPSTextureID));
 			sb.append("\n");
 			// Model
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getModel(),
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.model,
 					character.model.ordinal()));
 			sb.append("\n");
 			// HP
-			sb.append(
-					CPPArrayStringGenerator.generate(arrayName, i, settings.getHP(), character.hp));
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.hp,
+					character.hp));
 			sb.append("\n");
 			// AILevel
 			int openXOPSAILevel = CharacterSpecifierConverter
 					.getOpenXOPSAILevelFromXOPSAILevel(character.aiLevel);
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getAILevel(),
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.aiLevel,
 					openXOPSAILevel));
 			sb.append("\n");
 			// Weapon[0]
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getWeapon0(),
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weapon0,
 					character.weapons.get(0)));
 			sb.append("\n");
 			// Weapon[1]
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getWeapon1(),
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weapon1,
 					character.weapons.get(1)));
 			sb.append("\n");
 			// Type
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getType(),
+			sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.type,
 					character.type.ordinal()));
 			sb.append("\n");
 		}
