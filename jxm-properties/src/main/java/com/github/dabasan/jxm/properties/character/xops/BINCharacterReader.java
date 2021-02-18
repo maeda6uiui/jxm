@@ -1,10 +1,10 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import com.github.dabasan.jxm.bintools.ByteFunctions;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import com.github.dabasan.jxm.properties.character.AILevel;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterData;
-import com.github.dabasan.jxm.properties.character.CharacterModelType;
 import com.github.dabasan.jxm.properties.character.CharacterTextureType;
 import com.github.dabasan.jxm.properties.character.CharacterType;
 
@@ -21,40 +21,35 @@ class BINCharacterReader {
 		characters = new CharacterData[numCharacters];
 
 		int pos = dataStartPos;
-
 		for (int i = 0; i < numCharacters; i++) {
 			var character = new CharacterData();
 
 			// Texture
-			int textureTypeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
+			int textureTypeSpc = getShortValueFromBinLE(bin, pos);
 			pos += 2;
-			CharacterTextureType textureType = CharacterTextureType.values()[textureTypeSpc];
-			character.setTexture(textureType);
+			character.texture = CharacterTextureType.values()[textureTypeSpc];
 			// Model
-			int modelTypeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
+			int modelTypeSpc = getShortValueFromBinLE(bin, pos);
 			pos += 2;
-			CharacterModelType modelType = CharacterBinEnumConverter
-					.getModelTypeFromBinSpecifier(modelTypeSpc);
-			character.setModel(modelType);
+			character.model = CharacterBinEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
 			// HP
-			character.setHP(ByteFunctions.getUnsignedShortValueFromBinLE(bin, pos));
+			character.hp = getUnsignedShortValueFromBinLE(bin, pos);
 			pos += 2;
 			// AI level
-			int aiLevelSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
+			int aiLevelSpc = getShortValueFromBinLE(bin, pos);
 			pos += 2;
-			AILevel aiLevel = AILevel.values()[aiLevelSpc];
-			character.setAILevel(aiLevel);
+			character.aiLevel = AILevel.values()[aiLevelSpc];
 			// Weapons
 			int[] weapons = new int[2];
-			weapons[0] = ByteFunctions.getShortValueFromBinLE(bin, pos);
-			weapons[1] = ByteFunctions.getShortValueFromBinLE(bin, pos + 2);
+			weapons[0] = getShortValueFromBinLE(bin, pos);
+			weapons[1] = getShortValueFromBinLE(bin, pos + 2);
 			pos += 4;
-			character.setWeapons(weapons);
+			character.weapons.set(0, weapons[0]);
+			character.weapons.set(1, weapons[1]);
 			// Type
-			int typeSpc = ByteFunctions.getShortValueFromBinLE(bin, pos);
+			int typeSpc = getShortValueFromBinLE(bin, pos);
 			pos += 2;
-			CharacterType type = CharacterType.values()[typeSpc];
-			character.setType(type);
+			character.type = CharacterType.values()[typeSpc];
 
 			characters[i] = character;
 		}

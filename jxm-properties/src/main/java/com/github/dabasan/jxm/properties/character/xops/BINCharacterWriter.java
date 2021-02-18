@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import com.github.dabasan.jxm.bintools.ByteFunctions;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterData;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
@@ -12,38 +13,30 @@ import com.github.dabasan.jxm.properties.character.CharacterModelType;
  *
  */
 class BINCharacterWriter {
-	public BINCharacterWriter() {
-
-	}
-
 	public void write(byte[] bin, CharacterData[] characters, int dataStartPos) {
 		int pos = dataStartPos;
-
 		int numCharacters = characters.length;
 		for (int i = 0; i < numCharacters; i++) {
 			// Texture
-			ByteFunctions.setShortValueToBinLE(bin, pos,
-					(short) characters[i].getTexture().ordinal());
+			setShortValueToBinLE(bin, pos, (short) characters[i].texture.ordinal());
 			pos += 2;
 			// Model
-			CharacterModelType modelType = characters[i].getModel();
+			CharacterModelType modelType = characters[i].model;
 			int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
-			ByteFunctions.setShortValueToBinLE(bin, pos, (short) modelTypeSpc);
+			setShortValueToBinLE(bin, pos, (short) modelTypeSpc);
 			pos += 2;
 			// HP
-			ByteFunctions.setUnsignedShortValueToBinLE(bin, pos, (short) characters[i].getHP());
+			setUnsignedShortValueToBinLE(bin, pos, (short) characters[i].hp);
 			pos += 2;
 			// AI level
-			ByteFunctions.setShortValueToBinLE(bin, pos,
-					(short) characters[i].getAILevel().ordinal());
+			setShortValueToBinLE(bin, pos, (short) characters[i].aiLevel.ordinal());
 			pos += 2;
 			// Weapons
-			int[] weapons = characters[i].getWeapons();
-			ByteFunctions.setShortValueToBinLE(bin, pos, (short) weapons[0]);
-			ByteFunctions.setShortValueToBinLE(bin, pos + 2, (short) weapons[1]);
+			setShortValueToBinLE(bin, pos, characters[i].weapons.get(0).shortValue());
+			setShortValueToBinLE(bin, pos + 2, characters[i].weapons.get(1).shortValue());
 			pos += 4;
 			// Type
-			ByteFunctions.setShortValueToBinLE(bin, pos, (short) characters[i].getType().ordinal());
+			setShortValueToBinLE(bin, pos, (short) characters[i].type.ordinal());
 			pos += 2;
 		}
 	}

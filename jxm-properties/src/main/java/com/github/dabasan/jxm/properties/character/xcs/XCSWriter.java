@@ -1,11 +1,12 @@
 package com.github.dabasan.jxm.properties.character.xcs;
 
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterData;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
@@ -17,10 +18,6 @@ import com.github.dabasan.jxm.properties.character.CharacterModelType;
  *
  */
 class XCSWriter {
-	public XCSWriter() {
-
-	}
-
 	public void write(OutputStream os, CharacterData[] characters) throws IOException {
 		var bin = new ArrayList<Byte>();
 
@@ -40,21 +37,20 @@ class XCSWriter {
 		int numCharacters = characters.length;
 		for (int i = 0; i < numCharacters; i++) {
 			// Texture
-			ByteFunctions.addShortValueToBinLE(bin, (short) characters[i].getTexture().ordinal());
+			addShortValueToBinLE(bin, (short) characters[i].texture.ordinal());
 			// Model
-			CharacterModelType modelType = characters[i].getModel();
+			CharacterModelType modelType = characters[i].model;
 			int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
-			ByteFunctions.addShortValueToBinLE(bin, (short) modelTypeSpc);
+			addShortValueToBinLE(bin, (short) modelTypeSpc);
 			// HP
-			ByteFunctions.addUnsignedShortValueToBinLE(bin, (short) characters[i].getHP());
+			addUnsignedShortValueToBinLE(bin, (short) characters[i].hp);
 			// AI level
-			ByteFunctions.addShortValueToBinLE(bin, (short) characters[i].getAILevel().ordinal());
+			addShortValueToBinLE(bin, (short) characters[i].aiLevel.ordinal());
 			// Weapons
-			int[] weapons = characters[i].getWeapons();
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[0]);
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[1]);
+			addShortValueToBinLE(bin, characters[i].weapons.get(0).shortValue());
+			addShortValueToBinLE(bin, characters[i].weapons.get(1).shortValue());
 			// Type
-			ByteFunctions.addShortValueToBinLE(bin, (short) characters[i].getType().ordinal());
+			addShortValueToBinLE(bin, (short) characters[i].type.ordinal());
 		}
 
 		try (var bos = new BufferedOutputStream(os)) {

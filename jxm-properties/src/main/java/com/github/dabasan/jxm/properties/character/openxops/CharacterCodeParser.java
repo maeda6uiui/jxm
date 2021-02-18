@@ -77,7 +77,7 @@ public class CharacterCodeParser {
 
 				CharacterTextureType xopsTextureType = CharacterSpecifierConverter
 						.getXOPSTextureTypeFromOpenXOPSTextureID(openXOPSTextureID);
-				character.setTexture(xopsTextureType);
+				character.texture = xopsTextureType;
 			}
 			// Model
 			else if (parsed[2].equals(settings.getModel())) {
@@ -89,7 +89,7 @@ public class CharacterCodeParser {
 					continue;
 				}
 
-				character.setModel(CharacterModelType.values()[modelSpc]);
+				character.model = CharacterModelType.values()[modelSpc];
 			}
 			// HP
 			else if (parsed[2].equals(settings.getHP())) {
@@ -101,7 +101,7 @@ public class CharacterCodeParser {
 					continue;
 				}
 
-				character.setHP(hp);
+				character.hp = hp;
 			}
 			// AILevel
 			else if (parsed[2].equals(settings.getAILevel())) {
@@ -115,7 +115,7 @@ public class CharacterCodeParser {
 
 				AILevel xopsAILevel = CharacterSpecifierConverter
 						.getXOPSAILevelFromOpenXOPSAILevel(openXOPSAILevel);
-				character.setAILevel(xopsAILevel);
+				character.aiLevel = xopsAILevel;
 			}
 			// Weapon 0
 			else if (parsed[2].equals(settings.getWeapon0())) {
@@ -127,9 +127,7 @@ public class CharacterCodeParser {
 					continue;
 				}
 
-				int[] weapons = character.getWeapons();
-				weapons[0] = weapon0;
-				character.setWeapons(weapons);
+				character.weapons.set(0, weapon0);
 			}
 			// Weapon 1
 			else if (parsed[2].equals(settings.getWeapon1())) {
@@ -141,9 +139,7 @@ public class CharacterCodeParser {
 					continue;
 				}
 
-				int[] weapons = character.getWeapons();
-				weapons[1] = weapon1;
-				character.setWeapons(weapons);
+				character.weapons.set(1, weapon1);
 			}
 			// Type
 			else if (parsed[2].equals(settings.getType())) {
@@ -155,7 +151,7 @@ public class CharacterCodeParser {
 					continue;
 				}
 
-				character.setType(CharacterType.values()[typeSpc]);
+				character.type = CharacterType.values()[typeSpc];
 			} else {
 				logger.warn("Parse error ({}): {}", i, line);
 				continue;

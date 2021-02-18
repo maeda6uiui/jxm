@@ -37,35 +37,35 @@ public class CharacterCodeGenerator {
 
 			// Texture
 			int openXOPSTextureID = CharacterSpecifierConverter
-					.getOpenXOPSTextureIDFromXOPSTextureType(character.getTexture());
+					.getOpenXOPSTextureIDFromXOPSTextureType(character.texture);
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getTexture(),
 					openXOPSTextureID));
 			sb.append("\n");
 			// Model
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getModel(),
-					character.getModel().ordinal()));
+					character.model.ordinal()));
 			sb.append("\n");
 			// HP
-			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getHP(),
-					character.getHP()));
+			sb.append(
+					CPPArrayStringGenerator.generate(arrayName, i, settings.getHP(), character.hp));
 			sb.append("\n");
 			// AILevel
 			int openXOPSAILevel = CharacterSpecifierConverter
-					.getOpenXOPSAILevelFromXOPSAILevel(character.getAILevel());
+					.getOpenXOPSAILevelFromXOPSAILevel(character.aiLevel);
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getAILevel(),
 					openXOPSAILevel));
 			sb.append("\n");
 			// Weapon[0]
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getWeapon0(),
-					character.getWeapons()[0]));
+					character.weapons.get(0)));
 			sb.append("\n");
 			// Weapon[1]
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getWeapon1(),
-					character.getWeapons()[1]));
+					character.weapons.get(1)));
 			sb.append("\n");
 			// Type
 			sb.append(CPPArrayStringGenerator.generate(arrayName, i, settings.getType(),
-					character.getType().ordinal()));
+					character.type.ordinal()));
 			sb.append("\n");
 		}
 
