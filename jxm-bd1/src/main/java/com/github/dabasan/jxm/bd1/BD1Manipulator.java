@@ -151,7 +151,7 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator transform(Matrix4fc mat) {
 		for (var block : blocks) {
-			Vector3fc[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.vertexPositions;
 			for (int i = 0; i < vertexPositions.length; i++) {
 				var vertexPosition4f = new Vector4f(vertexPositions[i].x(), vertexPositions[i].y(),
 						vertexPositions[i].z(), 1.0f);
@@ -161,7 +161,7 @@ public class BD1Manipulator {
 						vertexPosition4f.z());
 			}
 
-			block.setVertexPositions(vertexPositions);
+			block.vertexPositions = vertexPositions;
 		}
 
 		return this;
@@ -269,19 +269,19 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator invertZ() {
 		for (var block : blocks) {
-			Vector3fc[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.vertexPositions;
 			for (int i = 0; i < 8; i++) {
 				var vertexPosition = new Vector3f(vertexPositions[i].x(), vertexPositions[i].y(),
 						vertexPositions[i].z() * (-1.0f));
 				vertexPositions[i] = vertexPosition;
 			}
 
-			block.setVertexPositions(vertexPositions);
+			block.vertexPositions = vertexPositions;
 		}
 
 		for (var block : blocks) {
 			// Vertex positions
-			Vector3fc[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.vertexPositions;
 
 			// Copy original vertex positions
 			var origVertexPositions = new Vector3fc[8];
@@ -298,10 +298,10 @@ public class BD1Manipulator {
 				newVertexPositions[i + 4] = origVertexPositions[7 - i];
 			}
 
-			block.setVertexPositions(newVertexPositions);
+			block.vertexPositions = newVertexPositions;
 
 			// UVs
-			UV[] uvs = block.getUVs();
+			UV[] uvs = block.uvs;
 
 			// Copy original UV
 			var origUVs = new UV[24];
@@ -327,10 +327,10 @@ public class BD1Manipulator {
 				}
 			}
 
-			block.setUVs(newUVs);
+			block.uvs = newUVs;
 
 			// Arrange texture IDs
-			int[] textureIDs = block.getTextureIDs();
+			int[] textureIDs = block.textureIDs;
 			var origTextureIDs = textureIDs.clone();
 
 			var newTextureIDs = new int[6];
@@ -344,7 +344,7 @@ public class BD1Manipulator {
 				}
 			}
 
-			block.setTextureIDs(newTextureIDs);
+			block.textureIDs = newTextureIDs;
 		}
 
 		return this;

@@ -1,5 +1,7 @@
 package com.github.dabasan.jxm.bd1;
 
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,8 +12,6 @@ import java.util.Map;
 
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
-
-import com.github.dabasan.jxm.bintools.ByteFunctions;
 
 /**
  * BD1 reader
@@ -62,7 +62,7 @@ class BD1Reader {
 		}
 
 		// Number of blocks
-		int numBlocks = ByteFunctions.getUnsignedShortValueFromBinLE(bin, pos);
+		int numBlocks = getUnsignedShortValueFromBinLE(bin, pos);
 		pos += 2;
 
 		// Blocks
@@ -75,15 +75,15 @@ class BD1Reader {
 			float[] vertexPositionZs = new float[8];
 
 			for (int j = 0; j < 8; j++) {
-				vertexPositionXs[j] = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+				vertexPositionXs[j] = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 8; j++) {
-				vertexPositionYs[j] = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+				vertexPositionYs[j] = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 8; j++) {
-				vertexPositionZs[j] = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+				vertexPositionZs[j] = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 
@@ -93,18 +93,18 @@ class BD1Reader {
 						vertexPositionZs[j]);
 			}
 
-			block.setVertexPositions(vertexPositions);
+			block.vertexPositions = vertexPositions;
 
 			// UVs
 			float[] us = new float[24];
 			float[] vs = new float[24];
 
 			for (int j = 0; j < 24; j++) {
-				us[j] = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+				us[j] = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 24; j++) {
-				vs[j] = ByteFunctions.getFloatValueFromBinLE(bin, pos);
+				vs[j] = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 
@@ -114,7 +114,7 @@ class BD1Reader {
 				uvs[j] = uv;
 			}
 
-			block.setUVs(uvs);
+			block.uvs = uvs;
 
 			// Texture IDs
 			int[] textureIDs = new int[6];
@@ -124,14 +124,14 @@ class BD1Reader {
 				pos += 4;
 			}
 
-			block.setTextureIDs(textureIDs);
+			block.textureIDs = textureIDs;
 
 			// Enabled flag
 			int enabled = Byte.toUnsignedInt(bin[pos]);
 			if (enabled != 0) {
-				block.setEnabled(true);
+				block.enabled = true;
 			} else {
-				block.setEnabled(false);
+				block.enabled = false;
 			}
 			pos += 4;
 

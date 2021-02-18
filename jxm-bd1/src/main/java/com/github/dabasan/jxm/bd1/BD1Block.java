@@ -10,10 +10,10 @@ import org.joml.Vector3fc;
  *
  */
 public class BD1Block {
-	private Vector3fc[] vertexPositions;
-	private UV[] uvs;
-	private int[] textureIDs;
-	private boolean enabled;
+	public Vector3fc[] vertexPositions;
+	public UV[] uvs;
+	public int[] textureIDs;
+	public boolean enabled;
 
 	public BD1Block() {
 		vertexPositions = new Vector3fc[8];
@@ -30,31 +30,5 @@ public class BD1Block {
 			textureIDs[i] = 0;
 		}
 		enabled = true;
-	}
-
-	public Vector3fc[] getVertexPositions() {
-		return vertexPositions;
-	}
-	public UV[] getUVs() {
-		return uvs;
-	}
-	public int[] getTextureIDs() {
-		return textureIDs;
-	}
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setVertexPositions(Vector3fc[] vertexPositions) {
-		this.vertexPositions = vertexPositions;
-	}
-	public void setUVs(UV[] uvs) {
-		this.uvs = uvs;
-	}
-	public void setTextureIDs(int[] textureIDs) {
-		this.textureIDs = textureIDs;
-	}
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 }

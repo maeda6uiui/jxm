@@ -1,5 +1,7 @@
 package com.github.dabasan.jxm.bd1;
 
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -11,8 +13,6 @@ import java.util.TreeMap;
 
 import org.joml.Vector3fc;
 
-import com.github.dabasan.jxm.bintools.ByteFunctions;
-
 /**
  * BD1 writer
  * 
@@ -20,10 +20,6 @@ import com.github.dabasan.jxm.bintools.ByteFunctions;
  *
  */
 class BD1Writer {
-	public BD1Writer() {
-
-	}
-
 	public void write(OutputStream os, List<BD1Block> blocks, Map<Integer, String> textureFilenames)
 			throws IOException {
 		List<Byte> bin = new ArrayList<>();
@@ -33,42 +29,42 @@ class BD1Writer {
 
 		// Number of blocks
 		int numBlocks = blocks.size();
-		ByteFunctions.addUnsignedShortValueToBinLE(bin, numBlocks);
+		addUnsignedShortValueToBinLE(bin, numBlocks);
 
 		// Blocks
 		for (int i = 0; i < numBlocks; i++) {
 			BD1Block block = blocks.get(i);
 
 			// Vertex positions
-			Vector3fc[] vertexPositions = block.getVertexPositions();
+			Vector3fc[] vertexPositions = block.vertexPositions;
 
 			// X
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].x());
+				addFloatValueToBinLE(bin, vertexPositions[j].x());
 			}
 			// Y
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].y());
+				addFloatValueToBinLE(bin, vertexPositions[j].y());
 			}
 			// Z
 			for (int j = 0; j < 8; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, vertexPositions[j].z());
+				addFloatValueToBinLE(bin, vertexPositions[j].z());
 			}
 
 			// UVs
-			UV[] uvs = block.getUVs();
+			UV[] uvs = block.uvs;
 
 			// U
 			for (int j = 0; j < 24; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, uvs[j].getUFloat());
+				addFloatValueToBinLE(bin, uvs[j].getUFloat());
 			}
 			// V
 			for (int j = 0; j < 24; j++) {
-				ByteFunctions.addFloatValueToBinLE(bin, uvs[j].getVFloat());
+				addFloatValueToBinLE(bin, uvs[j].getVFloat());
 			}
 
 			// Texture IDs
-			int[] textureIDs = block.getTextureIDs();
+			int[] textureIDs = block.textureIDs;
 
 			for (int j = 0; j < 6; j++) {
 				bin.add((byte) textureIDs[j]);
@@ -78,7 +74,7 @@ class BD1Writer {
 			}
 
 			// Enabled flag
-			if (block.isEnabled()) {
+			if (block.enabled) {
 				bin.add((byte) 0x01);
 			} else {
 				bin.add((byte) 0x00);

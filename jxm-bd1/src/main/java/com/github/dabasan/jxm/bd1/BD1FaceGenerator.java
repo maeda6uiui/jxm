@@ -19,9 +19,9 @@ class BD1FaceGenerator {
 		var facesMap = new HashMap<Integer, List<BD1Face>>();
 
 		for (var block : blocks) {
-			Vector3fc[] vertexPositions = block.getVertexPositions();
-			UV[] uvs = block.getUVs();
-			int[] textureIDs = block.getTextureIDs();
+			Vector3fc[] vertexPositions = block.vertexPositions;
+			UV[] uvs = block.uvs;
+			int[] textureIDs = block.textureIDs;
 
 			// Calculate normals
 			var normals = new Vector3f[6];
