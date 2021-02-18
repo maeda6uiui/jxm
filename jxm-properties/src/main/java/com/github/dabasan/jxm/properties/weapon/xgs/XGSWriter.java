@@ -1,12 +1,13 @@
 package com.github.dabasan.jxm.properties.weapon.xgs;
 
+import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
@@ -23,10 +24,6 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  *
  */
 class XGSWriter {
-	public XGSWriter() {
-
-	}
-
 	public void write(OutputStream os, WeaponData[] weapons) throws IOException {
 		var bin = new ArrayList<Byte>();
 
@@ -48,95 +45,83 @@ class XGSWriter {
 		int numWeapons = weapons.length;
 		for (int i = 0; i < numWeapons; i++) {
 			// Attacks
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getAttacks());
+			addShortValueToBinLE(bin, (short) weapons[i].attacks);
 			// Penetration
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getPenetration());
+			addShortValueToBinLE(bin, (short) weapons[i].penetration);
 			// Blazings
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getBlazings());
+			addShortValueToBinLE(bin, (short) weapons[i].blazings);
 			// Speed
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getSpeed());
+			addShortValueToBinLE(bin, (short) weapons[i].speed);
 			// NbsMax
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getNbsMax());
+			addShortValueToBinLE(bin, (short) weapons[i].nbsMax);
 			// Reloads
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getReloads());
+			addShortValueToBinLE(bin, (short) weapons[i].reloads);
 			// Reaction
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getReaction());
+			addShortValueToBinLE(bin, (short) weapons[i].reaction);
 			// ErrorRangeMin
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getErrorRangeMin());
+			addShortValueToBinLE(bin, (short) weapons[i].errorRangeMin);
 			// ErrorRangeMax
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getErrorRangeMax());
+			addShortValueToBinLE(bin, (short) weapons[i].errorRangeMax);
 			// ModelPositionX
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getModelPositionX()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].modelPositionX));
 			// ModelPositionY
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getModelPositionY()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].modelPositionY));
 			// ModelPositionZ
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getModelPositionZ()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].modelPositionZ));
 			// FlashPositionX
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getFlashPositionX()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].flashPositionX));
 			// FlashPositionY
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getFlashPositionY()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].flashPositionY));
 			// FlashPositionZ
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getFlashPositionZ()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].flashPositionZ));
 			// YakkyouPositionX
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getYakkyouPositionX()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].yakkyouPositionX));
 			// YakkyouPositionY
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getYakkyouPositionY()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].yakkyouPositionY));
 			// YakkyouPositionZ
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getYakkyouPositionZ()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].yakkyouPositionZ));
 			// WeaponP
-			ShootingStance shootingStance = weapons[i].getWeaponP();
+			ShootingStance shootingStance = weapons[i].weaponP;
 			int shootingStanceSpc = WeaponBinEnumConverter
 					.getBinSpecifierFromShootingStance(shootingStance);
-			ByteFunctions.addShortValueToBinLE(bin, (short) shootingStanceSpc);
+			addShortValueToBinLE(bin, (short) shootingStanceSpc);
 			// BlazingMode
-			boolean blazingMode = weapons[i].isBlazingMode();
+			boolean blazingMode = weapons[i].blazingMode;
 			int blazingModeSpc = (blazingMode) ? 0 : 1;
-			ByteFunctions.addShortValueToBinLE(bin, (short) blazingModeSpc);
+			addShortValueToBinLE(bin, (short) blazingModeSpc);
 			// ScopeMode
-			ScopeMode scopeMode = weapons[i].getScopeMode();
+			ScopeMode scopeMode = weapons[i].scopeMode;
 			int scopeModeSpc = WeaponBinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
-			ByteFunctions.addShortValueToBinLE(bin, (short) scopeModeSpc);
+			addShortValueToBinLE(bin, (short) scopeModeSpc);
 			// Texture
-			String textureFilepath = weapons[i].getTexture();
+			String textureFilepath = weapons[i].texture;
 			WeaponTextureType textureType = TextureFilepaths.getEnumFromFilepath(textureFilepath);
 			int textureTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromTextureType(textureType);
-			ByteFunctions.addShortValueToBinLE(bin, (short) textureTypeSpc);
+			addShortValueToBinLE(bin, (short) textureTypeSpc);
 			// Model
-			String modelFilepath = weapons[i].getModel();
+			String modelFilepath = weapons[i].model;
 			WeaponModelType modelType = ModelFilepaths.getEnumFromFilepath(modelFilepath);
 			int modelTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromModelType(modelType);
-			ByteFunctions.addShortValueToBinLE(bin, (short) modelTypeSpc);
+			addShortValueToBinLE(bin, (short) modelTypeSpc);
 			// Size
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getSize() * 10.0f));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].size * 10.0f));
 			// YakkyouSpeedX
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getYakkyouSpeedX()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].yakkyouSpeedX));
 			// YakkyouSpeedY
-			ByteFunctions.addShortValueToBinLE(bin,
-					(short) Math.round(weapons[i].getYakkyouSpeedY()));
+			addShortValueToBinLE(bin, (short) Math.round(weapons[i].yakkyouSpeedY));
 			// SoundID
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getSoundID());
+			addShortValueToBinLE(bin, (short) weapons[i].soundID);
 			// SoundVolume
-			ByteFunctions.addShortValueToBinLE(bin, (short) weapons[i].getSoundVolume());
+			addShortValueToBinLE(bin, (short) weapons[i].soundVolume);
 			// Silencer
-			boolean silencer = weapons[i].isSilencer();
+			boolean silencer = weapons[i].silencer;
 			int silencerSpc = (silencer) ? 1 : 0;
-			ByteFunctions.addShortValueToBinLE(bin, (short) silencerSpc);
+			addShortValueToBinLE(bin, (short) silencerSpc);
 		}
 
 		// Name
 		for (int i = 0; i < numWeapons; i++) {
-			String name = weapons[numWeapons - 1 - i].getName();
+			String name = weapons[numWeapons - 1 - i].name;
 			this.addNameToBin(bin, name);
 		}
 

@@ -11,7 +11,6 @@ import java.util.Map;
  */
 public class ModelFilepaths {
 	private static Map<Integer, String> modelFilepaths;
-
 	static {
 		modelFilepaths = new HashMap<>();
 

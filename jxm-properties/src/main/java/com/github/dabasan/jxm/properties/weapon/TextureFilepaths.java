@@ -11,7 +11,6 @@ import java.util.Map;
  */
 public class TextureFilepaths {
 	private static Map<Integer, String> textureFilepaths;
-
 	static {
 		textureFilepaths = new HashMap<>();
 
