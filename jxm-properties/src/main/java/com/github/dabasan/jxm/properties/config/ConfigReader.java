@@ -26,24 +26,24 @@ class ConfigReader {
 		var keyCodes = KeyCode.values();
 
 		// Key code
-		config.setTurnUp(keyCodes[bin[0]]);
-		config.setTurnDown(keyCodes[bin[1]]);
-		config.setTurnLeft(keyCodes[bin[2]]);
-		config.setTurnRight(keyCodes[bin[3]]);
-		config.setMoveForward(keyCodes[bin[4]]);
-		config.setMoveBackward(keyCodes[bin[5]]);
-		config.setMoveLeft(keyCodes[bin[6]]);
-		config.setMoveRight(keyCodes[bin[7]]);
-		config.setWalk(keyCodes[bin[8]]);
-		config.setJump(keyCodes[bin[9]]);
-		config.setReload(keyCodes[bin[10]]);
-		config.setDropWeapon(keyCodes[bin[11]]);
-		config.setZoom(keyCodes[bin[12]]);
-		config.setFireMode(keyCodes[bin[13]]);
-		config.setSwitchWeapon(keyCodes[bin[14]]);
-		config.setWeapon1(keyCodes[bin[15]]);
-		config.setWeapon2(keyCodes[bin[16]]);
-		config.setFire(keyCodes[bin[17]]);
+		config.turnUp = keyCodes[bin[0]];
+		config.turnDown = keyCodes[bin[1]];
+		config.turnLeft = keyCodes[bin[2]];
+		config.turnRight = keyCodes[bin[3]];
+		config.moveForward = keyCodes[bin[4]];
+		config.moveBackward = keyCodes[bin[5]];
+		config.moveLeft = keyCodes[bin[6]];
+		config.moveRight = keyCodes[bin[7]];
+		config.walk = keyCodes[bin[8]];
+		config.jump = keyCodes[bin[9]];
+		config.reload = keyCodes[bin[10]];
+		config.dropWeapon = keyCodes[bin[11]];
+		config.zoom = keyCodes[bin[12]];
+		config.fireMode = keyCodes[bin[13]];
+		config.switchWeapon = keyCodes[bin[14]];
+		config.weapon1 = keyCodes[bin[15]];
+		config.weapon2 = keyCodes[bin[16]];
+		config.fire = keyCodes[bin[17]];
 
 		// Other config
 		Function<Byte, Boolean> byteToBoolean = (b) -> {
@@ -53,16 +53,15 @@ class ConfigReader {
 				return true;
 			}
 		};
-
-		config.setMouseSensitivity(Byte.toUnsignedInt(bin[18]));
-		config.setWindowMode(WindowMode.values()[bin[19]]);
-		config.setEnableSound(byteToBoolean.apply(bin[20]));
-		config.setEnableBlood(byteToBoolean.apply(bin[21]));
-		config.setBrightness(Byte.toUnsignedInt(bin[22]));
-		config.setInvertMouse(byteToBoolean.apply(bin[23]));
-		config.setFrameSkip(byteToBoolean.apply(bin[24]));
-		config.setAnotherGunsight(byteToBoolean.apply(bin[25]));
-		config.setName(this.getNameFromBin(bin, 26));
+		config.mouseSensitivity = Byte.toUnsignedInt(bin[18]);
+		config.windowMode = WindowMode.values()[bin[19]];
+		config.enableSound = byteToBoolean.apply(bin[20]);
+		config.enableBlood = byteToBoolean.apply(bin[21]);
+		config.brightness = Byte.toUnsignedInt(bin[22]);
+		config.invertMouse = byteToBoolean.apply(bin[23]);
+		config.frameSkip = byteToBoolean.apply(bin[24]);
+		config.anotherGunsight = byteToBoolean.apply(bin[25]);
+		config.name = this.getNameFromBin(bin, 26);
 	}
 	private String getNameFromBin(byte[] bin, int start) {
 		var nameBuffer = new byte[21];

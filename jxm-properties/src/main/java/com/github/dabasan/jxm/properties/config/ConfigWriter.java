@@ -15,31 +15,27 @@ import java.util.function.Function;
  *
  */
 class ConfigWriter {
-	public ConfigWriter() {
-
-	}
-
 	public void write(OutputStream os, Config config) throws IOException {
 		var bin = new ArrayList<Byte>();
 
-		bin.add((byte) config.getTurnUp().ordinal());
-		bin.add((byte) config.getTurnDown().ordinal());
-		bin.add((byte) config.getTurnLeft().ordinal());
-		bin.add((byte) config.getTurnRight().ordinal());
-		bin.add((byte) config.getMoveForward().ordinal());
-		bin.add((byte) config.getMoveBackward().ordinal());
-		bin.add((byte) config.getMoveLeft().ordinal());
-		bin.add((byte) config.getMoveRight().ordinal());
-		bin.add((byte) config.getWalk().ordinal());
-		bin.add((byte) config.getJump().ordinal());
-		bin.add((byte) config.getReload().ordinal());
-		bin.add((byte) config.getDropWeapon().ordinal());
-		bin.add((byte) config.getZoom().ordinal());
-		bin.add((byte) config.getFireMode().ordinal());
-		bin.add((byte) config.getSwitchWeapon().ordinal());
-		bin.add((byte) config.getWeapon1().ordinal());
-		bin.add((byte) config.getWeapon2().ordinal());
-		bin.add((byte) config.getFire().ordinal());
+		bin.add((byte) config.turnUp.ordinal());
+		bin.add((byte) config.turnDown.ordinal());
+		bin.add((byte) config.turnLeft.ordinal());
+		bin.add((byte) config.turnRight.ordinal());
+		bin.add((byte) config.moveForward.ordinal());
+		bin.add((byte) config.moveBackward.ordinal());
+		bin.add((byte) config.moveLeft.ordinal());
+		bin.add((byte) config.moveRight.ordinal());
+		bin.add((byte) config.walk.ordinal());
+		bin.add((byte) config.jump.ordinal());
+		bin.add((byte) config.reload.ordinal());
+		bin.add((byte) config.dropWeapon.ordinal());
+		bin.add((byte) config.zoom.ordinal());
+		bin.add((byte) config.fireMode.ordinal());
+		bin.add((byte) config.switchWeapon.ordinal());
+		bin.add((byte) config.weapon1.ordinal());
+		bin.add((byte) config.weapon2.ordinal());
+		bin.add((byte) config.fire.ordinal());
 
 		// Other config
 		Function<Boolean, Byte> booleanToByte = (b) -> {
@@ -49,16 +45,15 @@ class ConfigWriter {
 				return 1;
 			}
 		};
-
-		bin.add((byte) config.getMouseSensitivity());
-		bin.add((byte) config.getWindowMode().ordinal());
-		bin.add(booleanToByte.apply(config.isEnableSound()));
-		bin.add(booleanToByte.apply(config.isEnableBlood()));
-		bin.add((byte) config.getMouseSensitivity());
-		bin.add(booleanToByte.apply(config.isInvertMouse()));
-		bin.add(booleanToByte.apply(config.isFrameSkip()));
-		bin.add(booleanToByte.apply(config.isAnotherGunsight()));
-		this.addNameToBin(bin, config.getName());
+		bin.add((byte) config.mouseSensitivity);
+		bin.add((byte) config.windowMode.ordinal());
+		bin.add(booleanToByte.apply(config.enableSound));
+		bin.add(booleanToByte.apply(config.enableBlood));
+		bin.add((byte) config.mouseSensitivity);
+		bin.add(booleanToByte.apply(config.invertMouse));
+		bin.add(booleanToByte.apply(config.frameSkip));
+		bin.add(booleanToByte.apply(config.anotherGunsight));
+		this.addNameToBin(bin, config.name);
 
 		try (var bos = new BufferedOutputStream(os)) {
 			for (Byte b : bin) {

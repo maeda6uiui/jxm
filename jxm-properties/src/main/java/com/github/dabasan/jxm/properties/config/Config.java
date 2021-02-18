@@ -8,34 +8,34 @@ package com.github.dabasan.jxm.properties.config;
  */
 public class Config {
 	// Key code
-	private KeyCode turnUp;
-	private KeyCode turnDown;
-	private KeyCode turnLeft;
-	private KeyCode turnRight;
-	private KeyCode moveForward;
-	private KeyCode moveBackward;
-	private KeyCode moveLeft;
-	private KeyCode moveRight;
-	private KeyCode walk;
-	private KeyCode jump;
-	private KeyCode reload;
-	private KeyCode dropWeapon;
-	private KeyCode zoom;
-	private KeyCode fireMode;
-	private KeyCode switchWeapon;
-	private KeyCode weapon1;
-	private KeyCode weapon2;
-	private KeyCode fire;
+	public KeyCode turnUp;
+	public KeyCode turnDown;
+	public KeyCode turnLeft;
+	public KeyCode turnRight;
+	public KeyCode moveForward;
+	public KeyCode moveBackward;
+	public KeyCode moveLeft;
+	public KeyCode moveRight;
+	public KeyCode walk;
+	public KeyCode jump;
+	public KeyCode reload;
+	public KeyCode dropWeapon;
+	public KeyCode zoom;
+	public KeyCode fireMode;
+	public KeyCode switchWeapon;
+	public KeyCode weapon1;
+	public KeyCode weapon2;
+	public KeyCode fire;
 	// Other config
-	private int mouseSensitivity;
-	private int brightness;
-	private WindowMode windowMode;
-	private boolean enableSound;
-	private boolean enableBlood;
-	private boolean invertMouse;
-	private boolean frameSkip;
-	private boolean anotherGunsight;
-	private String name;
+	public int mouseSensitivity;
+	public int brightness;
+	public WindowMode windowMode;
+	public boolean enableSound;
+	public boolean enableBlood;
+	public boolean invertMouse;
+	public boolean frameSkip;
+	public boolean anotherGunsight;
+	public String name;
 
 	public Config() {
 		this.reset();
@@ -84,169 +84,5 @@ public class Config {
 				+ ", windowMode=" + windowMode + ", enableSound=" + enableSound + ", enableBlood="
 				+ enableBlood + ", invertMouse=" + invertMouse + ", frameSkip=" + frameSkip
 				+ ", anotherGunsight=" + anotherGunsight + ", name=" + name + "]";
-	}
-
-	public KeyCode getTurnUp() {
-		return turnUp;
-	}
-	public KeyCode getTurnDown() {
-		return turnDown;
-	}
-	public KeyCode getTurnLeft() {
-		return turnLeft;
-	}
-	public KeyCode getTurnRight() {
-		return turnRight;
-	}
-	public KeyCode getMoveForward() {
-		return moveForward;
-	}
-	public KeyCode getMoveBackward() {
-		return moveBackward;
-	}
-	public KeyCode getMoveLeft() {
-		return moveLeft;
-	}
-	public KeyCode getMoveRight() {
-		return moveRight;
-	}
-	public KeyCode getWalk() {
-		return walk;
-	}
-	public KeyCode getJump() {
-		return jump;
-	}
-	public KeyCode getReload() {
-		return reload;
-	}
-	public KeyCode getDropWeapon() {
-		return dropWeapon;
-	}
-	public KeyCode getZoom() {
-		return zoom;
-	}
-	public KeyCode getFireMode() {
-		return fireMode;
-	}
-	public KeyCode getSwitchWeapon() {
-		return switchWeapon;
-	}
-	public KeyCode getWeapon1() {
-		return weapon1;
-	}
-	public KeyCode getWeapon2() {
-		return weapon2;
-	}
-	public KeyCode getFire() {
-		return fire;
-	}
-	public int getMouseSensitivity() {
-		return mouseSensitivity;
-	}
-	public int getBrightness() {
-		return brightness;
-	}
-	public WindowMode getWindowMode() {
-		return windowMode;
-	}
-	public boolean isEnableSound() {
-		return enableSound;
-	}
-	public boolean isEnableBlood() {
-		return enableBlood;
-	}
-	public boolean isInvertMouse() {
-		return invertMouse;
-	}
-	public boolean isFrameSkip() {
-		return frameSkip;
-	}
-	public boolean isAnotherGunsight() {
-		return anotherGunsight;
-	}
-	public String getName() {
-		return name;
-	}
-
-	public void setTurnUp(KeyCode turnUp) {
-		this.turnUp = turnUp;
-	}
-	public void setTurnDown(KeyCode turnDown) {
-		this.turnDown = turnDown;
-	}
-	public void setTurnLeft(KeyCode turnLeft) {
-		this.turnLeft = turnLeft;
-	}
-	public void setTurnRight(KeyCode turnRight) {
-		this.turnRight = turnRight;
-	}
-	public void setMoveForward(KeyCode moveForward) {
-		this.moveForward = moveForward;
-	}
-	public void setMoveBackward(KeyCode moveBackward) {
-		this.moveBackward = moveBackward;
-	}
-	public void setMoveLeft(KeyCode moveLeft) {
-		this.moveLeft = moveLeft;
-	}
-	public void setMoveRight(KeyCode moveRight) {
-		this.moveRight = moveRight;
-	}
-	public void setWalk(KeyCode walk) {
-		this.walk = walk;
-	}
-	public void setJump(KeyCode jump) {
-		this.jump = jump;
-	}
-	public void setReload(KeyCode reload) {
-		this.reload = reload;
-	}
-	public void setDropWeapon(KeyCode dropWeapon) {
-		this.dropWeapon = dropWeapon;
-	}
-	public void setZoom(KeyCode zoom) {
-		this.zoom = zoom;
-	}
-	public void setFireMode(KeyCode fireMode) {
-		this.fireMode = fireMode;
-	}
-	public void setSwitchWeapon(KeyCode switchWeapon) {
-		this.switchWeapon = switchWeapon;
-	}
-	public void setWeapon1(KeyCode weapon1) {
-		this.weapon1 = weapon1;
-	}
-	public void setWeapon2(KeyCode weapon2) {
-		this.weapon2 = weapon2;
-	}
-	public void setFire(KeyCode fire) {
-		this.fire = fire;
-	}
-	public void setMouseSensitivity(int mouseSensitivity) {
-		this.mouseSensitivity = mouseSensitivity;
-	}
-	public void setBrightness(int brightness) {
-		this.brightness = brightness;
-	}
-	public void setWindowMode(WindowMode windowMode) {
-		this.windowMode = windowMode;
-	}
-	public void setEnableSound(boolean enableSound) {
-		this.enableSound = enableSound;
-	}
-	public void setEnableBlood(boolean enableBlood) {
-		this.enableBlood = enableBlood;
-	}
-	public void setInvertMouse(boolean invertMouse) {
-		this.invertMouse = invertMouse;
-	}
-	public void setFrameSkip(boolean frameSkip) {
-		this.frameSkip = frameSkip;
-	}
-	public void setAnotherGunsight(boolean anotherGunsight) {
-		this.anotherGunsight = anotherGunsight;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 }
