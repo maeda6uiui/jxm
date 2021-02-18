@@ -39,9 +39,9 @@ public class ConfigManipulatorTest {
 
 		System.out.println("##Modified");
 
-		manipulator.getConfig().setMoveForward(KeyCode.KEY_ENTER);
-		manipulator.getConfig().setBrightness(1000);
-		manipulator.getConfig().setEnableSound(false);
+		manipulator.getConfig().moveForward = KeyCode.KEY_ENTER;
+		manipulator.getConfig().brightness = 1000;
+		manipulator.getConfig().enableSound = false;
 
 		System.out.println(manipulator.getConfig());
 	}

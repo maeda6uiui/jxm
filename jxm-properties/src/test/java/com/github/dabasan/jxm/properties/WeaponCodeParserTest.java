@@ -24,7 +24,7 @@ public class WeaponCodeParserTest {
 
 	public WeaponCodeParserTest() {
 		var settings = new WeaponVariableNameSettings();
-		settings.setModel("モデル");
+		settings.model = "モデル";
 
 		var parser = new WeaponCodeParser(settings);
 

@@ -24,8 +24,8 @@ public class CharacterCodeParserTest {
 
 	public CharacterCodeParserTest() {
 		var settings = new CharacterVariableNameSettings();
-		settings.setArrayName("人");
-		settings.setTexture("テクスチャ");
+		settings.arrayName = "人";
+		settings.texture = "テクスチャ";
 
 		var parser = new CharacterCodeParser(settings);
 

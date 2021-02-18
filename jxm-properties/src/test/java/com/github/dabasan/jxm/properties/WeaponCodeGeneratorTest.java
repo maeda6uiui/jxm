@@ -25,8 +25,8 @@ public class WeaponCodeGeneratorTest {
 
 	public WeaponCodeGeneratorTest() {
 		var settings = new WeaponVariableNameSettings();
-		settings.setArrayName("武器");
-		settings.setModel("モデル");
+		settings.arrayName = "武器";
+		settings.model = "モデル";
 
 		generator = new WeaponCodeGenerator(settings);
 
