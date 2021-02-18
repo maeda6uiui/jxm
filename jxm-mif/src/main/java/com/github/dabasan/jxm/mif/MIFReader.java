@@ -31,36 +31,35 @@ class MIFReader {
 			}
 		}
 
-		missionInfo.setMissionTitle(lines.get(0));
-		missionInfo.setMissionFullname(lines.get(1));
-		missionInfo.setPathnameOfBlock(lines.get(2));
-		missionInfo.setPathnameOfPoint(lines.get(3));
+		missionInfo.missionTitle = lines.get(0);
+		missionInfo.missionFullname = lines.get(1);
+		missionInfo.pathnameOfBlock = lines.get(2);
+		missionInfo.pathnameOfPoint = lines.get(3);
 
 		int skyTypeIndex = Integer.parseInt(lines.get(4));
-		var skyType = SkyType.values()[skyTypeIndex];
-		missionInfo.setSkyType(skyType);
+		missionInfo.skyType = SkyType.values()[skyTypeIndex];
 
 		int flags = Integer.parseInt(lines.get(5));
 		if ((flags & 0b00000010) != 0) {
-			missionInfo.setDarkScreen(true);
+			missionInfo.darkScreen = true;
 		} else {
-			missionInfo.setDarkScreen(false);
+			missionInfo.darkScreen = false;
 		}
 		if ((flags & 0b00000001) != 0) {
-			missionInfo.setExtraCollision(true);
+			missionInfo.extraCollision = true;
 		} else {
-			missionInfo.setExtraCollision(false);
+			missionInfo.extraCollision = false;
 		}
 
-		missionInfo.setPathnameOfObj(lines.get(6));
-		missionInfo.setPathnameOfImage1(lines.get(7));
-		missionInfo.setPathnameOfImage2(lines.get(8));
+		missionInfo.pathnameOfObj = lines.get(6);
+		missionInfo.pathnameOfImage1 = lines.get(7);
+		missionInfo.pathnameOfImage2 = lines.get(8);
 
 		var briefingText = new ArrayList<String>();
 		for (int i = 9; i < lines.size(); i++) {
 			briefingText.add(lines.get(i));
 		}
-		missionInfo.setBriefingText(briefingText);
+		missionInfo.briefingText = briefingText;
 	}
 
 	public MissionInfo getMissionInfo() {
