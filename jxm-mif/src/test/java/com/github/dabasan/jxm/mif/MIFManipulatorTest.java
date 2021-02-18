@@ -37,13 +37,12 @@ public class MIFManipulatorTest {
 
 		System.out.println("##Modified");
 
-		manipulator.getMissionInfo().setMissionTitle("Test Mission");
-		manipulator.getMissionInfo().setSkyType(SkyType.WILDERNESS);
-		manipulator.getMissionInfo().setPathnameOfBlock("./path/to/bd1");
+		manipulator.getMissionInfo().missionTitle = "Test Mission";
+		manipulator.getMissionInfo().skyType = SkyType.WILDERNESS;
+		manipulator.getMissionInfo().pathnameOfBlock = "./path/to/bd1";
 
-		List<String> briefingText = manipulator.getMissionInfo().getBriefingText();
+		List<String> briefingText = manipulator.getMissionInfo().briefingText;
 		briefingText.stream().map(s -> s.toUpperCase());
-		manipulator.getMissionInfo().setBriefingText(briefingText);
 
 		System.out.println(manipulator.getMissionInfo());
 	}
