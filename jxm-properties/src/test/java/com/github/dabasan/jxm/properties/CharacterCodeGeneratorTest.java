@@ -25,7 +25,7 @@ public class CharacterCodeGeneratorTest {
 
 	public CharacterCodeGeneratorTest() {
 		var settings = new CharacterVariableNameSettings();
-		settings.arrayName = "キャラクター";
+		settings.arrayName = "人";
 		settings.texture = "テクスチャ";
 
 		generator = new CharacterCodeGenerator(settings);
