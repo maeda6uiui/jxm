@@ -31,6 +31,9 @@ public class BD1Manipulator {
 	private List<BD1Block> blocks;
 	private Map<Integer, String> textureFilenames;
 
+	/**
+	 * Creates a BD1 manipulator.
+	 */
 	public BD1Manipulator() {
 		blocks = new ArrayList<>();
 		textureFilenames = new HashMap<>();
@@ -39,14 +42,38 @@ public class BD1Manipulator {
 			textureFilenames.put(i, "");
 		}
 	}
+	/**
+	 * Creates a BD1 manipulator and loads a BD1.
+	 * 
+	 * @param is
+	 *            input stream to load a BD1 from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public BD1Manipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
 	}
+	/**
+	 * Creates a BD1 manipulator and loads a BD1.
+	 * 
+	 * @param file
+	 *            file to load a BD1 from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public BD1Manipulator(File file) throws IOException {
 		try (var fis = new FileInputStream(file)) {
 			this.readConstructorBase(fis);
 		}
 	}
+	/**
+	 * Creates a BD1 manipulator and loads a BD1.
+	 * 
+	 * @param filepath
+	 *            filepath to load a BD1 from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public BD1Manipulator(String filepath) throws IOException {
 		try (var fis = new FileInputStream(filepath)) {
 			this.readConstructorBase(fis);
@@ -62,7 +89,7 @@ public class BD1Manipulator {
 	/**
 	 * Returns blocks.
 	 * 
-	 * @return Blocks
+	 * @return blocks
 	 */
 	public List<BD1Block> getBlocks() {
 		return new ArrayList<>(blocks);
@@ -71,7 +98,7 @@ public class BD1Manipulator {
 	 * Sets blocks.
 	 * 
 	 * @param blocks
-	 *            Blocks
+	 *            blocks to set
 	 */
 	public void setBlocks(List<BD1Block> blocks) {
 		if (blocks == null) {
@@ -85,19 +112,19 @@ public class BD1Manipulator {
 	/**
 	 * Returns the number of blocks.
 	 * 
-	 * @return Number of blocks
+	 * @return number of blocks
 	 */
 	public int getNumBlocks() {
 		return blocks.size();
 	}
 
 	/**
-	 * Returns the filename of a texture.<br>
-	 * Returns null if the texture specified does not exist.
+	 * Returns the filename of a texture. Returns null if the texture specified
+	 * does not exist.
 	 * 
 	 * @param textureID
-	 *            Texture ID
-	 * @return Texture filename
+	 *            texture ID to set
+	 * @return texture filename
 	 */
 	public String getTextureFilename(int textureID) {
 		return textureFilenames.get(textureID);
@@ -105,7 +132,7 @@ public class BD1Manipulator {
 	/**
 	 * Returns all filenames of the textures.
 	 * 
-	 * @return All filenames of the textures
+	 * @return all filenames of the textures
 	 */
 	public Map<Integer, String> getTextureFilenames() {
 		return new HashMap<>(textureFilenames);
@@ -115,9 +142,9 @@ public class BD1Manipulator {
 	 * Sets the filename of a texture.
 	 * 
 	 * @param textureID
-	 *            Texture ID
+	 *            texture ID
 	 * @param textureFilename
-	 *            Texture filename
+	 *            texture filename
 	 */
 	public void setTextureFilename(int textureID, String textureFilename) {
 		if (textureFilename == null) {
@@ -131,7 +158,7 @@ public class BD1Manipulator {
 	 * Sets the filenames of the textures.
 	 * 
 	 * @param textureFilenames
-	 *            Filenames of the textures
+	 *            filenames of the textures
 	 */
 	public void setTextureFilenames(Map<Integer, String> textureFilenames) {
 		if (textureFilenames == null) {
@@ -146,8 +173,8 @@ public class BD1Manipulator {
 	 * Transforms the blocks with a matrix.
 	 * 
 	 * @param mat
-	 *            Matrix
-	 * @return This instance
+	 *            matrix for transformation
+	 * @return this
 	 */
 	public BD1Manipulator transform(Matrix4fc mat) {
 		for (var block : blocks) {
@@ -171,12 +198,12 @@ public class BD1Manipulator {
 	 * Translates the blocks.
 	 * 
 	 * @param translationX
-	 *            Translation X
+	 *            amount of translation along the X-axis
 	 * @param translationY
-	 *            Translation Y
+	 *            amount of translation along the Y-axis
 	 * @param translationZ
-	 *            Translation Z
-	 * @return This instance
+	 *            amount of translation along the Z-axis
+	 * @return this
 	 */
 	public BD1Manipulator translate(float translationX, float translationY, float translationZ) {
 		var translationMat = new Matrix4f().translate(translationX, translationY, translationZ);
@@ -189,8 +216,8 @@ public class BD1Manipulator {
 	 * Rotates the blocks around the X-axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public BD1Manipulator rotX(float th) {
 		var rotMat = new Matrix4f().rotate(th, 1.0f, 0.0f, 0.0f);
@@ -202,8 +229,8 @@ public class BD1Manipulator {
 	 * Rotates the blocks around the Y-axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public BD1Manipulator rotY(float th) {
 		var rotMat = new Matrix4f().rotate(th, 0.0f, 1.0f, 0.0f);
@@ -215,8 +242,8 @@ public class BD1Manipulator {
 	 * Rotates the blocks around the Z-axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public BD1Manipulator rotZ(float th) {
 		var rotMat = new Matrix4f().rotate(th, 0.0f, 0.0f, 1.0f);
@@ -228,14 +255,14 @@ public class BD1Manipulator {
 	 * Rotates the blocks around an arbitrary axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
+	 *            rotation angle in radian
 	 * @param axisX
 	 *            X-component of the axis
 	 * @param axisY
 	 *            Y-component of the axis
 	 * @param axisZ
 	 *            Z-component of the axis
-	 * @return This instance
+	 * @return this
 	 */
 	public BD1Manipulator rot(float th, float axisX, float axisY, float axisZ) {
 		var rotMat = new Matrix4f().rotate(th, axisX, axisY, axisZ);
@@ -248,12 +275,12 @@ public class BD1Manipulator {
 	 * Rescales the blocks.
 	 * 
 	 * @param scaleX
-	 *            Scale X
+	 *            X-axis scale
 	 * @param scaleY
-	 *            Scale Y
+	 *            Y-axis scale
 	 * @param scaleZ
-	 *            Scale Z
-	 * @return This instance
+	 *            Z-axis scale
+	 * @return this
 	 */
 	public BD1Manipulator rescale(float scaleX, float scaleY, float scaleZ) {
 		var scaleMat = new Matrix4f().scale(scaleX, scaleY, scaleZ);
@@ -265,7 +292,7 @@ public class BD1Manipulator {
 	/**
 	 * Inverts the level with respect to the Z-axis.
 	 * 
-	 * @return This instance
+	 * @return this
 	 */
 	public BD1Manipulator invertZ() {
 		for (var block : blocks) {
@@ -355,10 +382,10 @@ public class BD1Manipulator {
 		writer.write(os, blocks, textureFilenames);
 	}
 	/**
-	 * Saves the blocks as a BD1 file.
+	 * Saves the blocks as a BD1.
 	 * 
 	 * @param os
-	 *            OutputStream
+	 *            output stream to write the blocks to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsBD1(OutputStream os) {
@@ -374,10 +401,10 @@ public class BD1Manipulator {
 		return ret;
 	}
 	/**
-	 * Saves the blocks as a BD1 file.
+	 * Saves the blocks as a BD1.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write the blocks to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsBD1(File file) {
@@ -393,10 +420,10 @@ public class BD1Manipulator {
 		return ret;
 	}
 	/**
-	 * Saves the blocks as a BD1 file.
+	 * Saves the blocks as a BD1.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write the blocks to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsBD1(String filepath) {
@@ -417,16 +444,16 @@ public class BD1Manipulator {
 		BD1OBJWriter.write(osObj, osMtl, mtlFilename, blocks, textureFilenames, flipV);
 	}
 	/**
-	 * Saves the blocks as an OBJ file.
+	 * Saves the blocks as an OBJ.
 	 * 
 	 * @param osObj
-	 *            OutputStream for the OBJ file
+	 *            output stream for OBJ
 	 * @param osMtl
-	 *            OutputStream for the MTL file
+	 *            output stream for MTL
 	 * @param mtlFilename
-	 *            Filename of the MTL file
+	 *            filename of the MTL
 	 * @param flipV
-	 *            Flips texture V-coordinate if true
+	 *            flips texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
 	public int saveAsOBJ(OutputStream osObj, OutputStream osMtl, String mtlFilename,
@@ -443,14 +470,14 @@ public class BD1Manipulator {
 		return ret;
 	}
 	/**
-	 * Saves the blocks as an OBJ file.
+	 * Saves the blocks as an OBJ.
 	 * 
 	 * @param fileObj
-	 *            File for the OBJ file
+	 *            file for the OBJ
 	 * @param fileMtl
-	 *            File for the MTL file
+	 *            file for the MTL
 	 * @param mtlFilename
-	 *            Filename of the MTL file
+	 *            filename of the MTL
 	 * @param flipV
 	 *            Flips texture V-coordinate if true
 	 * @return -1: error 0: success
@@ -469,16 +496,16 @@ public class BD1Manipulator {
 		return ret;
 	}
 	/**
-	 * Saves the blocks as an OBJ file.
+	 * Saves the blocks as an OBJ.
 	 * 
 	 * @param filepathObj
-	 *            Filepath of the OBJ file
+	 *            filepath of the OBJ
 	 * @param filepathMtl
-	 *            Filepath of the MTL file
+	 *            filepath of the MTL
 	 * @param mtlFilename
-	 *            Filename of the MTL file
+	 *            filename of the MTL
 	 * @param flipV
-	 *            Flips texture V-coordinate if true
+	 *            flips texture V-coordinate if true
 	 * @return -1: error 0: success
 	 */
 	public int saveAsOBJ(String filepathObj, String filepathMtl, String mtlFilename,
@@ -500,9 +527,9 @@ public class BD1Manipulator {
 	 * Returns buffer representation of BD1 blocks.
 	 * 
 	 * @param flipV
-	 *            Flips texture V-coordinate if true
+	 *            flips texture V-coordinate if true
 	 * 
-	 * @return List containing buffers
+	 * @return list containing buffers
 	 */
 	public List<BD1Buffer> getBuffers(boolean flipV) {
 		Map<Integer, List<BD1Face>> faces = BD1FaceGenerator.generateFaces(blocks);

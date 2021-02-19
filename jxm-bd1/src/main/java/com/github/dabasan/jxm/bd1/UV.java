@@ -11,14 +11,14 @@ public class UV {
 	public float v;
 
 	/**
-	 * U and V coordinates are set to 0.
+	 * Creates a UV. U and V are set to 0.
 	 */
 	public UV() {
 		u = 0.0f;
 		v = 0.0f;
 	}
 	/**
-	 * U and V coordinates are set to the values specified.
+	 * Creates a UV. U and V coordinates are set to the values specified.
 	 * 
 	 * @param u
 	 *            U coordinate
@@ -30,10 +30,10 @@ public class UV {
 		this.v = v;
 	}
 	/**
-	 * Copies a UV instance.
+	 * Copies a UV.
 	 * 
 	 * @param uv
-	 *            UV instance
+	 *            UV
 	 */
 	public UV(UV uv) {
 		this.u = uv.u;

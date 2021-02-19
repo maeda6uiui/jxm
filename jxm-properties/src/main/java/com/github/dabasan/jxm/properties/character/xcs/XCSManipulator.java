@@ -24,17 +24,44 @@ public class XCSManipulator {
 	private static final int NUM_CHARACTERS = 43;
 	private Character[] characters;
 
+	/**
+	 * Creates a XCS manipulator.
+	 */
 	public XCSManipulator() {
 		characters = new Character[NUM_CHARACTERS];
 	}
+	/**
+	 * Creates a XCS manipulator and loads a XCS.
+	 * 
+	 * @param is
+	 *            input stream to load a XCS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public XCSManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
 	}
+	/**
+	 * Creates a XCS manipulator and loads a XCS.
+	 * 
+	 * @param file
+	 *            file to load a XCS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public XCSManipulator(File file) throws IOException {
 		try (var fis = new FileInputStream(file)) {
 			this.readConstructorBase(fis);
 		}
 	}
+	/**
+	 * Creates a XCS manipulator and loads a XCS.
+	 * 
+	 * @param filepath
+	 *            filepath to load a XCS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public XCSManipulator(String filepath) throws IOException {
 		try (var fis = new FileInputStream(filepath)) {
 			this.readConstructorBase(fis);
@@ -48,7 +75,7 @@ public class XCSManipulator {
 	/**
 	 * Returns character data.
 	 * 
-	 * @return Array containing character data
+	 * @return array containing character data
 	 */
 	public Character[] getCharacters() {
 		return characters.clone();
@@ -57,7 +84,7 @@ public class XCSManipulator {
 	 * Sets character data.
 	 * 
 	 * @param characters
-	 *            Array containing character data
+	 *            array containing character data
 	 */
 	public void setCharacters(Character[] characters) {
 		if (characters == null) {
@@ -78,10 +105,10 @@ public class XCSManipulator {
 		writer.write(os, characters);
 	}
 	/**
-	 * Saves character data as a XCS file.
+	 * Saves character data as a XCS.
 	 * 
 	 * @param os
-	 *            OutputStream
+	 *            output stream to write characters to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsXCS(OutputStream os) {
@@ -97,10 +124,10 @@ public class XCSManipulator {
 		return ret;
 	}
 	/**
-	 * Saves character data as a XCS file.
+	 * Saves character data as a XCS.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write characters to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsXCS(File file) {
@@ -116,10 +143,10 @@ public class XCSManipulator {
 		return ret;
 	}
 	/**
-	 * Saves character data as a XCS file.
+	 * Saves character data as a XCS.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write characters to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsXCS(String filepath) {

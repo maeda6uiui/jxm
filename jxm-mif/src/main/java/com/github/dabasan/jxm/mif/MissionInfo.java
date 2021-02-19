@@ -22,6 +22,9 @@ public class MissionInfo {
 	public String pathnameOfImage2;
 	public List<String> briefingText;// per line
 
+	/**
+	 * Creates a mission info instance.
+	 */
 	public MissionInfo() {
 		missionTitle = "";
 		missionFullname = "";
@@ -36,7 +39,7 @@ public class MissionInfo {
 		briefingText = new ArrayList<>();
 	}
 	/**
-	 * Copies mission info.
+	 * Copies a mission info instance.
 	 * 
 	 * @param mif
 	 *            Mission info

@@ -40,6 +40,9 @@ public class Weapon {
 	public int changeWeapon;
 	public int burst;
 
+	/**
+	 * Creates a weapon.
+	 */
 	public Weapon() {
 		name = "";
 		model = "";

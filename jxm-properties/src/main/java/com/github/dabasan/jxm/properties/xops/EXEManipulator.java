@@ -28,18 +28,45 @@ public class EXEManipulator {
 	private BINWeaponManipulator weaponManipulator;
 	private BINCharacterManipulator characterManipulator;
 
+	/**
+	 * Creates an EXE manipulator.
+	 */
 	public EXEManipulator() {
 		weaponManipulator = new BINWeaponManipulator();
 		characterManipulator = new BINCharacterManipulator();
 	}
+	/**
+	 * Creates an EXE manipulator and loads an EXE.
+	 * 
+	 * @param is
+	 *            input stream load an EXE from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public EXEManipulator(InputStream is) throws IOException {
 		this.constructorBase(is);
 	}
+	/**
+	 * Creates an EXE manipulator and loads an EXE.
+	 * 
+	 * @param file
+	 *            file to load an EXE from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public EXEManipulator(File file) throws IOException {
 		try (var fis = new FileInputStream(file)) {
 			this.constructorBase(fis);
 		}
 	}
+	/**
+	 * Creates an EXE manipulator and loads an EXE.
+	 * 
+	 * @param filepath
+	 *            filepath to load an EXE from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public EXEManipulator(String filepath) throws IOException {
 		try (var fis = new FileInputStream(filepath)) {
 			this.constructorBase(fis);
@@ -153,7 +180,7 @@ public class EXEManipulator {
 	/**
 	 * Returns weapon data.
 	 * 
-	 * @return Array containing weapon data
+	 * @return array containing weapon data
 	 */
 	public Weapon[] getWeapons() {
 		return weaponManipulator.getWeapons();
@@ -162,7 +189,7 @@ public class EXEManipulator {
 	 * Sets weapon data.
 	 * 
 	 * @param weapons
-	 *            Array containing weapon data
+	 *            array containing weapon data
 	 */
 	public void setWeapons(Weapon[] weapons) {
 		weaponManipulator.setWeapons(weapons);
@@ -170,7 +197,7 @@ public class EXEManipulator {
 	/**
 	 * Returns character data.
 	 * 
-	 * @return Array containing character data
+	 * @return array containing character data
 	 */
 	public Character[] getCharacters() {
 		return characterManipulator.getCharacters();
@@ -179,7 +206,7 @@ public class EXEManipulator {
 	 * Sets character data.
 	 * 
 	 * @param characters
-	 *            Array containing character data
+	 *            array containing character data
 	 */
 	public void setCharacters(Character[] characters) {
 		characterManipulator.setCharacters(characters);
@@ -188,7 +215,7 @@ public class EXEManipulator {
 	/**
 	 * Returns the version of XOPS passed to the constructor.
 	 * 
-	 * @return Version of XOPS
+	 * @return version of XOPS
 	 */
 	public XOPSVersion getSrcXOPSVersion() {
 		return srcXOPSVersion;
@@ -224,14 +251,14 @@ public class EXEManipulator {
 		}
 	}
 	/**
-	 * Writes data to an existing EXE file.<br>
-	 * Pass a non-null value to the second argument if you want to make a backup
-	 * file before overwriting the existing EXE file.
+	 * Writes data to an existing EXE. Pass a non-null value to the second
+	 * argument if you want to make a backup file before overwriting the
+	 * existing EXE.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write the data to
 	 * @param fileBackup
-	 *            File for backup
+	 *            file for backup
 	 * @return -1: error 0: success
 	 */
 	public int write(File file, File fileBackup) {
@@ -250,14 +277,14 @@ public class EXEManipulator {
 		return 0;
 	}
 	/**
-	 * Writes data to an existing EXE file.<br>
-	 * Pass a non-null value to the second argument if you want to make a backup
-	 * file before overwriting the existing EXE file.
+	 * Writes data to an existing EXE. Pass a non-null value to the second
+	 * argument if you want to make a backup file before overwriting the
+	 * existing EXE.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write the data to
 	 * @param filepathBackup
-	 *            Filepath for backup
+	 *            filepath for backup
 	 * @return -1: error 0: success
 	 */
 	public int write(String filepath, String filepathBackup) {

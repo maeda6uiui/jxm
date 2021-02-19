@@ -15,8 +15,8 @@ public class ByteFunctions {
 	 * Converts a 4-byte byte array to a float value.
 	 * 
 	 * @param b
-	 *            Byte array (big-endian representation)
-	 * @return Float value
+	 *            byte array (big-endian representation)
+	 * @return float value
 	 */
 	public static float bytesToFloat(byte[] b) {
 		if (b.length != 4) {
@@ -33,8 +33,8 @@ public class ByteFunctions {
 	 * Converts a 4-byte byte array to a float value.
 	 * 
 	 * @param b
-	 *            Byte array (little-endian representation)
-	 * @return Float value
+	 *            byte array (little-endian representation)
+	 * @return float value
 	 */
 	public static float bytesToFloatLE(byte[] b) {
 		if (b.length != 4) {
@@ -51,7 +51,7 @@ public class ByteFunctions {
 	 * Converts a float value to a 4-byte byte array.
 	 * 
 	 * @param f
-	 *            Float value
+	 *            float value
 	 * @return 4-byte byte array (big-endian representation)
 	 */
 	public static byte[] floatToBytes(float f) {
@@ -62,7 +62,7 @@ public class ByteFunctions {
 	 * Converts a float value to a 4-byte byte array.
 	 * 
 	 * @param f
-	 *            Float value
+	 *            float value
 	 * @return 4-byte byte array (little-endian representation)
 	 */
 	public static byte[] floatToBytesLE(float f) {
@@ -75,7 +75,7 @@ public class ByteFunctions {
 	 * 
 	 * @param b
 	 *            2-byte byte array (big-endian representation)
-	 * @return Short value
+	 * @return short value
 	 */
 	public static short bytesToShort(byte[] b) {
 		if (b.length != 2) {
@@ -93,7 +93,7 @@ public class ByteFunctions {
 	 * 
 	 * @param b
 	 *            2-byte byte array (little-endian representation)
-	 * @return Short value
+	 * @return short value
 	 */
 	public static short bytesToShortLE(byte[] b) {
 		if (b.length != 2) {
@@ -110,7 +110,7 @@ public class ByteFunctions {
 	 * Converts a short value to a 2-byte byte array.
 	 * 
 	 * @param s
-	 *            Short value
+	 *            short value
 	 * @return 2-byte byte array (big-endian representation)
 	 */
 	public static byte[] shortToBytes(short s) {
@@ -121,7 +121,7 @@ public class ByteFunctions {
 	 * Converts a short value to a 2-byte byte array.
 	 * 
 	 * @param s
-	 *            Short value
+	 *            short value
 	 * @return 2-byte byte array (little-endian representation)
 	 */
 	public static byte[] shortToBytesLE(short s) {
@@ -134,7 +134,7 @@ public class ByteFunctions {
 	 * 
 	 * @param b
 	 *            2-byte byte array (big-endian representation)
-	 * @return Unsigned short value
+	 * @return unsigned short value
 	 */
 	public static int bytesToUnsignedShort(byte[] b) {
 		if (b.length != 2) {
@@ -153,7 +153,7 @@ public class ByteFunctions {
 	 * 
 	 * @param b
 	 *            2-byte byte array (little-endian representation)
-	 * @return Unsigned short value
+	 * @return unsigned short value
 	 */
 	public static int bytesToUnsignedShortLE(byte[] b) {
 		if (b.length != 2) {
@@ -171,7 +171,7 @@ public class ByteFunctions {
 	 * Converts an unsigned short value to a 2-byte byte array.
 	 * 
 	 * @param s
-	 *            Unsigned short value
+	 *            unsigned short value
 	 * @return 2-byte byte array (big-endian representation)
 	 */
 	public static byte[] unsignedShortToBytes(int s) {
@@ -186,7 +186,7 @@ public class ByteFunctions {
 	 * Converts an unsigned short value to a 2-byte byte array.
 	 * 
 	 * @param s
-	 *            Unsigned short value
+	 *            unsigned short value
 	 * @return 2-byte byte array (little-endian representation)
 	 */
 	public static byte[] unsignedShortToBytesLE(int s) {
@@ -199,12 +199,12 @@ public class ByteFunctions {
 	}
 
 	/**
-	 * Adds a byte representation of a float value into a list.
+	 * Adds a byte representation of a float value to a list.
 	 * 
 	 * @param bin
-	 *            List
+	 *            list to add the value to
 	 * @param value
-	 *            Float value
+	 *            float value
 	 */
 	public static void addFloatValueToBinLE(List<Byte> bin, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
@@ -213,12 +213,12 @@ public class ByteFunctions {
 		}
 	}
 	/**
-	 * Adds a byte representation of a short value into a list.
+	 * Adds a byte representation of a short value to a list.
 	 * 
 	 * @param bin
-	 *            List
+	 *            list to add the value to
 	 * @param value
-	 *            Short value
+	 *            short value
 	 */
 	public static void addShortValueToBinLE(List<Byte> bin, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
@@ -227,12 +227,12 @@ public class ByteFunctions {
 		}
 	}
 	/**
-	 * Adds a byte representation of an unsigned short value into a list.
+	 * Adds a byte representation of an unsigned short value to a list.
 	 * 
 	 * @param bin
-	 *            List
+	 *            list to add the value to
 	 * @param value
-	 *            Unsigned short value
+	 *            unsigned short value
 	 */
 	public static void addUnsignedShortValueToBinLE(List<Byte> bin, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
@@ -245,11 +245,11 @@ public class ByteFunctions {
 	 * Sets a byte representation of a float value in a list.
 	 * 
 	 * @param bin
-	 *            List
+	 *            list to set the value in
 	 * @param pos
-	 *            Position
+	 *            position to set the value
 	 * @param value
-	 *            Float value
+	 *            float value
 	 */
 	public static void setFloatValueToBinLE(List<Byte> bin, int pos, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
@@ -261,11 +261,11 @@ public class ByteFunctions {
 	 * Sets a byte representation of a short value in a list.
 	 * 
 	 * @param bin
-	 *            List
+	 *            list to set the value in
 	 * @param pos
-	 *            Position
+	 *            position to set the value
 	 * @param value
-	 *            Short value
+	 *            short value
 	 */
 	public static void setShortValueToBinLE(List<Byte> bin, int pos, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
@@ -277,11 +277,11 @@ public class ByteFunctions {
 	 * Sets a byte representation of an unsigned short value in a list.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            list to set the value in
 	 * @param pos
-	 *            Position
+	 *            position to set the value
 	 * @param value
-	 *            Unsigned short value
+	 *            unsigned short value
 	 */
 	public static void setUnsignedShortValueToBinLE(List<Byte> bin, int pos, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
@@ -293,11 +293,11 @@ public class ByteFunctions {
 	 * Sets a byte representation of a float value in an array.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            list to set the value in
 	 * @param pos
-	 *            Position
+	 *            position to set the value
 	 * @param value
-	 *            Float value
+	 *            float value
 	 */
 	public static void setFloatValueToBinLE(byte[] bin, int pos, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
@@ -309,11 +309,11 @@ public class ByteFunctions {
 	 * Sets a byte representation of a short value in an array.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            list to set the value in
 	 * @param pos
-	 *            Position
+	 *            position to set the value
 	 * @param value
-	 *            Short value
+	 *            short value
 	 */
 	public static void setShortValueToBinLE(byte[] bin, int pos, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
@@ -325,11 +325,11 @@ public class ByteFunctions {
 	 * Sets a byte representation of an unsigned short value in an array.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            list to set the value in
 	 * @param pos
-	 *            Position
+	 *            position to set the value
 	 * @param value
-	 *            Unsigned short value
+	 *            unsigned short value
 	 */
 	public static void setUnsignedShortValueToBinLE(byte[] bin, int pos, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
@@ -342,10 +342,10 @@ public class ByteFunctions {
 	 * Returns a float value from a byte representation.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            array to get the value from
 	 * @param pos
-	 *            Position
-	 * @return Float value
+	 *            position to get the value
+	 * @return float value
 	 */
 	public static float getFloatValueFromBinLE(byte[] bin, int pos) {
 		byte[] buffer = new byte[]{bin[pos], bin[pos + 1], bin[pos + 2], bin[pos + 3]};
@@ -357,10 +357,10 @@ public class ByteFunctions {
 	 * Returns a short value from a byte representation.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            array to get the value from
 	 * @param pos
-	 *            Position
-	 * @return Short value
+	 *            position to get the value
+	 * @return short value
 	 */
 	public static short getShortValueFromBinLE(byte[] bin, int pos) {
 		byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
@@ -372,10 +372,10 @@ public class ByteFunctions {
 	 * Returns an unsigned short value from a byte representation.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            array to get the value from
 	 * @param pos
-	 *            Position
-	 * @return Unsigned short value
+	 *            position to get the value
+	 * @return unsigned short value
 	 */
 	public static int getUnsignedShortValueFromBinLE(byte[] bin, int pos) {
 		byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};

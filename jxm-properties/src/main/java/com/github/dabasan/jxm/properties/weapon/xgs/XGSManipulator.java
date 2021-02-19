@@ -24,17 +24,44 @@ public class XGSManipulator {
 	private static final int NUM_WEAPONS = 23;
 	private Weapon[] weapons;
 
+	/**
+	 * Creates a XGS manipulator.
+	 */
 	public XGSManipulator() {
 		weapons = new Weapon[NUM_WEAPONS];
 	}
+	/**
+	 * Creates a XGS manipulator and loads a XGS.
+	 * 
+	 * @param is
+	 *            input stream to load a XGS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public XGSManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
 	}
+	/**
+	 * Creates a XGS manipulator and loads a XGS.
+	 * 
+	 * @param file
+	 *            file to load a XGS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public XGSManipulator(File file) throws IOException {
 		try (var bis = new FileInputStream(file)) {
 			this.readConstructorBase(bis);
 		}
 	}
+	/**
+	 * Creates a XGS manipulator and loads a XGS.
+	 * 
+	 * @param filepath
+	 *            filepath to load a XGS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public XGSManipulator(String filepath) throws IOException {
 		try (var bis = new FileInputStream(filepath)) {
 			this.readConstructorBase(bis);
@@ -48,7 +75,7 @@ public class XGSManipulator {
 	/**
 	 * Returns weapon data.
 	 * 
-	 * @return Array containing weapon data
+	 * @return array containing weapon data
 	 */
 	public Weapon[] getWeapons() {
 		return weapons.clone();
@@ -57,7 +84,7 @@ public class XGSManipulator {
 	 * Sets weapon data.
 	 * 
 	 * @param weapons
-	 *            Array containing weapon data
+	 *            array containing weapon data
 	 */
 	public void setWeapons(Weapon[] weapons) {
 		if (weapons == null) {
@@ -77,10 +104,10 @@ public class XGSManipulator {
 		writer.write(os, weapons);
 	}
 	/**
-	 * Saves weapon data as a XGS file.
+	 * Saves weapon data as a XGS.
 	 * 
 	 * @param os
-	 *            OutputStream
+	 *            output stream to write the weapon data to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsXGS(OutputStream os) {
@@ -96,10 +123,10 @@ public class XGSManipulator {
 		return ret;
 	}
 	/**
-	 * Saves weapon data as a XGS file.
+	 * Saves weapon data as a XGS.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write the weapon data to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsXGS(File file) {
@@ -115,10 +142,10 @@ public class XGSManipulator {
 		return ret;
 	}
 	/**
-	 * Saves weapon data as a XGS file.
+	 * Saves weapon data as a XGS.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write the weapon data to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsXGS(String filepath) {

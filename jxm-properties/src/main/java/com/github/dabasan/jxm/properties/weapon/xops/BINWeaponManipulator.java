@@ -17,9 +17,22 @@ public class BINWeaponManipulator {
 	private static final int NUM_WEAPONS = 23;
 	private Weapon[] weapons;
 
+	/**
+	 * Creates a BINWeaponManipulator instance.
+	 */
 	public BINWeaponManipulator() {
 		weapons = new Weapon[NUM_WEAPONS];
 	}
+	/**
+	 * Creates a BINWeaponManipulator instance.
+	 * 
+	 * @param bin
+	 *            binary
+	 * @param dataStartPos
+	 *            start position of the weapon data
+	 * @param nameStartPos
+	 *            start position of the weapon names
+	 */
 	public BINWeaponManipulator(byte[] bin, int dataStartPos, int nameStartPos) {
 		var reader = new BINWeaponReader(bin, NUM_WEAPONS, dataStartPos, nameStartPos);
 		weapons = reader.getWeaponData();
@@ -28,7 +41,7 @@ public class BINWeaponManipulator {
 	/**
 	 * Returns weapon data.
 	 * 
-	 * @return Array containing weapon data
+	 * @return array containing weapon data
 	 */
 	public Weapon[] getWeapons() {
 		return weapons.clone();
@@ -37,7 +50,7 @@ public class BINWeaponManipulator {
 	 * Sets weapon data.
 	 * 
 	 * @param weapons
-	 *            Array containing weapon data
+	 *            array containing weapon data
 	 */
 	public void setWeapons(Weapon[] weapons) {
 		if (weapons == null) {
@@ -56,11 +69,11 @@ public class BINWeaponManipulator {
 	 * Writes out weapon data to an array containing bytes.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            byte array to write weapon data in
 	 * @param dataStartPos
-	 *            Start position of weapon data
+	 *            start position of weapon data
 	 * @param nameStartPos
-	 *            Start position of weapon names
+	 *            start position of weapon names
 	 */
 	public void write(byte[] bin, int dataStartPos, int nameStartPos) {
 		var writer = new BINWeaponWriter();

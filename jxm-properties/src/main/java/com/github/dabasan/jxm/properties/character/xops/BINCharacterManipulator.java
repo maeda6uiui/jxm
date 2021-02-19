@@ -17,9 +17,20 @@ public class BINCharacterManipulator {
 	private static final int NUM_CHARACTERS = 43;
 	private Character[] characters;
 
+	/**
+	 * Creates a BINCharacterManipulator instance.
+	 */
 	public BINCharacterManipulator() {
 		characters = new Character[NUM_CHARACTERS];
 	}
+	/**
+	 * Creates a BINCharacterManipulator instance.
+	 * 
+	 * @param bin
+	 *            binary
+	 * @param dataStartPos
+	 *            start position of the character data
+	 */
 	public BINCharacterManipulator(byte[] bin, int dataStartPos) {
 		var reader = new BINCharacterReader(bin, NUM_CHARACTERS, dataStartPos);
 		characters = reader.getCharacterData();
@@ -28,7 +39,7 @@ public class BINCharacterManipulator {
 	/**
 	 * Returns character data.
 	 * 
-	 * @return Array containing character data
+	 * @return array containing character data
 	 */
 	public Character[] getCharacters() {
 		return characters.clone();
@@ -37,7 +48,7 @@ public class BINCharacterManipulator {
 	 * Sets character data.
 	 * 
 	 * @param characters
-	 *            Array containing character data
+	 *            array containing character data
 	 */
 	public void setCharacters(Character[] characters) {
 		if (characters == null) {
@@ -57,9 +68,9 @@ public class BINCharacterManipulator {
 	 * Writes out character data to an array containing bytes.
 	 * 
 	 * @param bin
-	 *            Array
+	 *            byte array to write character data in
 	 * @param dataStartPos
-	 *            Start position of character data
+	 *            start position of character data
 	 */
 	public void write(byte[] bin, int dataStartPos) {
 		var writer = new BINCharacterWriter();

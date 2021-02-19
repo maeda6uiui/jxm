@@ -21,17 +21,44 @@ public class ConfigManipulator {
 
 	private Config config;
 
+	/**
+	 * Creates a config manipulator.
+	 */
 	public ConfigManipulator() {
 		config = new Config();
 	}
+	/**
+	 * Creates a config manipulator and loads config.
+	 * 
+	 * @param is
+	 *            input stream to load config from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public ConfigManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
 	}
+	/**
+	 * Creates a config manipulator and loads config.
+	 * 
+	 * @param file
+	 *            file to load config from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public ConfigManipulator(File file) throws IOException {
 		try (var fis = new FileInputStream(file)) {
 			this.readConstructorBase(fis);
 		}
 	}
+	/**
+	 * Creates a config manipulator and loads config.
+	 * 
+	 * @param filepath
+	 *            filepath to load config from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public ConfigManipulator(String filepath) throws IOException {
 		try (var fis = new FileInputStream(filepath)) {
 			this.readConstructorBase(fis);
@@ -45,7 +72,7 @@ public class ConfigManipulator {
 	/**
 	 * Returns config.
 	 * 
-	 * @return Config
+	 * @return config
 	 */
 	public Config getConfig() {
 		return config;
@@ -54,7 +81,7 @@ public class ConfigManipulator {
 	 * Sets config.
 	 * 
 	 * @param config
-	 *            Config
+	 *            config to set
 	 */
 	public void setConfig(Config config) {
 		if (config == null) {
@@ -70,10 +97,10 @@ public class ConfigManipulator {
 		writer.write(os, config);
 	}
 	/**
-	 * Saves config as a DAT file.
+	 * Saves config as a DAT.
 	 * 
 	 * @param os
-	 *            OutputStream
+	 *            output stream to write the config to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsDAT(OutputStream os) {
@@ -89,10 +116,10 @@ public class ConfigManipulator {
 		return ret;
 	}
 	/**
-	 * Saves config as a DAT file.
+	 * Saves config as a DAT.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write the config to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsDAT(File file) {
@@ -108,10 +135,10 @@ public class ConfigManipulator {
 		return ret;
 	}
 	/**
-	 * Saves config as a DAT file.
+	 * Saves config as a DAT.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write the config to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsDAT(String filepath) {

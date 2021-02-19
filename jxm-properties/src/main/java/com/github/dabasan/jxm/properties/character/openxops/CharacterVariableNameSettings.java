@@ -18,6 +18,9 @@ public class CharacterVariableNameSettings {
 	public String weapon1;
 	public String type;
 
+	/**
+	 * Creates a CharacterVariableNameSettings instance.
+	 */
 	public CharacterVariableNameSettings() {
 		arrayName = "Human";
 

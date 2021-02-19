@@ -14,9 +14,18 @@ import com.github.dabasan.jxm.properties.util.CPPArrayStringGenerator;
 public class CharacterCodeGenerator {
 	private CharacterVariableNameSettings settings;
 
+	/**
+	 * Creates a code generator.
+	 */
 	public CharacterCodeGenerator() {
 		settings = new CharacterVariableNameSettings();
 	}
+	/**
+	 * Creates a code generator.
+	 * 
+	 * @param settings
+	 *            variable name settings
+	 */
 	public CharacterCodeGenerator(CharacterVariableNameSettings settings) {
 		this.settings = settings;
 	}
@@ -25,8 +34,8 @@ public class CharacterCodeGenerator {
 	 * Generates C++ code containing character data.
 	 * 
 	 * @param characters
-	 *            List containing character data
-	 * @return Code
+	 *            list containing character data
+	 * @return C++ code
 	 */
 	public String generate(List<Character> characters) {
 		var sb = new StringBuilder();

@@ -11,14 +11,14 @@ public class CPPArrayStringGenerator {
 	 * Generates a string from an array.
 	 * 
 	 * @param arrayName
-	 *            Name of the array
+	 *            name of the array
 	 * @param index
-	 *            Index
+	 *            index
 	 * @param fieldName
-	 *            Name of the field
+	 *            name of the field
 	 * @param value
 	 *            Value
-	 * @return Generated string
+	 * @return generated string
 	 */
 	public static String generate(String arrayName, int index, String fieldName, Object value) {
 		var sb = new StringBuilder();

@@ -15,6 +15,9 @@ public class BD1Block {
 	public int[] textureIDs;
 	public boolean enabled;
 
+	/**
+	 * Creates a block.
+	 */
 	public BD1Block() {
 
 	}

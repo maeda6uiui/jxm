@@ -14,6 +14,9 @@ public class PD1Point {
 	public float rotation;
 	public int[] parameters;
 
+	/**
+	 * Creates a point.
+	 */
 	public PD1Point() {
 
 	}

@@ -37,11 +37,14 @@ public class Config {
 	public boolean anotherGunsight;
 	public String name;
 
+	/**
+	 * Creates a config instance.
+	 */
 	public Config() {
 		this.reset();
 	}
 	/**
-	 * Copies a config.
+	 * Copies a config instance.
 	 * 
 	 * @param config
 	 *            Config
@@ -76,6 +79,9 @@ public class Config {
 		this.name = config.name;
 	}
 
+	/**
+	 * Resets every field to its default value.
+	 */
 	public void reset() {
 		// Key code
 		turnUp = KeyCode.KEY_UP;

@@ -43,6 +43,9 @@ public class WeaponVariableNameSettings {
 	public String changeWeapon;
 	public String burst;
 
+	/**
+	 * Creates a WeaponVariableNameSettings instance.
+	 */
 	public WeaponVariableNameSettings() {
 		arrayName = "Weapon";
 

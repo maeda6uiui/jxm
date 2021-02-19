@@ -18,6 +18,9 @@ public class Character {
 	public List<Integer> weapons;
 	public CharacterType type;
 
+	/**
+	 * Creates a character.
+	 */
 	public Character() {
 		texture = CharacterTextureType.SOLDIER_BLACK;
 		model = CharacterModelType.MALE;

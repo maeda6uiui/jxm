@@ -28,17 +28,44 @@ public class PD1Manipulator {
 
 	private List<PD1Point> points;
 
+	/**
+	 * Creates a PD1 manipulator.
+	 */
 	public PD1Manipulator() {
 		points = new ArrayList<>();
 	}
+	/**
+	 * Creates a PD1 manipulator and loads a PD1.
+	 * 
+	 * @param is
+	 *            input stream to load a PD1 from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public PD1Manipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
 	}
+	/**
+	 * Creates a PD1 manipulator and loads a PD1.
+	 * 
+	 * @param file
+	 *            file to load a PD1 from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public PD1Manipulator(File file) throws IOException {
 		try (var fis = new FileInputStream(file)) {
 			this.readConstructorBase(fis);
 		}
 	}
+	/**
+	 * Creates a PD1 manipulator and loads a PD1.
+	 * 
+	 * @param filepath
+	 *            filepath to load a PD1 from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public PD1Manipulator(String filepath) throws IOException {
 		try (var fis = new FileInputStream(filepath)) {
 			this.readConstructorBase(fis);
@@ -52,7 +79,7 @@ public class PD1Manipulator {
 	/**
 	 * Returns points.
 	 * 
-	 * @return Points
+	 * @return points
 	 */
 	public List<PD1Point> getPoints() {
 		return new ArrayList<>(points);
@@ -61,7 +88,7 @@ public class PD1Manipulator {
 	 * Sets points.
 	 * 
 	 * @param points
-	 *            Points
+	 *            points to set
 	 */
 	public void setPoints(List<PD1Point> points) {
 		if (points == null) {
@@ -75,7 +102,7 @@ public class PD1Manipulator {
 	/**
 	 * Returns the number of points.
 	 * 
-	 * @return Number of points
+	 * @return number of points
 	 */
 	public int getNumPoints() {
 		return points.size();
@@ -84,10 +111,10 @@ public class PD1Manipulator {
 	 * Returns the number of points with a specified value in parameters.
 	 * 
 	 * @param paramIndex
-	 *            Index of parameters (0, 1, 2 or 3)
+	 *            index of parameters (0, 1, 2 or 3)
 	 * @param value
-	 *            Value
-	 * @return Number of points
+	 *            value
+	 * @return number of points
 	 */
 	public int getNumPoints(int paramIndex, int value) {
 		int pointCount = 0;
@@ -106,8 +133,8 @@ public class PD1Manipulator {
 	 * Transforms the points with a matrix.
 	 * 
 	 * @param mat
-	 *            Matrix
-	 * @return This instance
+	 *            matrix for transformation
+	 * @return this
 	 */
 	public PD1Manipulator transform(Matrix4fc mat) {
 		for (var point : points) {
@@ -125,12 +152,12 @@ public class PD1Manipulator {
 	 * Translates the points.
 	 * 
 	 * @param translationX
-	 *            Translation X
+	 *            amount of translation along the X-axis
 	 * @param translationY
-	 *            Translation Y
+	 *            amount of translation along the Y-axis
 	 * @param translationZ
-	 *            Translation Z
-	 * @return This instance
+	 *            amount of translation along the Z-axis
+	 * @return this
 	 */
 	public PD1Manipulator translate(float translationX, float translationY, float translationZ) {
 		var translationMat = new Matrix4f().translate(translationX, translationY, translationZ);
@@ -143,8 +170,8 @@ public class PD1Manipulator {
 	 * Rotate the points around the X-axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public PD1Manipulator rotX(float th) {
 		var rotMat = new Matrix4f().rotate(th, 1.0f, 0.0f, 0.0f);
@@ -156,8 +183,8 @@ public class PD1Manipulator {
 	 * Rotate the points around the Y-axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public PD1Manipulator rotY(float th) {
 		var rotMat = new Matrix4f().rotate(th, 0.0f, 1.0f, 0.0f);
@@ -169,8 +196,8 @@ public class PD1Manipulator {
 	 * Rotate the points around the Z-axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public PD1Manipulator rotZ(float th) {
 		var rotMat = new Matrix4f().rotate(th, 0.0f, 0.0f, 1.0f);
@@ -182,14 +209,14 @@ public class PD1Manipulator {
 	 * Rotates the points around an arbitrary axis.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
+	 *            rotation angle in radian
 	 * @param axisX
 	 *            X-component of the axis
 	 * @param axisY
 	 *            Y-component of the axis
 	 * @param axisZ
 	 *            Z-component of the axis
-	 * @return This instance
+	 * @return this
 	 */
 	public PD1Manipulator rot(float th, float axisX, float axisY, float axisZ) {
 		var rotMat = new Matrix4f().rotate(th, axisZ, axisY, axisZ);
@@ -202,12 +229,12 @@ public class PD1Manipulator {
 	 * Rescales the points.
 	 * 
 	 * @param scaleX
-	 *            Scale X
+	 *            X-axis scale
 	 * @param scaleY
-	 *            Scale Y
+	 *            Y-axis scale
 	 * @param scaleZ
-	 *            Scale Z
-	 * @return This instance
+	 *            Z-axis scale
+	 * @return this
 	 */
 	public PD1Manipulator rescale(float scaleX, float scaleY, float scaleZ) {
 		var scaleMat = new Matrix4f().scale(scaleX, scaleY, scaleZ);
@@ -220,8 +247,8 @@ public class PD1Manipulator {
 	 * Rotates the direction of each point.
 	 * 
 	 * @param th
-	 *            Rotation angle (radian)
-	 * @return This instance
+	 *            rotation angle in radian
+	 * @return this
 	 */
 	public PD1Manipulator rotateDirection(float th) {
 		for (var point : points) {
@@ -235,7 +262,7 @@ public class PD1Manipulator {
 	/**
 	 * Inverts the points with respect to the Z-axis.
 	 * 
-	 * @return This instance
+	 * @return this
 	 */
 	public PD1Manipulator invertZ() {
 		for (var point : points) {
@@ -257,10 +284,10 @@ public class PD1Manipulator {
 		writer.write(os, points);
 	}
 	/**
-	 * Saves the points as a PD1 file.
+	 * Saves the points as a PD1.
 	 * 
 	 * @param os
-	 *            OutputStream
+	 *            output stream to write the points to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsPD1(OutputStream os) {
@@ -276,10 +303,10 @@ public class PD1Manipulator {
 		return ret;
 	}
 	/**
-	 * Saves the points as a PD1 file.
+	 * Saves the points as a PD1.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write the points to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsPD1(File file) {
@@ -295,10 +322,10 @@ public class PD1Manipulator {
 		return ret;
 	}
 	/**
-	 * Saves the points as a PD1 file.
+	 * Saves the points as a PD1.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write the points to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsPD1(String filepath) {

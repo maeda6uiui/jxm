@@ -11,8 +11,8 @@ import java.util.regex.Pattern;
  */
 public class CPPArrayStringParser {
 	/**
-	 * Parses a string and returns its value as a string.<br>
-	 * Returns null if the string specified has an illegal format.<br>
+	 * Parses a string and returns its value as a string. Returns null if the
+	 * string specified has an illegal format.<br>
 	 * <br>
 	 * Format of the returned string array<br>
 	 * 0: Array name<br>
@@ -25,8 +25,8 @@ public class CPPArrayStringParser {
 	 * Output: [members,3,name,Daba]
 	 * 
 	 * @param line
-	 *            Line
-	 * @return String array
+	 *            line
+	 * @return string array
 	 */
 	public static String[] parse(String line) {
 		// e.g. members[3].name = "Daba";

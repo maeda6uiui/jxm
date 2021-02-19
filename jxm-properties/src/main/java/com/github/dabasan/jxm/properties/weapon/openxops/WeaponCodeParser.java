@@ -23,9 +23,18 @@ public class WeaponCodeParser {
 
 	private WeaponVariableNameSettings settings;
 
+	/**
+	 * Creates a code parser.
+	 */
 	public WeaponCodeParser() {
 		settings = new WeaponVariableNameSettings();
 	}
+	/**
+	 * Creates a code parser.
+	 * 
+	 * @param settings
+	 *            variable name settings
+	 */
 	public WeaponCodeParser(WeaponVariableNameSettings settings) {
 		this.settings = settings;
 	}
@@ -34,8 +43,8 @@ public class WeaponCodeParser {
 	 * Parses C++ code containing weapon data.
 	 * 
 	 * @param code
-	 *            Code
-	 * @return Map containing weapon data
+	 *            C++ code
+	 * @return map containing weapon data
 	 */
 	public Map<Integer, Weapon> parse(List<String> code) {
 		var ret = new HashMap<Integer, Weapon>();

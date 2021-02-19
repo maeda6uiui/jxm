@@ -25,9 +25,18 @@ public class CharacterCodeParser {
 
 	private CharacterVariableNameSettings settings;
 
+	/**
+	 * Creates a code parser.
+	 */
 	public CharacterCodeParser() {
 		settings = new CharacterVariableNameSettings();
 	}
+	/**
+	 * Creates a code parser.
+	 * 
+	 * @param settings
+	 *            variable name settings
+	 */
 	public CharacterCodeParser(CharacterVariableNameSettings settings) {
 		this.settings = settings;
 	}
@@ -36,8 +45,8 @@ public class CharacterCodeParser {
 	 * Parses C++ code containing character data.
 	 * 
 	 * @param code
-	 *            Code
-	 * @return Map containing character data
+	 *            C++ code
+	 * @return map containing character data
 	 */
 	public Map<Integer, Character> parse(List<String> code) {
 		var ret = new HashMap<Integer, Character>();

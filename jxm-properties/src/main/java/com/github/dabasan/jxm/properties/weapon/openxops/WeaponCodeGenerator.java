@@ -14,9 +14,18 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
 public class WeaponCodeGenerator {
 	private WeaponVariableNameSettings settings;
 
+	/**
+	 * Creates a code generator.
+	 */
 	public WeaponCodeGenerator() {
 		settings = new WeaponVariableNameSettings();
 	}
+	/**
+	 * Creates a code generator.
+	 * 
+	 * @param settings
+	 *            variable name settings
+	 */
 	public WeaponCodeGenerator(WeaponVariableNameSettings settings) {
 		this.settings = settings;
 	}
@@ -25,8 +34,8 @@ public class WeaponCodeGenerator {
 	 * Generates C++ code containing weapon data.
 	 * 
 	 * @param weapons
-	 *            List containing weapon data
-	 * @return Code
+	 *            list containing weapon data
+	 * @return C++ code
 	 */
 	public String generate(List<Weapon> weapons) {
 		var sb = new StringBuilder();

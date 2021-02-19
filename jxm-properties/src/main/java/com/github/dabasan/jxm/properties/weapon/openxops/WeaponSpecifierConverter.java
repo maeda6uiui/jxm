@@ -7,13 +7,6 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
  *
  */
 class WeaponSpecifierConverter {
-	/**
-	 * Converts XOPS sound ID to OpenXOPS sound ID.
-	 * 
-	 * @param xopsSoundID
-	 *            Sound ID (XOPS)
-	 * @return Sound ID (OpenXOPS)
-	 */
 	public static int getOpenXOPSSoundIDFromXOPSSoundID(int xopsSoundID) {
 		int ret;
 
@@ -43,13 +36,6 @@ class WeaponSpecifierConverter {
 
 		return ret;
 	}
-	/**
-	 * Converts OpenXOPS sound ID to XOPS sound ID.
-	 * 
-	 * @param openXOPSSoundID
-	 *            Sound ID (OpenXOPS)
-	 * @return Sound ID (XOPS)
-	 */
 	public static int getXOPSSoundIDFromOpenXOPSSoundID(int openXOPSSoundID) {
 		int ret;
 

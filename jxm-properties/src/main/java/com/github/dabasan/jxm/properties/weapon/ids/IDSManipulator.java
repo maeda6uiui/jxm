@@ -23,17 +23,44 @@ public class IDSManipulator {
 
 	private Weapon weapon;
 
+	/**
+	 * Creates an IDS manipulator.
+	 */
 	public IDSManipulator() {
 		weapon = new Weapon();
 	}
+	/**
+	 * Creates an IDS manipulator.
+	 * 
+	 * @param is
+	 *            input stream to load an IDS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public IDSManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
 	}
+	/**
+	 * Creates an IDS manipulator.
+	 * 
+	 * @param file
+	 *            file to load an IDS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public IDSManipulator(File file) throws IOException {
 		try (var fis = new FileInputStream(file)) {
 			this.readConstructorBase(fis);
 		}
 	}
+	/**
+	 * Creates an IDS manipulator.
+	 * 
+	 * @param filepath
+	 *            filepath to load an IDS from
+	 * @throws IOException
+	 *             if it fails to load
+	 */
 	public IDSManipulator(String filepath) throws IOException {
 		try (var fis = new FileInputStream(filepath)) {
 			this.readConstructorBase(fis);
@@ -47,7 +74,7 @@ public class IDSManipulator {
 	/**
 	 * Returns weapon data.
 	 * 
-	 * @return Weapon data
+	 * @return weapon data
 	 */
 	public Weapon getWeapon() {
 		return weapon;
@@ -56,7 +83,7 @@ public class IDSManipulator {
 	 * Sets weapon data.
 	 * 
 	 * @param weapon
-	 *            Weapon data
+	 *            weapon data to set
 	 */
 	public void setWeapon(Weapon weapon) {
 		if (weapon == null) {
@@ -72,10 +99,10 @@ public class IDSManipulator {
 		writer.write(os, weapon);
 	}
 	/**
-	 * Saves weapon data as an IDS file.
+	 * Saves weapon data as an IDS.
 	 * 
 	 * @param os
-	 *            OutputStream
+	 *            output stream to write the weapon data to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsIDS(OutputStream os) {
@@ -91,10 +118,10 @@ public class IDSManipulator {
 		return ret;
 	}
 	/**
-	 * Saves weapon data as an IDS file.
+	 * Saves weapon data as an IDS.
 	 * 
 	 * @param file
-	 *            File
+	 *            file to write the weapon data to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsIDS(File file) {
@@ -110,10 +137,10 @@ public class IDSManipulator {
 		return ret;
 	}
 	/**
-	 * Saves weapon data as an IDS file.
+	 * Saves weapon data as an IDS.
 	 * 
 	 * @param filepath
-	 *            Filepath
+	 *            filepath to write the weapon data to
 	 * @return -1: error 0: success
 	 */
 	public int saveAsIDS(String filepath) {
