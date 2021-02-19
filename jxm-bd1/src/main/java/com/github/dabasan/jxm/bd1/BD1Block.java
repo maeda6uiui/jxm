@@ -18,6 +18,12 @@ public class BD1Block {
 	public BD1Block() {
 
 	}
+	/**
+	 * Copies a block.
+	 * 
+	 * @param block
+	 *            Block
+	 */
 	public BD1Block(BD1Block block) {
 		vertexPositions = new Vector3fc[8];
 		for (int i = 0; i < 8; i++) {

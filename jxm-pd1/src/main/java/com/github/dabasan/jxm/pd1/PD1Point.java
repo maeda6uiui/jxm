@@ -17,6 +17,12 @@ public class PD1Point {
 	public PD1Point() {
 
 	}
+	/**
+	 * Copies a point.
+	 * 
+	 * @param point
+	 *            Point
+	 */
 	public PD1Point(PD1Point point) {
 		this.position = new Vector3f(point.position);
 		this.rotation = point.rotation;
