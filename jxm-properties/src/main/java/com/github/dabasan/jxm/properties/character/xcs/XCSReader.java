@@ -55,8 +55,8 @@ class XCSReader {
 			weapons[0] = getShortValueFromBinLE(bin, pos);
 			weapons[1] = getShortValueFromBinLE(bin, pos + 2);
 			pos += 4;
-			character.weapons.set(0, weapons[0]);
-			character.weapons.set(1, weapons[1]);
+			character.weapons.add(weapons[0]);
+			character.weapons.add(weapons[1]);
 			// Type
 			int typeSpc = getShortValueFromBinLE(bin, pos);
 			pos += 2;
