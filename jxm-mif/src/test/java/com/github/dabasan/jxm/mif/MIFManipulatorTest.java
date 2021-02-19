@@ -3,6 +3,7 @@ package com.github.dabasan.jxm.mif;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Test MIFManipulator
@@ -11,7 +12,7 @@ import java.util.List;
  *
  */
 public class MIFManipulatorTest {
-	private final String TARGET_DIR = "./Data/MissionInfo";
+	private final String TARGET_DIR = "./Data";
 	private MIFManipulator manipulator;
 
 	public static void main(String[] args) {
@@ -42,7 +43,8 @@ public class MIFManipulatorTest {
 		manipulator.getMissionInfo().pathnameOfBlock = "./path/to/bd1";
 
 		List<String> briefingText = manipulator.getMissionInfo().briefingText;
-		briefingText.stream().map(s -> s.toUpperCase());
+		briefingText = briefingText.stream().map(s -> s.toUpperCase()).collect(Collectors.toList());
+		manipulator.getMissionInfo().briefingText = briefingText;
 
 		System.out.println(manipulator.getMissionInfo());
 	}
