@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeGenerator;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
@@ -36,7 +36,7 @@ public class WeaponCodeGeneratorTest {
 			return;
 		}
 
-		WeaponData[] weapons = xgsManipulator.getWeapons();
+		Weapon[] weapons = xgsManipulator.getWeapons();
 		String code = generator.generate(Arrays.asList(weapons));
 		System.out.println(code);
 	}

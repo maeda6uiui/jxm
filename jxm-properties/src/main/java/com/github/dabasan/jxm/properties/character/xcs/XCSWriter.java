@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
 
 /**
@@ -18,7 +18,7 @@ import com.github.dabasan.jxm.properties.character.CharacterModelType;
  *
  */
 class XCSWriter {
-	public void write(OutputStream os, CharacterData[] characters) throws IOException {
+	public void write(OutputStream os, Character[] characters) throws IOException {
 		var bin = new ArrayList<Byte>();
 
 		bin.add((byte) 0x58);// X

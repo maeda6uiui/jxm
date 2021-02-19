@@ -4,7 +4,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
 
 import com.github.dabasan.jxm.properties.character.AILevel;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterTextureType;
 import com.github.dabasan.jxm.properties.character.CharacterType;
 
@@ -15,14 +15,14 @@ import com.github.dabasan.jxm.properties.character.CharacterType;
  *
  */
 class BINCharacterReader {
-	private CharacterData[] characters;
+	private Character[] characters;
 
 	public BINCharacterReader(byte[] bin, int numCharacters, int dataStartPos) {
-		characters = new CharacterData[numCharacters];
+		characters = new Character[numCharacters];
 
 		int pos = dataStartPos;
 		for (int i = 0; i < numCharacters; i++) {
-			var character = new CharacterData();
+			var character = new Character();
 
 			// Texture
 			int textureTypeSpc = getShortValueFromBinLE(bin, pos);
@@ -55,7 +55,7 @@ class BINCharacterReader {
 		}
 	}
 
-	public CharacterData[] getCharacterData() {
+	public Character[] getCharacterData() {
 		return characters;
 	}
 }

@@ -8,7 +8,7 @@ import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
 import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
@@ -19,10 +19,10 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  *
  */
 class XGSReader {
-	private WeaponData[] weapons;
+	private Weapon[] weapons;
 
 	public XGSReader(InputStream is, int numWeapons) throws IOException {
-		weapons = new WeaponData[numWeapons];
+		weapons = new Weapon[numWeapons];
 
 		// Read all bytes from a stream
 		byte[] bin;
@@ -33,7 +33,7 @@ class XGSReader {
 		int pos = 0x0000000E;
 
 		for (int i = 0; i < numWeapons; i++) {
-			var weapon = new WeaponData();
+			var weapon = new Weapon();
 
 			// Attacks
 			weapon.attacks = ByteFunctions.getShortValueFromBinLE(bin, pos);
@@ -179,7 +179,7 @@ class XGSReader {
 		return name.substring(0, firstNullPos);
 	}
 
-	public WeaponData[] getWeaponData() {
+	public Weapon[] getWeaponData() {
 		return weapons;
 	}
 }

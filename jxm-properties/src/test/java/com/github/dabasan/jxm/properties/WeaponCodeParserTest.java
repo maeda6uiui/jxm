@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeParser;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 
@@ -37,7 +37,7 @@ public class WeaponCodeParserTest {
 			return;
 		}
 
-		Map<Integer, WeaponData> weapons = parser.parse(lines);
+		Map<Integer, Weapon> weapons = parser.parse(lines);
 		for (var entry : weapons.entrySet()) {
 			System.out.println(entry.getKey());
 			System.out.println(entry.getValue());

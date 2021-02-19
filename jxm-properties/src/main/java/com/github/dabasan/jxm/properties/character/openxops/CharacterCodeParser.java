@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dabasan.jxm.properties.character.AILevel;
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
 import com.github.dabasan.jxm.properties.character.CharacterTextureType;
 import com.github.dabasan.jxm.properties.character.CharacterType;
@@ -39,8 +39,8 @@ public class CharacterCodeParser {
 	 *            Code
 	 * @return Map containing character data
 	 */
-	public Map<Integer, CharacterData> parse(List<String> code) {
-		var ret = new HashMap<Integer, CharacterData>();
+	public Map<Integer, Character> parse(List<String> code) {
+		var ret = new HashMap<Integer, Character>();
 
 		for (int i = 0; i < code.size(); i++) {
 			var line = code.get(i);
@@ -60,7 +60,7 @@ public class CharacterCodeParser {
 			}
 
 			if (ret.containsKey(arrayIndex) == false) {
-				var character = new CharacterData();
+				var character = new Character();
 				ret.put(arrayIndex, character);
 			}
 			var character = ret.get(arrayIndex);

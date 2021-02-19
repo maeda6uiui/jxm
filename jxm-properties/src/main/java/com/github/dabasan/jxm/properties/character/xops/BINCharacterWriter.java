@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.character.xops;
 import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
 
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
 
 /**
@@ -13,7 +13,7 @@ import com.github.dabasan.jxm.properties.character.CharacterModelType;
  *
  */
 class BINCharacterWriter {
-	public void write(byte[] bin, CharacterData[] characters, int dataStartPos) {
+	public void write(byte[] bin, Character[] characters, int dataStartPos) {
 		int pos = dataStartPos;
 		int numCharacters = characters.length;
 		for (int i = 0; i < numCharacters; i++) {

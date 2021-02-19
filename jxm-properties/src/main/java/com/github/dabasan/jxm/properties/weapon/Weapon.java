@@ -1,12 +1,12 @@
 package com.github.dabasan.jxm.properties.weapon;
 
 /**
- * Weapon data for X operations
+ * Weapon
  * 
  * @author Daba
  *
  */
-public class WeaponData {
+public class Weapon {
 	public String name;
 	public String model;
 	public String texture;
@@ -40,7 +40,7 @@ public class WeaponData {
 	public int changeWeapon;
 	public int burst;
 
-	public WeaponData() {
+	public Weapon() {
 		name = "";
 		model = "";
 		texture = "";

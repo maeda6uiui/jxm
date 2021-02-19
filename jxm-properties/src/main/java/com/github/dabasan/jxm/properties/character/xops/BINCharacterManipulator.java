@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.character.xops;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 
 /**
  * BIN character manipulator
@@ -15,10 +15,10 @@ public class BINCharacterManipulator {
 	private Logger logger = LoggerFactory.getLogger(BINCharacterManipulator.class);
 
 	private static final int NUM_CHARACTERS = 43;
-	private CharacterData[] characters;
+	private Character[] characters;
 
 	public BINCharacterManipulator() {
-		characters = new CharacterData[NUM_CHARACTERS];
+		characters = new Character[NUM_CHARACTERS];
 	}
 	public BINCharacterManipulator(byte[] bin, int dataStartPos) {
 		var reader = new BINCharacterReader(bin, NUM_CHARACTERS, dataStartPos);
@@ -30,7 +30,7 @@ public class BINCharacterManipulator {
 	 * 
 	 * @return Array containing character data
 	 */
-	public CharacterData[] getCharacters() {
+	public Character[] getCharacters() {
 		return characters.clone();
 	}
 	/**
@@ -39,7 +39,7 @@ public class BINCharacterManipulator {
 	 * @param characters
 	 *            Array containing character data
 	 */
-	public void setCharacters(CharacterData[] characters) {
+	public void setCharacters(Character[] characters) {
 		if (characters == null) {
 			logger.warn("Null argument where non-null required");
 			return;

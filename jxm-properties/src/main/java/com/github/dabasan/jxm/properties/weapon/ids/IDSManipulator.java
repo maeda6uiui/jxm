@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 
 /**
  * IDS manipulator
@@ -21,10 +21,10 @@ import com.github.dabasan.jxm.properties.weapon.WeaponData;
 public class IDSManipulator {
 	private Logger logger = LoggerFactory.getLogger(IDSManipulator.class);
 
-	private WeaponData weapon;
+	private Weapon weapon;
 
 	public IDSManipulator() {
-		weapon = new WeaponData();
+		weapon = new Weapon();
 	}
 	public IDSManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
@@ -49,7 +49,7 @@ public class IDSManipulator {
 	 * 
 	 * @return Weapon data
 	 */
-	public WeaponData getWeapon() {
+	public Weapon getWeapon() {
 		return weapon;
 	}
 	/**
@@ -58,7 +58,7 @@ public class IDSManipulator {
 	 * @param weapon
 	 *            Weapon data
 	 */
-	public void setWeapon(WeaponData weapon) {
+	public void setWeapon(Weapon weapon) {
 		if (weapon == null) {
 			logger.warn("Null argument where non-null required");
 			return;

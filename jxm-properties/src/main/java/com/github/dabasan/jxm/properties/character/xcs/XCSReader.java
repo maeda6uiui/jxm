@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 import com.github.dabasan.jxm.properties.character.AILevel;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterTextureType;
 import com.github.dabasan.jxm.properties.character.CharacterType;
 
@@ -19,10 +19,10 @@ import com.github.dabasan.jxm.properties.character.CharacterType;
  *
  */
 class XCSReader {
-	private CharacterData[] characters;
+	private Character[] characters;
 
 	public XCSReader(InputStream is, int numCharacters) throws IOException {
-		characters = new CharacterData[numCharacters];
+		characters = new Character[numCharacters];
 
 		// Read all bytes from a stream
 		byte[] bin;
@@ -33,7 +33,7 @@ class XCSReader {
 		int pos = 0x0000000C;
 
 		for (int i = 0; i < numCharacters; i++) {
-			var character = new CharacterData();
+			var character = new Character();
 
 			// Texture
 			int textureTypeSpc = getShortValueFromBinLE(bin, pos);
@@ -66,7 +66,7 @@ class XCSReader {
 		}
 	}
 
-	public CharacterData[] getCharacterData() {
+	public Character[] getCharacterData() {
 		return characters;
 	}
 }

@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon.xops;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 
 /**
  * BIN weapon manipulator
@@ -15,10 +15,10 @@ public class BINWeaponManipulator {
 	private Logger logger = LoggerFactory.getLogger(BINWeaponManipulator.class);
 
 	private static final int NUM_WEAPONS = 23;
-	private WeaponData[] weapons;
+	private Weapon[] weapons;
 
 	public BINWeaponManipulator() {
-		weapons = new WeaponData[NUM_WEAPONS];
+		weapons = new Weapon[NUM_WEAPONS];
 	}
 	public BINWeaponManipulator(byte[] bin, int dataStartPos, int nameStartPos) {
 		var reader = new BINWeaponReader(bin, NUM_WEAPONS, dataStartPos, nameStartPos);
@@ -30,7 +30,7 @@ public class BINWeaponManipulator {
 	 * 
 	 * @return Array containing weapon data
 	 */
-	public WeaponData[] getWeapons() {
+	public Weapon[] getWeapons() {
 		return weapons.clone();
 	}
 	/**
@@ -39,7 +39,7 @@ public class BINWeaponManipulator {
 	 * @param weapons
 	 *            Array containing weapon data
 	 */
-	public void setWeapons(WeaponData[] weapons) {
+	public void setWeapons(Weapon[] weapons) {
 		if (weapons == null) {
 			logger.warn("Null argument where non-null required");
 			return;

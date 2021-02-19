@@ -7,7 +7,7 @@ import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
 import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
@@ -18,7 +18,7 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  *
  */
 class BINWeaponWriter {
-	public void write(byte[] bin, WeaponData[] weapons, int dataStartPos, int nameStartPos) {
+	public void write(byte[] bin, Weapon[] weapons, int dataStartPos, int nameStartPos) {
 		int pos = dataStartPos;
 		int numWeapons = weapons.length;
 		for (int i = 0; i < numWeapons; i++) {

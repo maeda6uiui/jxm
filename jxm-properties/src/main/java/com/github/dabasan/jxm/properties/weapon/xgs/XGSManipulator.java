@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 
 /**
  * XGS manipulator
@@ -22,10 +22,10 @@ public class XGSManipulator {
 	private Logger logger = LoggerFactory.getLogger(XGSManipulator.class);
 
 	private static final int NUM_WEAPONS = 23;
-	private WeaponData[] weapons;
+	private Weapon[] weapons;
 
 	public XGSManipulator() {
-		weapons = new WeaponData[NUM_WEAPONS];
+		weapons = new Weapon[NUM_WEAPONS];
 	}
 	public XGSManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
@@ -50,7 +50,7 @@ public class XGSManipulator {
 	 * 
 	 * @return Array containing weapon data
 	 */
-	public WeaponData[] getWeapons() {
+	public Weapon[] getWeapons() {
 		return weapons.clone();
 	}
 	/**
@@ -59,7 +59,7 @@ public class XGSManipulator {
 	 * @param weapons
 	 *            Array containing weapon data
 	 */
-	public void setWeapons(WeaponData[] weapons) {
+	public void setWeapons(Weapon[] weapons) {
 		if (weapons == null) {
 			logger.warn("Null argument where non-null required");
 			return;

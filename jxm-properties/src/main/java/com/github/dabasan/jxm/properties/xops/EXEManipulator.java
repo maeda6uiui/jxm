@@ -10,9 +10,9 @@ import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.xops.BINCharacterManipulator;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.xops.BINWeaponManipulator;
 
 /**
@@ -155,7 +155,7 @@ public class EXEManipulator {
 	 * 
 	 * @return Array containing weapon data
 	 */
-	public WeaponData[] getWeapons() {
+	public Weapon[] getWeapons() {
 		return weaponManipulator.getWeapons();
 	}
 	/**
@@ -164,7 +164,7 @@ public class EXEManipulator {
 	 * @param weapons
 	 *            Array containing weapon data
 	 */
-	public void setWeapons(WeaponData[] weapons) {
+	public void setWeapons(Weapon[] weapons) {
 		weaponManipulator.setWeapons(weapons);
 	}
 	/**
@@ -172,7 +172,7 @@ public class EXEManipulator {
 	 * 
 	 * @return Array containing character data
 	 */
-	public CharacterData[] getCharacters() {
+	public Character[] getCharacters() {
 		return characterManipulator.getCharacters();
 	}
 	/**
@@ -181,7 +181,7 @@ public class EXEManipulator {
 	 * @param characters
 	 *            Array containing character data
 	 */
-	public void setCharacters(CharacterData[] characters) {
+	public void setCharacters(Character[] characters) {
 		characterManipulator.setCharacters(characters);
 	}
 

@@ -5,7 +5,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
 import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
@@ -16,14 +16,14 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  *
  */
 class BINWeaponReader {
-	private WeaponData[] weapons;
+	private Weapon[] weapons;
 
 	public BINWeaponReader(byte[] bin, int numWeapons, int dataStartPos, int nameStartPos) {
-		weapons = new WeaponData[numWeapons];
+		weapons = new Weapon[numWeapons];
 
 		int pos = dataStartPos;
 		for (int i = 0; i < numWeapons; i++) {
-			var weapon = new WeaponData();
+			var weapon = new Weapon();
 
 			// Attacks
 			weapon.attacks = getShortValueFromBinLE(bin, pos);
@@ -169,7 +169,7 @@ class BINWeaponReader {
 		return name.substring(0, firstNullPos);
 	}
 
-	public WeaponData[] getWeaponData() {
+	public Weapon[] getWeaponData() {
 		return weapons;
 	}
 }

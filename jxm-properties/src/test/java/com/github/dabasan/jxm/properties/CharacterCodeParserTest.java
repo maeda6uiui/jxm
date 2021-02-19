@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeParser;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 
@@ -38,7 +38,7 @@ public class CharacterCodeParserTest {
 			return;
 		}
 
-		Map<Integer, CharacterData> characters = parser.parse(lines);
+		Map<Integer, Character> characters = parser.parse(lines);
 		for (var entry : characters.entrySet()) {
 			System.out.println(entry.getKey());
 			System.out.println(entry.getValue());

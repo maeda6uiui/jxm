@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeGenerator;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
@@ -36,7 +36,7 @@ public class CharacterCodeGeneratorTest {
 			return;
 		}
 
-		CharacterData[] characters = xcsManipulator.getCharacters();
+		Character[] characters = xcsManipulator.getCharacters();
 		String code = generator.generate(Arrays.asList(characters));
 		System.out.println(code);
 	}

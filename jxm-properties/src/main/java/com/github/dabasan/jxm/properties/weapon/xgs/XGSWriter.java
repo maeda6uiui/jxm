@@ -13,7 +13,7 @@ import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
 import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
@@ -24,7 +24,7 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  *
  */
 class XGSWriter {
-	public void write(OutputStream os, WeaponData[] weapons) throws IOException {
+	public void write(OutputStream os, Weapon[] weapons) throws IOException {
 		var bin = new ArrayList<Byte>();
 
 		bin.add((byte) 0x58);// X

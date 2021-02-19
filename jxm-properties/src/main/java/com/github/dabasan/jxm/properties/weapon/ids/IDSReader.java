@@ -9,7 +9,7 @@ import java.io.InputStream;
 import com.github.dabasan.jxm.properties.weapon.ModelFilepaths;
 import com.github.dabasan.jxm.properties.weapon.TextureFilepaths;
 import com.github.dabasan.jxm.properties.weapon.WeaponBinEnumConverter;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.WeaponModelType;
 import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
 
@@ -20,10 +20,10 @@ import com.github.dabasan.jxm.properties.weapon.WeaponTextureType;
  *
  */
 class IDSReader {
-	private WeaponData weapon;
+	private Weapon weapon;
 
 	public IDSReader(InputStream is) throws IOException {
-		weapon = new WeaponData();
+		weapon = new Weapon();
 
 		// Read all bytes from a stream
 		byte[] bin;
@@ -155,7 +155,7 @@ class IDSReader {
 		return name.substring(0, firstNullPos);
 	}
 
-	public WeaponData getWeaponData() {
+	public Weapon getWeaponData() {
 		return weapon;
 	}
 }

@@ -10,7 +10,7 @@ import java.io.OutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 
 /**
  * XCS manipulator
@@ -22,10 +22,10 @@ public class XCSManipulator {
 	private Logger logger = LoggerFactory.getLogger(XCSManipulator.class);
 
 	private static final int NUM_CHARACTERS = 43;
-	private CharacterData[] characters;
+	private Character[] characters;
 
 	public XCSManipulator() {
-		characters = new CharacterData[NUM_CHARACTERS];
+		characters = new Character[NUM_CHARACTERS];
 	}
 	public XCSManipulator(InputStream is) throws IOException {
 		this.readConstructorBase(is);
@@ -50,7 +50,7 @@ public class XCSManipulator {
 	 * 
 	 * @return Array containing character data
 	 */
-	public CharacterData[] getCharacters() {
+	public Character[] getCharacters() {
 		return characters.clone();
 	}
 	/**
@@ -59,7 +59,7 @@ public class XCSManipulator {
 	 * @param characters
 	 *            Array containing character data
 	 */
-	public void setCharacters(CharacterData[] characters) {
+	public void setCharacters(Character[] characters) {
 		if (characters == null) {
 			logger.warn("Null argument where non-null required");
 			return;

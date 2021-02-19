@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringParser;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
-import com.github.dabasan.jxm.properties.weapon.WeaponData;
+import com.github.dabasan.jxm.properties.weapon.Weapon;
 
 /**
  * Parses C++ code containing weapon data.
@@ -37,8 +37,8 @@ public class WeaponCodeParser {
 	 *            Code
 	 * @return Map containing weapon data
 	 */
-	public Map<Integer, WeaponData> parse(List<String> code) {
-		var ret = new HashMap<Integer, WeaponData>();
+	public Map<Integer, Weapon> parse(List<String> code) {
+		var ret = new HashMap<Integer, Weapon>();
 
 		for (int i = 0; i < code.size(); i++) {
 			var line = code.get(i);
@@ -58,7 +58,7 @@ public class WeaponCodeParser {
 			}
 
 			if (ret.containsKey(arrayIndex) == false) {
-				var weapon = new WeaponData();
+				var weapon = new Weapon();
 				ret.put(arrayIndex, weapon);
 			}
 			var weapon = ret.get(arrayIndex);

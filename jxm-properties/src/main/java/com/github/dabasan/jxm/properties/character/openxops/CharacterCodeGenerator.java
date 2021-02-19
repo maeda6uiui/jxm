@@ -2,7 +2,7 @@ package com.github.dabasan.jxm.properties.character.openxops;
 
 import java.util.List;
 
-import com.github.dabasan.jxm.properties.character.CharacterData;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringGenerator;
 
 /**
@@ -28,7 +28,7 @@ public class CharacterCodeGenerator {
 	 *            List containing character data
 	 * @return Code
 	 */
-	public String generate(List<CharacterData> characters) {
+	public String generate(List<Character> characters) {
 		var sb = new StringBuilder();
 		for (int i = 0; i < characters.size(); i++) {
 			var character = characters.get(i);
