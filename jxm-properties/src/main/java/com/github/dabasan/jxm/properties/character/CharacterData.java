@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.properties.character;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class CharacterData {
 		model = CharacterModelType.MALE;
 		hp = 100;
 		aiLevel = AILevel.D;
-		weapons = new ArrayList<>();
+		weapons = new ArrayList<>(Arrays.asList(0, 0));
 		type = CharacterType.HUMAN;
 	}
 
