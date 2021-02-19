@@ -16,19 +16,21 @@ public class BD1Block {
 	public boolean enabled;
 
 	public BD1Block() {
-		vertexPositions = new Vector3fc[8];
-		uvs = new UV[24];
-		textureIDs = new int[6];
 
+	}
+	public BD1Block(BD1Block block) {
+		vertexPositions = new Vector3fc[8];
 		for (int i = 0; i < 8; i++) {
-			vertexPositions[i] = new Vector3f();
+			vertexPositions[i] = new Vector3f(block.vertexPositions[i]);
 		}
+
+		uvs = new UV[24];
 		for (int i = 0; i < 24; i++) {
-			uvs[i] = new UV();
+			uvs[i] = new UV(block.uvs[i]);
 		}
-		for (int i = 0; i < 6; i++) {
-			textureIDs[i] = 0;
-		}
-		enabled = true;
+
+		textureIDs = block.textureIDs.clone();
+
+		enabled = block.enabled;
 	}
 }
