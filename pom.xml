@@ -9,7 +9,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jxm</name>
-	<description>JXM is a set of utility modules for material relating to X operations.</description>
+	<description>JXM is a set of utility modules to handle material for X operations.</description>
 	<url>https://github.com/Dabasan/jxm</url>
 
 	<licenses>
