@@ -2,7 +2,9 @@ package com.github.dabasan.jxm.bd1;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.joml.Matrix4f;
 
@@ -13,7 +15,7 @@ import org.joml.Matrix4f;
  *
  */
 public class BD1ManipulatorTest {
-	private final String TARGET_DIR = "./Data/Mission";
+	private final String TARGET_DIR = "./Data/SnowBase";
 	private BD1Manipulator manipulator;
 
 	public static void main(String[] args) {
@@ -26,6 +28,7 @@ public class BD1ManipulatorTest {
 			manipulator = new BD1Manipulator(srcFilepath);
 		} catch (IOException e) {
 			e.printStackTrace();
+			return;
 		}
 
 		this.printNumBlocks();
@@ -46,6 +49,8 @@ public class BD1ManipulatorTest {
 		System.out.println(manipulator.getNumBlocks());
 	}
 	private void printTextureFilenames() {
+		Map<Integer, String> origTextureFilenames = manipulator.getTextureFilenames();
+
 		System.out.println("#Texture filenames");
 		System.out.println("##getTextureFilename()");
 		for (int i = 0; i < 10; i++) {
@@ -70,6 +75,8 @@ public class BD1ManipulatorTest {
 		}
 		manipulator.setTextureFilenames(textureFilenames);
 		manipulator.getTextureFilenames().forEach((k, v) -> System.out.println(k + ": " + v));
+
+		manipulator.setTextureFilenames(origTextureFilenames);
 	}
 
 	private void createTransform() {
@@ -135,13 +142,16 @@ public class BD1ManipulatorTest {
 	private void createRot() {
 		System.out.println("#rot()");
 
+		var origBlocks = new ArrayList<BD1Block>();
+		manipulator.getBlocks().forEach(b -> origBlocks.add(new BD1Block(b)));
+
 		float amount = (float) Math.PI / 4.0f;
 		manipulator.rot(amount, 1.0f, 1.0f, 1.0f);
 
 		var saveFilepath = Paths.get(TARGET_DIR, "rot.bd1").toString();
 		manipulator.saveAsBD1(saveFilepath);
 
-		manipulator.rot(-amount, 1.0f, 1.0f, 1.0f);
+		manipulator.setBlocks(origBlocks);
 	}
 	private void createRescale() {
 		System.out.println("#rescale()");
