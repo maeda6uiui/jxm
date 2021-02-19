@@ -21,7 +21,7 @@ public class ConfigManipulatorTest {
 	}
 
 	public ConfigManipulatorTest() {
-		var srcFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
+		var srcFilepath = Paths.get(TARGET_DIR, "config_src.dat").toString();
 		try {
 			manipulator = new ConfigManipulator(srcFilepath);
 		} catch (IOException e) {
@@ -42,13 +42,14 @@ public class ConfigManipulatorTest {
 		manipulator.getConfig().moveForward = KeyCode.KEY_ENTER;
 		manipulator.getConfig().brightness = 1000;
 		manipulator.getConfig().enableSound = false;
+		manipulator.getConfig().name = "Test";
 
 		System.out.println(manipulator.getConfig());
 	}
 	private void saveAsDAT() {
 		System.out.println("#saveAsDAT()");
 
-		var saveFilepath = Paths.get(TARGET_DIR, "config_2.dat").toString();
+		var saveFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
 		manipulator.saveAsDAT(saveFilepath);
 	}
 }
