@@ -74,6 +74,46 @@ public class Weapon {
 		changeWeapon = -1;
 		burst = 1;
 	}
+	/**
+	 * Copies a weapon.
+	 * 
+	 * @param weapon
+	 *            Weapon
+	 */
+	public Weapon(Weapon weapon) {
+		this.name = weapon.name;
+		this.model = weapon.model;
+		this.texture = weapon.texture;
+		this.attacks = weapon.attacks;
+		this.penetration = weapon.penetration;
+		this.blazings = weapon.blazings;
+		this.speed = weapon.speed;
+		this.nbsMax = weapon.nbsMax;
+		this.reloads = weapon.reloads;
+		this.reaction = weapon.reaction;
+		this.errorRangeMin = weapon.errorRangeMin;
+		this.errorRangeMax = weapon.errorRangeMax;
+		this.modelPositionX = weapon.modelPositionX;
+		this.modelPositionY = weapon.modelPositionY;
+		this.modelPositionZ = weapon.modelPositionZ;
+		this.flashPositionX = weapon.flashPositionX;
+		this.flashPositionY = weapon.flashPositionY;
+		this.flashPositionZ = weapon.flashPositionZ;
+		this.yakkyouPositionX = weapon.yakkyouPositionX;
+		this.yakkyouPositionY = weapon.yakkyouPositionY;
+		this.yakkyouPositionZ = weapon.yakkyouPositionZ;
+		this.yakkyouSpeedX = weapon.yakkyouSpeedX;
+		this.yakkyouSpeedY = weapon.yakkyouSpeedY;
+		this.blazingMode = weapon.blazingMode;
+		this.scopeMode = weapon.scopeMode;
+		this.size = weapon.size;
+		this.soundID = weapon.soundID;
+		this.soundVolume = weapon.soundVolume;
+		this.silencer = weapon.silencer;
+		this.weaponP = weapon.weaponP;
+		this.changeWeapon = weapon.changeWeapon;
+		this.burst = weapon.burst;
+	}
 
 	@Override
 	public String toString() {

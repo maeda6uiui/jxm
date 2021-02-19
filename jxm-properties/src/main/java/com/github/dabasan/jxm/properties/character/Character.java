@@ -26,6 +26,20 @@ public class Character {
 		weapons = new ArrayList<>(Arrays.asList(0, 0));
 		type = CharacterType.HUMAN;
 	}
+	/**
+	 * Copies a character.
+	 * 
+	 * @param character
+	 *            Character
+	 */
+	public Character(Character character) {
+		this.texture = character.texture;
+		this.model = character.model;
+		this.hp = character.hp;
+		this.aiLevel = character.aiLevel;
+		this.weapons = new ArrayList<>(character.weapons);
+		this.type = character.type;
+	}
 
 	@Override
 	public String toString() {

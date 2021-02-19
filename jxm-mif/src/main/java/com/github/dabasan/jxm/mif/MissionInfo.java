@@ -35,6 +35,25 @@ public class MissionInfo {
 		pathnameOfImage2 = "!";
 		briefingText = new ArrayList<>();
 	}
+	/**
+	 * Copies mission info.
+	 * 
+	 * @param mif
+	 *            Mission info
+	 */
+	public MissionInfo(MissionInfo mif) {
+		this.missionTitle = mif.missionTitle;
+		this.missionFullname = mif.missionFullname;
+		this.pathnameOfBlock = mif.pathnameOfBlock;
+		this.pathnameOfPoint = mif.pathnameOfPoint;
+		this.skyType = mif.skyType;
+		this.extraCollision = mif.extraCollision;
+		this.darkScreen = mif.darkScreen;
+		this.pathnameOfObj = mif.pathnameOfObj;
+		this.pathnameOfImage1 = mif.pathnameOfImage1;
+		this.pathnameOfImage2 = mif.pathnameOfImage2;
+		this.briefingText = new ArrayList<>(mif.briefingText);
+	}
 
 	@Override
 	public String toString() {

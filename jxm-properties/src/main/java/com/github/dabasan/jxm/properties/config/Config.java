@@ -40,6 +40,42 @@ public class Config {
 	public Config() {
 		this.reset();
 	}
+	/**
+	 * Copies a config.
+	 * 
+	 * @param config
+	 *            Config
+	 */
+	public Config(Config config) {
+		this.turnUp = config.turnUp;
+		this.turnDown = config.turnDown;
+		this.turnLeft = config.turnLeft;
+		this.turnRight = config.turnRight;
+		this.moveForward = config.moveForward;
+		this.moveBackward = config.moveBackward;
+		this.moveLeft = config.moveLeft;
+		this.moveRight = config.moveRight;
+		this.walk = config.walk;
+		this.jump = config.jump;
+		this.reload = config.reload;
+		this.dropWeapon = config.dropWeapon;
+		this.zoom = config.zoom;
+		this.fireMode = config.fireMode;
+		this.switchWeapon = config.switchWeapon;
+		this.weapon1 = config.weapon1;
+		this.weapon2 = config.weapon2;
+		this.fire = config.fire;
+		this.mouseSensitivity = config.mouseSensitivity;
+		this.brightness = config.brightness;
+		this.windowMode = config.windowMode;
+		this.enableSound = config.enableSound;
+		this.enableBlood = config.enableBlood;
+		this.invertMouse = config.invertMouse;
+		this.frameSkip = config.frameSkip;
+		this.anotherGunsight = config.anotherGunsight;
+		this.name = config.name;
+	}
+
 	public void reset() {
 		// Key code
 		turnUp = KeyCode.KEY_UP;
