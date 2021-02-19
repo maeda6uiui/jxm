@@ -82,13 +82,13 @@ class BD1BufferGenerator {
 			normBuffer.flip();
 
 			var buffer = new BD1Buffer();
-			buffer.setIndexBuffer(indexBuffer);
-			buffer.setPosBuffer(posBuffer);
-			buffer.setUVBuffer(uvBuffer);
-			buffer.setNormBuffer(normBuffer);
+			buffer.indexBuffer = indexBuffer;
+			buffer.posBuffer = posBuffer;
+			buffer.uvBuffer = uvBuffer;
+			buffer.normBuffer = normBuffer;
 
 			int textureID = entry.getKey();
-			buffer.setTextureID(textureID);
+			buffer.textureID = textureID;
 
 			buffers.add(buffer);
 		}
