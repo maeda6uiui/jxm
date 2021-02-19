@@ -244,7 +244,7 @@ public class PD1Manipulator {
 			point.position = position;
 
 			float rotation = point.rotation;
-			rotation *= (-1.0);
+			rotation *= (-1.0f);
 			rotation += (float) Math.PI;
 			point.rotation = rotation;
 		}
