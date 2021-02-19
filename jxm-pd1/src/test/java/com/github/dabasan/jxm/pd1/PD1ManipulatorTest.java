@@ -2,6 +2,7 @@ package com.github.dabasan.jxm.pd1;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import org.joml.Matrix4f;
 
@@ -12,7 +13,7 @@ import org.joml.Matrix4f;
  *
  */
 public class PD1ManipulatorTest {
-	private final String TARGET_DIR = "./Data/Mission";
+	private final String TARGET_DIR = "./Data";
 	private PD1Manipulator manipulator;
 
 	public static void main(String[] args) {
@@ -110,13 +111,16 @@ public class PD1ManipulatorTest {
 	private void createRot() {
 		System.out.println("#rot()");
 
+		var origPoints = new ArrayList<PD1Point>();
+		manipulator.getPoints().forEach(p -> origPoints.add(new PD1Point(p)));
+
 		float amount = (float) Math.PI / 4.0f;
 		manipulator.rot(amount, 1.0f, 1.0f, 1.0f);
 
 		var saveFilepath = Paths.get(TARGET_DIR, "rot.pd1").toString();
 		manipulator.saveAsPD1(saveFilepath);
 
-		manipulator.rot(-amount, 1.0f, 1.0f, 1.0f);
+		manipulator.setPoints(origPoints);
 	}
 	private void createRescale() {
 		System.out.println("#rescale()");
@@ -142,7 +146,7 @@ public class PD1ManipulatorTest {
 		manipulator.invertZ();
 	}
 	private void createRotateDirection() {
-		System.out.println("#rotateDirection");
+		System.out.println("#rotateDirection()");
 
 		float amount = (float) Math.PI / 4.0f;
 		manipulator.rotateDirection(amount);
