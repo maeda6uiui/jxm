@@ -14,22 +14,11 @@ public class PD1Point {
 	public float rotation;
 	public int[] parameters;
 
-	/**
-	 * Creates a point.
-	 */
 	public PD1Point() {
-		position = new Vector3f();
-		rotation = 0.0f;
-		parameters = new int[]{0, 0, 0, 0};
+
 	}
-	/**
-	 * Creates a point from a PD1Point instance.
-	 * 
-	 * @param point
-	 *            PD1Point
-	 */
 	public PD1Point(PD1Point point) {
-		this.position = point.position;
+		this.position = new Vector3f(point.position);
 		this.rotation = point.rotation;
 		this.parameters = point.parameters.clone();
 	}
