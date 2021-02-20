@@ -2,15 +2,15 @@
 
 **JXM (Java XOPSManipulator)**はX operationsに関連するデータを操作するためのJavaライブラリです。
 
-# 必要環境
+## 必要環境
 
 Java ≥ 11
 
-# インストール
+## インストール
 
-## Maven
+### Maven
 
-### BD1モジュール
+#### BD1モジュール
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -18,7 +18,7 @@ Java ≥ 11
 <version>1.0.0-rc1</version>
 ```
 
-### MIFモジュール
+#### MIFモジュール
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -26,7 +26,7 @@ Java ≥ 11
 <version>1.0.0-rc1</version>
 ```
 
-### PD1モジュール
+#### PD1モジュール
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -34,7 +34,7 @@ Java ≥ 11
 <version>1.0.0-rc1</version>
 ```
 
-### Propertiesモジュール
+#### Propertiesモジュール
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -42,7 +42,7 @@ Java ≥ 11
 <version>1.0.0-rc1</version>
 ```
 
-# 使用例
+## 使用例
 
 ```java
 import java.io.IOException;
@@ -76,7 +76,7 @@ public class ReadmeSample {
 		manipulator.translate(0.0f, 100.0f, 0.0f).rotY((float) Math.toRadians(45)).rescale(1.0f,
 				2.0f, 1.0f);
 
-		// Z軸反転 (鏡像マップの作成)
+		// Z軸反転(鏡像マップの作成)
 		manipulator.invertZ();
 
 		// BD1形式で保存する
@@ -88,7 +88,7 @@ public class ReadmeSample {
 }
 ```
 
-# サンプルコード
+## サンプルコード
 
 サンプルコードは[jxm-samples](https://github.com/Dabasan/jxm-samples-v1)を参照してください。
 
