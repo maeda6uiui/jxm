@@ -1,8 +1,6 @@
 # jxm
 
-**Java XOPSManipulator**
-
-XOPSに関する色々なことを操作するためのJavaライブラリです。
+**JXM (Java XOPSManipulator)**はX operationsに関連するデータを操作するためのJavaライブラリです。
 
 # 必要環境
 
