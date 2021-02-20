@@ -15,7 +15,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>0.0.1</version>
+<version>1.0.0-rc1</version>
 ```
 
 ### MIFモジュール
@@ -23,7 +23,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>0.0.1</version>
+<version>1.0.0-rc1</version>
 ```
 
 ### PD1モジュール
@@ -31,7 +31,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>0.0.1</version>
+<version>1.0.0-rc1</version>
 ```
 
 ### Propertiesモジュール
@@ -39,23 +39,19 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>0.0.1</version>
+<version>1.0.0-rc1</version>
 ```
 
 # 使用例
 
 ```java
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
-import com.github.dabasan.jxm.bd1.BD1Block;
 import com.github.dabasan.jxm.bd1.BD1Manipulator;
 
-public class BD1ManipulatorSample {
+public class ReadmeSample {
 	public static void main(String[] args) {
-		// BD1ファイルを読み込む。
+		// BD1ファイルを読み込む
 		BD1Manipulator manipulator;
 		try {
 			manipulator = new BD1Manipulator("./Data/map.bd1");
@@ -64,30 +60,29 @@ public class BD1ManipulatorSample {
 			return;
 		}
 
-		// ブロックの数を取得する。
+		// ブロックの数を取得する
 		int numBlocks = manipulator.getNumBlocks();
 		System.out.println(numBlocks);
 
-		// テクスチャのファイル名をすべて取得する。
-		Map<Integer, String> textureFilenames = manipulator.getTextureFilenames();
-		for (var entry : textureFilenames.entrySet()) {
-			System.out.printf("%d: %s\n", entry.getKey(), entry.getValue());
-		}
+		// テクスチャのファイル名をすべて取得する
+		manipulator.getTextureFilenames().forEach((k, v) -> System.out.printf("%d: %s\n", k, v));
 
-		// テクスチャのファイル名を変更する。
+		// テクスチャのファイル名を変更する
 		manipulator.setTextureFilename(0, "test.bmp");
+		manipulator.setTextureFilename(1, "test_2.bmp");
 
-		// マップを操作する。
+		// マップを操作する
 		// ここでは、移動→Y軸回りの回転→スケールの変更
-		manipulator.translate(0.0, 100.0, 0.0).rotY(Math.PI / 4.0).rescale(1.0, 2.0, 1.0);
+		manipulator.translate(0.0f, 100.0f, 0.0f).rotY((float) Math.toRadians(45)).rescale(1.0f,
+				2.0f, 1.0f);
 
 		// Z軸反転 (鏡像マップの作成)
 		manipulator.invertZ();
 
-		// BD1形式で保存する。
+		// BD1形式で保存する
 		manipulator.saveAsBD1("./Data/map2.bd1");
 
-		// OBJ形式で保存する。
+		// OBJ形式で保存する
 		manipulator.saveAsOBJ("./Data/map2.obj", "./Data/map2.mtl", "map2.mtl", true);
 	}
 }
@@ -95,5 +90,5 @@ public class BD1ManipulatorSample {
 
 # サンプルコード
 
-サンプルコードは[jxm-samples](https://github.com/Dabasan/jxm-samples)を参照してください。
+サンプルコードは[jxm-samples](https://github.com/Dabasan/jxm-samples-v1)を参照してください。
 
