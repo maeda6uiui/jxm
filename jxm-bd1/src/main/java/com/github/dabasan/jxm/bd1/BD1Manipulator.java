@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class BD1Manipulator {
-	private Logger logger = LoggerFactory.getLogger(BD1Manipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private List<BD1Block> blocks;
 	private Map<Integer, String> textureFilenames;

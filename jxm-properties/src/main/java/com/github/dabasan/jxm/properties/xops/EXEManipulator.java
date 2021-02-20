@@ -22,7 +22,7 @@ import com.github.dabasan.jxm.properties.weapon.xops.BINWeaponManipulator;
  *
  */
 public class EXEManipulator {
-	private Logger logger = LoggerFactory.getLogger(EXEManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private XOPSVersion srcXOPSVersion;
 	private BINWeaponManipulator weaponManipulator;

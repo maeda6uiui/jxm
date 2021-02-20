@@ -12,7 +12,7 @@ import com.github.dabasan.jxm.properties.character.Character;
  *
  */
 public class BINCharacterManipulator {
-	private Logger logger = LoggerFactory.getLogger(BINCharacterManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final int NUM_CHARACTERS = 43;
 	private Character[] characters;

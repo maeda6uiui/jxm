@@ -12,7 +12,7 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
  *
  */
 public class BINWeaponManipulator {
-	private Logger logger = LoggerFactory.getLogger(BINWeaponManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final int NUM_WEAPONS = 23;
 	private Weapon[] weapons;

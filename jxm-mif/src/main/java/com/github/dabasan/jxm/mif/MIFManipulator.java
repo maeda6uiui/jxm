@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class MIFManipulator {
-	private Logger logger = LoggerFactory.getLogger(MIFManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private MissionInfo missionInfo;
 

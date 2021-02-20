@@ -19,7 +19,7 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
  *
  */
 public class XGSManipulator {
-	private Logger logger = LoggerFactory.getLogger(XGSManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final int NUM_WEAPONS = 23;
 	private Weapon[] weapons;

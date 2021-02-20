@@ -21,7 +21,7 @@ import com.github.dabasan.jxm.properties.util.CPPArrayStringParser;
  *
  */
 public class CharacterCodeParser {
-	private Logger logger = LoggerFactory.getLogger(CharacterCodeParser.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private CharacterVariableNameSettings settings;
 

@@ -19,7 +19,7 @@ import com.github.dabasan.jxm.properties.character.Character;
  *
  */
 public class XCSManipulator {
-	private Logger logger = LoggerFactory.getLogger(XCSManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private static final int NUM_CHARACTERS = 43;
 	private Character[] characters;

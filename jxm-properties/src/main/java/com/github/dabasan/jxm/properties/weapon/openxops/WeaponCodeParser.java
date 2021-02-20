@@ -19,7 +19,7 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
  *
  */
 public class WeaponCodeParser {
-	private Logger logger = LoggerFactory.getLogger(WeaponCodeParser.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private WeaponVariableNameSettings settings;
 

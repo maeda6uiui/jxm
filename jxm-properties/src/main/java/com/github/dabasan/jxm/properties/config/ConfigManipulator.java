@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class ConfigManipulator {
-	private Logger logger = LoggerFactory.getLogger(ConfigManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private Config config;
 

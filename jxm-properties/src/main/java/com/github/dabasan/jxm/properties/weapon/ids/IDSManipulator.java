@@ -19,7 +19,7 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
  *
  */
 public class IDSManipulator {
-	private Logger logger = LoggerFactory.getLogger(IDSManipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private Weapon weapon;
 

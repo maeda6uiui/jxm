@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class PD1Manipulator {
-	private Logger logger = LoggerFactory.getLogger(PD1Manipulator.class);
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	private List<PD1Point> points;
 
