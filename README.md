@@ -1,6 +1,6 @@
 # jxm
 
-**JXM (Java XOPSManipulator)**はX operationsに関連するデータを操作するためのJavaライブラリです。
+**JXM (Java XOPSManipulator)** はX operationsに関連するデータを操作するためのJavaライブラリです。
 
 ## 必要環境
 
@@ -80,15 +80,15 @@ public class ReadmeSample {
 		manipulator.invertZ();
 
 		// BD1形式で保存する
-		manipulator.saveAsBD1("./Data/map2.bd1");
+		manipulator.saveAsBD1("./Data/map_2.bd1");
 
 		// OBJ形式で保存する
-		manipulator.saveAsOBJ("./Data/map2.obj", "./Data/map2.mtl", "map2.mtl", true);
+		manipulator.saveAsOBJ("./Data/map_2.obj", "./Data/map_2.mtl", "map_2.mtl", true);
 	}
 }
 ```
 
 ## サンプルコード
 
-サンプルコードは[jxm-samples](https://github.com/Dabasan/jxm-samples-v1)を参照してください。
+サンプルコードは[jxm-samples-v1](https://github.com/Dabasan/jxm-samples-v1)を参照してください。
 
