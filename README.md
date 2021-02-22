@@ -1,4 +1,4 @@
-# jxm
+# JXM
 
 **JXM (Java XOPSManipulator)** はX operationsに関連するデータを操作するためのJavaライブラリです。
 
@@ -91,4 +91,11 @@ public class ReadmeSample {
 ## サンプルコード
 
 サンプルコードは[jxm-samples-v1](https://github.com/Dabasan/jxm-samples-v1)を参照してください。
+
+## JXMを使用したプログラム
+
+- [BD1ToOBJ](https://github.com/Dabasan/BD1ToOBJ)
+  BD1形式のモデルをOBJ形式に変換します。
+- [MPSY](https://github.com/Dabasan/MPSY)
+  XOPSのマップとポイントに対して拡大や回転などの処理を行います。
 
