@@ -55,9 +55,9 @@ class BD1FaceGenerator {
 					faceUVs[j] = uvs[uvIndices[j]];
 				}
 
-				faces[i].setVertexPositions(faceVertexPositions);
-				faces[i].setUVs(faceUVs);
-				faces[i].setNormal(normals[i]);
+				faces[i].vertexPositions = faceVertexPositions;
+				faces[i].uvs = faceUVs;
+				faces[i].normal = normals[i];
 			}
 
 			for (int i = 0; i < 6; i++) {

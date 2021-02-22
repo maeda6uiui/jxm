@@ -10,9 +10,9 @@ import org.joml.Vector3fc;
  *
  */
 class BD1Face {
-	private Vector3fc[] vertexPositions;
-	private Vector3fc normal;
-	private UV[] uvs;
+	public Vector3fc[] vertexPositions;
+	public Vector3fc normal;
+	public UV[] uvs;
 
 	public BD1Face() {
 		vertexPositions = new Vector3fc[4];
@@ -23,25 +23,5 @@ class BD1Face {
 			vertexPositions[i] = new Vector3f();
 			uvs[i] = new UV();
 		}
-	}
-
-	public Vector3fc[] getVertexPositions() {
-		return vertexPositions;
-	}
-	public Vector3fc getNormal() {
-		return normal;
-	}
-	public UV[] getUVs() {
-		return uvs;
-	}
-
-	public void setVertexPositions(Vector3fc[] vertexPositions) {
-		this.vertexPositions = vertexPositions;
-	}
-	public void setNormal(Vector3fc normal) {
-		this.normal = normal;
-	}
-	public void setUVs(UV[] uvs) {
-		this.uvs = uvs;
 	}
 }

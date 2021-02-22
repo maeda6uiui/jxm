@@ -63,9 +63,9 @@ class BD1OBJWriter {
 
 			var faces = entry.getValue();
 			for (var face : faces) {
-				Vector3fc[] vertexPositions = face.getVertexPositions();
-				UV[] uvs = face.getUVs();
-				Vector3fc normal = face.getNormal();
+				Vector3fc[] vertexPositions = face.vertexPositions;
+				UV[] uvs = face.uvs;
+				Vector3fc normal = face.normal;
 
 				for (int i = 3; i >= 0; i--) {
 					obj.addVertex(vertexPositions[i].x(), vertexPositions[i].y(),
