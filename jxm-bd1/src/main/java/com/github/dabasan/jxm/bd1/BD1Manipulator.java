@@ -286,24 +286,17 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator invertZ() {
 		for (var block : blocks) {
-			Vector3f[] vertexPositions = block.vertexPositions;
 			for (int i = 0; i < 8; i++) {
-				var vertexPosition = new Vector3f(vertexPositions[i].x(), vertexPositions[i].y(),
-						vertexPositions[i].z() * (-1.0f));
-				vertexPositions[i] = vertexPosition;
+				block.vertexPositions[i].z *= (-1.0f);
 			}
-
-			block.vertexPositions = vertexPositions;
 		}
 
 		for (var block : blocks) {
 			// Vertex positions
-			Vector3f[] vertexPositions = block.vertexPositions;
-
 			// Copy original vertex positions
 			var origVertexPositions = new Vector3f[8];
 			for (int i = 0; i < 8; i++) {
-				origVertexPositions[i] = new Vector3f(vertexPositions[i]);
+				origVertexPositions[i] = new Vector3f(block.vertexPositions[i]);
 			}
 
 			// Reverse the order of the vertices
