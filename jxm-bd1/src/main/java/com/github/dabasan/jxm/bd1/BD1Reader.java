@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.joml.Vector3f;
-
 /**
  * BD1 reader
  * 
@@ -69,61 +67,34 @@ class BD1Reader {
 			var block = new BD1Block();
 
 			// Vertex positions
-			float[] vertexPositionXs = new float[8];
-			float[] vertexPositionYs = new float[8];
-			float[] vertexPositionZs = new float[8];
-
 			for (int j = 0; j < 8; j++) {
-				vertexPositionXs[j] = getFloatValueFromBinLE(bin, pos);
+				block.vertexPositions[j].x = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 8; j++) {
-				vertexPositionYs[j] = getFloatValueFromBinLE(bin, pos);
+				block.vertexPositions[j].y = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 8; j++) {
-				vertexPositionZs[j] = getFloatValueFromBinLE(bin, pos);
+				block.vertexPositions[j].z = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
-
-			var vertexPositions = new Vector3f[8];
-			for (int j = 0; j < 8; j++) {
-				vertexPositions[j] = new Vector3f(vertexPositionXs[j], vertexPositionYs[j],
-						vertexPositionZs[j]);
-			}
-
-			block.vertexPositions = vertexPositions;
 
 			// UVs
-			float[] us = new float[24];
-			float[] vs = new float[24];
-
 			for (int j = 0; j < 24; j++) {
-				us[j] = getFloatValueFromBinLE(bin, pos);
+				block.uvs[j].u = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 24; j++) {
-				vs[j] = getFloatValueFromBinLE(bin, pos);
+				block.uvs[j].v = getFloatValueFromBinLE(bin, pos);
 				pos += 4;
 			}
-
-			var uvs = new UV[24];
-			for (int j = 0; j < 24; j++) {
-				var uv = new UV(us[j], vs[j]);
-				uvs[j] = uv;
-			}
-
-			block.uvs = uvs;
 
 			// Texture IDs
-			int[] textureIDs = new int[6];
-
 			for (int j = 0; j < 6; j++) {
-				textureIDs[j] = Byte.toUnsignedInt(bin[pos]);
+				block.textureIDs[j] = Byte.toUnsignedInt(bin[pos]);
 				pos += 4;
 			}
-
-			block.textureIDs = textureIDs;
 
 			// Enabled flag
 			int enabled = Byte.toUnsignedInt(bin[pos]);
