@@ -14,7 +14,6 @@ import java.util.Map;
 import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
-import org.joml.Vector4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -179,15 +178,10 @@ public class BD1Manipulator {
 		for (var block : blocks) {
 			Vector3f[] vertexPositions = block.vertexPositions;
 			for (int i = 0; i < vertexPositions.length; i++) {
-				var vertexPosition4f = new Vector4f(vertexPositions[i].x(), vertexPositions[i].y(),
-						vertexPositions[i].z(), 1.0f);
-				vertexPosition4f = mat.transform(vertexPosition4f);
-
-				vertexPositions[i] = new Vector3f(vertexPosition4f.x(), vertexPosition4f.y(),
-						vertexPosition4f.z());
+				vertexPositions[i] = mat.transformPosition(vertexPositions[i]);
 			}
 
-			block.vertexPositions = vertexPositions;
+			// block.vertexPositions = vertexPositions;
 		}
 
 		return this;
