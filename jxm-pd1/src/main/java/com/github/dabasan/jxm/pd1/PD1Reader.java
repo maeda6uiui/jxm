@@ -8,8 +8,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.joml.Vector3f;
-
 /**
  * PD1 reader
  * 
@@ -39,27 +37,22 @@ class PD1Reader {
 			var point = new PD1Point();
 
 			// Point position
-			float positionX = getFloatValueFromBinLE(bin, pos);
+			point.position.x = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-			float positionY = getFloatValueFromBinLE(bin, pos);
+			point.position.y = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-			float positionZ = getFloatValueFromBinLE(bin, pos);
+			point.position.z = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-			point.position = new Vector3f(positionX, positionY, positionZ);
 
 			// Rotation
-			float rotation = getFloatValueFromBinLE(bin, pos);
+			point.rotation = getFloatValueFromBinLE(bin, pos);
 			pos += 4;
-			point.rotation = rotation;
 
 			// Parameters
-			var parameters = new int[4];
 			for (int j = 0; j < 4; j++) {
-				parameters[j] = bin[pos];
+				point.parameters[j] = bin[pos];
 				pos++;
 			}
-
-			point.parameters = parameters;
 
 			points.add(point);
 		}
