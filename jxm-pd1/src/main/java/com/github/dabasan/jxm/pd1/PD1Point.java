@@ -17,7 +17,9 @@ public class PD1Point {
 	 * Creates a point.
 	 */
 	public PD1Point() {
-
+		position = new Vector3f();
+		rotation = 0.0f;
+		parameters = new int[4];
 	}
 	/**
 	 * Copies a point.

@@ -18,7 +18,19 @@ public class BD1Block {
 	 * Creates a block.
 	 */
 	public BD1Block() {
+		vertexPositions = new Vector3f[8];
+		for (int i = 0; i < 8; i++) {
+			vertexPositions[i] = new Vector3f();
+		}
 
+		uvs = new UV[24];
+		for (int i = 0; i < 24; i++) {
+			uvs[i] = new UV();
+		}
+
+		textureIDs = new int[6];
+
+		enabled = true;
 	}
 	/**
 	 * Copies a block.
