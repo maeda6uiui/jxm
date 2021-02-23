@@ -9,6 +9,7 @@ module com.github.dabasan.jxm.properties {
 	exports com.github.dabasan.jxm.properties.weapon.openxops;
 	exports com.github.dabasan.jxm.properties.weapon.xgs;
 	exports com.github.dabasan.jxm.properties.weapon.xops;
+	exports com.github.dabasan.jxm.properties.xops;
 
 	requires slf4j.api;
 	requires com.github.dabasan.jxm.bintools;
