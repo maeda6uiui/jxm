@@ -59,7 +59,7 @@ class BD1Reader {
 		}
 
 		// Number of blocks
-		int numBlocks = getUnsignedShortValueFromBinLE(bin, pos);
+		int numBlocks = getUnsignedShortFromBinLE(bin, pos);
 		pos += 2;
 
 		// Blocks
@@ -68,25 +68,25 @@ class BD1Reader {
 
 			// Vertex positions
 			for (int j = 0; j < 8; j++) {
-				block.vertexPositions[j].x = getFloatValueFromBinLE(bin, pos);
+				block.vertexPositions[j].x = getFloatFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 8; j++) {
-				block.vertexPositions[j].y = getFloatValueFromBinLE(bin, pos);
+				block.vertexPositions[j].y = getFloatFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 8; j++) {
-				block.vertexPositions[j].z = getFloatValueFromBinLE(bin, pos);
+				block.vertexPositions[j].z = getFloatFromBinLE(bin, pos);
 				pos += 4;
 			}
 
 			// UVs
 			for (int j = 0; j < 24; j++) {
-				block.uvs[j].u = getFloatValueFromBinLE(bin, pos);
+				block.uvs[j].u = getFloatFromBinLE(bin, pos);
 				pos += 4;
 			}
 			for (int j = 0; j < 24; j++) {
-				block.uvs[j].v = getFloatValueFromBinLE(bin, pos);
+				block.uvs[j].v = getFloatFromBinLE(bin, pos);
 				pos += 4;
 			}
 

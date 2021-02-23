@@ -29,7 +29,7 @@ class PD1Reader {
 		int pos = 0;
 
 		// Number of points
-		int numPoints = getUnsignedShortValueFromBinLE(bin, pos);
+		int numPoints = getUnsignedShortFromBinLE(bin, pos);
 		pos += 2;
 
 		// Points
@@ -37,15 +37,15 @@ class PD1Reader {
 			var point = new PD1Point();
 
 			// Point position
-			point.position.x = getFloatValueFromBinLE(bin, pos);
+			point.position.x = getFloatFromBinLE(bin, pos);
 			pos += 4;
-			point.position.y = getFloatValueFromBinLE(bin, pos);
+			point.position.y = getFloatFromBinLE(bin, pos);
 			pos += 4;
-			point.position.z = getFloatValueFromBinLE(bin, pos);
+			point.position.z = getFloatFromBinLE(bin, pos);
 			pos += 4;
 
 			// Rotation
-			point.rotation = getFloatValueFromBinLE(bin, pos);
+			point.rotation = getFloatFromBinLE(bin, pos);
 			pos += 4;
 
 			// Parameters

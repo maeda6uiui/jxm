@@ -206,7 +206,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            float value
 	 */
-	public static void addFloatValueToBinLE(List<Byte> bin, float value) {
+	public static void addFloatToBinLE(List<Byte> bin, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
 		for (int i = 0; i < 4; i++) {
 			bin.add(buffer[i]);
@@ -220,7 +220,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            short value
 	 */
-	public static void addShortValueToBinLE(List<Byte> bin, short value) {
+	public static void addShortToBinLE(List<Byte> bin, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin.add(buffer[i]);
@@ -234,7 +234,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            unsigned short value
 	 */
-	public static void addUnsignedShortValueToBinLE(List<Byte> bin, int value) {
+	public static void addUnsignedShortToBinLE(List<Byte> bin, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin.add(buffer[i]);
@@ -251,7 +251,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            float value
 	 */
-	public static void setFloatValueToBinLE(List<Byte> bin, int pos, float value) {
+	public static void setFloatToBinLE(List<Byte> bin, int pos, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
 		for (int i = 0; i < 4; i++) {
 			bin.set(pos + i, buffer[i]);
@@ -267,7 +267,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            short value
 	 */
-	public static void setShortValueToBinLE(List<Byte> bin, int pos, short value) {
+	public static void setShortToBinLE(List<Byte> bin, int pos, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin.set(pos + i, buffer[i]);
@@ -283,7 +283,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            unsigned short value
 	 */
-	public static void setUnsignedShortValueToBinLE(List<Byte> bin, int pos, int value) {
+	public static void setUnsignedShortToBinLE(List<Byte> bin, int pos, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin.set(pos + i, buffer[i]);
@@ -299,7 +299,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            float value
 	 */
-	public static void setFloatValueToBinLE(byte[] bin, int pos, float value) {
+	public static void setFloatToBinLE(byte[] bin, int pos, float value) {
 		byte[] buffer = ByteFunctions.floatToBytesLE(value);
 		for (int i = 0; i < 4; i++) {
 			bin[pos + i] = buffer[i];
@@ -315,7 +315,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            short value
 	 */
-	public static void setShortValueToBinLE(byte[] bin, int pos, short value) {
+	public static void setShortToBinLE(byte[] bin, int pos, short value) {
 		byte[] buffer = ByteFunctions.shortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin[pos + i] = buffer[i];
@@ -331,7 +331,7 @@ public class ByteFunctions {
 	 * @param value
 	 *            unsigned short value
 	 */
-	public static void setUnsignedShortValueToBinLE(byte[] bin, int pos, int value) {
+	public static void setUnsignedShortToBinLE(byte[] bin, int pos, int value) {
 		byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
 		for (int i = 0; i < 2; i++) {
 			bin[pos + i] = buffer[i];
@@ -347,7 +347,7 @@ public class ByteFunctions {
 	 *            position to get the value
 	 * @return float value
 	 */
-	public static float getFloatValueFromBinLE(byte[] bin, int pos) {
+	public static float getFloatFromBinLE(byte[] bin, int pos) {
 		byte[] buffer = new byte[]{bin[pos], bin[pos + 1], bin[pos + 2], bin[pos + 3]};
 		float ret = ByteFunctions.bytesToFloatLE(buffer);
 
@@ -362,7 +362,7 @@ public class ByteFunctions {
 	 *            position to get the value
 	 * @return short value
 	 */
-	public static short getShortValueFromBinLE(byte[] bin, int pos) {
+	public static short getShortFromBinLE(byte[] bin, int pos) {
 		byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
 		short ret = ByteFunctions.bytesToShortLE(buffer);
 
@@ -377,7 +377,7 @@ public class ByteFunctions {
 	 *            position to get the value
 	 * @return unsigned short value
 	 */
-	public static int getUnsignedShortValueFromBinLE(byte[] bin, int pos) {
+	public static int getUnsignedShortFromBinLE(byte[] bin, int pos) {
 		byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
 		int ret = ByteFunctions.bytesToUnsignedShortLE(buffer);
 

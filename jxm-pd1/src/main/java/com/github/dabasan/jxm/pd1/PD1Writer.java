@@ -22,7 +22,7 @@ class PD1Writer {
 
 		// Number of points
 		int numPoints = points.size();
-		addUnsignedShortValueToBinLE(bin, numPoints);
+		addUnsignedShortToBinLE(bin, numPoints);
 
 		// Point data
 		for (int i = 0; i < numPoints; i++) {
@@ -30,13 +30,13 @@ class PD1Writer {
 
 			// Position
 			Vector3fc position = point.position;
-			addFloatValueToBinLE(bin, position.x());
-			addFloatValueToBinLE(bin, position.y());
-			addFloatValueToBinLE(bin, position.z());
+			addFloatToBinLE(bin, position.x());
+			addFloatToBinLE(bin, position.y());
+			addFloatToBinLE(bin, position.z());
 
 			// Rotation
 			float rotation = point.rotation;
-			addFloatValueToBinLE(bin, rotation);
+			addFloatToBinLE(bin, rotation);
 
 			// Parameters
 			int[] parameters = point.parameters;

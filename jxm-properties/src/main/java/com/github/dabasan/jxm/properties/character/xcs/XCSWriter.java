@@ -37,20 +37,20 @@ class XCSWriter {
 		int numCharacters = characters.length;
 		for (int i = 0; i < numCharacters; i++) {
 			// Texture
-			addShortValueToBinLE(bin, (short) characters[i].texture.ordinal());
+			addShortToBinLE(bin, (short) characters[i].texture.ordinal());
 			// Model
 			CharacterModelType modelType = characters[i].model;
 			int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
-			addShortValueToBinLE(bin, (short) modelTypeSpc);
+			addShortToBinLE(bin, (short) modelTypeSpc);
 			// HP
-			addUnsignedShortValueToBinLE(bin, (short) characters[i].hp);
+			addUnsignedShortToBinLE(bin, (short) characters[i].hp);
 			// AI level
-			addShortValueToBinLE(bin, (short) characters[i].aiLevel.ordinal());
+			addShortToBinLE(bin, (short) characters[i].aiLevel.ordinal());
 			// Weapons
-			addShortValueToBinLE(bin, characters[i].weapons.get(0).shortValue());
-			addShortValueToBinLE(bin, characters[i].weapons.get(1).shortValue());
+			addShortToBinLE(bin, characters[i].weapons.get(0).shortValue());
+			addShortToBinLE(bin, characters[i].weapons.get(1).shortValue());
 			// Type
-			addShortValueToBinLE(bin, (short) characters[i].type.ordinal());
+			addShortToBinLE(bin, (short) characters[i].type.ordinal());
 		}
 
 		try (var bos = new BufferedOutputStream(os)) {

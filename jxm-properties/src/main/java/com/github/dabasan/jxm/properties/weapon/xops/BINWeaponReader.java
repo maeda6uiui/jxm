@@ -26,101 +26,101 @@ class BINWeaponReader {
 			var weapon = new Weapon();
 
 			// Attacks
-			weapon.attacks = getShortValueFromBinLE(bin, pos);
+			weapon.attacks = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// Penetration
-			weapon.penetration = getShortValueFromBinLE(bin, pos);
+			weapon.penetration = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// Blazings
-			weapon.blazings = getShortValueFromBinLE(bin, pos);
+			weapon.blazings = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// Speed
-			weapon.speed = getShortValueFromBinLE(bin, pos);
+			weapon.speed = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// NbsMax
-			weapon.nbsMax = getShortValueFromBinLE(bin, pos);
+			weapon.nbsMax = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// Reloads
-			weapon.reloads = getShortValueFromBinLE(bin, pos);
+			weapon.reloads = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// Reaction
-			weapon.reaction = getShortValueFromBinLE(bin, pos);
+			weapon.reaction = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// ErrorRangeMin
-			weapon.errorRangeMin = getShortValueFromBinLE(bin, pos);
+			weapon.errorRangeMin = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// ErrorRangeMax
-			weapon.errorRangeMax = getShortValueFromBinLE(bin, pos);
+			weapon.errorRangeMax = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// ModelPositionX
-			weapon.modelPositionX = getShortValueFromBinLE(bin, pos);
+			weapon.modelPositionX = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// ModelPositionY
-			weapon.modelPositionY = getShortValueFromBinLE(bin, pos);
+			weapon.modelPositionY = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// ModelPositionZ
-			weapon.modelPositionZ = getShortValueFromBinLE(bin, pos);
+			weapon.modelPositionZ = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// FlashPositionX
-			weapon.flashPositionX = getShortValueFromBinLE(bin, pos);
+			weapon.flashPositionX = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// FlashPositionY
-			weapon.flashPositionY = getShortValueFromBinLE(bin, pos);
+			weapon.flashPositionY = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// FlashPositionZ
-			weapon.flashPositionZ = getShortValueFromBinLE(bin, pos);
+			weapon.flashPositionZ = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// YakkyouPositionX
-			weapon.yakkyouPositionX = getShortValueFromBinLE(bin, pos);
+			weapon.yakkyouPositionX = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// YakkyouPositionY
-			weapon.yakkyouPositionY = getShortValueFromBinLE(bin, pos);
+			weapon.yakkyouPositionY = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// YakkyouPositionZ
-			weapon.yakkyouPositionZ = getShortValueFromBinLE(bin, pos);
+			weapon.yakkyouPositionZ = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// WeaponP
-			int shootingStanceSpc = getShortValueFromBinLE(bin, pos);
+			int shootingStanceSpc = getShortFromBinLE(bin, pos);
 			pos += 2;
 			weapon.weaponP = WeaponBinEnumConverter
 					.getShootingStanceFromBinSpecifier(shootingStanceSpc);
 			// BlazingMode
-			int blazingModeSpc = getShortValueFromBinLE(bin, pos);
+			int blazingModeSpc = getShortFromBinLE(bin, pos);
 			pos += 2;
 			weapon.blazingMode = (blazingModeSpc == 0) ? true : false;
 			// ScopeMode
-			int scopeModeSpc = getShortValueFromBinLE(bin, pos);
+			int scopeModeSpc = getShortFromBinLE(bin, pos);
 			pos += 2;
 			weapon.scopeMode = WeaponBinEnumConverter.getScopeModeFromBinSpecifier(scopeModeSpc);
 			// Texture
-			int textureTypeSpc = getShortValueFromBinLE(bin, pos);
+			int textureTypeSpc = getShortFromBinLE(bin, pos);
 			pos += 2;
 			WeaponTextureType textureType = WeaponBinEnumConverter
 					.getTextureTypeFromBinSpecifier(textureTypeSpc);
 			weapon.texture = TextureFilepaths.getTextureFilepath(textureType.ordinal());
 			// Model
-			int modelTypeSpc = getShortValueFromBinLE(bin, pos);
+			int modelTypeSpc = getShortFromBinLE(bin, pos);
 			pos += 2;
 			WeaponModelType modelType = WeaponBinEnumConverter
 					.getModelTypeFromBinSpecifier(modelTypeSpc);
 			weapon.model = ModelFilepaths.getModelFilepath(modelType.ordinal());
 			// Size
-			weapon.size = getShortValueFromBinLE(bin, pos) * 0.1f;
+			weapon.size = getShortFromBinLE(bin, pos) * 0.1f;
 			pos += 2;
 			// YakkyouSpeedX
-			weapon.yakkyouSpeedX = getShortValueFromBinLE(bin, pos);
+			weapon.yakkyouSpeedX = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// YakkyouSpeedY
-			weapon.yakkyouSpeedY = getShortValueFromBinLE(bin, pos);
+			weapon.yakkyouSpeedY = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// SoundID
-			weapon.soundID = getShortValueFromBinLE(bin, pos);
+			weapon.soundID = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// SoundVolume
-			weapon.soundVolume = getShortValueFromBinLE(bin, pos);
+			weapon.soundVolume = getShortFromBinLE(bin, pos);
 			pos += 2;
 			// Silencer
-			int silencerSpc = getShortValueFromBinLE(bin, pos);
+			int silencerSpc = getShortFromBinLE(bin, pos);
 			pos += 2;
 			weapon.silencer = (silencerSpc == 0) ? false : true;
 

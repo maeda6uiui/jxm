@@ -29,7 +29,7 @@ class BD1Writer {
 
 		// Number of blocks
 		int numBlocks = blocks.size();
-		addUnsignedShortValueToBinLE(bin, numBlocks);
+		addUnsignedShortToBinLE(bin, numBlocks);
 
 		// Blocks
 		for (int i = 0; i < numBlocks; i++) {
@@ -40,15 +40,15 @@ class BD1Writer {
 
 			// X
 			for (int j = 0; j < 8; j++) {
-				addFloatValueToBinLE(bin, vertexPositions[j].x());
+				addFloatToBinLE(bin, vertexPositions[j].x());
 			}
 			// Y
 			for (int j = 0; j < 8; j++) {
-				addFloatValueToBinLE(bin, vertexPositions[j].y());
+				addFloatToBinLE(bin, vertexPositions[j].y());
 			}
 			// Z
 			for (int j = 0; j < 8; j++) {
-				addFloatValueToBinLE(bin, vertexPositions[j].z());
+				addFloatToBinLE(bin, vertexPositions[j].z());
 			}
 
 			// UVs
@@ -56,11 +56,11 @@ class BD1Writer {
 
 			// U
 			for (int j = 0; j < 24; j++) {
-				addFloatValueToBinLE(bin, uvs[j].u);
+				addFloatToBinLE(bin, uvs[j].u);
 			}
 			// V
 			for (int j = 0; j < 24; j++) {
-				addFloatValueToBinLE(bin, uvs[j].v);
+				addFloatToBinLE(bin, uvs[j].v);
 			}
 
 			// Texture IDs

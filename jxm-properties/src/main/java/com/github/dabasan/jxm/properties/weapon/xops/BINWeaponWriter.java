@@ -23,95 +23,95 @@ class BINWeaponWriter {
 		int numWeapons = weapons.length;
 		for (int i = 0; i < numWeapons; i++) {
 			// Attacks
-			setShortValueToBinLE(bin, pos, (short) weapons[i].attacks);
+			setShortToBinLE(bin, pos, (short) weapons[i].attacks);
 			pos += 2;
 			// Penetration
-			setShortValueToBinLE(bin, pos, (short) weapons[i].penetration);
+			setShortToBinLE(bin, pos, (short) weapons[i].penetration);
 			pos += 2;
 			// Blazings
-			setShortValueToBinLE(bin, pos, (short) weapons[i].blazings);
+			setShortToBinLE(bin, pos, (short) weapons[i].blazings);
 			pos += 2;
 			// Speed
-			setShortValueToBinLE(bin, pos, (short) weapons[i].speed);
+			setShortToBinLE(bin, pos, (short) weapons[i].speed);
 			pos += 2;
 			// NbsMax
-			setShortValueToBinLE(bin, pos, (short) weapons[i].nbsMax);
+			setShortToBinLE(bin, pos, (short) weapons[i].nbsMax);
 			pos += 2;
 			// Reloads
-			setShortValueToBinLE(bin, pos, (short) weapons[i].reloads);
+			setShortToBinLE(bin, pos, (short) weapons[i].reloads);
 			pos += 2;
 			// Reaction
-			setShortValueToBinLE(bin, pos, (short) weapons[i].reaction);
+			setShortToBinLE(bin, pos, (short) weapons[i].reaction);
 			pos += 2;
 			// ErrorRangeMin
-			setShortValueToBinLE(bin, pos, (short) weapons[i].errorRangeMin);
+			setShortToBinLE(bin, pos, (short) weapons[i].errorRangeMin);
 			pos += 2;
 			// ErrorRangeMax
-			setShortValueToBinLE(bin, pos, (short) weapons[i].errorRangeMax);
+			setShortToBinLE(bin, pos, (short) weapons[i].errorRangeMax);
 			pos += 2;
 			// ModelPositionX
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionX));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionX));
 			// ModelPositionY
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionY));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionY));
 			// ModelPositionZ
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionZ));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionZ));
 			// FlashPositionX
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionX));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionX));
 			// FlashPositionY
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionY));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionY));
 			// FlashPositionZ
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionZ));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionZ));
 			// YakkyouPositionX
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionX));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionX));
 			// YakkyouPositionY
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionY));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionY));
 			// YakkyouPositionZ
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionZ));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionZ));
 			// WeaponP
 			ShootingStance shootingStance = weapons[i].weaponP;
 			int shootingStanceSpc = WeaponBinEnumConverter
 					.getBinSpecifierFromShootingStance(shootingStance);
-			setShortValueToBinLE(bin, pos, (short) shootingStanceSpc);
+			setShortToBinLE(bin, pos, (short) shootingStanceSpc);
 			pos += 2;
 			// BlazingMode
 			boolean blazingMode = weapons[i].blazingMode;
 			int blazingModeSpc = (blazingMode) ? 0 : 1;
-			setShortValueToBinLE(bin, pos, (short) blazingModeSpc);
+			setShortToBinLE(bin, pos, (short) blazingModeSpc);
 			pos += 2;
 			// ScopeMode
 			ScopeMode scopeMode = weapons[i].scopeMode;
 			int scopeModeSpc = WeaponBinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
-			setShortValueToBinLE(bin, pos, (short) scopeModeSpc);
+			setShortToBinLE(bin, pos, (short) scopeModeSpc);
 			pos += 2;
 			// Texture
 			String textureFilepath = weapons[i].texture;
 			WeaponTextureType textureType = TextureFilepaths.getEnumFromFilepath(textureFilepath);
 			int textureTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromTextureType(textureType);
-			setShortValueToBinLE(bin, pos, (short) textureTypeSpc);
+			setShortToBinLE(bin, pos, (short) textureTypeSpc);
 			pos += 2;
 			// Model
 			String modelFilepath = weapons[i].model;
 			WeaponModelType modelType = ModelFilepaths.getEnumFromFilepath(modelFilepath);
 			int modelTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromModelType(modelType);
-			setShortValueToBinLE(bin, pos, (short) modelTypeSpc);
+			setShortToBinLE(bin, pos, (short) modelTypeSpc);
 			pos += 2;
 			// Size
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].size * 10.0));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].size * 10.0));
 			pos += 2;
 			// YakkyouSpeedX
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedX));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedX));
 			// YakkyouSpeedY
-			setShortValueToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedY));
+			setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedY));
 			// SoundID
-			setShortValueToBinLE(bin, pos, (short) weapons[i].soundID);
+			setShortToBinLE(bin, pos, (short) weapons[i].soundID);
 			pos += 2;
 			// SoundVolume
-			setShortValueToBinLE(bin, pos, (short) weapons[i].soundVolume);
+			setShortToBinLE(bin, pos, (short) weapons[i].soundVolume);
 			pos += 2;
 			// Silencer
 			boolean silencer = weapons[i].silencer;
 			int silencerSpc = (silencer) ? 1 : 0;
-			setShortValueToBinLE(bin, pos, (short) silencerSpc);
+			setShortToBinLE(bin, pos, (short) silencerSpc);
 			pos += 2;
 		}
 
