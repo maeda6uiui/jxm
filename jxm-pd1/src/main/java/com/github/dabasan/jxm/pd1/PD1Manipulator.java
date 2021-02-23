@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
-import org.joml.Vector3f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -260,14 +259,10 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator invertZ() {
 		for (var point : points) {
-			Vector3f position = point.position;
-			position = new Vector3f(position.x(), position.y(), position.z() * (-1.0f));
-			point.position = position;
+			point.position.z *= (-1.0f);
 
-			float rotation = point.rotation;
-			rotation *= (-1.0f);
-			rotation += (float) Math.PI;
-			point.rotation = rotation;
+			point.rotation *= (-1.0f);
+			point.rotation += (float) Math.PI;
 		}
 
 		return this;
