@@ -12,8 +12,6 @@ import java.util.List;
 import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
-import org.joml.Vector4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -138,11 +136,8 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator transform(Matrix4fc mat) {
 		for (var point : points) {
-			Vector3fc position = point.position;
-			var position4f = new Vector4f(position.x(), position.y(), position.z(), 1.0f);
-			position4f = mat.transform(position4f);
-
-			point.position = new Vector3f(position4f.x(), position4f.y(), position4f.z());
+			Vector3f position = point.position;
+			position = mat.transformPosition(position);
 		}
 
 		return this;
