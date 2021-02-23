@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.bd1;
 
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 /**
  * BD1 face
@@ -10,12 +9,12 @@ import org.joml.Vector3fc;
  *
  */
 class BD1Face {
-	public Vector3fc[] vertexPositions;
-	public Vector3fc normal;
+	public Vector3f[] vertexPositions;
+	public Vector3f normal;
 	public UV[] uvs;
 
 	public BD1Face() {
-		vertexPositions = new Vector3fc[4];
+		vertexPositions = new Vector3f[4];
 		normal = new Vector3f();
 		uvs = new UV[4];
 

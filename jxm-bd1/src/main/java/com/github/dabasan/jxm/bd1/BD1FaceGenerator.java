@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 /**
  * BD1 face generator
@@ -19,7 +18,7 @@ class BD1FaceGenerator {
 		var facesMap = new HashMap<Integer, List<BD1Face>>();
 
 		for (var block : blocks) {
-			Vector3fc[] vertexPositions = block.vertexPositions;
+			Vector3f[] vertexPositions = block.vertexPositions;
 			UV[] uvs = block.uvs;
 			int[] textureIDs = block.textureIDs;
 
@@ -48,7 +47,7 @@ class BD1FaceGenerator {
 				int[] vertexIndices = BD1Functions.getFaceCorrespondingVertexIndices(i);
 				int[] uvIndices = BD1Functions.getFaceCorrespondingUVIndices(i);
 
-				var faceVertexPositions = new Vector3fc[4];
+				var faceVertexPositions = new Vector3f[4];
 				var faceUVs = new UV[4];
 				for (int j = 0; j < 4; j++) {
 					faceVertexPositions[j] = vertexPositions[vertexIndices[j]];

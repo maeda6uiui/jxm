@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 /**
  * BD1 reader
@@ -87,7 +86,7 @@ class BD1Reader {
 				pos += 4;
 			}
 
-			var vertexPositions = new Vector3fc[8];
+			var vertexPositions = new Vector3f[8];
 			for (int j = 0; j < 8; j++) {
 				vertexPositions[j] = new Vector3f(vertexPositionXs[j], vertexPositionYs[j],
 						vertexPositionZs[j]);

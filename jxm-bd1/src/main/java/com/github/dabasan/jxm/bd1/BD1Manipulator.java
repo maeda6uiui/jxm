@@ -14,7 +14,6 @@ import java.util.Map;
 import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 import org.joml.Vector4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -178,7 +177,7 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator transform(Matrix4fc mat) {
 		for (var block : blocks) {
-			Vector3fc[] vertexPositions = block.vertexPositions;
+			Vector3f[] vertexPositions = block.vertexPositions;
 			for (int i = 0; i < vertexPositions.length; i++) {
 				var vertexPosition4f = new Vector4f(vertexPositions[i].x(), vertexPositions[i].y(),
 						vertexPositions[i].z(), 1.0f);
@@ -296,7 +295,7 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator invertZ() {
 		for (var block : blocks) {
-			Vector3fc[] vertexPositions = block.vertexPositions;
+			Vector3f[] vertexPositions = block.vertexPositions;
 			for (int i = 0; i < 8; i++) {
 				var vertexPosition = new Vector3f(vertexPositions[i].x(), vertexPositions[i].y(),
 						vertexPositions[i].z() * (-1.0f));
@@ -308,16 +307,16 @@ public class BD1Manipulator {
 
 		for (var block : blocks) {
 			// Vertex positions
-			Vector3fc[] vertexPositions = block.vertexPositions;
+			Vector3f[] vertexPositions = block.vertexPositions;
 
 			// Copy original vertex positions
-			var origVertexPositions = new Vector3fc[8];
+			var origVertexPositions = new Vector3f[8];
 			for (int i = 0; i < 8; i++) {
 				origVertexPositions[i] = new Vector3f(vertexPositions[i]);
 			}
 
 			// Reverse the order of the vertices
-			var newVertexPositions = new Vector3fc[8];
+			var newVertexPositions = new Vector3f[8];
 			for (int i = 0; i < 4; i++) {
 				newVertexPositions[i] = origVertexPositions[3 - i];
 			}

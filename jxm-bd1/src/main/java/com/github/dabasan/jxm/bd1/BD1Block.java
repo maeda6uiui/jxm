@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.bd1;
 
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 /**
  * BD1 block
@@ -10,7 +9,7 @@ import org.joml.Vector3fc;
  *
  */
 public class BD1Block {
-	public Vector3fc[] vertexPositions;
+	public Vector3f[] vertexPositions;
 	public UV[] uvs;
 	public int[] textureIDs;
 	public boolean enabled;
@@ -28,7 +27,7 @@ public class BD1Block {
 	 *            Block
 	 */
 	public BD1Block(BD1Block block) {
-		vertexPositions = new Vector3fc[8];
+		vertexPositions = new Vector3f[8];
 		for (int i = 0; i < 8; i++) {
 			vertexPositions[i] = new Vector3f(block.vertexPositions[i]);
 		}
