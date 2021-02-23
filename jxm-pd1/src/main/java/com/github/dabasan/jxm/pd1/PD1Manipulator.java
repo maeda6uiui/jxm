@@ -266,7 +266,7 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator invertZ() {
 		for (var point : points) {
-			Vector3fc position = point.position;
+			Vector3f position = point.position;
 			position = new Vector3f(position.x(), position.y(), position.z() * (-1.0f));
 			point.position = position;
 

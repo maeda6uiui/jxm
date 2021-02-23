@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.pd1;
 
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 
 /**
  * PD1 point
@@ -10,7 +9,7 @@ import org.joml.Vector3fc;
  *
  */
 public class PD1Point {
-	public Vector3fc position;
+	public Vector3f position;
 	public float rotation;
 	public int[] parameters;
 
