@@ -176,12 +176,9 @@ public class BD1Manipulator {
 	 */
 	public BD1Manipulator transform(Matrix4fc mat) {
 		for (var block : blocks) {
-			Vector3f[] vertexPositions = block.vertexPositions;
-			for (int i = 0; i < vertexPositions.length; i++) {
-				vertexPositions[i] = mat.transformPosition(vertexPositions[i]);
+			for (Vector3f vertexPosition : block.vertexPositions) {
+				vertexPosition = mat.transformPosition(vertexPosition);
 			}
-
-			// block.vertexPositions = vertexPositions;
 		}
 
 		return this;

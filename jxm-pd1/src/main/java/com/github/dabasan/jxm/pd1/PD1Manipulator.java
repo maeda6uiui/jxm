@@ -136,8 +136,7 @@ public class PD1Manipulator {
 	 */
 	public PD1Manipulator transform(Matrix4fc mat) {
 		for (var point : points) {
-			Vector3f position = point.position;
-			position = mat.transformPosition(position);
+			point.position = mat.transformPosition(point.position);
 		}
 
 		return this;
