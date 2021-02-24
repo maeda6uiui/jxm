@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.pd1;
 
-import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+import org.joml.Vector3fc;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -8,47 +8,47 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.joml.Vector3fc;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.addFloatToBinLE;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBinLE;
 
 /**
  * PD1 writer
- * 
- * @author Daba
  *
+ * @author Daba
  */
 class PD1Writer {
-	public void write(OutputStream os, List<PD1Point> points) throws IOException {
-		List<Byte> bin = new ArrayList<>();
+    public void write(OutputStream os, List<PD1Point> points) throws IOException {
+        List<Byte> bin = new ArrayList<>();
 
-		// Number of points
-		int numPoints = points.size();
-		addUnsignedShortToBinLE(bin, numPoints);
+        // Number of points
+        int numPoints = points.size();
+        addUnsignedShortToBinLE(bin, numPoints);
 
-		// Point data
-		for (int i = 0; i < numPoints; i++) {
-			PD1Point point = points.get(i);
+        // Point data
+        for (int i = 0; i < numPoints; i++) {
+            PD1Point point = points.get(i);
 
-			// Position
-			Vector3fc position = point.position;
-			addFloatToBinLE(bin, position.x());
-			addFloatToBinLE(bin, position.y());
-			addFloatToBinLE(bin, position.z());
+            // Position
+            Vector3fc position = point.position;
+            addFloatToBinLE(bin, position.x());
+            addFloatToBinLE(bin, position.y());
+            addFloatToBinLE(bin, position.z());
 
-			// Rotation
-			float rotation = point.rotation;
-			addFloatToBinLE(bin, rotation);
+            // Rotation
+            float rotation = point.rotation;
+            addFloatToBinLE(bin, rotation);
 
-			// Parameters
-			int[] parameters = point.parameters;
-			for (int j = 0; j < 4; j++) {
-				bin.add((byte) parameters[j]);
-			}
-		}
+            // Parameters
+            int[] parameters = point.parameters;
+            for (int j = 0; j < 4; j++) {
+                bin.add((byte) parameters[j]);
+            }
+        }
 
-		try (var bos = new BufferedOutputStream(os)) {
-			for (Byte b : bin) {
-				bos.write(b);
-			}
-		}
-	}
+        try (var bos = new BufferedOutputStream(os)) {
+            for (Byte b : bin) {
+                bos.write(b);
+            }
+        }
+    }
 }

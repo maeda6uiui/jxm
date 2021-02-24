@@ -1,120 +1,117 @@
 package com.github.dabasan.jxm.bd1;
 
-import static com.github.dabasan.jxm.bintools.ByteFunctions.*;
+import org.joml.Vector3fc;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
-import org.joml.Vector3fc;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.addFloatToBinLE;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBinLE;
 
 /**
  * BD1 writer
- * 
- * @author Daba
  *
+ * @author Daba
  */
 class BD1Writer {
-	public void write(OutputStream os, List<BD1Block> blocks, Map<Integer, String> textureFilenames)
-			throws IOException {
-		List<Byte> bin = new ArrayList<>();
+    public void write(OutputStream os, List<BD1Block> blocks, Map<Integer, String> textureFilenames)
+            throws IOException {
+        List<Byte> bin = new ArrayList<>();
 
-		// Texture filenames
-		this.addTextureFilenamesToBin(bin, textureFilenames);
+        // Texture filenames
+        this.addTextureFilenamesToBin(bin, textureFilenames);
 
-		// Number of blocks
-		int numBlocks = blocks.size();
-		addUnsignedShortToBinLE(bin, numBlocks);
+        // Number of blocks
+        int numBlocks = blocks.size();
+        addUnsignedShortToBinLE(bin, numBlocks);
 
-		// Blocks
-		for (int i = 0; i < numBlocks; i++) {
-			BD1Block block = blocks.get(i);
+        // Blocks
+        for (int i = 0; i < numBlocks; i++) {
+            BD1Block block = blocks.get(i);
 
-			// Vertex positions
-			Vector3fc[] vertexPositions = block.vertexPositions;
+            // Vertex positions
+            Vector3fc[] vertexPositions = block.vertexPositions;
 
-			// X
-			for (int j = 0; j < 8; j++) {
-				addFloatToBinLE(bin, vertexPositions[j].x());
-			}
-			// Y
-			for (int j = 0; j < 8; j++) {
-				addFloatToBinLE(bin, vertexPositions[j].y());
-			}
-			// Z
-			for (int j = 0; j < 8; j++) {
-				addFloatToBinLE(bin, vertexPositions[j].z());
-			}
+            // X
+            for (int j = 0; j < 8; j++) {
+                addFloatToBinLE(bin, vertexPositions[j].x());
+            }
+            // Y
+            for (int j = 0; j < 8; j++) {
+                addFloatToBinLE(bin, vertexPositions[j].y());
+            }
+            // Z
+            for (int j = 0; j < 8; j++) {
+                addFloatToBinLE(bin, vertexPositions[j].z());
+            }
 
-			// UVs
-			UV[] uvs = block.uvs;
+            // UVs
+            UV[] uvs = block.uvs;
 
-			// U
-			for (int j = 0; j < 24; j++) {
-				addFloatToBinLE(bin, uvs[j].u);
-			}
-			// V
-			for (int j = 0; j < 24; j++) {
-				addFloatToBinLE(bin, uvs[j].v);
-			}
+            // U
+            for (int j = 0; j < 24; j++) {
+                addFloatToBinLE(bin, uvs[j].u);
+            }
+            // V
+            for (int j = 0; j < 24; j++) {
+                addFloatToBinLE(bin, uvs[j].v);
+            }
 
-			// Texture IDs
-			int[] textureIDs = block.textureIDs;
+            // Texture IDs
+            int[] textureIDs = block.textureIDs;
 
-			for (int j = 0; j < 6; j++) {
-				bin.add((byte) textureIDs[j]);
-				for (int k = 0; k < 3; k++) {
-					bin.add((byte) 0x00);
-				}
-			}
+            for (int j = 0; j < 6; j++) {
+                bin.add((byte) textureIDs[j]);
+                for (int k = 0; k < 3; k++) {
+                    bin.add((byte) 0x00);
+                }
+            }
 
-			// Enabled flag
-			if (block.enabled) {
-				bin.add((byte) 0x01);
-			} else {
-				bin.add((byte) 0x00);
-			}
-			for (int j = 0; j < 3; j++) {
-				bin.add((byte) 0x00);
-			}
-		}
+            // Enabled flag
+            if (block.enabled) {
+                bin.add((byte) 0x01);
+            } else {
+                bin.add((byte) 0x00);
+            }
+            for (int j = 0; j < 3; j++) {
+                bin.add((byte) 0x00);
+            }
+        }
 
-		try (var bos = new BufferedOutputStream(os)) {
-			for (Byte b : bin) {
-				bos.write(b);
-			}
-		}
-	}
-	private void addTextureFilenamesToBin(List<Byte> bin, Map<Integer, String> textureFilenames) {
-		var sortedTextureFilenames = new TreeMap<Integer, String>(textureFilenames);
+        try (var bos = new BufferedOutputStream(os)) {
+            for (Byte b : bin) {
+                bos.write(b);
+            }
+        }
+    }
 
-		int textureCount = 0;
-		for (var entry : sortedTextureFilenames.entrySet()) {
-			String textureFilename = entry.getValue();
+    private void addTextureFilenamesToBin(List<Byte> bin, Map<Integer, String> textureFilenames) {
+        var sortedTextureFilenames = new TreeMap<Integer, String>(textureFilenames);
 
-			byte[] textureFilenameBuffer = textureFilename.getBytes();
-			textureFilenameBuffer = Arrays.copyOfRange(textureFilenameBuffer, 0, 31);
-			textureFilenameBuffer[30] = 0;
+        int textureCount = 0;
+        for (var entry : sortedTextureFilenames.entrySet()) {
+            String textureFilename = entry.getValue();
 
-			for (int i = 0; i < 31; i++) {
-				bin.add(textureFilenameBuffer[i]);
-			}
+            byte[] textureFilenameBuffer = textureFilename.getBytes();
+            textureFilenameBuffer = Arrays.copyOfRange(textureFilenameBuffer, 0, 31);
+            textureFilenameBuffer[30] = 0;
 
-			textureCount++;
-			if (textureCount == 10) {
-				break;
-			}
-		}
+            for (int i = 0; i < 31; i++) {
+                bin.add(textureFilenameBuffer[i]);
+            }
 
-		for (int i = textureCount; i < 10; i++) {
-			for (int j = 0; j < 31; j++) {
-				bin.add((byte) 0x00);
-			}
-		}
-	}
+            textureCount++;
+            if (textureCount == 10) {
+                break;
+            }
+        }
+
+        for (int i = textureCount; i < 10; i++) {
+            for (int j = 0; j < 31; j++) {
+                bin.add((byte) 0x00);
+            }
+        }
+    }
 }

@@ -2,10 +2,9 @@ package com.github.dabasan.jxm.properties.character;
 
 /**
  * AI level
- * 
- * @author Daba
  *
+ * @author Daba
  */
 public enum AILevel {
-	NONE, D, C, B, A, S, SS, NO_WEAPON
+    NONE, D, C, B, A, S, SS, NO_WEAPON
 }

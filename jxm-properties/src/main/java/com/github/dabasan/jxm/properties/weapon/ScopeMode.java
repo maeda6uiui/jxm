@@ -2,10 +2,9 @@ package com.github.dabasan.jxm.properties.weapon;
 
 /**
  * Scope mode
- * 
- * @author Daba
  *
+ * @author Daba
  */
 public enum ScopeMode {
-	NONE, LOW, HIGH, EQUAL
+    NONE, LOW, HIGH, EQUAL
 }

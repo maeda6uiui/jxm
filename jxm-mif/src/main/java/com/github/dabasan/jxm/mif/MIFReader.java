@@ -8,61 +8,60 @@ import java.util.ArrayList;
 
 /**
  * MIF reader
- * 
- * @author Daba
  *
+ * @author Daba
  */
 class MIFReader {
-	private MissionInfo missionInfo;
+    private MissionInfo missionInfo;
 
-	public MIFReader(InputStream is, String encoding) throws IOException, NumberFormatException {
-		missionInfo = new MissionInfo();
+    public MIFReader(InputStream is, String encoding) throws IOException, NumberFormatException {
+        missionInfo = new MissionInfo();
 
-		// Read all lines from a file
-		var lines = new ArrayList<String>();
-		try (var br = new BufferedReader(new InputStreamReader(is, encoding))) {
-			while (true) {
-				String line = br.readLine();
-				if (line == null) {
-					break;
-				}
+        // Read all lines from a file
+        var lines = new ArrayList<String>();
+        try (var br = new BufferedReader(new InputStreamReader(is, encoding))) {
+            while (true) {
+                String line = br.readLine();
+                if (line == null) {
+                    break;
+                }
 
-				lines.add(line);
-			}
-		}
+                lines.add(line);
+            }
+        }
 
-		missionInfo.missionTitle = lines.get(0);
-		missionInfo.missionFullname = lines.get(1);
-		missionInfo.pathnameOfBlock = lines.get(2);
-		missionInfo.pathnameOfPoint = lines.get(3);
+        missionInfo.missionTitle = lines.get(0);
+        missionInfo.missionFullname = lines.get(1);
+        missionInfo.pathnameOfBlock = lines.get(2);
+        missionInfo.pathnameOfPoint = lines.get(3);
 
-		int skyTypeIndex = Integer.parseInt(lines.get(4));
-		missionInfo.skyType = SkyType.values()[skyTypeIndex];
+        int skyTypeIndex = Integer.parseInt(lines.get(4));
+        missionInfo.skyType = SkyType.values()[skyTypeIndex];
 
-		int flags = Integer.parseInt(lines.get(5));
-		if ((flags & 0b00000010) != 0) {
-			missionInfo.darkScreen = true;
-		} else {
-			missionInfo.darkScreen = false;
-		}
-		if ((flags & 0b00000001) != 0) {
-			missionInfo.extraCollision = true;
-		} else {
-			missionInfo.extraCollision = false;
-		}
+        int flags = Integer.parseInt(lines.get(5));
+        if ((flags & 0b00000010) != 0) {
+            missionInfo.darkScreen = true;
+        } else {
+            missionInfo.darkScreen = false;
+        }
+        if ((flags & 0b00000001) != 0) {
+            missionInfo.extraCollision = true;
+        } else {
+            missionInfo.extraCollision = false;
+        }
 
-		missionInfo.pathnameOfObj = lines.get(6);
-		missionInfo.pathnameOfImage1 = lines.get(7);
-		missionInfo.pathnameOfImage2 = lines.get(8);
+        missionInfo.pathnameOfObj = lines.get(6);
+        missionInfo.pathnameOfImage1 = lines.get(7);
+        missionInfo.pathnameOfImage2 = lines.get(8);
 
-		var briefingText = new ArrayList<String>();
-		for (int i = 9; i < lines.size(); i++) {
-			briefingText.add(lines.get(i));
-		}
-		missionInfo.briefingText = briefingText;
-	}
+        var briefingText = new ArrayList<String>();
+        for (int i = 9; i < lines.size(); i++) {
+            briefingText.add(lines.get(i));
+        }
+        missionInfo.briefingText = briefingText;
+    }
 
-	public MissionInfo getMissionInfo() {
-		return missionInfo;
-	}
+    public MissionInfo getMissionInfo() {
+        return missionInfo;
+    }
 }

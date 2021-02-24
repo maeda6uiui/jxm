@@ -1,46 +1,45 @@
 package com.github.dabasan.jxm.properties;
 
+import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
+
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
-import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
-
 /**
  * Test XCSManipulator
- * 
- * @author Daba
  *
+ * @author Daba
  */
 public class XCSManipulatorTest {
-	private final String TARGET_DIR = "./Data/Character";
-	private XCSManipulator manipulator;
+    private final String TARGET_DIR = "./Data/Character";
+    private XCSManipulator manipulator;
 
-	public static void main(String[] args) {
-		new XCSManipulatorTest();
-	}
+    public static void main(String[] args) {
+        new XCSManipulatorTest();
+    }
 
-	public XCSManipulatorTest() {
-		var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
-		try {
-			manipulator = new XCSManipulator(srcFilepath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+    public XCSManipulatorTest() {
+        var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
+        try {
+            manipulator = new XCSManipulator(srcFilepath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		this.printCharacters();
-		this.saveAsXCS();
-	}
+        this.printCharacters();
+        this.saveAsXCS();
+    }
 
-	private void printCharacters() {
-		System.out.println("#Characters");
-		Arrays.asList(manipulator.getCharacters()).forEach(System.out::println);
-	}
+    private void printCharacters() {
+        System.out.println("#Characters");
+        Arrays.asList(manipulator.getCharacters()).forEach(System.out::println);
+    }
 
-	private void saveAsXCS() {
-		System.out.println("#saveAsXCS()");
+    private void saveAsXCS() {
+        System.out.println("#saveAsXCS()");
 
-		var saveFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
-		manipulator.saveAsXCS(saveFilepath);
-	}
+        var saveFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
+        manipulator.saveAsXCS(saveFilepath);
+    }
 }
