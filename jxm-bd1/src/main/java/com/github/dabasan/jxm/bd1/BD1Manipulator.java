@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * BD1 manipulator
@@ -91,11 +88,7 @@ public class BD1Manipulator {
      * @param blocks blocks to set
      */
     public void setBlocks(List<BD1Block> blocks) {
-        if (blocks == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(blocks);
         this.blocks = blocks;
     }
 
@@ -135,11 +128,7 @@ public class BD1Manipulator {
      * @param textureFilename texture filename
      */
     public void setTextureFilename(int textureID, String textureFilename) {
-        if (textureFilename == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(textureFilename);
         textureFilenames.put(textureID, textureFilename);
     }
 
@@ -149,11 +138,7 @@ public class BD1Manipulator {
      * @param textureFilenames filenames of the textures
      */
     public void setTextureFilenames(Map<Integer, String> textureFilenames) {
-        if (textureFilenames == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(textureFilenames);
         this.textureFilenames = textureFilenames;
     }
 

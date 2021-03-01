@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * PD1 manipulator
@@ -80,11 +81,7 @@ public class PD1Manipulator {
      * @param points points to set
      */
     public void setPoints(List<PD1Point> points) {
-        if (points == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(points);
         this.points = points;
     }
 

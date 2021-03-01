@@ -4,6 +4,8 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 /**
  * BIN weapon manipulator
  *
@@ -49,10 +51,7 @@ public class BINWeaponManipulator {
      * @param weapons array containing weapon data
      */
     public void setWeapons(Weapon[] weapons) {
-        if (weapons == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
+        Objects.requireNonNull(weapons);
         if (weapons.length != NUM_WEAPONS) {
             logger.warn("Invalid number of data contained in the array. number={}", weapons.length);
             return;
