@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * IDS manipulator
@@ -77,11 +78,7 @@ public class IDSManipulator {
      * @param weapon weapon data to set
      */
     public void setWeapon(Weapon weapon) {
-        if (weapon == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(weapon);
         this.weapon = weapon;
     }
 

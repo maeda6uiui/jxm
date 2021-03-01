@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * Config manipulator
@@ -76,11 +77,7 @@ public class ConfigManipulator {
      * @param config config to set
      */
     public void setConfig(Config config) {
-        if (config == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(config);
         this.config = config;
     }
 
