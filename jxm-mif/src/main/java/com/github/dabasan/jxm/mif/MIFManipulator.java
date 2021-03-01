@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * MIF manipulator
@@ -79,11 +80,7 @@ public class MIFManipulator {
      * @param missionInfo mission info to set
      */
     public void setMissionInfo(MissionInfo missionInfo) {
-        if (missionInfo == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
+        Objects.requireNonNull(missionInfo);
         this.missionInfo = missionInfo;
     }
 
