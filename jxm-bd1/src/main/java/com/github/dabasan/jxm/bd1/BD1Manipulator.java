@@ -277,13 +277,13 @@ public class BD1Manipulator {
             // UVs
             UV[] uvs = block.uvs;
 
-            // Copy original UV
+            // Copy original UVs
             var origUVs = new UV[24];
             for (int i = 0; i < 24; i++) {
                 origUVs[i] = new UV(uvs[i]);
             }
 
-            // Arrange UV
+            // Arrange UVs
             var newUVs = new UV[24];
             for (int i = 0; i < 6; i++) {
                 int[] uvIndices;
