@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Daba
  */
 public class CharacterCodeParser {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private CharacterVariableNameSettings settings;
 

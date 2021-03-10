@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * Config manipulator
@@ -11,7 +12,7 @@ import java.io.*;
  * @author Daba
  */
 public class ConfigManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private Config config;
 
@@ -76,12 +77,7 @@ public class ConfigManipulator {
      * @param config config to set
      */
     public void setConfig(Config config) {
-        if (config == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        this.config = config;
+        this.config = Objects.requireNonNull(config);
     }
 
     private void saveAsDATBase(OutputStream os) throws IOException {
@@ -101,7 +97,7 @@ public class ConfigManipulator {
         try {
             this.saveAsDATBase(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -120,7 +116,7 @@ public class ConfigManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsDATBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -139,7 +135,7 @@ public class ConfigManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsDATBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

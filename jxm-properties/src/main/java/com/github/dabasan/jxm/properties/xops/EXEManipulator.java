@@ -15,7 +15,7 @@ import java.io.*;
  * @author Daba
  */
 public class EXEManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private XOPSVersion srcXOPSVersion;
     private BINWeaponManipulator weaponManipulator;
@@ -262,7 +262,7 @@ public class EXEManipulator {
         try {
             this.writeBase(file, fileBackup);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             return -1;
         }
 
@@ -293,7 +293,7 @@ public class EXEManipulator {
         try {
             this.writeBase(file, fileBackup);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             return -1;
         }
 

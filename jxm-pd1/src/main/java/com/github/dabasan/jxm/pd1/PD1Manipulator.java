@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * PD1 manipulator
@@ -15,7 +16,7 @@ import java.util.List;
  * @author Daba
  */
 public class PD1Manipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private List<PD1Point> points;
 
@@ -80,12 +81,7 @@ public class PD1Manipulator {
      * @param points points to set
      */
     public void setPoints(List<PD1Point> points) {
-        if (points == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        this.points = points;
+        this.points = Objects.requireNonNull(points);
     }
 
     /**
@@ -264,7 +260,7 @@ public class PD1Manipulator {
         try {
             this.saveAsPD1Base(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -283,7 +279,7 @@ public class PD1Manipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsPD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -302,7 +298,7 @@ public class PD1Manipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsPD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

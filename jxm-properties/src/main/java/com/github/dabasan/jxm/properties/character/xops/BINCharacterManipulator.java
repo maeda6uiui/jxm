@@ -4,13 +4,15 @@ import com.github.dabasan.jxm.properties.character.Character;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Objects;
+
 /**
  * BIN character manipulator
  *
  * @author Daba
  */
 public class BINCharacterManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_CHARACTERS = 43;
     private Character[] characters;
@@ -48,10 +50,8 @@ public class BINCharacterManipulator {
      * @param characters array containing character data
      */
     public void setCharacters(Character[] characters) {
-        if (characters == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
+        Objects.requireNonNull(characters);
+
         if (characters.length != NUM_CHARACTERS) {
             logger.warn("Invalid number of data contained in the array. number={}",
                     characters.length);

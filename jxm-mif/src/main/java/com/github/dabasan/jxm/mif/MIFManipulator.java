@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * MIF manipulator
@@ -11,7 +12,7 @@ import java.io.*;
  * @author Daba
  */
 public class MIFManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private MissionInfo missionInfo;
 
@@ -79,12 +80,7 @@ public class MIFManipulator {
      * @param missionInfo mission info to set
      */
     public void setMissionInfo(MissionInfo missionInfo) {
-        if (missionInfo == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        this.missionInfo = missionInfo;
+        this.missionInfo = Objects.requireNonNull(missionInfo);
     }
 
     private void saveAsMIFBase(OutputStream os, String encoding) throws IOException {
@@ -105,7 +101,7 @@ public class MIFManipulator {
         try {
             this.saveAsMIFBase(os, encoding);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -125,7 +121,7 @@ public class MIFManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsMIFBase(fos, encoding);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -145,7 +141,7 @@ public class MIFManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsMIFBase(fos, encoding);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

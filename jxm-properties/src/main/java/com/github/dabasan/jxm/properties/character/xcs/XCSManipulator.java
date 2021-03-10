@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * XCS manipulator
@@ -12,7 +13,7 @@ import java.io.*;
  * @author Daba
  */
 public class XCSManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_CHARACTERS = 43;
     private Character[] characters;
@@ -78,10 +79,8 @@ public class XCSManipulator {
      * @param characters array containing character data
      */
     public void setCharacters(Character[] characters) {
-        if (characters == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
+        Objects.requireNonNull(characters);
+
         if (characters.length != NUM_CHARACTERS) {
             logger.warn("Invalid number of data contained in the array. number={}",
                     characters.length);
@@ -108,7 +107,7 @@ public class XCSManipulator {
         try {
             this.saveAsXCSBase(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -127,7 +126,7 @@ public class XCSManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsXCSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -146,7 +145,7 @@ public class XCSManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsXCSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

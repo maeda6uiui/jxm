@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * XGS manipulator
@@ -12,7 +13,7 @@ import java.io.*;
  * @author Daba
  */
 public class XGSManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_WEAPONS = 23;
     private Weapon[] weapons;
@@ -78,10 +79,8 @@ public class XGSManipulator {
      * @param weapons array containing weapon data
      */
     public void setWeapons(Weapon[] weapons) {
-        if (weapons == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
+        Objects.requireNonNull(weapons);
+
         if (weapons.length != NUM_WEAPONS) {
             logger.warn("Invalid number of data contained in the array. number={}", weapons.length);
             return;
@@ -107,7 +106,7 @@ public class XGSManipulator {
         try {
             this.saveAsXGSBase(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -126,7 +125,7 @@ public class XGSManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsXGSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -145,7 +144,7 @@ public class XGSManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsXGSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

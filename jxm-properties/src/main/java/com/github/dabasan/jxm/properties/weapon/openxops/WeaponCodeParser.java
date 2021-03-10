@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Daba
  */
 public class WeaponCodeParser {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private WeaponVariableNameSettings settings;
 

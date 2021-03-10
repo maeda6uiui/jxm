@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * BD1 manipulator
@@ -18,7 +15,7 @@ import java.util.Map;
  * @author Daba
  */
 public class BD1Manipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private List<BD1Block> blocks;
     private Map<Integer, String> textureFilenames;
@@ -91,12 +88,7 @@ public class BD1Manipulator {
      * @param blocks blocks to set
      */
     public void setBlocks(List<BD1Block> blocks) {
-        if (blocks == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        this.blocks = blocks;
+        this.blocks = Objects.requireNonNull(blocks);
     }
 
     /**
@@ -135,12 +127,7 @@ public class BD1Manipulator {
      * @param textureFilename texture filename
      */
     public void setTextureFilename(int textureID, String textureFilename) {
-        if (textureFilename == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        textureFilenames.put(textureID, textureFilename);
+        textureFilenames.put(textureID, Objects.requireNonNull(textureFilename));
     }
 
     /**
@@ -149,12 +136,7 @@ public class BD1Manipulator {
      * @param textureFilenames filenames of the textures
      */
     public void setTextureFilenames(Map<Integer, String> textureFilenames) {
-        if (textureFilenames == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        this.textureFilenames = textureFilenames;
+        this.textureFilenames = Objects.requireNonNull(textureFilenames);
     }
 
     /**
@@ -292,13 +274,13 @@ public class BD1Manipulator {
             // UVs
             UV[] uvs = block.uvs;
 
-            // Copy original UV
+            // Copy original UVs
             var origUVs = new UV[24];
             for (int i = 0; i < 24; i++) {
                 origUVs[i] = new UV(uvs[i]);
             }
 
-            // Arrange UV
+            // Arrange UVs
             var newUVs = new UV[24];
             for (int i = 0; i < 6; i++) {
                 int[] uvIndices;
@@ -356,7 +338,7 @@ public class BD1Manipulator {
         try {
             this.saveAsBD1Base(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -375,7 +357,7 @@ public class BD1Manipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsBD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -394,7 +376,7 @@ public class BD1Manipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsBD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -422,7 +404,7 @@ public class BD1Manipulator {
         try {
             this.saveAsOBJBase(osObj, osMtl, mtlFilename, flipV);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -445,7 +427,7 @@ public class BD1Manipulator {
              var fosMtl = new FileOutputStream(fileMtl)) {
             this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -469,7 +451,7 @@ public class BD1Manipulator {
              var fosMtl = new FileOutputStream(filepathMtl)) {
             this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

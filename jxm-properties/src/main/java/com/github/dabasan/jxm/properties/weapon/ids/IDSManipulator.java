@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.Objects;
 
 /**
  * IDS manipulator
@@ -12,7 +13,7 @@ import java.io.*;
  * @author Daba
  */
 public class IDSManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private Weapon weapon;
 
@@ -77,12 +78,7 @@ public class IDSManipulator {
      * @param weapon weapon data to set
      */
     public void setWeapon(Weapon weapon) {
-        if (weapon == null) {
-            logger.warn("Null argument where non-null required");
-            return;
-        }
-
-        this.weapon = weapon;
+        this.weapon = Objects.requireNonNull(weapon);
     }
 
     private void innerSaveAsIDS(OutputStream os) throws IOException {
@@ -102,7 +98,7 @@ public class IDSManipulator {
         try {
             this.innerSaveAsIDS(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -121,7 +117,7 @@ public class IDSManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.innerSaveAsIDS(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -140,7 +136,7 @@ public class IDSManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.innerSaveAsIDS(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
