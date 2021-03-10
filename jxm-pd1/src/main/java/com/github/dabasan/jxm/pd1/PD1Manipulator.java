@@ -261,7 +261,7 @@ public class PD1Manipulator {
         try {
             this.saveAsPD1Base(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -280,7 +280,7 @@ public class PD1Manipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsPD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -299,7 +299,7 @@ public class PD1Manipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsPD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

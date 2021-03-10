@@ -105,7 +105,7 @@ public class XGSManipulator {
         try {
             this.saveAsXGSBase(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -124,7 +124,7 @@ public class XGSManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsXGSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -143,7 +143,7 @@ public class XGSManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsXGSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

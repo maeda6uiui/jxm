@@ -102,7 +102,7 @@ public class MIFManipulator {
         try {
             this.saveAsMIFBase(os, encoding);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -122,7 +122,7 @@ public class MIFManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsMIFBase(fos, encoding);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -142,7 +142,7 @@ public class MIFManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsMIFBase(fos, encoding);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

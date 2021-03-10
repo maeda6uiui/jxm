@@ -106,7 +106,7 @@ public class XCSManipulator {
         try {
             this.saveAsXCSBase(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -125,7 +125,7 @@ public class XCSManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsXCSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -144,7 +144,7 @@ public class XCSManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsXCSBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

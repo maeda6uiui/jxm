@@ -341,7 +341,7 @@ public class BD1Manipulator {
         try {
             this.saveAsBD1Base(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -360,7 +360,7 @@ public class BD1Manipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsBD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -379,7 +379,7 @@ public class BD1Manipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsBD1Base(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -407,7 +407,7 @@ public class BD1Manipulator {
         try {
             this.saveAsOBJBase(osObj, osMtl, mtlFilename, flipV);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -430,7 +430,7 @@ public class BD1Manipulator {
              var fosMtl = new FileOutputStream(fileMtl)) {
             this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -454,7 +454,7 @@ public class BD1Manipulator {
              var fosMtl = new FileOutputStream(filepathMtl)) {
             this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 

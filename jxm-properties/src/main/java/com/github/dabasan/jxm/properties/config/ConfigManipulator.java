@@ -98,7 +98,7 @@ public class ConfigManipulator {
         try {
             this.saveAsDATBase(os);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -117,7 +117,7 @@ public class ConfigManipulator {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsDATBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
@@ -136,7 +136,7 @@ public class ConfigManipulator {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsDATBase(fos);
         } catch (IOException e) {
-            logger.error(e.toString());
+            logger.error("Error", e);
             ret = -1;
         }
 
