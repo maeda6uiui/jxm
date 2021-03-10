@@ -81,8 +81,7 @@ public class PD1Manipulator {
      * @param points points to set
      */
     public void setPoints(List<PD1Point> points) {
-        Objects.requireNonNull(points);
-        this.points = points;
+        this.points = Objects.requireNonNull(points);
     }
 
     /**

@@ -80,8 +80,7 @@ public class MIFManipulator {
      * @param missionInfo mission info to set
      */
     public void setMissionInfo(MissionInfo missionInfo) {
-        Objects.requireNonNull(missionInfo);
-        this.missionInfo = missionInfo;
+        this.missionInfo = Objects.requireNonNull(missionInfo);
     }
 
     private void saveAsMIFBase(OutputStream os, String encoding) throws IOException {

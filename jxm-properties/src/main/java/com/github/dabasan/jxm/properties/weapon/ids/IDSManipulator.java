@@ -78,8 +78,7 @@ public class IDSManipulator {
      * @param weapon weapon data to set
      */
     public void setWeapon(Weapon weapon) {
-        Objects.requireNonNull(weapon);
-        this.weapon = weapon;
+        this.weapon = Objects.requireNonNull(weapon);
     }
 
     private void innerSaveAsIDS(OutputStream os) throws IOException {

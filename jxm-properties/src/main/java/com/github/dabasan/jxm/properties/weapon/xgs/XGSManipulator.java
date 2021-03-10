@@ -80,6 +80,7 @@ public class XGSManipulator {
      */
     public void setWeapons(Weapon[] weapons) {
         Objects.requireNonNull(weapons);
+
         if (weapons.length != NUM_WEAPONS) {
             logger.warn("Invalid number of data contained in the array. number={}", weapons.length);
             return;

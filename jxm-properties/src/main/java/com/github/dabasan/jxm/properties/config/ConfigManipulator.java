@@ -77,8 +77,7 @@ public class ConfigManipulator {
      * @param config config to set
      */
     public void setConfig(Config config) {
-        Objects.requireNonNull(config);
-        this.config = config;
+        this.config = Objects.requireNonNull(config);
     }
 
     private void saveAsDATBase(OutputStream os) throws IOException {
