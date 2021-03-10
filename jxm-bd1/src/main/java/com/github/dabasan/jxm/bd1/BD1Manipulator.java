@@ -15,7 +15,7 @@ import java.util.*;
  * @author Daba
  */
 public class BD1Manipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private List<BD1Block> blocks;
     private Map<Integer, String> textureFilenames;

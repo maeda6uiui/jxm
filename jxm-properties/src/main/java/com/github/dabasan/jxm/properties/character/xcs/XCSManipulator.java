@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author Daba
  */
 public class XCSManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_CHARACTERS = 43;
     private Character[] characters;

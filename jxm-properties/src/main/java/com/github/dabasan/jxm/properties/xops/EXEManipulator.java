@@ -15,7 +15,7 @@ import java.io.*;
  * @author Daba
  */
 public class EXEManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private XOPSVersion srcXOPSVersion;
     private BINWeaponManipulator weaponManipulator;

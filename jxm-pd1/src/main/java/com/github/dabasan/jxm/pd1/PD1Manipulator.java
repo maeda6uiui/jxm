@@ -16,7 +16,7 @@ import java.util.Objects;
  * @author Daba
  */
 public class PD1Manipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private List<PD1Point> points;
 

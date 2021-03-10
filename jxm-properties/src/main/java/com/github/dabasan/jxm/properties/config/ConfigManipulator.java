@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author Daba
  */
 public class ConfigManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private Config config;
 

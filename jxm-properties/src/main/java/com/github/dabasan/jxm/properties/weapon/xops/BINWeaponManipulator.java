@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author Daba
  */
 public class BINWeaponManipulator {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_WEAPONS = 23;
     private Weapon[] weapons;
