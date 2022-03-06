@@ -105,6 +105,7 @@
                         <docencoding>UTF-8</docencoding>
                         <charset>UTF-8</charset>
                         <source>11</source>
+                        <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                     </configuration>
                     <executions>
                         <execution>
@@ -120,6 +121,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
