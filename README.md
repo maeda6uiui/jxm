@@ -15,7 +15,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>1.0.0</version>
+<version>1.0.1</version>
 ```
 
 #### MIFモジュール
@@ -23,7 +23,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>1.0.0</version>
+<version>1.0.1</version>
 ```
 
 #### PD1モジュール
@@ -31,7 +31,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>1.0.0</version>
+<version>1.0.1</version>
 ```
 
 #### Propertiesモジュール
@@ -39,7 +39,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>1.0.0</version>
+<version>1.0.1</version>
 ```
 
 ## 使用例
@@ -90,12 +90,12 @@ public class ReadmeSample {
 
 ## サンプルコード
 
-サンプルコードは[jxm-samples-v1](https://github.com/Dabasan/jxm-samples-v1)を参照してください。
+サンプルコードは[jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1)を参照してください。
 
 ## JXMを使用したプログラム
 
-- [BD1ToOBJ](https://github.com/Dabasan/BD1ToOBJ)
+- [BD1ToOBJ](https://github.com/maeda6uiui/BD1ToOBJ)
   BD1形式のモデルをOBJ形式に変換します。
-- [MPSY](https://github.com/Dabasan/MPSY)
+- [MPSY](https://github.com/maeda6uiui/MPSY)
   XOPSのマップとポイントに対して拡大や回転などの処理を行います。
 
