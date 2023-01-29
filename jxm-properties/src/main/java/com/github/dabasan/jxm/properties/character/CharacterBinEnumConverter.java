@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.character;
 /**
  * Bin to enum converter
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CharacterBinEnumConverter {
     public static CharacterModelType getModelTypeFromBinSpecifier(int spc) {

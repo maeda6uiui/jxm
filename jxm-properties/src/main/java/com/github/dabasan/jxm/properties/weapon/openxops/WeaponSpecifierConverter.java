@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
 /**
  * Conversion between XOPS and OpenXOPS specifiers
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class WeaponSpecifierConverter {
     public static int getOpenXOPSSoundIDFromXOPSSoundID(int xopsSoundID) {

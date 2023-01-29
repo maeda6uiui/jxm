@@ -14,7 +14,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBi
 /**
  * PD1 writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class PD1Writer {
     public void write(OutputStream os, List<PD1Point> points) throws IOException {

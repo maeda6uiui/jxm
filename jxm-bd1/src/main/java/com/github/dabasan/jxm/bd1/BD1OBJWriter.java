@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Writes out BD1 blocks into an OBJ file.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1OBJWriter {
     public static void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,

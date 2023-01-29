@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.bd1;
 /**
  * UV coordinates
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class UV {
     public float u;

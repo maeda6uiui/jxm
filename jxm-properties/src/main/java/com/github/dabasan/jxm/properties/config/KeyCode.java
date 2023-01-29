@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.config;
 /**
  * Key code
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public enum KeyCode {
     KEY_UP,

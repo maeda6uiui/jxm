@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * Test WeaponCodeGenerator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class WeaponCodeGeneratorTest {
     private WeaponCodeGenerator generator;

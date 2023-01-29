@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Generates C++ code containing character data.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CharacterCodeGenerator {
     private CharacterVariableNameSettings settings;

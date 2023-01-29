@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * IDS manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class IDSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Generates C++ code containing weapon data.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class WeaponCodeGenerator {
     private WeaponVariableNameSettings settings;

@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 /**
  * Test IDSManipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class IDSManipulatorTest {
     private final String TARGET_DIR = "./Data/Weapon";

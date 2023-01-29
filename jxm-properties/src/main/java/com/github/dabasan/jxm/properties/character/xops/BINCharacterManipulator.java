@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * BIN character manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class BINCharacterManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

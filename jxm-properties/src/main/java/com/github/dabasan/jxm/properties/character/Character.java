@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Character
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class Character {
     public CharacterTextureType texture;

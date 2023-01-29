@@ -7,7 +7,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.setShortToBinLE;
 /**
  * EXE weapon writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BINWeaponWriter {
     public void write(byte[] bin, Weapon[] weapons, int dataStartPos, int nameStartPos) {

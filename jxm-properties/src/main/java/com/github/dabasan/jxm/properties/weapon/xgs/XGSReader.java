@@ -10,7 +10,7 @@ import java.io.InputStream;
 /**
  * XGS reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class XGSReader {
     private Weapon[] weapons;

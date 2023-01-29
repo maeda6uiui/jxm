@@ -11,7 +11,7 @@ import java.util.function.Function;
 /**
  * Config writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class ConfigWriter {
     public void write(OutputStream os, Config config) throws IOException {

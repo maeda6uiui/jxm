@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * BD1 manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class BD1Manipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

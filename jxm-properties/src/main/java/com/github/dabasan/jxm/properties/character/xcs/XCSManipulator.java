@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * XCS manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class XCSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

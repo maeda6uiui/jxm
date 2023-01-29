@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * Test CharacterCodeGenerator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CharacterCodeGeneratorTest {
     private CharacterCodeGenerator generator;

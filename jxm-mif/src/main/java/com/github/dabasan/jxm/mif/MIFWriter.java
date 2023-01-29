@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * MIF writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class MIFWriter {
     public void write(OutputStream os, String encoding, MissionInfo missionInfo)

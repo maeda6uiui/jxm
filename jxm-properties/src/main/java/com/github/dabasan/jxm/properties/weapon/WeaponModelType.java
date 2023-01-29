@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon;
 /**
  * Model type
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public enum WeaponModelType {
     NONE,

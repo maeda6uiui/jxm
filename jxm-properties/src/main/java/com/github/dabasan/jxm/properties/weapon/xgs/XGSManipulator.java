@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * XGS manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class XGSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Test class for WeaponCodeParser
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class WeaponCodeParserTest {
     public static void main(String[] args) {

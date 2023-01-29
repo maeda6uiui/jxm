@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * Test XCSManipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class XCSManipulatorTest {
     private final String TARGET_DIR = "./Data/Character";

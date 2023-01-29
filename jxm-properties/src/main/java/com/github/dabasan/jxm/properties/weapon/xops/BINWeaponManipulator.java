@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * BIN weapon manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class BINWeaponManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

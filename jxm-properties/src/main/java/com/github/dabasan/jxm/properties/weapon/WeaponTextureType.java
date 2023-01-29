@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon;
 /**
  * Texture type
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public enum WeaponTextureType {
     NONE,

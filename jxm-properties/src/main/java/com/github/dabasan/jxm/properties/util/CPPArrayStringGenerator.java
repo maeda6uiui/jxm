@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.util;
 /**
  * Generates string representation of an array formatted for C++ code.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CPPArrayStringGenerator {
     /**

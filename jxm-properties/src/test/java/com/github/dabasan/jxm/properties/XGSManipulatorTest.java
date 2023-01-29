@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * Test XGSManipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class XGSManipulatorTest {
     private final String TARGET_DIR = "./Data/Weapon";

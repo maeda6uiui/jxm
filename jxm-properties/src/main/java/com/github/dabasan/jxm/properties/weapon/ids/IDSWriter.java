@@ -13,7 +13,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addShortToBinLE;
 /**
  * IDS writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class IDSWriter {
     public void write(OutputStream os, Weapon weapon) throws IOException {

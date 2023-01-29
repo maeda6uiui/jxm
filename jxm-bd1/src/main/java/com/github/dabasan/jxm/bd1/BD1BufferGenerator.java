@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * BD1 buffer generator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1BufferGenerator {
     public static List<BD1Buffer> generateBuffers(Map<Integer, List<BD1Face>> facesMap,

@@ -13,7 +13,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addShortToBinLE;
 /**
  * XGS writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class XGSWriter {
     public void write(OutputStream os, Weapon[] weapons) throws IOException {

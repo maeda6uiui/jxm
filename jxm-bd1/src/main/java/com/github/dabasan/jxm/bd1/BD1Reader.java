@@ -14,7 +14,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
 /**
  * BD1 reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1Reader {
     private Map<Integer, String> textureFilenames;

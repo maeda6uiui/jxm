@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.config;
 /**
  * Config
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class Config {
     // Key code

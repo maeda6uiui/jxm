@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Parses C++ code containing character data.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CharacterCodeParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

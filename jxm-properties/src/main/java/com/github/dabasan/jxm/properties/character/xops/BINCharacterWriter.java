@@ -10,7 +10,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.setUnsignedShortToBi
 /**
  * BIN character writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BINCharacterWriter {
     public void write(byte[] bin, Character[] characters, int dataStartPos) {

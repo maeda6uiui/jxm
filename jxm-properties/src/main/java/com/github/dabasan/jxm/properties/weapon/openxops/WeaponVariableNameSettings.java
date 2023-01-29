@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
 /**
  * Settings for variable names used to generate and parse C++ code
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class WeaponVariableNameSettings {
     public String arrayName;

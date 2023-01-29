@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 /**
  * Test MIFManipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class MIFManipulatorTest {
     private final String TARGET_DIR = "./Data";

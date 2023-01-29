@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Test ByteFunctions
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class ByteFunctionsTest {
     @Test

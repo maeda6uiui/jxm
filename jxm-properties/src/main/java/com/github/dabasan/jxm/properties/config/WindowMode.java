@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.config;
 /**
  * Window mode
  *
- * @author Daba
+ * @author maeda6uiui
  */
 enum WindowMode {
     WINDOW, FULL_SCREEN

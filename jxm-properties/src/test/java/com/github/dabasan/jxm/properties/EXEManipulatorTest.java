@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * Test EXEManipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class EXEManipulatorTest {
     private final String TARGET_DIR = "./Data/XOPS";

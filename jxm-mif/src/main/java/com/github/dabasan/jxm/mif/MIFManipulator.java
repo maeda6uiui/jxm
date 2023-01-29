@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * MIF manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class MIFManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

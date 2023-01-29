@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * Parses string representation of an array formatted for C++ code.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CPPArrayStringParser {
     /**

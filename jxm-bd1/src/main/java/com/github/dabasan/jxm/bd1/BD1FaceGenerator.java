@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * BD1 face generator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1FaceGenerator {
     public static Map<Integer, List<BD1Face>> generateFaces(List<BD1Block> blocks) {

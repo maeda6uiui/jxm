@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Parses C++ code containing weapon data.
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class WeaponCodeParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

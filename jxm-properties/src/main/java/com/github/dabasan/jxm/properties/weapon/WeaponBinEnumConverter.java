@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon;
 /**
  * Bin to enum converter
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class WeaponBinEnumConverter {
     public static WeaponModelType getModelTypeFromBinSpecifier(int spc) {

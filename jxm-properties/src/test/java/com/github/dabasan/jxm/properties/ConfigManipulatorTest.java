@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 /**
  * Test ConfigManipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class ConfigManipulatorTest {
     private final String TARGET_DIR = "./Data/Config";

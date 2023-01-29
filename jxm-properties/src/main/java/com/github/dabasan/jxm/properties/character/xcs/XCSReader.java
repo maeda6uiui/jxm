@@ -13,7 +13,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
 /**
  * XCS reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class XCSReader {
     private Character[] characters;

@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.bd1;
 /**
  * BD1 functions
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1Functions {
     public static int[] getFaceCorrespondingVertexIndices(int faceIndex) {

@@ -7,7 +7,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
 /**
  * EXE weapon reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BINWeaponReader {
     private Weapon[] weapons;

@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.xops;
 /**
  * XOPS functions
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class XOPSFunctions {
     private static final int XOPS_096_OR_096T_FILE_SIZE = 458752;

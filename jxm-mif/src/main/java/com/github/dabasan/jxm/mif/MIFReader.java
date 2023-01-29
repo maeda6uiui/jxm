@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * MIF reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class MIFReader {
     private MissionInfo missionInfo;

@@ -12,7 +12,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
 /**
  * PD1 reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class PD1Reader {
     private List<PD1Point> points;

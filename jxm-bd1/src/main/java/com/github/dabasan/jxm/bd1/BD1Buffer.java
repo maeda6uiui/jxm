@@ -6,7 +6,7 @@ import java.nio.IntBuffer;
 /**
  * Buffer representation of BD1 blocks
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class BD1Buffer {
     public IntBuffer indexBuffer;

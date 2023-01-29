@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Test CharacterCodeParser
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class CharacterCodeParserTest {
     public static void main(String[] args) {

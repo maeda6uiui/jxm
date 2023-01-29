@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Texture filenames
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class TextureFilepaths {
     private static Map<Integer, String> textureFilepaths;

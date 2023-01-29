@@ -5,7 +5,7 @@ import org.joml.Vector3f;
 /**
  * PD1 point
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class PD1Point {
     public Vector3f position;

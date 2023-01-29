@@ -13,7 +13,7 @@ import java.util.Objects;
 /**
  * PD1 manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class PD1Manipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

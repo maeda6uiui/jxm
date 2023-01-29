@@ -9,7 +9,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
 /**
  * BIN character reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BINCharacterReader {
     private Character[] characters;

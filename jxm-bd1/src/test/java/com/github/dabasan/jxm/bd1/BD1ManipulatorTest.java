@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Test BD1Manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class BD1ManipulatorTest {
     private final String TARGET_DIR = "./Data/SnowBase";

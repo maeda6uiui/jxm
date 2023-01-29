@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Mission info
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class MissionInfo {
     public String missionTitle;

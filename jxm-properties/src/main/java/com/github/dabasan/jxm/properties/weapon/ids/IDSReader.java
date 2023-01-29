@@ -11,7 +11,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
 /**
  * IDS reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class IDSReader {
     private Weapon weapon;

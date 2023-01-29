@@ -8,7 +8,7 @@ import java.util.function.Function;
 /**
  * Config reader
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class ConfigReader {
     private Config config;

@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Config manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class ConfigManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

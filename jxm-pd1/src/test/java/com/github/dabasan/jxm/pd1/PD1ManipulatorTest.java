@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Test PD1Manipulator
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class PD1ManipulatorTest {
     private final String TARGET_DIR = "./Data";

@@ -13,7 +13,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBi
 /**
  * BD1 writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1Writer {
     public void write(OutputStream os, List<BD1Block> blocks, Map<Integer, String> textureFilenames)

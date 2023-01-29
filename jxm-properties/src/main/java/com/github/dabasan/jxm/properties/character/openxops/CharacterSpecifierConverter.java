@@ -6,7 +6,7 @@ import com.github.dabasan.jxm.properties.character.CharacterTextureType;
 /**
  * Conversion between XOPS and OpenXOPS specifiers
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class CharacterSpecifierConverter {
     public static int getOpenXOPSTextureIDFromXOPSTextureType(

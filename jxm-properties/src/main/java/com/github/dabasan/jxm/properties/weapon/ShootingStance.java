@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon;
 /**
  * Shooting stance
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public enum ShootingStance {
     RIFLE, HANDGUN, CARRY

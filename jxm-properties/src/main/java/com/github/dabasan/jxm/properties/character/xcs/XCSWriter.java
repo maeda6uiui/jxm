@@ -15,7 +15,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBi
 /**
  * XCS writer
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class XCSWriter {
     public void write(OutputStream os, Character[] characters) throws IOException {

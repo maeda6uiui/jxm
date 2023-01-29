@@ -5,7 +5,7 @@ import org.joml.Vector3f;
 /**
  * BD1 block
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class BD1Block {
     public Vector3f[] vertexPositions;

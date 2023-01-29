@@ -5,7 +5,7 @@ import org.joml.Vector3f;
 /**
  * BD1 face
  *
- * @author Daba
+ * @author maeda6uiui
  */
 class BD1Face {
     public Vector3f[] vertexPositions;

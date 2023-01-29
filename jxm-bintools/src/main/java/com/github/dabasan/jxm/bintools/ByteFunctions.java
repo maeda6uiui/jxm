@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Byte functions
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class ByteFunctions {
     /**

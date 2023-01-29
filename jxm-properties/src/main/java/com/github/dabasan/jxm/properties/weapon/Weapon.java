@@ -3,7 +3,7 @@ package com.github.dabasan.jxm.properties.weapon;
 /**
  * Weapon
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class Weapon {
     public String name;

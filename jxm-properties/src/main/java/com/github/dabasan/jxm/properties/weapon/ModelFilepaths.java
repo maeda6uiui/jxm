@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Model filepaths
  *
- * @author Daba
+ * @author maeda6uiui
  */
 public class ModelFilepaths {
     private static Map<Integer, String> modelFilepaths;
