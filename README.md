@@ -15,7 +15,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>1.0.2</version>
+<version>1.0.3</version>
 ```
 
 #### MIFモジュール
@@ -23,7 +23,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>1.0.2</version>
+<version>1.0.3</version>
 ```
 
 #### PD1モジュール
@@ -31,7 +31,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>1.0.2</version>
+<version>1.0.3</version>
 ```
 
 #### Propertiesモジュール
@@ -39,7 +39,7 @@ Java ≥ 11
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>1.0.2</version>
+<version>1.0.3</version>
 ```
 
 ## 使用例
