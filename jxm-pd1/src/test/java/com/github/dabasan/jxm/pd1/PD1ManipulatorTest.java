@@ -138,7 +138,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rescale.pd1").toString();
         manipulator.saveAsPD1(saveFilepath);
 
-        manipulator.rescale(1.0f / scaleX, 1.0f / scaleY, 1.0f / scaleZ);
+        manipulator.rescale(scaleX,scaleY,scaleZ);
     }
 
     private void createInvertZ() {

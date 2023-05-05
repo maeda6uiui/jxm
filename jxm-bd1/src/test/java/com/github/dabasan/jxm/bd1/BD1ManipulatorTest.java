@@ -170,7 +170,7 @@ public class BD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rescale.bd1").toString();
         manipulator.saveAsBD1(saveFilepath);
 
-        manipulator.rescale(1.0f / scaleX, 1.0f / scaleY, 1.0f / scaleZ);
+        manipulator.rescale(scaleX,scaleY,scaleZ);
     }
 
     private void createInvertZ() {
