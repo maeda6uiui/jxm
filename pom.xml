@@ -7,9 +7,11 @@
     <groupId>com.github.dabasan</groupId>
     <artifactId>jxm</artifactId>
     <version>1.0.3</version>
+
     <packaging>pom</packaging>
+    
     <name>jxm</name>
-    <description>JXM is a set of utility modules to handle material for X operations.</description>
+    <description>JXM enables you to work with the data relating to X operations.</description>
     <url>https://github.com/maeda6uiui/jxm</url>
 
     <licenses>
