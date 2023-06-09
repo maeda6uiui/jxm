@@ -29,6 +29,19 @@ public class EXEManipulator {
         characterManipulator = new BINCharacterManipulator();
     }
 
+    private void constructorBase(InputStream is) throws IOException {
+        byte[] bin = is.readAllBytes();
+
+        XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
+        int weaponDataStartPos = this.getWeaponDataStartPos(version);
+        int weaponNameStartPos = this.getWeaponNameStartPos(version);
+        int characterDataStartPos = this.getCharacterDataStartPos(version);
+        srcXOPSVersion = version;
+
+        weaponManipulator = new BINWeaponManipulator(bin, weaponDataStartPos, weaponNameStartPos);
+        characterManipulator = new BINCharacterManipulator(bin, characterDataStartPos);
+    }
+
     /**
      * Creates an EXE manipulator and loads an EXE.
      *
@@ -46,8 +59,8 @@ public class EXEManipulator {
      * @throws IOException if it fails to load
      */
     public EXEManipulator(File file) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.constructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+            this.constructorBase(bis);
         }
     }
 
@@ -58,25 +71,9 @@ public class EXEManipulator {
      * @throws IOException if it fails to load
      */
     public EXEManipulator(String filepath) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.constructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+            this.constructorBase(bis);
         }
-    }
-
-    private void constructorBase(InputStream is) throws IOException {
-        byte[] bin;
-        try (var bis = new BufferedInputStream(is)) {
-            bin = bis.readAllBytes();
-        }
-
-        XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
-        int weaponDataStartPos = this.getWeaponDataStartPos(version);
-        int weaponNameStartPos = this.getWeaponNameStartPos(version);
-        int characterDataStartPos = this.getCharacterDataStartPos(version);
-        srcXOPSVersion = version;
-
-        weaponManipulator = new BINWeaponManipulator(bin, weaponDataStartPos, weaponNameStartPos);
-        characterManipulator = new BINCharacterManipulator(bin, characterDataStartPos);
     }
 
     private int getWeaponDataStartPos(XOPSVersion version) {
@@ -225,8 +222,8 @@ public class EXEManipulator {
 
         // Make a backup file
         if (fileBackup != null) {
-            try (var fosBackup = new FileOutputStream(fileBackup)) {
-                fosBackup.write(bin);
+            try (var bosBackup = new BufferedOutputStream(new FileOutputStream(fileBackup))) {
+                bosBackup.write(bin);
             }
         }
 
@@ -239,8 +236,8 @@ public class EXEManipulator {
         characterManipulator.write(bin, characterDataStartPos);
 
         // Overwrite an EXE file of XOPS
-        try (var fos = new FileOutputStream(file)) {
-            fos.write(bin);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            bos.write(bin);
         }
     }
 
