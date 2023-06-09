@@ -4,7 +4,6 @@ import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -53,10 +52,8 @@ class XCSWriter {
             addShortToBinLE(bin, (short) characters[i].type.ordinal());
         }
 
-        try (var bos = new BufferedOutputStream(os)) {
-            for (Byte b : bin) {
-                bos.write(b);
-            }
+        for (byte b : bin) {
+            os.write(b);
         }
     }
 }

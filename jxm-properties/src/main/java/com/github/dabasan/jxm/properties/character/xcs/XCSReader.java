@@ -3,7 +3,6 @@ package com.github.dabasan.jxm.properties.character.xcs;
 import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.*;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -22,11 +21,8 @@ class XCSReader {
         characters = new Character[numCharacters];
 
         // Read all bytes from a stream
-        byte[] bin;
-        try (var bis = new BufferedInputStream(is)) {
-            bin = bis.readAllBytes();
-        }
-
+        byte[] bin = is.readAllBytes();
+        
         int pos = 0x0000000C;
 
         for (int i = 0; i < numCharacters; i++) {

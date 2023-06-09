@@ -25,6 +25,11 @@ public class XCSManipulator {
         characters = new Character[NUM_CHARACTERS];
     }
 
+    private void readConstructorBase(InputStream is) throws IOException {
+        var reader = new XCSReader(is, NUM_CHARACTERS);
+        characters = reader.getCharacterData();
+    }
+
     /**
      * Creates a XCS manipulator and loads a XCS.
      *
@@ -42,8 +47,8 @@ public class XCSManipulator {
      * @throws IOException if it fails to load
      */
     public XCSManipulator(File file) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+            this.readConstructorBase(bis);
         }
     }
 
@@ -54,14 +59,9 @@ public class XCSManipulator {
      * @throws IOException if it fails to load
      */
     public XCSManipulator(String filepath) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+            this.readConstructorBase(bis);
         }
-    }
-
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new XCSReader(is, NUM_CHARACTERS);
-        characters = reader.getCharacterData();
     }
 
     /**
@@ -123,8 +123,8 @@ public class XCSManipulator {
     public int saveAsXCS(File file) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(file)) {
-            this.saveAsXCSBase(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            this.saveAsXCSBase(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -142,8 +142,8 @@ public class XCSManipulator {
     public int saveAsXCS(String filepath) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(filepath)) {
-            this.saveAsXCSBase(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
+            this.saveAsXCSBase(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
