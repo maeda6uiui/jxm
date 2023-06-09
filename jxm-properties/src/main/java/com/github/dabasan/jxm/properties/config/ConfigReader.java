@@ -1,6 +1,5 @@
 package com.github.dabasan.jxm.properties.config;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.function.Function;
@@ -17,10 +16,7 @@ class ConfigReader {
         config = new Config();
 
         // Read all bytes from a stream
-        byte[] bin;
-        try (var bis = new BufferedInputStream(is)) {
-            bin = bis.readAllBytes();
-        }
+        byte[] bin = is.readAllBytes();
 
         var keyCodes = KeyCode.values();
 

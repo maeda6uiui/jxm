@@ -1,6 +1,5 @@
 package com.github.dabasan.jxm.properties.config;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -39,9 +38,9 @@ class ConfigWriter {
         // Other config
         Function<Boolean, Byte> booleanToByte = (b) -> {
             if (b == false) {
-                return 0;
+                return (byte) 0;
             } else {
-                return 1;
+                return (byte) 1;
             }
         };
         bin.add((byte) config.mouseSensitivity);
@@ -54,10 +53,8 @@ class ConfigWriter {
         bin.add(booleanToByte.apply(config.anotherGunsight));
         this.addNameToBin(bin, config.name);
 
-        try (var bos = new BufferedOutputStream(os)) {
-            for (Byte b : bin) {
-                bos.write(b);
-            }
+        for (byte b : bin) {
+            os.write(b);
         }
     }
 

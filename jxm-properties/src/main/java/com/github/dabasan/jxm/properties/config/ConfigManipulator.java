@@ -23,6 +23,11 @@ public class ConfigManipulator {
         config = new Config();
     }
 
+    private void readConstructorBase(InputStream is) throws IOException {
+        var reader = new ConfigReader(is);
+        config = reader.getConfig();
+    }
+
     /**
      * Creates a config manipulator and loads config.
      *
@@ -40,8 +45,8 @@ public class ConfigManipulator {
      * @throws IOException if it fails to load
      */
     public ConfigManipulator(File file) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+            this.readConstructorBase(bis);
         }
     }
 
@@ -52,14 +57,9 @@ public class ConfigManipulator {
      * @throws IOException if it fails to load
      */
     public ConfigManipulator(String filepath) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+            this.readConstructorBase(bis);
         }
-    }
-
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new ConfigReader(is);
-        config = reader.getConfig();
     }
 
     /**
@@ -113,8 +113,8 @@ public class ConfigManipulator {
     public int saveAsDAT(File file) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(file)) {
-            this.saveAsDATBase(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            this.saveAsDATBase(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -132,8 +132,8 @@ public class ConfigManipulator {
     public int saveAsDAT(String filepath) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(filepath)) {
-            this.saveAsDATBase(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
+            this.saveAsDATBase(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
