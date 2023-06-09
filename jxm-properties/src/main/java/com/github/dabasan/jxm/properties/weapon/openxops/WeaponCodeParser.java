@@ -191,7 +191,7 @@ public class WeaponCodeParser {
             }
             // ModelPositionX
             else if (parsed[2].equals(settings.modelPositionX)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float modelPositionX;
                 try {
@@ -205,7 +205,7 @@ public class WeaponCodeParser {
             }
             // ModelPositionY
             else if (parsed[2].equals(settings.modelPositionY)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float modelPositionY;
                 try {
@@ -219,7 +219,7 @@ public class WeaponCodeParser {
             }
             // ModelPositionZ
             else if (parsed[2].equals(settings.modelPositionZ)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float modelPositionZ;
                 try {
@@ -233,7 +233,7 @@ public class WeaponCodeParser {
             }
             // FlashPositionX
             else if (parsed[2].equals(settings.flashPositionX)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float flashPositionX;
                 try {
@@ -247,7 +247,7 @@ public class WeaponCodeParser {
             }
             // FlashPositionY
             else if (parsed[2].equals(settings.flashPositionY)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float flashPositionY;
                 try {
@@ -261,7 +261,7 @@ public class WeaponCodeParser {
             }
             // FlashPositionZ
             else if (parsed[2].equals(settings.flashPositionZ)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float flashPositionZ;
                 try {
@@ -275,7 +275,7 @@ public class WeaponCodeParser {
             }
             // YakkyouPositionX
             else if (parsed[2].equals(settings.yakkyouPositionX)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouPositionX;
                 try {
@@ -289,7 +289,7 @@ public class WeaponCodeParser {
             }
             // YakkyouPositionY
             else if (parsed[2].equals(settings.yakkyouPositionY)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouPositionY;
                 try {
@@ -303,7 +303,7 @@ public class WeaponCodeParser {
             }
             // YakkyouPositionZ
             else if (parsed[2].equals(settings.yakkyouPositionZ)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouPositionZ;
                 try {
@@ -317,7 +317,7 @@ public class WeaponCodeParser {
             }
             // YakkyouSpeedX
             else if (parsed[2].equals(settings.yakkyouSpeedX)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouSpeedX;
                 try {
@@ -331,7 +331,7 @@ public class WeaponCodeParser {
             }
             // YakkyouSpeedY
             else if (parsed[2].equals(settings.yakkyouSpeedY)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouSpeedY;
                 try {
@@ -371,7 +371,7 @@ public class WeaponCodeParser {
             }
             // Size
             else if (parsed[2].equals(settings.size)) {
-                String valString = this.removeTailingF(parsed[3]);
+                String valString = this.removeTrailingF(parsed[3]);
 
                 float size;
                 try {
@@ -466,7 +466,7 @@ public class WeaponCodeParser {
         return ret;
     }
 
-    private String removeTailingF(String parsedString) {
+    private String removeTrailingF(String parsedString) {
         String ret = parsedString;
 
         char lastChar = ret.charAt(ret.length() - 1);
