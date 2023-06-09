@@ -2,7 +2,6 @@ package com.github.dabasan.jxm.bd1;
 
 import org.joml.Vector3fc;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.*;
@@ -80,7 +79,7 @@ class BD1Writer {
             }
         }
 
-        for(byte b:bin){
+        for (byte b : bin) {
             os.write(b);
         }
     }

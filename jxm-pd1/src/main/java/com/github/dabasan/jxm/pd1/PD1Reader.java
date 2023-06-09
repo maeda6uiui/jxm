@@ -1,6 +1,5 @@
 package com.github.dabasan.jxm.pd1;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ class PD1Reader {
         points = new ArrayList<>();
 
         // Read all bytes from a stream
-        byte[] bin=is.readAllBytes();
+        byte[] bin = is.readAllBytes();
 
         int pos = 0;
 
