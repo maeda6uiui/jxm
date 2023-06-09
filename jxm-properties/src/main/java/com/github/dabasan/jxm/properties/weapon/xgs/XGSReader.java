@@ -3,7 +3,6 @@ package com.github.dabasan.jxm.properties.weapon.xgs;
 import com.github.dabasan.jxm.bintools.ByteFunctions;
 import com.github.dabasan.jxm.properties.weapon.*;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -19,10 +18,7 @@ class XGSReader {
         weapons = new Weapon[numWeapons];
 
         // Read all bytes from a stream
-        byte[] bin;
-        try (var bis = new BufferedInputStream(is)) {
-            bin = bis.readAllBytes();
-        }
+        byte[] bin = is.readAllBytes();
 
         int pos = 0x0000000E;
 

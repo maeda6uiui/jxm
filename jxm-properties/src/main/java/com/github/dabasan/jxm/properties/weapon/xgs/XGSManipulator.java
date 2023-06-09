@@ -25,6 +25,11 @@ public class XGSManipulator {
         weapons = new Weapon[NUM_WEAPONS];
     }
 
+    private void readConstructorBase(InputStream is) throws IOException {
+        var reader = new XGSReader(is, NUM_WEAPONS);
+        weapons = reader.getWeaponData();
+    }
+
     /**
      * Creates a XGS manipulator and loads a XGS.
      *
@@ -42,7 +47,7 @@ public class XGSManipulator {
      * @throws IOException if it fails to load
      */
     public XGSManipulator(File file) throws IOException {
-        try (var bis = new FileInputStream(file)) {
+        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
             this.readConstructorBase(bis);
         }
     }
@@ -54,14 +59,9 @@ public class XGSManipulator {
      * @throws IOException if it fails to load
      */
     public XGSManipulator(String filepath) throws IOException {
-        try (var bis = new FileInputStream(filepath)) {
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
             this.readConstructorBase(bis);
         }
-    }
-
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new XGSReader(is, NUM_WEAPONS);
-        weapons = reader.getWeaponData();
     }
 
     /**
@@ -122,8 +122,8 @@ public class XGSManipulator {
     public int saveAsXGS(File file) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(file)) {
-            this.saveAsXGSBase(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            this.saveAsXGSBase(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -141,8 +141,8 @@ public class XGSManipulator {
     public int saveAsXGS(String filepath) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(filepath)) {
-            this.saveAsXGSBase(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
+            this.saveAsXGSBase(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;

@@ -2,7 +2,6 @@ package com.github.dabasan.jxm.properties.weapon.xgs;
 
 import com.github.dabasan.jxm.properties.weapon.*;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -122,10 +121,8 @@ class XGSWriter {
             bin.add((byte) 0x00);
         }
 
-        try (var bos = new BufferedOutputStream(os)) {
-            for (Byte b : bin) {
-                bos.write(b);
-            }
+        for (byte b : bin) {
+            os.write(b);
         }
     }
 
