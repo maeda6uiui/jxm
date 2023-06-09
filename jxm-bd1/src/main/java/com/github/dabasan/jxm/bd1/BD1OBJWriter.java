@@ -5,6 +5,7 @@ import org.joml.Vector3fc;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,7 +39,7 @@ class BD1OBJWriter {
             }
 
             String materialName;
-            materialName = getFilenameWithoutDirectory(textureFilename);
+            materialName = Paths.get(textureFilename).getFileName().toString();
             materialName = getFilepathWithoutExtension(materialName);
             materialName += "_" + textureID;
 
@@ -90,14 +91,5 @@ class BD1OBJWriter {
         }
 
         return filepath.substring(0, lastDotPos);
-    }
-
-    private static String getFilenameWithoutDirectory(String filepath) {
-        int lastSlashPos = filepath.lastIndexOf('/');
-        if (lastSlashPos == -1) {
-            return filepath;
-        }
-
-        return filepath.substring(lastSlashPos + 1);
     }
 }
