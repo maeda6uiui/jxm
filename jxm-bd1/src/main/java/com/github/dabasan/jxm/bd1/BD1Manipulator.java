@@ -32,6 +32,13 @@ public class BD1Manipulator {
         }
     }
 
+    private void readConstructorBase(InputStream is) throws IOException {
+        var reader = new BD1Reader(is);
+
+        blocks = reader.getBlocks();
+        textureFilenames = reader.getTextureFilenames();
+    }
+
     /**
      * Creates a BD1 manipulator and loads a BD1.
      *
@@ -49,8 +56,8 @@ public class BD1Manipulator {
      * @throws IOException if it fails to load
      */
     public BD1Manipulator(File file) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.readConstructorBase(fis);
+        try(var bis=new BufferedInputStream(new FileInputStream(file))){
+            this.readConstructorBase(bis);
         }
     }
 
@@ -61,16 +68,9 @@ public class BD1Manipulator {
      * @throws IOException if it fails to load
      */
     public BD1Manipulator(String filepath) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+            this.readConstructorBase(bis);
         }
-    }
-
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new BD1Reader(is);
-
-        blocks = reader.getBlocks();
-        textureFilenames = reader.getTextureFilenames();
     }
 
     /**
@@ -354,9 +354,9 @@ public class BD1Manipulator {
     public int saveAsBD1(File file) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(file)) {
-            this.saveAsBD1Base(fos);
-        } catch (IOException e) {
+        try(var bos=new BufferedOutputStream(new FileOutputStream(file))){
+            this.saveAsBD1(bos);
+        }catch(IOException e){
             logger.error("Error", e);
             ret = -1;
         }
@@ -373,8 +373,8 @@ public class BD1Manipulator {
     public int saveAsBD1(String filepath) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(filepath)) {
-            this.saveAsBD1Base(fos);
+        try (var bos=new BufferedOutputStream(new FileOutputStream(filepath))) {
+            this.saveAsBD1Base(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -423,9 +423,9 @@ public class BD1Manipulator {
     public int saveAsOBJ(File fileObj, File fileMtl, String mtlFilename, boolean flipV) {
         int ret = 0;
 
-        try (var fosObj = new FileOutputStream(fileObj);
-             var fosMtl = new FileOutputStream(fileMtl)) {
-            this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
+        try (var bosObj = new BufferedOutputStream(new FileOutputStream(fileObj));
+             var bosMtl = new BufferedOutputStream(new FileOutputStream(fileMtl))) {
+            this.saveAsOBJBase(bosObj, bosMtl, mtlFilename, flipV);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -447,9 +447,9 @@ public class BD1Manipulator {
                          boolean flipV) {
         int ret = 0;
 
-        try (var fosObj = new FileOutputStream(filepathObj);
-             var fosMtl = new FileOutputStream(filepathMtl)) {
-            this.saveAsOBJBase(fosObj, fosMtl, mtlFilename, flipV);
+        try (var bosObj = new BufferedOutputStream(new FileOutputStream(filepathObj));
+             var bosMtl = new BufferedOutputStream(new FileOutputStream(filepathMtl))) {
+            this.saveAsOBJBase(bosObj, bosMtl, mtlFilename, flipV);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;

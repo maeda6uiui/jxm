@@ -25,10 +25,7 @@ class BD1Reader {
         blocks = new ArrayList<>();
 
         // Read all bytes from a stream
-        byte[] bin;
-        try (var bis = new BufferedInputStream(is)) {
-            bin = bis.readAllBytes();
-        }
+        byte[] bin=is.readAllBytes();
 
         int pos = 0;
 

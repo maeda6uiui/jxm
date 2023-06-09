@@ -80,15 +80,13 @@ class BD1Writer {
             }
         }
 
-        try (var bos = new BufferedOutputStream(os)) {
-            for (Byte b : bin) {
-                bos.write(b);
-            }
+        for(byte b:bin){
+            os.write(b);
         }
     }
 
     private void addTextureFilenamesToBin(List<Byte> bin, Map<Integer, String> textureFilenames) {
-        var sortedTextureFilenames = new TreeMap<Integer, String>(textureFilenames);
+        var sortedTextureFilenames = new TreeMap<>(textureFilenames);
 
         int textureCount = 0;
         for (var entry : sortedTextureFilenames.entrySet()) {
