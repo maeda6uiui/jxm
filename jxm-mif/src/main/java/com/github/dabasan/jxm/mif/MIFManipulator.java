@@ -23,6 +23,11 @@ public class MIFManipulator {
         missionInfo = new MissionInfo();
     }
 
+    private void readConstructorBase(InputStream is, String encoding) throws IOException {
+        var reader = new MIFReader(is, encoding);
+        missionInfo = reader.getMissionInfo();
+    }
+
     /**
      * Creates a MIF manipulator and loads a MIF.
      *
@@ -58,11 +63,6 @@ public class MIFManipulator {
         try (var fis = new FileInputStream(filepath)) {
             this.readConstructorBase(fis, encoding);
         }
-    }
-
-    private void readConstructorBase(InputStream is, String encoding) throws IOException {
-        var reader = new MIFReader(is, encoding);
-        missionInfo = reader.getMissionInfo();
     }
 
     /**
