@@ -27,6 +27,11 @@ public class PD1Manipulator {
         points = new ArrayList<>();
     }
 
+    private void readConstructorBase(InputStream is) throws IOException {
+        var reader = new PD1Reader(is);
+        points = reader.getPoints();
+    }
+
     /**
      * Creates a PD1 manipulator and loads a PD1.
      *
@@ -44,8 +49,8 @@ public class PD1Manipulator {
      * @throws IOException if it fails to load
      */
     public PD1Manipulator(File file) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+            this.readConstructorBase(bis);
         }
     }
 
@@ -56,14 +61,9 @@ public class PD1Manipulator {
      * @throws IOException if it fails to load
      */
     public PD1Manipulator(String filepath) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+            this.readConstructorBase(bis);
         }
-    }
-
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new PD1Reader(is);
-        points = reader.getPoints();
     }
 
     /**
@@ -276,8 +276,8 @@ public class PD1Manipulator {
     public int saveAsPD1(File file) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(file)) {
-            this.saveAsPD1Base(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            this.saveAsPD1Base(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -295,8 +295,8 @@ public class PD1Manipulator {
     public int saveAsPD1(String filepath) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(filepath)) {
-            this.saveAsPD1Base(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
+            this.saveAsPD1Base(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;

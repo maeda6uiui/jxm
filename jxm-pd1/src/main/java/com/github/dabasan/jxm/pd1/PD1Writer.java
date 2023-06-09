@@ -45,10 +45,8 @@ class PD1Writer {
             }
         }
 
-        try (var bos = new BufferedOutputStream(os)) {
-            for (Byte b : bin) {
-                bos.write(b);
-            }
+        for(byte b:bin){
+            os.write(b);
         }
     }
 }
