@@ -6,7 +6,7 @@
 
     <groupId>com.github.dabasan</groupId>
     <artifactId>jxm</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 
     <packaging>pom</packaging>
     
@@ -24,7 +24,7 @@
 
     <developers>
         <developer>
-            <name>Dabasan</name>
+            <name>maeda6uiui</name>
         </developer>
     </developers>
 
