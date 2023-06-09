@@ -24,6 +24,11 @@ public class IDSManipulator {
         weapon = new Weapon();
     }
 
+    private void readConstructorBase(InputStream is) throws IOException {
+        var reader = new IDSReader(is);
+        weapon = reader.getWeaponData();
+    }
+
     /**
      * Creates an IDS manipulator.
      *
@@ -41,8 +46,8 @@ public class IDSManipulator {
      * @throws IOException if it fails to load
      */
     public IDSManipulator(File file) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
+            this.readConstructorBase(bis);
         }
     }
 
@@ -53,14 +58,9 @@ public class IDSManipulator {
      * @throws IOException if it fails to load
      */
     public IDSManipulator(String filepath) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.readConstructorBase(fis);
+        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
+            this.readConstructorBase(bis);
         }
-    }
-
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new IDSReader(is);
-        weapon = reader.getWeaponData();
     }
 
     /**
@@ -114,8 +114,8 @@ public class IDSManipulator {
     public int saveAsIDS(File file) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(file)) {
-            this.innerSaveAsIDS(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
+            this.innerSaveAsIDS(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;
@@ -133,8 +133,8 @@ public class IDSManipulator {
     public int saveAsIDS(String filepath) {
         int ret = 0;
 
-        try (var fos = new FileOutputStream(filepath)) {
-            this.innerSaveAsIDS(fos);
+        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
+            this.innerSaveAsIDS(bos);
         } catch (IOException e) {
             logger.error("Error", e);
             ret = -1;

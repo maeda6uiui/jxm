@@ -2,7 +2,6 @@ package com.github.dabasan.jxm.properties.weapon.ids;
 
 import com.github.dabasan.jxm.properties.weapon.*;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -20,10 +19,7 @@ class IDSReader {
         weapon = new Weapon();
 
         // Read all bytes from a stream
-        byte[] bin;
-        try (var bis = new BufferedInputStream(is)) {
-            bin = bis.readAllBytes();
-        }
+        byte[] bin = is.readAllBytes();
 
         int pos = 0x0000000A;
 

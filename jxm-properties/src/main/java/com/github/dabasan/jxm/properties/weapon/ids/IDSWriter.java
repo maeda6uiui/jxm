@@ -2,7 +2,6 @@ package com.github.dabasan.jxm.properties.weapon.ids;
 
 import com.github.dabasan.jxm.properties.weapon.*;
 
-import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -106,10 +105,8 @@ class IDSWriter {
         // Name
         this.addNameToBin(bin, weapon.name);
 
-        try (var bos = new BufferedOutputStream(os)) {
-            for (Byte b : bin) {
-                bos.write(b);
-            }
+        for (byte b : bin) {
+            os.write(b);
         }
     }
 
