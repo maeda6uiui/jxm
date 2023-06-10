@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,7 +51,7 @@ public class EXEManipulatorTest {
         expectedVersions.put("xopsolt18f2.exe", XOPSVersion.XOPSOLT18F2);
         expectedVersions.put("xopsolt19f2.exe", XOPSVersion.XOPSOLT19F2);
 
-        try {
+        assertDoesNotThrow(() -> {
             for (var srcFilename : srcFilenames) {
                 Path originalPath = Paths.get(TARGET_DIR, "Original", srcFilename);
                 Path copyPath = Paths.get(TARGET_DIR, srcFilename);
@@ -70,9 +69,7 @@ public class EXEManipulatorTest {
 
             var xcsManipulator = new XCSManipulator(Paths.get(TARGET_DIR, "Expected", "characters.xcs").toString());
             expectedCharacters = xcsManipulator.getCharacters();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

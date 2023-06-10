@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,14 +24,12 @@ public class XGSManipulatorTest {
 
     @BeforeAll
     public void loadWeapons() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs").toString());
 
             var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe").toString());
             expectedWeapons = exeManipulator.getWeapons();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -24,11 +23,9 @@ public class PD1ManipulatorTest {
 
     @BeforeAll
     public void loadPD1() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new PD1Manipulator(Paths.get(TARGET_DIR, "point.pd1").toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

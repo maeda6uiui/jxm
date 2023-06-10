@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -22,11 +21,9 @@ public class MIFManipulatorTest {
 
     @BeforeAll
     public void loadMIF() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new MIFManipulator(Paths.get(TARGET_DIR, "src.mif").toString(), "Shift-JIS");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

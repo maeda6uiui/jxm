@@ -8,14 +8,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test class for WeaponCodeParser
@@ -29,14 +27,12 @@ public class WeaponCodeParserTest {
 
     @BeforeAll
     public void loadWeapons() {
-        try {
+        assertDoesNotThrow(() -> {
             var manipulator = new XGSManipulator("./Data/Weapon/weapons.xgs");
             expectedWeapons = manipulator.getWeapons();
 
             codeLines = Files.readAllLines(Paths.get("./Data/Weapon/weapon_code.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,14 +24,12 @@ public class IDSManipulatorTest {
 
     @BeforeAll
     public void loadWeapon() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new IDSManipulator(Paths.get(TARGET_DIR, "mp5.ids").toString());
 
             var xgsManipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs").toString());
             expectedWeapon = xgsManipulator.getWeapons()[1];
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

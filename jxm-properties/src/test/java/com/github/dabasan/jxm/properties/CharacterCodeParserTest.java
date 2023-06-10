@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -28,14 +27,12 @@ public class CharacterCodeParserTest {
 
     @BeforeAll
     public void loadCharacters() {
-        try {
+        assertDoesNotThrow(() -> {
             var manipulator = new XCSManipulator("./Data/Character/characters.xcs");
             expectedCharacters = manipulator.getCharacters();
 
             codeLines = Files.readAllLines(Paths.get("./Data/character/character_code.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,11 +24,9 @@ public class ConfigManipulatorTest {
 
     @BeforeAll
     public void loadConfig() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config.dat").toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

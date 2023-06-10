@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 /**
@@ -28,12 +28,10 @@ public class WeaponCodeGeneratorTest {
 
     @BeforeAll
     public void loadWeapons() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new XGSManipulator(Paths.get("./Data/Weapon/weapons.xgs").toString());
             expectedLines = Files.readAllLines(Paths.get("./Data/Weapon/weapon_code.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

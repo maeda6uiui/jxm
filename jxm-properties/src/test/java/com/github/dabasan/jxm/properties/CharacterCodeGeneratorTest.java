@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 /**
@@ -28,12 +28,10 @@ public class CharacterCodeGeneratorTest {
 
     @BeforeAll
     public void loadCharacters() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new XCSManipulator("./Data/Character/characters.xcs");
             expectedLines = Files.readAllLines(Paths.get("./Data/Character/character_code.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

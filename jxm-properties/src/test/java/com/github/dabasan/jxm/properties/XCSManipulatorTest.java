@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,14 +24,12 @@ public class XCSManipulatorTest {
 
     @BeforeAll
     public void loadCharacters() {
-        try {
+        assertDoesNotThrow(() -> {
             manipulator = new XCSManipulator(Paths.get(TARGET_DIR, "characters.xcs").toString());
 
             var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe").toString());
             expectedCharacters = exeManipulator.getCharacters();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test
