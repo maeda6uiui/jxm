@@ -6,6 +6,7 @@ import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ConfigManipulatorTest {
     private static final String TARGET_DIR = "./Data/Config";
     private ConfigManipulator manipulator;

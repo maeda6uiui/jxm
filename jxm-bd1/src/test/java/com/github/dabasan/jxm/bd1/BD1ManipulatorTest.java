@@ -3,6 +3,7 @@ package com.github.dabasan.jxm.bd1;
 import org.joml.Matrix4f;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BD1ManipulatorTest {
     private static final String TARGET_DIR = "./Data/SnowBase";
     private BD1Manipulator manipulator;

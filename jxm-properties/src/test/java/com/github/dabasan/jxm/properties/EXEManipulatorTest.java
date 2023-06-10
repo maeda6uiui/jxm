@@ -8,6 +8,7 @@ import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 import com.github.dabasan.jxm.properties.xops.XOPSVersion;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EXEManipulatorTest {
     private static final String TARGET_DIR = "./Data/XOPS";
     private Map<String, EXEManipulator> manipulators;
@@ -56,6 +58,8 @@ public class EXEManipulatorTest {
                 Path copyPath = Paths.get(TARGET_DIR, srcFilename);
                 Files.copy(originalPath, copyPath, StandardCopyOption.REPLACE_EXISTING);
             }
+
+            manipulators = new HashMap<>();
             for (var srcFilename : srcFilenames) {
                 var manipulator = new EXEManipulator(Paths.get(TARGET_DIR, srcFilename).toString());
                 manipulators.put(srcFilename, manipulator);

@@ -6,6 +6,7 @@ import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSetti
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WeaponCodeParserTest {
     private Weapon[] expectedWeapons;
     private List<String> codeLines;

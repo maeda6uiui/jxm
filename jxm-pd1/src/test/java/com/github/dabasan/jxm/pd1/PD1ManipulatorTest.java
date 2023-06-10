@@ -3,6 +3,7 @@ package com.github.dabasan.jxm.pd1;
 import org.joml.Matrix4f;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PD1ManipulatorTest {
     private static final String TARGET_DIR = "./Data";
     private PD1Manipulator manipulator;
@@ -36,7 +38,7 @@ public class PD1ManipulatorTest {
         assertEquals(expected, actual);
 
         int expected2 = 12;
-        int actual2 = manipulator.getNumPoints(0, 0);
+        int actual2 = manipulator.getNumPoints(0, 1);
         assertEquals(expected2, actual2);
     }
 

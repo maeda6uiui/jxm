@@ -2,6 +2,7 @@ package com.github.dabasan.jxm.mif;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MIFManipulatorTest {
     private static final String TARGET_DIR = "./Data";
     private MIFManipulator manipulator;

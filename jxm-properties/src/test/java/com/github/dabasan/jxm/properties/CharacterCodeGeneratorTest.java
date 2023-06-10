@@ -6,6 +6,7 @@ import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNam
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author maeda6uiui
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CharacterCodeGeneratorTest {
     private XCSManipulator manipulator;
     private String expectedCode;
