@@ -21,9 +21,10 @@ BD1 module enables you to work with the BD1 format of X operations.
 BD1モジュールを使うとX operationsのBD1形式を扱うことができます。
 
 ```xml
+
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>1.0.5</version>
+<version>2.0.0</version>
 ```
 
 #### MIFモジュール(MIF module)
@@ -33,9 +34,10 @@ MIF module enables you to work with the MIF format of X operations.
 MIFモジュールを使うとX operationsのMIF形式を扱うことができます。
 
 ```xml
+
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>1.0.5</version>
+<version>2.0.0</version>
 ```
 
 #### PD1モジュール(PD1 module)
@@ -45,22 +47,25 @@ PD1 module enables you to work with the PD1 format of X operations.
 PD1モジュールを使うとX operationsのPD1形式を扱うことができます。
 
 ```xml
+
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>1.0.5</version>
+<version>2.0.0</version>
 ```
 
 #### Propertiesモジュール(Properties module)
 
-Properties module enables you to work with weapon and character data, including formats supported in XMS (X operations Mod Supporter), OpenXOPS, and multiple versions of EXE files of X operations itself.
+Properties module enables you to work with weapon and character data, including formats supported in XMS (X operations
+Mod Supporter), OpenXOPS, and multiple versions of EXE files of X operations itself.
 
 Propertiesモジュールを使うと武器およびキャラクターデータを扱うことができます。
 これにはXMS (X operations Mod Supporter)でサポートされる形式、OpenXOPS、および複数バージョンのX operations実行ファイルが含まれます。
 
 ```xml
+
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>1.0.5</version>
+<version>2.0.0</version>
 ```
 
 ## 使用例(Example)
