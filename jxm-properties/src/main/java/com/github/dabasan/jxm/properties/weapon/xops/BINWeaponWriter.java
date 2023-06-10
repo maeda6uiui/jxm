@@ -43,22 +43,31 @@ class BINWeaponWriter {
             pos += 2;
             // ModelPositionX
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionX));
+            pos += 2;
             // ModelPositionY
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionY));
+            pos += 2;
             // ModelPositionZ
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionZ));
+            pos += 2;
             // FlashPositionX
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionX));
+            pos += 2;
             // FlashPositionY
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionY));
+            pos += 2;
             // FlashPositionZ
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionZ));
+            pos += 2;
             // YakkyouPositionX
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionX));
+            pos += 2;
             // YakkyouPositionY
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionY));
+            pos += 2;
             // YakkyouPositionZ
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionZ));
+            pos += 2;
             // WeaponP
             ShootingStance shootingStance = weapons[i].weaponP;
             int shootingStanceSpc = WeaponBinEnumConverter
@@ -92,8 +101,10 @@ class BINWeaponWriter {
             pos += 2;
             // YakkyouSpeedX
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedX));
+            pos += 2;
             // YakkyouSpeedY
             setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedY));
+            pos += 2;
             // SoundID
             setShortToBinLE(bin, pos, (short) weapons[i].soundID);
             pos += 2;
