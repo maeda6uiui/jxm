@@ -5,6 +5,6 @@ package com.github.dabasan.jxm.properties.config;
  *
  * @author maeda6uiui
  */
-enum WindowMode {
+public enum WindowMode {
     WINDOW, FULL_SCREEN
 }
