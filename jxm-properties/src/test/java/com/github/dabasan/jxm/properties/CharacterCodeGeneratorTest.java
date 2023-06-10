@@ -12,8 +12,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 /**
  * Test CharacterCodeGenerator
@@ -23,13 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CharacterCodeGeneratorTest {
     private XCSManipulator manipulator;
-    private String expectedCode;
+    private List<String> expectedLines;
 
     @BeforeAll
     public void loadCharacters() {
         try {
             manipulator = new XCSManipulator("./Data/Character/characters.xcs");
-            expectedCode = Files.readString(Paths.get("./Data/Character/character_code.txt"));
+            expectedLines = Files.readAllLines(Paths.get("./Data/Character/character_code.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,7 +46,7 @@ public class CharacterCodeGeneratorTest {
 
         Character[] characters = manipulator.getCharacters();
         String actualCode = generator.generate(Arrays.asList(characters));
-
-        assertEquals(expectedCode, actualCode);
+        String[] actualLines = actualCode.split("\n");
+        assertLinesMatch(expectedLines, Arrays.asList(actualLines));
     }
 }

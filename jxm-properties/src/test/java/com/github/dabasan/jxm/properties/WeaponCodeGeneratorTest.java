@@ -12,8 +12,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertLinesMatch;
 
 /**
  * Test WeaponCodeGenerator
@@ -23,13 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WeaponCodeGeneratorTest {
     private XGSManipulator manipulator;
-    private String expectedCode;
+    private List<String> expectedLines;
 
     @BeforeAll
     public void loadWeapons() {
         try {
             manipulator = new XGSManipulator(Paths.get("./Data/Weapon/weapons.xgs").toString());
-            expectedCode = Files.readString(Paths.get("./Data/Weapon/weapon_code.txt"));
+            expectedLines = Files.readAllLines(Paths.get("./Data/Weapon/weapon_code.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,7 +46,7 @@ public class WeaponCodeGeneratorTest {
 
         Weapon[] weapons = manipulator.getWeapons();
         String actualCode = generator.generate(Arrays.asList(weapons));
-
-        assertEquals(expectedCode, actualCode);
+        String[] actualLines = actualCode.split("\n");
+        assertLinesMatch(expectedLines, Arrays.asList(actualLines));
     }
 }

@@ -26,7 +26,7 @@ public class ConfigManipulatorTest {
     @BeforeAll
     public void loadConfig() {
         try {
-            manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config_src.dat").toString());
+            manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config.dat").toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,11 +80,21 @@ public class ConfigManipulatorTest {
                 () -> assertEquals(manipulator.getConfig().enableSound, false),
                 () -> assertEquals(manipulator.getConfig().name, "Test")
         );
+
+        manipulator.getConfig().moveForward = KeyCode.KEY_W;
+        manipulator.getConfig().brightness = 10;
+        manipulator.getConfig().enableSound = true;
+        manipulator.getConfig().name = "maeda6uiui";
     }
 
     @Test
     public void saveAsDAT() {
-        var saveFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsDAT(saveFilepath));
+        var srcFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
+        var outputFilepath = Paths.get(TARGET_DIR, "config_2.dat").toString();
+        assertDoesNotThrow(() -> manipulator.saveAsDAT(outputFilepath));
+
+        String srcFileHash = TestUtils.getFileHash(srcFilepath);
+        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        assertEquals(srcFileHash, outputFileHash);
     }
 }
