@@ -133,9 +133,8 @@ public class ReadmeSample {
 
 ## サンプルコード(Code samples)
 
-See [jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1) for more code samples.
-
-サンプルコードは[jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1)を参照してください。
+- [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2)
+- [jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1)
 
 ## JXMを使用したプログラム(Applications using JXM)
 
