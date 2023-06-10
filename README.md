@@ -71,14 +71,20 @@ Propertiesモジュールを使うと武器およびキャラクターデータ�
 ## 使用例(Example)
 
 ```java
-import java.io.IOException;
+package com.github.maeda6uiui.jxmsamplesv2;
 
 import com.github.dabasan.jxm.bd1.BD1Manipulator;
 
+import java.io.IOException;
+
+/**
+ * JXMのReadmeに掲載するサンプルコード
+ *
+ * @author maeda6uiui
+ */
 public class ReadmeSample {
     public static void main(String[] args) {
         // BD1ファイルを読み込む
-        // Load a BD1 file
         BD1Manipulator manipulator;
         try {
             manipulator = new BD1Manipulator("./Data/map.bd1");
@@ -88,37 +94,39 @@ public class ReadmeSample {
         }
 
         // ブロックの数を取得する
-        // Get the number of blocks
         int numBlocks = manipulator.getNumBlocks();
         System.out.println(numBlocks);
 
         // テクスチャのファイル名をすべて取得する
-        // Get filenames of all the textures
         manipulator.getTextureFilenames().forEach((k, v) -> System.out.printf("%d: %s\n", k, v));
 
         // テクスチャのファイル名を変更する
-        // Change filenames of textures
         manipulator.setTextureFilename(0, "test.bmp");
         manipulator.setTextureFilename(1, "test_2.bmp");
 
         // マップを操作する
         // ここでは、移動→Y軸回りの回転→スケールの変更
-        // Manipulate the level
-        // Translation→Rotation around the Y-axis→Rescale
-        manipulator.translate(0.0f, 100.0f, 0.0f).rotY((float) Math.toRadians(45)).rescale(1.0f,
-                2.0f, 1.0f);
+        manipulator
+                .translate(0.0f, 100.0f, 0.0f)
+                .rotY((float) Math.toRadians(45))
+                .rescale(1.0f, 2.0f, 1.0f);
 
         // Z軸反転(鏡像マップの作成)
-        // Invert along the Z-axis (Create a mirrored level)
         manipulator.invertZ();
 
-        // BD1形式で保存する
-        // Save as BD1
-        manipulator.saveAsBD1("./Data/map_2.bd1");
+        try {
+            // BD1形式で保存する
+            manipulator.saveAsBD1("./Data/map2.bd1");
 
-        // OBJ形式で保存する
-        // Save as OBJ
-        manipulator.saveAsOBJ("./Data/map_2.obj", "./Data/map_2.mtl", "map_2.mtl", true);
+            // OBJ形式で保存する
+            manipulator.saveAsOBJ(
+                    "./Data/map2.obj",
+                    "./Data/map2.mtl",
+                    "map2.mtl",
+                    true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 ```
