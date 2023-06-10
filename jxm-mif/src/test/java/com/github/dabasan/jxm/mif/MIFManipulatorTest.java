@@ -1,9 +1,13 @@
 package com.github.dabasan.jxm.mif;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test MIFManipulator
@@ -11,50 +15,61 @@ import java.util.stream.Collectors;
  * @author maeda6uiui
  */
 public class MIFManipulatorTest {
-    private final String TARGET_DIR = "./Data";
+    private static final String TARGET_DIR = "./Data";
     private MIFManipulator manipulator;
 
-    public static void main(String[] args) {
-        new MIFManipulatorTest();
-    }
-
-    public MIFManipulatorTest() {
-        var srcFilepath = Paths.get(TARGET_DIR, "src.mif").toString();
+    @BeforeAll
+    public void loadMIF() {
         try {
-            manipulator = new MIFManipulator(srcFilepath, "Shift-JIS");
+            manipulator = new MIFManipulator(Paths.get(TARGET_DIR, "src.mif").toString(), "Shift-JIS");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        this.printMIF();
-        this.saveAsMIF();
     }
 
-    private void printMIF() {
-        System.out.println("#Mission info");
-        System.out.println("##Original");
-        System.out.println(manipulator.getMissionInfo());
+    @Test
+    public void testRead() {
+        MissionInfo missionInfo = manipulator.getMissionInfo();
+        assertEquals("AH KT 2", missionInfo.missionTitle);
+        assertEquals("Apartment House KT 2", missionInfo.missionFullname);
+        assertEquals(".\\addon\\ApartmentHouse\\map2.bd1", missionInfo.pathnameOfBlock);
+        assertEquals(".\\addon\\ApartmentHouse\\kt2.pd1", missionInfo.pathnameOfPoint);
+        assertEquals(SkyType.NIGHT, missionInfo.skyType);
+        assertEquals(".\\addon\\ApartmentHouse\\official.jpg", missionInfo.pathnameOfImage1);
+        assertEquals("!", missionInfo.pathnameOfImage2);
+        assertEquals("!", missionInfo.pathnameOfObj);
+        assertEquals(false, missionInfo.extraCollision);
+        assertEquals(false, missionInfo.darkScreen);
 
-        System.out.println("##Modified");
+        var briefingExpected = new ArrayList<String>();
+        briefingExpected.add("例の役人があまりにも無能なので、");
+        briefingExpected.add("殺害せよとの命令が下された。");
+        briefingExpected.add("");
+        briefingExpected.add("警察官である自分は、先輩とともに、");
+        briefingExpected.add("役人が潜伏しているアパートへと向かった。");
+        briefingExpected.add("");
+        briefingExpected.add("abcdefg");
 
+        assertLinesMatch(briefingExpected, missionInfo.briefingText);
+    }
+
+    @Test
+    public void testUpdate() {
         manipulator.getMissionInfo().missionTitle = "Test Mission";
         manipulator.getMissionInfo().skyType = SkyType.WILDERNESS;
         manipulator.getMissionInfo().pathnameOfBlock = "./path/to/bd1";
 
-        List<String> briefingText = manipulator.getMissionInfo().briefingText;
-        briefingText = briefingText.stream().map(s -> s.toUpperCase()).collect(Collectors.toList());
-        manipulator.getMissionInfo().briefingText = briefingText;
-
-        System.out.println(manipulator.getMissionInfo());
+        assertEquals("Test Mission", manipulator.getMissionInfo().missionTitle);
+        assertEquals(SkyType.WILDERNESS, manipulator.getMissionInfo().skyType);
+        assertEquals("./path/to/bd1", manipulator.getMissionInfo().pathnameOfBlock);
     }
 
-    private void saveAsMIF() {
-        System.out.println("#saveAsMIF()");
-
+    @Test
+    public void saveAsMIF() {
         var saveFilepath = Paths.get(TARGET_DIR, "dst_shift_jis.mif").toString();
-        manipulator.saveAsMIF(saveFilepath, "Shift-JIS");
+        assertDoesNotThrow(() -> manipulator.saveAsMIF(saveFilepath, "Shift-JIS"));
 
         var saveFilepath2 = Paths.get(TARGET_DIR, "dst_utf_8.mif").toString();
-        manipulator.saveAsMIF(saveFilepath2, "UTF-8");
+        assertDoesNotThrow(() -> manipulator.saveAsMIF(saveFilepath2, "UTF-8"));
     }
 }

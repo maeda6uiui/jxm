@@ -1,10 +1,15 @@
 package com.github.dabasan.jxm.properties;
 
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
+import com.github.dabasan.jxm.properties.xops.EXEManipulator;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test XCSManipulator
@@ -12,34 +17,48 @@ import java.util.Arrays;
  * @author maeda6uiui
  */
 public class XCSManipulatorTest {
-    private final String TARGET_DIR = "./Data/Character";
+    private static final String TARGET_DIR = "./Data/Character";
     private XCSManipulator manipulator;
+    private Character[] expectedCharacters;
 
-    public static void main(String[] args) {
-        new XCSManipulatorTest();
-    }
-
-    public XCSManipulatorTest() {
-        var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
+    @BeforeAll
+    public void loadCharacters() {
         try {
-            manipulator = new XCSManipulator(srcFilepath);
+            manipulator = new XCSManipulator(Paths.get(TARGET_DIR, "characters.xcs").toString());
+
+            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe").toString());
+            expectedCharacters = exeManipulator.getCharacters();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        this.printCharacters();
-        this.saveAsXCS();
     }
 
-    private void printCharacters() {
-        System.out.println("#Characters");
-        Arrays.asList(manipulator.getCharacters()).forEach(System.out::println);
+    @Test
+    public void testCharacters() {
+        Character[] actualCharacters = manipulator.getCharacters();
+        for (int i = 0; i < actualCharacters.length; i++) {
+            Character actualCharacter = actualCharacters[i];
+            Character expectedCharacter = expectedCharacters[i];
+
+            assertAll(
+                    () -> assertEquals(expectedCharacter.texture, actualCharacter.texture),
+                    () -> assertEquals(expectedCharacter.model, actualCharacter.model),
+                    () -> assertEquals(expectedCharacter.hp, actualCharacter.hp),
+                    () -> assertEquals(expectedCharacter.aiLevel, actualCharacter.aiLevel),
+                    () -> assertArrayEquals(expectedCharacter.weapons.toArray(), actualCharacter.weapons.toArray()),
+                    () -> assertEquals(expectedCharacter.type, actualCharacter.type)
+            );
+        }
     }
 
-    private void saveAsXCS() {
-        System.out.println("#saveAsXCS()");
+    @Test
+    public void saveAsXCS() {
+        var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
+        var outputFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
+        assertDoesNotThrow(() -> manipulator.saveAsXCS(outputFilepath));
 
-        var saveFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
-        manipulator.saveAsXCS(saveFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcFilepath);
+        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        assertEquals(srcFileHash, outputFileHash);
     }
 }

@@ -4,9 +4,15 @@ import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeGenerator;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test CharacterCodeGenerator
@@ -14,29 +20,30 @@ import java.util.Arrays;
  * @author maeda6uiui
  */
 public class CharacterCodeGeneratorTest {
-    private CharacterCodeGenerator generator;
+    private XCSManipulator manipulator;
+    private String expectedCode;
 
-    public static void main(String[] args) {
-        new CharacterCodeGeneratorTest();
+    @BeforeAll
+    public void loadCharacters() {
+        try {
+            manipulator = new XCSManipulator("./Data/Character/characters.xcs");
+            expectedCode = Files.readString(Paths.get("./Data/Character/character_code.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public CharacterCodeGeneratorTest() {
+    @Test
+    public void testGeneratedCode() {
         var settings = new CharacterVariableNameSettings();
         settings.arrayName = "人";
         settings.texture = "テクスチャ";
 
-        generator = new CharacterCodeGenerator(settings);
+        var generator = new CharacterCodeGenerator(settings);
 
-        XCSManipulator xcsManipulator;
-        try {
-            xcsManipulator = new XCSManipulator("./Data/Character/characters.xcs");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
+        Character[] characters = manipulator.getCharacters();
+        String actualCode = generator.generate(Arrays.asList(characters));
 
-        Character[] characters = xcsManipulator.getCharacters();
-        String code = generator.generate(Arrays.asList(characters));
-        System.out.println(code);
+        assertEquals(expectedCode, actualCode);
     }
 }

@@ -4,9 +4,15 @@ import com.github.dabasan.jxm.properties.weapon.Weapon;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeGenerator;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test WeaponCodeGenerator
@@ -14,29 +20,30 @@ import java.util.Arrays;
  * @author maeda6uiui
  */
 public class WeaponCodeGeneratorTest {
-    private WeaponCodeGenerator generator;
+    private XGSManipulator manipulator;
+    private String expectedCode;
 
-    public static void main(String[] args) {
-        new WeaponCodeGeneratorTest();
+    @BeforeAll
+    public void loadWeapons() {
+        try {
+            manipulator = new XGSManipulator(Paths.get("./Data/Weapon/weapons.xgs").toString());
+            expectedCode = Files.readString(Paths.get("./Data/Weapon/weapon_code.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public WeaponCodeGeneratorTest() {
+    @Test
+    public void testGeneratedCode() {
         var settings = new WeaponVariableNameSettings();
         settings.arrayName = "武器";
         settings.model = "モデル";
 
-        generator = new WeaponCodeGenerator(settings);
+        var generator = new WeaponCodeGenerator(settings);
 
-        XGSManipulator xgsManipulator;
-        try {
-            xgsManipulator = new XGSManipulator("./Data/Weapon/weapons.xgs");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
+        Weapon[] weapons = manipulator.getWeapons();
+        String actualCode = generator.generate(Arrays.asList(weapons));
 
-        Weapon[] weapons = xgsManipulator.getWeapons();
-        String code = generator.generate(Arrays.asList(weapons));
-        System.out.println(code);
+        assertEquals(expectedCode, actualCode);
     }
 }

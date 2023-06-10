@@ -3,13 +3,17 @@ package com.github.dabasan.jxm.properties;
 import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeParser;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
+import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test CharacterCodeParser
@@ -17,31 +21,40 @@ import java.util.Map;
  * @author maeda6uiui
  */
 public class CharacterCodeParserTest {
-    public static void main(String[] args) {
-        new CharacterCodeParserTest();
+    private Character[] expectedCharacters;
+    private List<String> codeLines;
+
+    @BeforeAll
+    public void loadCharacters() {
+        try {
+            var manipulator = new XCSManipulator("./Data/Character/characters.xcs");
+            expectedCharacters = manipulator.getCharacters();
+
+            codeLines = Files.readAllLines(Paths.get("./Data/character/character_code.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public CharacterCodeParserTest() {
+    @Test
+    public void testParsedCharacters() {
         var settings = new CharacterVariableNameSettings();
         settings.arrayName = "人";
         settings.texture = "テクスチャ";
 
         var parser = new CharacterCodeParser(settings);
+        Map<Integer, Character> actualCharacters = parser.parse(codeLines);
+        actualCharacters.forEach((id, actualCharacter) -> {
+            Character expectedCharacter = expectedCharacters[id];
 
-        List<String> lines;
-        try {
-            lines = Files.readAllLines(Paths.get("./Data/Character/character_code.txt"),
-                    StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        Map<Integer, Character> characters = parser.parse(lines);
-        for (var entry : characters.entrySet()) {
-            System.out.println(entry.getKey());
-            System.out.println(entry.getValue());
-            System.out.println("====================");
-        }
+            assertAll(
+                    () -> assertEquals(expectedCharacter.texture, actualCharacter.texture),
+                    () -> assertEquals(expectedCharacter.model, actualCharacter.model),
+                    () -> assertEquals(expectedCharacter.hp, actualCharacter.hp),
+                    () -> assertEquals(expectedCharacter.aiLevel, actualCharacter.aiLevel),
+                    () -> assertArrayEquals(expectedCharacter.weapons.toArray(), actualCharacter.weapons.toArray()),
+                    () -> assertEquals(expectedCharacter.type, actualCharacter.type)
+            );
+        });
     }
 }
