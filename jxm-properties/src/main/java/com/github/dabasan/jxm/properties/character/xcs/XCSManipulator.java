@@ -99,56 +99,33 @@ public class XCSManipulator {
      * Saves character data as a XCS.
      *
      * @param os output stream to write characters to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsXCS(OutputStream os) {
-        int ret = 0;
-
-        try {
-            this.saveAsXCSBase(os);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
-        }
-
-        return ret;
+    public void saveAsXCS(OutputStream os) throws IOException {
+        this.saveAsXCSBase(os);
     }
 
     /**
      * Saves character data as a XCS.
      *
      * @param file file to write characters to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsXCS(File file) {
-        int ret = 0;
-
+    public void saveAsXCS(File file) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
             this.saveAsXCSBase(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 
     /**
      * Saves character data as a XCS.
      *
      * @param filepath filepath to write characters to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsXCS(String filepath) {
-        int ret = 0;
-
+    public void saveAsXCS(String filepath) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
             this.saveAsXCSBase(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 }

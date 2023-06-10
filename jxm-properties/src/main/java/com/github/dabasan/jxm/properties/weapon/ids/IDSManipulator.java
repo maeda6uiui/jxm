@@ -90,56 +90,33 @@ public class IDSManipulator {
      * Saves weapon data as an IDS.
      *
      * @param os output stream to write the weapon data to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsIDS(OutputStream os) {
-        int ret = 0;
-
-        try {
-            this.innerSaveAsIDS(os);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
-        }
-
-        return ret;
+    public void saveAsIDS(OutputStream os) throws IOException {
+        this.innerSaveAsIDS(os);
     }
 
     /**
      * Saves weapon data as an IDS.
      *
      * @param file file to write the weapon data to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsIDS(File file) {
-        int ret = 0;
-
+    public void saveAsIDS(File file) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
             this.innerSaveAsIDS(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 
     /**
      * Saves weapon data as an IDS.
      *
      * @param filepath filepath to write the weapon data to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsIDS(String filepath) {
-        int ret = 0;
-
+    public void saveAsIDS(String filepath) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
             this.innerSaveAsIDS(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 }

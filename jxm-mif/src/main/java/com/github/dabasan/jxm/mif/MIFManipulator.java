@@ -1,8 +1,5 @@
 package com.github.dabasan.jxm.mif;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.*;
 import java.util.Objects;
 
@@ -12,8 +9,6 @@ import java.util.Objects;
  * @author maeda6uiui
  */
 public class MIFManipulator {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     private MissionInfo missionInfo;
 
     /**
@@ -93,19 +88,10 @@ public class MIFManipulator {
      *
      * @param os       output stream to write the MIF to
      * @param encoding encoding of the MIF
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsMIF(OutputStream os, String encoding) {
-        int ret = 0;
-
-        try {
-            this.saveAsMIFBase(os, encoding);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
-        }
-
-        return ret;
+    public void saveAsMIF(OutputStream os, String encoding) throws IOException {
+        this.saveAsMIFBase(os, encoding);
     }
 
     /**
@@ -113,19 +99,12 @@ public class MIFManipulator {
      *
      * @param file     file to write the MIF to
      * @param encoding encoding of the MIF
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsMIF(File file, String encoding) {
-        int ret = 0;
-
+    public void saveAsMIF(File file, String encoding) throws IOException {
         try (var fos = new FileOutputStream(file)) {
             this.saveAsMIFBase(fos, encoding);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 
     /**
@@ -133,18 +112,11 @@ public class MIFManipulator {
      *
      * @param filepath filepath
      * @param encoding encoding of the MIF
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsMIF(String filepath, String encoding) {
-        int ret = 0;
-
+    public void saveAsMIF(String filepath, String encoding) throws IOException {
         try (var fos = new FileOutputStream(filepath)) {
             this.saveAsMIFBase(fos, encoding);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 }

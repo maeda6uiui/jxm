@@ -248,22 +248,15 @@ public class EXEManipulator {
      *
      * @param file       file to write the data to
      * @param fileBackup file for backup
-     * @return -1: error 0: success
+     * @throws IOException if it fails to write
      */
-    public int write(File file, File fileBackup) {
+    public void write(File file, File fileBackup) throws IOException {
         if (file.exists() == false) {
             logger.error("The file specified does not exist. filename={}", file.getName());
-            return -1;
+            return;
         }
 
-        try {
-            this.writeBase(file, fileBackup);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            return -1;
-        }
-
-        return 0;
+        this.writeBase(file, fileBackup);
     }
 
     /**
@@ -273,13 +266,13 @@ public class EXEManipulator {
      *
      * @param filepath       filepath to write the data to
      * @param filepathBackup filepath for backup
-     * @return -1: error 0: success
+     * @throws IOException if it fails to write
      */
-    public int write(String filepath, String filepathBackup) {
+    public void write(String filepath, String filepathBackup) throws IOException {
         var file = new File(filepath);
         if (file.exists() == false) {
             logger.error("The file specified does not exist. filename={}", file.getName());
-            return -1;
+            return;
         }
 
         File fileBackup = null;
@@ -287,13 +280,6 @@ public class EXEManipulator {
             fileBackup = new File(filepathBackup);
         }
 
-        try {
-            this.writeBase(file, fileBackup);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            return -1;
-        }
-
-        return 0;
+        this.writeBase(file, fileBackup);
     }
 }

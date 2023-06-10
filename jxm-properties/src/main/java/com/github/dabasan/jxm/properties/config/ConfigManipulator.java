@@ -89,56 +89,33 @@ public class ConfigManipulator {
      * Saves config as a DAT.
      *
      * @param os output stream to write the config to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsDAT(OutputStream os) {
-        int ret = 0;
-
-        try {
-            this.saveAsDATBase(os);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
-        }
-
-        return ret;
+    public void saveAsDAT(OutputStream os) throws IOException {
+        this.saveAsDATBase(os);
     }
 
     /**
      * Saves config as a DAT.
      *
      * @param file file to write the config to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsDAT(File file) {
-        int ret = 0;
-
+    public void saveAsDAT(File file) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
             this.saveAsDATBase(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 
     /**
      * Saves config as a DAT.
      *
      * @param filepath filepath to write the config to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsDAT(String filepath) {
-        int ret = 0;
-
+    public void saveAsDAT(String filepath) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
             this.saveAsDATBase(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 }

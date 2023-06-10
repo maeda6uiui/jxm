@@ -2,8 +2,6 @@ package com.github.dabasan.jxm.pd1;
 
 import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,8 +14,6 @@ import java.util.Objects;
  * @author maeda6uiui
  */
 public class PD1Manipulator {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     private List<PD1Point> points;
 
     /**
@@ -252,56 +248,33 @@ public class PD1Manipulator {
      * Saves the points as a PD1.
      *
      * @param os output stream to write the points to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsPD1(OutputStream os) {
-        int ret = 0;
-
-        try {
-            this.saveAsPD1Base(os);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
-        }
-
-        return ret;
+    public void saveAsPD1(OutputStream os) throws IOException {
+        this.saveAsPD1Base(os);
     }
 
     /**
      * Saves the points as a PD1.
      *
      * @param file file to write the points to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsPD1(File file) {
-        int ret = 0;
-
+    public void saveAsPD1(File file) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
             this.saveAsPD1Base(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 
     /**
      * Saves the points as a PD1.
      *
      * @param filepath filepath to write the points to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsPD1(String filepath) {
-        int ret = 0;
-
+    public void saveAsPD1(String filepath) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
             this.saveAsPD1Base(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 }

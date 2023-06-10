@@ -98,56 +98,33 @@ public class XGSManipulator {
      * Saves weapon data as a XGS.
      *
      * @param os output stream to write the weapon data to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsXGS(OutputStream os) {
-        int ret = 0;
-
-        try {
-            this.saveAsXGSBase(os);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
-        }
-
-        return ret;
+    public void saveAsXGS(OutputStream os) throws IOException {
+        this.saveAsXGSBase(os);
     }
 
     /**
      * Saves weapon data as a XGS.
      *
      * @param file file to write the weapon data to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsXGS(File file) {
-        int ret = 0;
-
+    public void saveAsXGS(File file) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
             this.saveAsXGSBase(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 
     /**
      * Saves weapon data as a XGS.
      *
      * @param filepath filepath to write the weapon data to
-     * @return -1: error 0: success
+     * @throws IOException if it fails to output
      */
-    public int saveAsXGS(String filepath) {
-        int ret = 0;
-
+    public void saveAsXGS(String filepath) throws IOException {
         try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
             this.saveAsXGSBase(bos);
-        } catch (IOException e) {
-            logger.error("Error", e);
-            ret = -1;
         }
-
-        return ret;
     }
 }
