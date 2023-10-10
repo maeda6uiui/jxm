@@ -1,2 +1,6 @@
 /TestData/**/*.exe
 /TestData/**/*.exe.backup
+/TestData/Character/character_2.xcs
+/TestData/Config/config_2.dat
+/TestData/Weapon/mp5_2.ids
+/TestData/Weapon/weapons_2.xgs
