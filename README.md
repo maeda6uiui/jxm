@@ -1,74 +1,57 @@
 # JXM
 
-**JXM (Java XOPSManipulator)** is a Java library that enables you to work with the data relating to X operations.
-
----
-
 **JXM (Java XOPSManipulator)** はX operationsに関連するデータを操作するためのJavaライブラリです。
 
-## 必要環境(Requirements)
+## 必要環境
 
 Java ≥ 11
 
-## インストール(Installation)
+## インストール
 
 ### Maven
 
-#### BD1モジュール(BD1 module)
-
-BD1 module enables you to work with the BD1 format of X operations.
+#### BD1モジュール
 
 BD1モジュールを使うとX operationsのBD1形式を扱うことができます。
 
 ```xml
-
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
 <version>2.0.0</version>
 ```
 
-#### MIFモジュール(MIF module)
-
-MIF module enables you to work with the MIF format of X operations.
+#### MIFモジュール
 
 MIFモジュールを使うとX operationsのMIF形式を扱うことができます。
 
 ```xml
-
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
 <version>2.0.0</version>
 ```
 
-#### PD1モジュール(PD1 module)
-
-PD1 module enables you to work with the PD1 format of X operations.
+#### PD1モジュール
 
 PD1モジュールを使うとX operationsのPD1形式を扱うことができます。
 
 ```xml
-
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
 <version>2.0.0</version>
 ```
 
-#### Propertiesモジュール(Properties module)
-
-Properties module enables you to work with weapon and character data, including formats supported in XMS (X operations
-Mod Supporter), OpenXOPS, and multiple versions of EXE files of X operations itself.
+#### Propertiesモジュール
 
 Propertiesモジュールを使うと武器およびキャラクターデータを扱うことができます。
 これにはXMS (X operations Mod Supporter)でサポートされる形式、OpenXOPS、および複数バージョンのX operations実行ファイルが含まれます。
 
 ```xml
-
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
 <version>2.0.0</version>
 ```
 
-## 使用例(Example)
+## 使用例
 
 ```java
 package com.github.maeda6uiui.jxmsamplesv2;
@@ -131,12 +114,12 @@ public class ReadmeSample {
 }
 ```
 
-## サンプルコード(Code samples)
+## サンプルコード
 
 - [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2)
 - [jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1)
 
-## JXMを使用したプログラム(Applications using JXM)
+## JXMを使用したプログラム
 
 - [BD1ToOBJ](https://github.com/maeda6uiui/BD1ToOBJ)
   BD1形式のモデルをOBJ形式に変換します。
