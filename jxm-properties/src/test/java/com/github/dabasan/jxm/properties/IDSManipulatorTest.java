@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class IDSManipulatorTest {
-    private static final String TARGET_DIR = "./Data/Weapon";
+    private static final String TARGET_DIR = "./TestData/Weapon";
     private IDSManipulator manipulator;
     private Weapon expectedWeapon;
 

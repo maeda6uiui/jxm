@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class BD1ManipulatorTest {
-    private static final String TARGET_DIR = "./Data/SnowBase";
+    private static final String TARGET_DIR = "./TestData/SnowBase";
     private BD1Manipulator manipulator;
 
     @BeforeAll

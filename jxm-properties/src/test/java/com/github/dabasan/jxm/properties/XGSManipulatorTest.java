@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class XGSManipulatorTest {
-    private static final String TARGET_DIR = "./Data/Weapon";
+    private static final String TARGET_DIR = "./TestData/Weapon";
     private XGSManipulator manipulator;
     private Weapon[] expectedWeapons;
 

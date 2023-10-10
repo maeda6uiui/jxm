@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ConfigManipulatorTest {
-    private static final String TARGET_DIR = "./Data/Config";
+    private static final String TARGET_DIR = "./TestData/Config";
     private ConfigManipulator manipulator;
 
     @BeforeAll

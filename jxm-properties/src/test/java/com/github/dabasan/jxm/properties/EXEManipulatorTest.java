@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class EXEManipulatorTest {
-    private static final String TARGET_DIR = "./Data/XOPS";
+    private static final String TARGET_DIR = "./TestData/XOPS";
     private Map<String, EXEManipulator> manipulators;
     private Map<String, XOPSVersion> expectedVersions;  //(filename, version)
     private Weapon[] expectedWeapons;

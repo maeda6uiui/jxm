@@ -28,10 +28,10 @@ public class CharacterCodeParserTest {
     @BeforeAll
     public void loadCharacters() {
         assertDoesNotThrow(() -> {
-            var manipulator = new XCSManipulator("./Data/Character/characters.xcs");
+            var manipulator = new XCSManipulator("./TestData/Character/characters.xcs");
             expectedCharacters = manipulator.getCharacters();
 
-            codeLines = Files.readAllLines(Paths.get("./Data/character/character_code.txt"));
+            codeLines = Files.readAllLines(Paths.get("./TestData/character/character_code.txt"));
         });
     }
 

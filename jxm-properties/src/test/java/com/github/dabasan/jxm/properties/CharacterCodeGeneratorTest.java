@@ -29,8 +29,8 @@ public class CharacterCodeGeneratorTest {
     @BeforeAll
     public void loadCharacters() {
         assertDoesNotThrow(() -> {
-            manipulator = new XCSManipulator("./Data/Character/characters.xcs");
-            expectedLines = Files.readAllLines(Paths.get("./Data/Character/character_code.txt"));
+            manipulator = new XCSManipulator("./TestData/Character/characters.xcs");
+            expectedLines = Files.readAllLines(Paths.get("./TestData/Character/character_code.txt"));
         });
     }
 

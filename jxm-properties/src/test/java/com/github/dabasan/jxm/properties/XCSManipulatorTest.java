@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class XCSManipulatorTest {
-    private static final String TARGET_DIR = "./Data/Character";
+    private static final String TARGET_DIR = "./TestData/Character";
     private XCSManipulator manipulator;
     private Character[] expectedCharacters;
 
