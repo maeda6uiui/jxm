@@ -126,3 +126,34 @@ public class ReadmeSample {
 - [MPSY](https://github.com/maeda6uiui/MPSY)
   XOPSのマップとポイントに対して拡大や回転などの処理を行います。
 
+## テストの実行方法
+
+Mavenが利用できる環境であれば、`mvn test`でテストを実行できます。
+
+テストに必要なファイルは各モジュールのTestDataフォルダに配置します。
+Gitで管理していないファイルについては、開発者側でテストを実行する前に別途用意していただく必要があります。
+以下に、別途用意する必要のあるファイルを列挙します。
+
+### BD1モジュール
+
+- ./jxm-bd1/TestData/SnowBase/map.bd1
+
+XOPSの標準マップであるSNOW BASE (data/map2/temp.bd1)を使用します。
+
+### PD1モジュール
+
+- ./jxm-pd1/TestData/SnowBase/point.pd1
+
+XOPSの標準ミッションであるSNOW BASE_EXT (data/map2/ext.pd1)を使用します。
+
+### Propertiesモジュール
+
+- ./jxm-properties/TestData/Character/xops0975t.exe
+- ./jxm-properties/TestData/Weapon/xops0975t.exe
+- ./jxm-properties/TestData/XOPS/Original/xops096.exe
+- ./jxm-properties/TestData/XOPS/Original/xops096t.exe
+- ./jxm-properties/TestData/XOPS/Original/xops097ft.exe
+- ./jxm-properties/TestData/XOPS/Original/xops0975t.exe
+- ./jxm-properties/TestData/XOPS/Original/xopsolt18f2.exe
+- ./jxm-properties/TestData/XOPS/Original/xopsolt19f2.exe
+
