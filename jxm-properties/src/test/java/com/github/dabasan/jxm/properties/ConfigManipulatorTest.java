@@ -10,7 +10,8 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test ConfigManipulator
@@ -31,57 +32,47 @@ public class ConfigManipulatorTest {
 
     @Test
     public void testRead() {
-        Config config = manipulator.getConfig();
-
-        assertAll(
-                () -> assertEquals(config.turnUp, KeyCode.KEY_UP),
-                () -> assertEquals(config.turnDown, KeyCode.KEY_DOWN),
-                () -> assertEquals(config.turnLeft, KeyCode.KEY_LEFT),
-                () -> assertEquals(config.turnRight, KeyCode.KEY_RIGHT),
-                () -> assertEquals(config.moveForward, KeyCode.KEY_W),
-                () -> assertEquals(config.moveBackward, KeyCode.KEY_S),
-                () -> assertEquals(config.moveLeft, KeyCode.KEY_A),
-                () -> assertEquals(config.moveRight, KeyCode.KEY_D),
-                () -> assertEquals(config.walk, KeyCode.KEY_TAB),
-                () -> assertEquals(config.jump, KeyCode.KEY_SPACE),
-                () -> assertEquals(config.reload, KeyCode.KEY_R),
-                () -> assertEquals(config.dropWeapon, KeyCode.KEY_G),
-                () -> assertEquals(config.zoom, KeyCode.KEY_MOUSE_R),
-                () -> assertEquals(config.fireMode, KeyCode.KEY_X),
-                () -> assertEquals(config.switchWeapon, KeyCode.KEY_Z),
-                () -> assertEquals(config.weapon1, KeyCode.KEY_1),
-                () -> assertEquals(config.weapon2, KeyCode.KEY_2),
-                () -> assertEquals(config.fire, KeyCode.KEY_MOUSE_L),
-                () -> assertEquals(config.mouseSensitivity, 10),
-                () -> assertEquals(config.brightness, 10),
-                () -> assertEquals(config.windowMode, WindowMode.WINDOW),
-                () -> assertEquals(config.enableSound, true),
-                () -> assertEquals(config.enableBlood, true),
-                () -> assertEquals(config.invertMouse, false),
-                () -> assertEquals(config.frameSkip, false),
-                () -> assertEquals(config.anotherGunsight, false),
-                () -> assertEquals(config.name, "maeda6uiui")
-        );
+        Config expectedConfig = new Config()
+                .setTurnUp(KeyCode.KEY_UP)
+                .setTurnDown(KeyCode.KEY_DOWN)
+                .setTurnLeft(KeyCode.KEY_LEFT)
+                .setTurnRight(KeyCode.KEY_RIGHT)
+                .setMoveForward(KeyCode.KEY_W)
+                .setMoveBackward(KeyCode.KEY_S)
+                .setMoveLeft(KeyCode.KEY_A)
+                .setMoveRight(KeyCode.KEY_D)
+                .setWalk(KeyCode.KEY_TAB)
+                .setJump(KeyCode.KEY_SPACE)
+                .setReload(KeyCode.KEY_R)
+                .setDropWeapon(KeyCode.KEY_G)
+                .setZoom(KeyCode.KEY_MOUSE_R)
+                .setFireMode(KeyCode.KEY_X)
+                .setSwitchWeapon(KeyCode.KEY_Z)
+                .setWeapon1(KeyCode.KEY_1)
+                .setWeapon2(KeyCode.KEY_2)
+                .setFire(KeyCode.KEY_MOUSE_L)
+                .setMouseSensitivity(10)
+                .setBrightness(10)
+                .setWindowMode(WindowMode.WINDOW)
+                .setEnableSound(true)
+                .setEnableBlood(true)
+                .setInvertMouse(false)
+                .setFrameSkip(false)
+                .setAnotherGunsight(false)
+                .setName("maeda6uiui");
+        Config actualConfig = manipulator.getConfig();
+        assertEquals(expectedConfig, actualConfig);
     }
 
     @Test
     public void testUpdate() {
-        manipulator.getConfig().moveForward = KeyCode.KEY_ENTER;
-        manipulator.getConfig().brightness = 1000;
-        manipulator.getConfig().enableSound = false;
-        manipulator.getConfig().name = "Test";
+        Config currentConfig = manipulator.getConfig();
 
-        assertAll(
-                () -> assertEquals(manipulator.getConfig().moveForward, KeyCode.KEY_ENTER),
-                () -> assertEquals(manipulator.getConfig().brightness, 1000),
-                () -> assertEquals(manipulator.getConfig().enableSound, false),
-                () -> assertEquals(manipulator.getConfig().name, "Test")
-        );
+        Config newConfig = TestUtils.generateRandomConfig();
+        manipulator.setConfig(newConfig);
+        assertEquals(newConfig, manipulator.getConfig());
 
-        manipulator.getConfig().moveForward = KeyCode.KEY_W;
-        manipulator.getConfig().brightness = 10;
-        manipulator.getConfig().enableSound = true;
-        manipulator.getConfig().name = "maeda6uiui";
+        manipulator.setConfig(currentConfig);
     }
 
     @Test
