@@ -137,14 +137,18 @@ Gitで管理していないファイルについては、開発者側でテス�
 ### BD1モジュール
 
 - ./jxm-bd1/TestData/SnowBase/map.bd1
+- ./jxm-bd1/TestData/SnowBase/map_2.bd1
 
-XOPSの標準マップであるSNOW BASE (data/map2/temp.bd1)を使用します。
+map.bd1はXOPSの標準マップであるSNOW BASE (data/map2/temp.bd1)を使用します。
+map_2.bd1はmap.bd1と違うマップなら何でも構いません。
 
 ### PD1モジュール
 
 - ./jxm-pd1/TestData/SnowBase/point.pd1
+- ./jxm-pd1/TestData/SnowBase/point_2.pd1
 
-XOPSの標準ミッションであるSNOW BASE_EXT (data/map2/ext.pd1)を使用します。
+point.pd1はXOPSの標準ミッションであるSNOW BASE_EXT (data/map2/ext.pd1)を使用します。
+point_2.pd1はpoint.pd1と違うポイントデータなら何でも構いません。
 
 ### Propertiesモジュール
 
