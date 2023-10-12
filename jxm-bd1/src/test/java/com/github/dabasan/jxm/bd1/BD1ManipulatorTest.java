@@ -157,10 +157,12 @@ public class BD1ManipulatorTest {
     public void saveAsOBJ() {
         var objFilepath = Paths.get(TARGET_DIR, "map.obj").toString();
         var mtlFilepath = Paths.get(TARGET_DIR, "map.mtl").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsOBJ(objFilepath, mtlFilepath, "map.mtl", false));
+        assertDoesNotThrow(
+                () -> manipulator.saveAsOBJ(objFilepath, mtlFilepath, "map.mtl", false));
 
-        var objFilepath_2 = Paths.get(TARGET_DIR, "map_2.obj").toString();
-        var mtlFilepath_2 = Paths.get(TARGET_DIR, "map_2.mtl").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsOBJ(objFilepath_2, mtlFilepath_2, "map_2.mtl", true));
+        var objFlipFilepath = Paths.get(TARGET_DIR, "map_flip.obj").toString();
+        var mtlFlipFilepath = Paths.get(TARGET_DIR, "map_flip.mtl").toString();
+        assertDoesNotThrow(
+                () -> manipulator.saveAsOBJ(objFlipFilepath, mtlFlipFilepath, "map_flip.mtl", true));
     }
 }
