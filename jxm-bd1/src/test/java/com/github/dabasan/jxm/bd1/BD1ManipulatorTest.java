@@ -5,8 +5,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -151,6 +153,27 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.invertZ();
+    }
+
+    @Test
+    public void testUpdate() {
+        List<BD1Block> tmpBlocks;
+        try {
+            var tmpFilepath = Paths.get(TARGET_DIR, "map_2.bd1").toString();
+            var tmpManipulator = new BD1Manipulator(tmpFilepath);
+            tmpBlocks = tmpManipulator.getBlocks();
+        } catch (IOException e) {
+            fail(e);
+            return;
+        }
+
+        var currentBlocks = new ArrayList<BD1Block>();
+        manipulator.getBlocks().forEach(b -> currentBlocks.add(new BD1Block(b)));
+
+        manipulator.setBlocks(tmpBlocks);
+        assertEquals(tmpBlocks, manipulator.getBlocks());
+
+        manipulator.setBlocks(currentBlocks);
     }
 
     @Test

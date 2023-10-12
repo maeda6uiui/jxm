@@ -5,11 +5,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test PD1Manipulator
@@ -134,6 +135,27 @@ public class PD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.invertZ();
+    }
+
+    @Test
+    public void testUpdate() {
+        List<PD1Point> tmpPoints;
+        try {
+            var tmpFilepath = Paths.get(TARGET_DIR, "point_2.pd1").toString();
+            var tmpManipulator = new PD1Manipulator(tmpFilepath);
+            tmpPoints = tmpManipulator.getPoints();
+        } catch (IOException e) {
+            fail(e);
+            return;
+        }
+
+        var currentPoints = new ArrayList<PD1Point>();
+        manipulator.getPoints().forEach(p -> currentPoints.add(new PD1Point(p)));
+
+        manipulator.setPoints(tmpPoints);
+        assertEquals(tmpPoints, manipulator.getPoints());
+
+        manipulator.setPoints(currentPoints);
     }
 
     @Test
