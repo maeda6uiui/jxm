@@ -13,7 +13,8 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test CharacterCodeParser
@@ -45,15 +46,7 @@ public class CharacterCodeParserTest {
         Map<Integer, Character> actualCharacters = parser.parse(codeLines);
         actualCharacters.forEach((id, actualCharacter) -> {
             Character expectedCharacter = expectedCharacters[id];
-
-            assertAll(
-                    () -> assertEquals(expectedCharacter.texture, actualCharacter.texture),
-                    () -> assertEquals(expectedCharacter.model, actualCharacter.model),
-                    () -> assertEquals(expectedCharacter.hp, actualCharacter.hp),
-                    () -> assertEquals(expectedCharacter.aiLevel, actualCharacter.aiLevel),
-                    () -> assertArrayEquals(expectedCharacter.weapons.toArray(), actualCharacter.weapons.toArray()),
-                    () -> assertEquals(expectedCharacter.type, actualCharacter.type)
-            );
+            assertEquals(expectedCharacter, actualCharacter);
         });
     }
 }

@@ -35,19 +35,7 @@ public class XCSManipulatorTest {
     @Test
     public void testCharacters() {
         Character[] actualCharacters = manipulator.getCharacters();
-        for (int i = 0; i < actualCharacters.length; i++) {
-            Character actualCharacter = actualCharacters[i];
-            Character expectedCharacter = expectedCharacters[i];
-
-            assertAll(
-                    () -> assertEquals(expectedCharacter.texture, actualCharacter.texture),
-                    () -> assertEquals(expectedCharacter.model, actualCharacter.model),
-                    () -> assertEquals(expectedCharacter.hp, actualCharacter.hp),
-                    () -> assertEquals(expectedCharacter.aiLevel, actualCharacter.aiLevel),
-                    () -> assertArrayEquals(expectedCharacter.weapons.toArray(), actualCharacter.weapons.toArray()),
-                    () -> assertEquals(expectedCharacter.type, actualCharacter.type)
-            );
-        }
+        assertArrayEquals(expectedCharacters, actualCharacters);
     }
 
     @Test
