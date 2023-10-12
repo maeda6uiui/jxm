@@ -102,4 +102,59 @@ public class MissionInfo {
                 briefingText
         );
     }
+
+    public MissionInfo setMissionTitle(String missionTitle) {
+        this.missionTitle = missionTitle;
+        return this;
+    }
+
+    public MissionInfo setMissionFullname(String missionFullname) {
+        this.missionFullname = missionFullname;
+        return this;
+    }
+
+    public MissionInfo setPathnameOfBlock(String pathnameOfBlock) {
+        this.pathnameOfBlock = pathnameOfBlock;
+        return this;
+    }
+
+    public MissionInfo setPathnameOfPoint(String pathnameOfPoint) {
+        this.pathnameOfPoint = pathnameOfPoint;
+        return this;
+    }
+
+    public MissionInfo setSkyType(SkyType skyType) {
+        this.skyType = skyType;
+        return this;
+    }
+
+    public MissionInfo setExtraCollision(boolean extraCollision) {
+        this.extraCollision = extraCollision;
+        return this;
+    }
+
+    public MissionInfo setDarkScreen(boolean darkScreen) {
+        this.darkScreen = darkScreen;
+        return this;
+    }
+
+    public MissionInfo setPathnameOfObj(String pathnameOfObj) {
+        this.pathnameOfObj = pathnameOfObj;
+        return this;
+    }
+
+    public MissionInfo setPathnameOfImage1(String pathnameOfImage1) {
+        this.pathnameOfImage1 = pathnameOfImage1;
+        return this;
+    }
+
+    public MissionInfo setPathnameOfImage2(String pathnameOfImage2) {
+        this.pathnameOfImage2 = pathnameOfImage2;
+        return this;
+    }
+
+    public MissionInfo setBriefingText(List<String> briefingText) {
+        this.briefingText = briefingText;
+        return this;
+    }
 }

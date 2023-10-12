@@ -31,4 +31,19 @@ public class PD1Point {
         this.rotation = point.rotation;
         this.parameters = point.parameters.clone();
     }
+
+    public PD1Point setPosition(Vector3f position) {
+        this.position = position;
+        return this;
+    }
+
+    public PD1Point setRotation(float rotation) {
+        this.rotation = rotation;
+        return this;
+    }
+
+    public PD1Point setParameters(int[] parameters) {
+        this.parameters = parameters;
+        return this;
+    }
 }
