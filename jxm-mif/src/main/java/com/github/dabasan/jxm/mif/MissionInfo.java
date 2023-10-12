@@ -2,6 +2,7 @@ package com.github.dabasan.jxm.mif;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Mission info
@@ -65,5 +66,40 @@ public class MissionInfo {
                 + darkScreen + ", pathnameOfObj=" + pathnameOfObj + ", pathnameOfImage1="
                 + pathnameOfImage1 + ", pathnameOfImage2=" + pathnameOfImage2 + ", briefingText="
                 + briefingText + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MissionInfo that = (MissionInfo) o;
+        return extraCollision == that.extraCollision
+                && darkScreen == that.darkScreen
+                && Objects.equals(missionTitle, that.missionTitle)
+                && Objects.equals(missionFullname, that.missionFullname)
+                && Objects.equals(pathnameOfBlock, that.pathnameOfBlock)
+                && Objects.equals(pathnameOfPoint, that.pathnameOfPoint)
+                && skyType == that.skyType
+                && Objects.equals(pathnameOfObj, that.pathnameOfObj)
+                && Objects.equals(pathnameOfImage1, that.pathnameOfImage1)
+                && Objects.equals(pathnameOfImage2, that.pathnameOfImage2)
+                && Objects.equals(briefingText, that.briefingText);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                missionTitle,
+                missionFullname,
+                pathnameOfBlock,
+                pathnameOfPoint,
+                skyType,
+                extraCollision,
+                darkScreen,
+                pathnameOfObj,
+                pathnameOfImage1,
+                pathnameOfImage2,
+                briefingText
+        );
     }
 }
