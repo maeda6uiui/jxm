@@ -90,10 +90,42 @@ public class EXEManipulatorTest {
     }
 
     @Test
+    public void testUpdateWeapons() {
+        manipulators.values().forEach(manipulator -> {
+            Weapon[] currentWeapons = manipulator.getWeapons();
+
+            var newWeapons = new Weapon[currentWeapons.length];
+            for (int i = 0; i < currentWeapons.length; i++) {
+                newWeapons[i] = TestUtils.generateRandomWeapon();
+            }
+            manipulator.setWeapons(newWeapons);
+            assertArrayEquals(newWeapons, manipulator.getWeapons());
+
+            manipulator.setWeapons(currentWeapons);
+        });
+    }
+
+    @Test
     public void testCharacters() {
         manipulators.values().forEach(manipulator -> {
             Character[] actualCharacters = manipulator.getCharacters();
             assertArrayEquals(expectedCharacters, actualCharacters);
+        });
+    }
+
+    @Test
+    public void testUpdateCharacters() {
+        manipulators.values().forEach(manipulator -> {
+            Character[] currentCharacters = manipulator.getCharacters();
+
+            var newCharacters = new Character[currentCharacters.length];
+            for (int i = 0; i < currentCharacters.length; i++) {
+                newCharacters[i] = TestUtils.generateRandomCharacter();
+            }
+            manipulator.setCharacters(newCharacters);
+            assertArrayEquals(newCharacters, manipulator.getCharacters());
+
+            manipulator.setCharacters(currentCharacters);
         });
     }
 

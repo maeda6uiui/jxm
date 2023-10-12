@@ -39,6 +39,20 @@ public class XGSManipulatorTest {
     }
 
     @Test
+    public void testUpdateWeapons() {
+        Weapon[] currentWeapons = manipulator.getWeapons();
+
+        var newWeapons = new Weapon[currentWeapons.length];
+        for (int i = 0; i < currentWeapons.length; i++) {
+            newWeapons[i] = TestUtils.generateRandomWeapon();
+        }
+        manipulator.setWeapons(newWeapons);
+        assertArrayEquals(newWeapons, manipulator.getWeapons());
+
+        manipulator.setWeapons(currentWeapons);
+    }
+
+    @Test
     public void saveAsXGS() {
         var srcFilepath = Paths.get(TARGET_DIR, "weapons.xgs").toString();
         var outputFilepath = Paths.get(TARGET_DIR, "weapons_2.xgs").toString();

@@ -40,6 +40,17 @@ public class IDSManipulatorTest {
     }
 
     @Test
+    public void testUpdateWeapon() {
+        Weapon currentWeapon = manipulator.getWeapon();
+
+        Weapon newWeapon = TestUtils.generateRandomWeapon();
+        manipulator.setWeapon(newWeapon);
+        assertEquals(newWeapon, manipulator.getWeapon());
+
+        manipulator.setWeapon(currentWeapon);
+    }
+
+    @Test
     public void saveAsIDS() {
         var srcFilepath = Paths.get(TARGET_DIR, "mp5.ids").toString();
         var saveFilepath = Paths.get(TARGET_DIR, "mp5_2.ids").toString();

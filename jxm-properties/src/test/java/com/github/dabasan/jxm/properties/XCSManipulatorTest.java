@@ -39,6 +39,20 @@ public class XCSManipulatorTest {
     }
 
     @Test
+    public void testUpdateCharacters() {
+        Character[] currentCharacters = manipulator.getCharacters();
+
+        var newCharacters = new Character[currentCharacters.length];
+        for (int i = 0; i < currentCharacters.length; i++) {
+            newCharacters[i] = TestUtils.generateRandomCharacter();
+        }
+        manipulator.setCharacters(newCharacters);
+        assertArrayEquals(newCharacters, manipulator.getCharacters());
+
+        manipulator.setCharacters(currentCharacters);
+    }
+
+    @Test
     public void saveAsXCS() {
         var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
         var outputFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
