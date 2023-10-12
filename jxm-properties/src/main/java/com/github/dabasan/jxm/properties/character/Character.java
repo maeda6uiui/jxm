@@ -3,6 +3,7 @@ package com.github.dabasan.jxm.properties.character;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Character
@@ -47,5 +48,23 @@ public class Character {
     public String toString() {
         return "CharacterData [texture=" + texture + ", model=" + model + ", hp=" + hp
                 + ", aiLevel=" + aiLevel + ", weapons=" + weapons + ", type=" + type + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Character character = (Character) o;
+        return hp == character.hp
+                && texture == character.texture
+                && model == character.model
+                && aiLevel == character.aiLevel
+                && Objects.equals(weapons, character.weapons)
+                && type == character.type;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(texture, model, hp, aiLevel, weapons, type);
     }
 }

@@ -1,5 +1,7 @@
 package com.github.dabasan.jxm.properties.weapon;
 
+import java.util.Objects;
+
 /**
  * Weapon
  *
@@ -132,5 +134,82 @@ public class Weapon {
                 + blazingMode + ", scopeMode=" + scopeMode + ", size=" + size + ", soundID="
                 + soundID + ", soundVolume=" + soundVolume + ", silencer=" + silencer + ", weaponP="
                 + weaponP + ", changeWeapon=" + changeWeapon + ", burst=" + burst + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Weapon weapon = (Weapon) o;
+        return attacks == weapon.attacks
+                && penetration == weapon.penetration
+                && blazings == weapon.blazings
+                && speed == weapon.speed
+                && nbsMax == weapon.nbsMax
+                && reloads == weapon.reloads
+                && reaction == weapon.reaction
+                && errorRangeMin == weapon.errorRangeMin
+                && errorRangeMax == weapon.errorRangeMax
+                && Float.compare(weapon.modelPositionX, modelPositionX) == 0
+                && Float.compare(weapon.modelPositionY, modelPositionY) == 0
+                && Float.compare(weapon.modelPositionZ, modelPositionZ) == 0
+                && Float.compare(weapon.flashPositionX, flashPositionX) == 0
+                && Float.compare(weapon.flashPositionY, flashPositionY) == 0
+                && Float.compare(weapon.flashPositionZ, flashPositionZ) == 0
+                && Float.compare(weapon.yakkyouPositionX, yakkyouPositionX) == 0
+                && Float.compare(weapon.yakkyouPositionY, yakkyouPositionY) == 0
+                && Float.compare(weapon.yakkyouPositionZ, yakkyouPositionZ) == 0
+                && Float.compare(weapon.yakkyouSpeedX, yakkyouSpeedX) == 0
+                && Float.compare(weapon.yakkyouSpeedY, yakkyouSpeedY) == 0
+                && blazingMode == weapon.blazingMode
+                && Float.compare(weapon.size, size) == 0
+                && soundID == weapon.soundID
+                && soundVolume == weapon.soundVolume
+                && silencer == weapon.silencer
+                && changeWeapon == weapon.changeWeapon
+                && burst == weapon.burst
+                && Objects.equals(name, weapon.name)
+                && Objects.equals(model, weapon.model)
+                && Objects.equals(texture, weapon.texture)
+                && scopeMode == weapon.scopeMode
+                && weaponP == weapon.weaponP;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                name,
+                model,
+                texture,
+                attacks,
+                penetration,
+                blazings,
+                speed,
+                nbsMax,
+                reloads,
+                reaction,
+                errorRangeMin,
+                errorRangeMax,
+                modelPositionX,
+                modelPositionY,
+                modelPositionZ,
+                flashPositionX,
+                flashPositionY,
+                flashPositionZ,
+                yakkyouPositionX,
+                yakkyouPositionY,
+                yakkyouPositionZ,
+                yakkyouSpeedX,
+                yakkyouSpeedY,
+                blazingMode,
+                scopeMode,
+                size,
+                soundID,
+                soundVolume,
+                silencer,
+                weaponP,
+                changeWeapon,
+                burst
+        );
     }
 }
