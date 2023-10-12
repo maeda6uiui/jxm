@@ -67,4 +67,34 @@ public class Character {
     public int hashCode() {
         return Objects.hash(texture, model, hp, aiLevel, weapons, type);
     }
+
+    public Character setTexture(CharacterTextureType texture) {
+        this.texture = texture;
+        return this;
+    }
+
+    public Character setModel(CharacterModelType model) {
+        this.model = model;
+        return this;
+    }
+
+    public Character setHp(int hp) {
+        this.hp = hp;
+        return this;
+    }
+
+    public Character setAiLevel(AILevel aiLevel) {
+        this.aiLevel = aiLevel;
+        return this;
+    }
+
+    public Character setWeapons(List<Integer> weapons) {
+        this.weapons = weapons;
+        return this;
+    }
+
+    public Character setType(CharacterType type) {
+        this.type = type;
+        return this;
+    }
 }

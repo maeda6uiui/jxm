@@ -212,4 +212,164 @@ public class Weapon {
                 burst
         );
     }
+
+    public Weapon setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Weapon setModel(String model) {
+        this.model = model;
+        return this;
+    }
+
+    public Weapon setTexture(String texture) {
+        this.texture = texture;
+        return this;
+    }
+
+    public Weapon setAttacks(int attacks) {
+        this.attacks = attacks;
+        return this;
+    }
+
+    public Weapon setPenetration(int penetration) {
+        this.penetration = penetration;
+        return this;
+    }
+
+    public Weapon setBlazings(int blazings) {
+        this.blazings = blazings;
+        return this;
+    }
+
+    public Weapon setSpeed(int speed) {
+        this.speed = speed;
+        return this;
+    }
+
+    public Weapon setNbsMax(int nbsMax) {
+        this.nbsMax = nbsMax;
+        return this;
+    }
+
+    public Weapon setReloads(int reloads) {
+        this.reloads = reloads;
+        return this;
+    }
+
+    public Weapon setReaction(int reaction) {
+        this.reaction = reaction;
+        return this;
+    }
+
+    public Weapon setErrorRangeMin(int errorRangeMin) {
+        this.errorRangeMin = errorRangeMin;
+        return this;
+    }
+
+    public Weapon setErrorRangeMax(int errorRangeMax) {
+        this.errorRangeMax = errorRangeMax;
+        return this;
+    }
+
+    public Weapon setModelPositionX(float modelPositionX) {
+        this.modelPositionX = modelPositionX;
+        return this;
+    }
+
+    public Weapon setModelPositionY(float modelPositionY) {
+        this.modelPositionY = modelPositionY;
+        return this;
+    }
+
+    public Weapon setModelPositionZ(float modelPositionZ) {
+        this.modelPositionZ = modelPositionZ;
+        return this;
+    }
+
+    public Weapon setFlashPositionX(float flashPositionX) {
+        this.flashPositionX = flashPositionX;
+        return this;
+    }
+
+    public Weapon setFlashPositionY(float flashPositionY) {
+        this.flashPositionY = flashPositionY;
+        return this;
+    }
+
+    public Weapon setFlashPositionZ(float flashPositionZ) {
+        this.flashPositionZ = flashPositionZ;
+        return this;
+    }
+
+    public Weapon setYakkyouPositionX(float yakkyouPositionX) {
+        this.yakkyouPositionX = yakkyouPositionX;
+        return this;
+    }
+
+    public Weapon setYakkyouPositionY(float yakkyouPositionY) {
+        this.yakkyouPositionY = yakkyouPositionY;
+        return this;
+    }
+
+    public Weapon setYakkyouPositionZ(float yakkyouPositionZ) {
+        this.yakkyouPositionZ = yakkyouPositionZ;
+        return this;
+    }
+
+    public Weapon setYakkyouSpeedX(float yakkyouSpeedX) {
+        this.yakkyouSpeedX = yakkyouSpeedX;
+        return this;
+    }
+
+    public Weapon setYakkyouSpeedY(float yakkyouSpeedY) {
+        this.yakkyouSpeedY = yakkyouSpeedY;
+        return this;
+    }
+
+    public Weapon setBlazingMode(boolean blazingMode) {
+        this.blazingMode = blazingMode;
+        return this;
+    }
+
+    public Weapon setScopeMode(ScopeMode scopeMode) {
+        this.scopeMode = scopeMode;
+        return this;
+    }
+
+    public Weapon setSize(float size) {
+        this.size = size;
+        return this;
+    }
+
+    public Weapon setSoundID(int soundID) {
+        this.soundID = soundID;
+        return this;
+    }
+
+    public Weapon setSoundVolume(int soundVolume) {
+        this.soundVolume = soundVolume;
+        return this;
+    }
+
+    public Weapon setSilencer(boolean silencer) {
+        this.silencer = silencer;
+        return this;
+    }
+
+    public Weapon setWeaponP(ShootingStance weaponP) {
+        this.weaponP = weaponP;
+        return this;
+    }
+
+    public Weapon setChangeWeapon(int changeWeapon) {
+        this.changeWeapon = changeWeapon;
+        return this;
+    }
+
+    public Weapon setBurst(int burst) {
+        this.burst = burst;
+        return this;
+    }
 }

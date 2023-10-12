@@ -195,4 +195,139 @@ public class Config {
                 name
         );
     }
+
+    public Config setTurnUp(KeyCode turnUp) {
+        this.turnUp = turnUp;
+        return this;
+    }
+
+    public Config setTurnDown(KeyCode turnDown) {
+        this.turnDown = turnDown;
+        return this;
+    }
+
+    public Config setTurnLeft(KeyCode turnLeft) {
+        this.turnLeft = turnLeft;
+        return this;
+    }
+
+    public Config setTurnRight(KeyCode turnRight) {
+        this.turnRight = turnRight;
+        return this;
+    }
+
+    public Config setMoveForward(KeyCode moveForward) {
+        this.moveForward = moveForward;
+        return this;
+    }
+
+    public Config setMoveBackward(KeyCode moveBackward) {
+        this.moveBackward = moveBackward;
+        return this;
+    }
+
+    public Config setMoveLeft(KeyCode moveLeft) {
+        this.moveLeft = moveLeft;
+        return this;
+    }
+
+    public Config setMoveRight(KeyCode moveRight) {
+        this.moveRight = moveRight;
+        return this;
+    }
+
+    public Config setWalk(KeyCode walk) {
+        this.walk = walk;
+        return this;
+    }
+
+    public Config setJump(KeyCode jump) {
+        this.jump = jump;
+        return this;
+    }
+
+    public Config setReload(KeyCode reload) {
+        this.reload = reload;
+        return this;
+    }
+
+    public Config setDropWeapon(KeyCode dropWeapon) {
+        this.dropWeapon = dropWeapon;
+        return this;
+    }
+
+    public Config setZoom(KeyCode zoom) {
+        this.zoom = zoom;
+        return this;
+    }
+
+    public Config setFireMode(KeyCode fireMode) {
+        this.fireMode = fireMode;
+        return this;
+    }
+
+    public Config setSwitchWeapon(KeyCode switchWeapon) {
+        this.switchWeapon = switchWeapon;
+        return this;
+    }
+
+    public Config setWeapon1(KeyCode weapon1) {
+        this.weapon1 = weapon1;
+        return this;
+    }
+
+    public Config setWeapon2(KeyCode weapon2) {
+        this.weapon2 = weapon2;
+        return this;
+    }
+
+    public Config setFire(KeyCode fire) {
+        this.fire = fire;
+        return this;
+    }
+
+    public Config setMouseSensitivity(int mouseSensitivity) {
+        this.mouseSensitivity = mouseSensitivity;
+        return this;
+    }
+
+    public Config setBrightness(int brightness) {
+        this.brightness = brightness;
+        return this;
+    }
+
+    public Config setWindowMode(WindowMode windowMode) {
+        this.windowMode = windowMode;
+        return this;
+    }
+
+    public Config setEnableSound(boolean enableSound) {
+        this.enableSound = enableSound;
+        return this;
+    }
+
+    public Config setEnableBlood(boolean enableBlood) {
+        this.enableBlood = enableBlood;
+        return this;
+    }
+
+    public Config setInvertMouse(boolean invertMouse) {
+        this.invertMouse = invertMouse;
+        return this;
+    }
+
+    public Config setFrameSkip(boolean frameSkip) {
+        this.frameSkip = frameSkip;
+        return this;
+    }
+
+    public Config setAnotherGunsight(boolean anotherGunsight) {
+        this.anotherGunsight = anotherGunsight;
+        return this;
+    }
+
+    public Config setName(String name) {
+        this.name = name;
+        return this;
+    }
 }
