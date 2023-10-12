@@ -7,7 +7,8 @@ import org.junit.jupiter.api.TestInstance;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test MIFManipulator
@@ -28,39 +29,40 @@ public class MIFManipulatorTest {
 
     @Test
     public void testRead() {
-        MissionInfo missionInfo = manipulator.getMissionInfo();
-        assertEquals("AH KT 2", missionInfo.missionTitle);
-        assertEquals("Apartment House KT 2", missionInfo.missionFullname);
-        assertEquals(".\\addon\\ApartmentHouse\\map2.bd1", missionInfo.pathnameOfBlock);
-        assertEquals(".\\addon\\ApartmentHouse\\kt2.pd1", missionInfo.pathnameOfPoint);
-        assertEquals(SkyType.NIGHT, missionInfo.skyType);
-        assertEquals(".\\addon\\ApartmentHouse\\official.jpg", missionInfo.pathnameOfImage1);
-        assertEquals("!", missionInfo.pathnameOfImage2);
-        assertEquals("!", missionInfo.pathnameOfObj);
-        assertEquals(false, missionInfo.extraCollision);
-        assertEquals(false, missionInfo.darkScreen);
+        var briefingText = new ArrayList<String>();
+        briefingText.add("例の役人があまりにも無能なので、");
+        briefingText.add("殺害せよとの命令が下された。");
+        briefingText.add("");
+        briefingText.add("警察官である自分は、先輩とともに、");
+        briefingText.add("役人が潜伏しているアパートへと向かった。");
+        briefingText.add("");
+        briefingText.add("abcdefg");
 
-        var briefingExpected = new ArrayList<String>();
-        briefingExpected.add("例の役人があまりにも無能なので、");
-        briefingExpected.add("殺害せよとの命令が下された。");
-        briefingExpected.add("");
-        briefingExpected.add("警察官である自分は、先輩とともに、");
-        briefingExpected.add("役人が潜伏しているアパートへと向かった。");
-        briefingExpected.add("");
-        briefingExpected.add("abcdefg");
-
-        assertLinesMatch(briefingExpected, missionInfo.briefingText);
+        MissionInfo expectedMissionInfo = new MissionInfo()
+                .setMissionTitle("AH KT 2")
+                .setMissionFullname("Apartment House KT 2")
+                .setPathnameOfBlock(".\\addon\\ApartmentHouse\\map2.bd1")
+                .setPathnameOfPoint(".\\addon\\ApartmentHouse\\kt2.pd1")
+                .setSkyType(SkyType.NIGHT)
+                .setPathnameOfImage1(".\\addon\\ApartmentHouse\\official.jpg")
+                .setPathnameOfImage2("!")
+                .setPathnameOfObj("!")
+                .setExtraCollision(false)
+                .setDarkScreen(false)
+                .setBriefingText(briefingText);
+        MissionInfo actualMissionInfo = manipulator.getMissionInfo();
+        assertEquals(expectedMissionInfo, actualMissionInfo);
     }
 
     @Test
     public void testUpdate() {
-        manipulator.getMissionInfo().missionTitle = "Test Mission";
-        manipulator.getMissionInfo().skyType = SkyType.WILDERNESS;
-        manipulator.getMissionInfo().pathnameOfBlock = "./path/to/bd1";
+        MissionInfo currentMissionInfo = manipulator.getMissionInfo();
 
-        assertEquals("Test Mission", manipulator.getMissionInfo().missionTitle);
-        assertEquals(SkyType.WILDERNESS, manipulator.getMissionInfo().skyType);
-        assertEquals("./path/to/bd1", manipulator.getMissionInfo().pathnameOfBlock);
+        MissionInfo newMissionInfo = TestUtils.generateRandomMissionInfo();
+        manipulator.setMissionInfo(newMissionInfo);
+        assertEquals(newMissionInfo, manipulator.getMissionInfo());
+
+        manipulator.setMissionInfo(currentMissionInfo);
     }
 
     @Test
