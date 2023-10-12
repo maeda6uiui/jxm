@@ -72,87 +72,78 @@ public class TestUtils {
     }
 
     public static Weapon generateRandomWeapon() {
-        var ret = new Weapon();
-
-        ret.name = generateRandomString(10);
-        ret.model = generateRandomString(20);
-        ret.texture = generateRandomString(20);
-        ret.attacks = random.nextInt();
-        ret.penetration = random.nextInt();
-        ret.blazings = random.nextInt();
-        ret.speed = random.nextInt();
-        ret.nbsMax = random.nextInt();
-        ret.reloads = random.nextInt();
-        ret.reaction = random.nextInt();
-        ret.errorRangeMin = random.nextInt();
-        ret.errorRangeMax = random.nextInt();
-        ret.modelPositionX = random.nextFloat();
-        ret.modelPositionY = random.nextFloat();
-        ret.modelPositionZ = random.nextFloat();
-        ret.flashPositionX = random.nextFloat();
-        ret.flashPositionY = random.nextFloat();
-        ret.flashPositionZ = random.nextFloat();
-        ret.yakkyouPositionX = random.nextFloat();
-        ret.yakkyouPositionY = random.nextFloat();
-        ret.yakkyouPositionZ = random.nextFloat();
-        ret.yakkyouSpeedX = random.nextFloat();
-        ret.yakkyouSpeedY = random.nextFloat();
-        ret.blazingMode = random.nextBoolean();
-        ret.scopeMode = ScopeMode.values()[random.nextInt(ScopeMode.values().length)];
-        ret.size = random.nextFloat();
-        ret.soundID = random.nextInt();
-        ret.soundVolume = random.nextInt();
-        ret.silencer = random.nextBoolean();
-        ret.weaponP = ShootingStance.values()[random.nextInt(ShootingStance.values().length)];
-        ret.changeWeapon = random.nextInt();
-        ret.burst = random.nextInt();
-
-        return ret;
+        return new Weapon()
+                .setName(generateRandomString(10))
+                .setModel(generateRandomString(20))
+                .setTexture(generateRandomString(20))
+                .setAttacks(random.nextInt())
+                .setPenetration(random.nextInt())
+                .setBlazings(random.nextInt())
+                .setSpeed(random.nextInt())
+                .setNbsMax(random.nextInt())
+                .setReloads(random.nextInt())
+                .setReaction(random.nextInt())
+                .setErrorRangeMin(random.nextInt())
+                .setErrorRangeMax(random.nextInt())
+                .setModelPositionX(random.nextFloat())
+                .setModelPositionY(random.nextFloat())
+                .setModelPositionZ(random.nextFloat())
+                .setFlashPositionX(random.nextFloat())
+                .setFlashPositionY(random.nextFloat())
+                .setFlashPositionZ(random.nextFloat())
+                .setYakkyouPositionX(random.nextFloat())
+                .setYakkyouPositionY(random.nextFloat())
+                .setYakkyouPositionZ(random.nextFloat())
+                .setYakkyouSpeedX(random.nextFloat())
+                .setYakkyouSpeedY(random.nextFloat())
+                .setBlazingMode(random.nextBoolean())
+                .setScopeMode(ScopeMode.values()[random.nextInt(ScopeMode.values().length)])
+                .setSize(random.nextFloat())
+                .setSoundID(random.nextInt())
+                .setSoundVolume(random.nextInt())
+                .setSilencer(random.nextBoolean())
+                .setWeaponP(ShootingStance.values()[random.nextInt(ShootingStance.values().length)])
+                .setChangeWeapon(random.nextInt())
+                .setBurst(random.nextInt());
     }
 
     public static Character generateRandomCharacter() {
-        var ret = new Character();
-
-        ret.texture = CharacterTextureType.values()[random.nextInt(CharacterTextureType.values().length)];
-        ret.model = CharacterModelType.values()[random.nextInt(CharacterModelType.values().length)];
-        ret.aiLevel = AILevel.values()[random.nextInt(AILevel.values().length)];
-        ret.weapons = new ArrayList<>(Arrays.asList(random.nextInt(), random.nextInt()));
-        ret.type = CharacterType.values()[random.nextInt(CharacterType.values().length)];
-
-        return ret;
+        return new Character()
+                .setTexture(CharacterTextureType.values()[random.nextInt(CharacterTextureType.values().length)])
+                .setModel(CharacterModelType.values()[random.nextInt(CharacterModelType.values().length)])
+                .setAiLevel(AILevel.values()[random.nextInt(AILevel.values().length)])
+                .setWeapons(new ArrayList<>(Arrays.asList(random.nextInt(), random.nextInt())))
+                .setType(CharacterType.values()[random.nextInt(CharacterType.values().length)]);
     }
 
     public static Config generateRandomConfig() {
-        var ret = new Config();
-
-        ret.turnUp = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.turnDown = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.turnLeft = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.turnRight = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.moveForward = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.moveBackward = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.moveLeft = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.moveRight = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.walk = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.jump = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.reload = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.dropWeapon = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.zoom = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.fireMode = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.switchWeapon = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.weapon1 = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.weapon2 = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.fire = KeyCode.values()[random.nextInt(KeyCode.values().length)];
-        ret.mouseSensitivity = random.nextInt();
-        ret.brightness = random.nextInt();
-        ret.windowMode = WindowMode.values()[random.nextInt(WindowMode.values().length)];
-        ret.enableSound = random.nextBoolean();
-        ret.enableBlood = random.nextBoolean();
-        ret.invertMouse = random.nextBoolean();
-        ret.frameSkip = random.nextBoolean();
-        ret.anotherGunsight = random.nextBoolean();
-        ret.name = generateRandomString(8);
-
-        return ret;
+        return new Config()
+                .setTurnUp(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setTurnDown(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setTurnLeft(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setTurnRight(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setMoveForward(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setMoveBackward(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setMoveLeft(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setMoveRight(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setWalk(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setJump(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setReload(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setDropWeapon(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setZoom(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setFire(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setSwitchWeapon(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setWeapon1(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setWeapon2(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setFire(KeyCode.values()[random.nextInt(KeyCode.values().length)])
+                .setMouseSensitivity(random.nextInt())
+                .setBrightness(random.nextInt())
+                .setWindowMode(WindowMode.values()[random.nextInt(WindowMode.values().length)])
+                .setEnableSound(random.nextBoolean())
+                .setEnableBlood(random.nextBoolean())
+                .setInvertMouse(random.nextBoolean())
+                .setFrameSkip(random.nextBoolean())
+                .setAnotherGunsight(random.nextBoolean())
+                .setName(generateRandomString(8));
     }
 }
