@@ -1,5 +1,7 @@
 package com.github.dabasan.jxm.properties.config;
 
+import java.util.Objects;
+
 /**
  * Config
  *
@@ -125,5 +127,72 @@ public class Config {
                 + ", windowMode=" + windowMode + ", enableSound=" + enableSound + ", enableBlood="
                 + enableBlood + ", invertMouse=" + invertMouse + ", frameSkip=" + frameSkip
                 + ", anotherGunsight=" + anotherGunsight + ", name=" + name + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Config config = (Config) o;
+        return mouseSensitivity == config.mouseSensitivity
+                && brightness == config.brightness
+                && enableSound == config.enableSound
+                && enableBlood == config.enableBlood
+                && invertMouse == config.invertMouse
+                && frameSkip == config.frameSkip
+                && anotherGunsight == config.anotherGunsight
+                && turnUp == config.turnUp
+                && turnDown == config.turnDown
+                && turnLeft == config.turnLeft
+                && turnRight == config.turnRight
+                && moveForward == config.moveForward
+                && moveBackward == config.moveBackward
+                && moveLeft == config.moveLeft
+                && moveRight == config.moveRight
+                && walk == config.walk
+                && jump == config.jump
+                && reload == config.reload
+                && dropWeapon == config.dropWeapon
+                && zoom == config.zoom
+                && fireMode == config.fireMode
+                && switchWeapon == config.switchWeapon
+                && weapon1 == config.weapon1
+                && weapon2 == config.weapon2
+                && fire == config.fire
+                && windowMode == config.windowMode
+                && Objects.equals(name, config.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                turnUp,
+                turnDown,
+                turnLeft,
+                turnRight,
+                moveForward,
+                moveBackward,
+                moveLeft,
+                moveRight,
+                walk,
+                jump,
+                reload,
+                dropWeapon,
+                zoom,
+                fireMode,
+                switchWeapon,
+                weapon1,
+                weapon2,
+                fire,
+                mouseSensitivity,
+                brightness,
+                windowMode,
+                enableSound,
+                enableBlood,
+                invertMouse,
+                frameSkip,
+                anotherGunsight,
+                name
+        );
     }
 }
