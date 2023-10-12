@@ -2,6 +2,9 @@ package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.*;
+import com.github.dabasan.jxm.properties.config.Config;
+import com.github.dabasan.jxm.properties.config.KeyCode;
+import com.github.dabasan.jxm.properties.config.WindowMode;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.Weapon;
@@ -115,6 +118,40 @@ public class TestUtils {
         ret.aiLevel = AILevel.values()[random.nextInt(AILevel.values().length)];
         ret.weapons = new ArrayList<>(Arrays.asList(random.nextInt(), random.nextInt()));
         ret.type = CharacterType.values()[random.nextInt(CharacterType.values().length)];
+
+        return ret;
+    }
+
+    public static Config generateRandomConfig() {
+        var ret = new Config();
+
+        ret.turnUp = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.turnDown = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.turnLeft = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.turnRight = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.moveForward = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.moveBackward = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.moveLeft = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.moveRight = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.walk = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.jump = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.reload = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.dropWeapon = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.zoom = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.fireMode = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.switchWeapon = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.weapon1 = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.weapon2 = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.fire = KeyCode.values()[random.nextInt(KeyCode.values().length)];
+        ret.mouseSensitivity = random.nextInt();
+        ret.brightness = random.nextInt();
+        ret.windowMode = WindowMode.values()[random.nextInt(WindowMode.values().length)];
+        ret.enableSound = random.nextBoolean();
+        ret.enableBlood = random.nextBoolean();
+        ret.invertMouse = random.nextBoolean();
+        ret.frameSkip = random.nextBoolean();
+        ret.anotherGunsight = random.nextBoolean();
+        ret.name = generateRandomString(8);
 
         return ret;
     }
