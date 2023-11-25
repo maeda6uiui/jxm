@@ -11,6 +11,6 @@ module com.github.dabasan.jxm.properties {
     exports com.github.dabasan.jxm.properties.weapon.xops;
     exports com.github.dabasan.jxm.properties.xops;
 
-    requires org.slf4j;
+    requires transitive org.slf4j;
     requires com.github.dabasan.jxm.bintools;
 }
