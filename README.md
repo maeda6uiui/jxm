@@ -17,7 +17,7 @@ BD1モジュールを使うとX operationsのBD1形式を扱うことができ�
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>2.1.0</version>
+<version>2.1.1</version>
 ```
 
 #### MIFモジュール
@@ -27,7 +27,7 @@ MIFモジュールを使うとX operationsのMIF形式を扱うことができ�
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>2.1.0</version>
+<version>2.1.1</version>
 ```
 
 #### PD1モジュール
@@ -37,7 +37,7 @@ PD1モジュールを使うとX operationsのPD1形式を扱うことができ�
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>2.1.0</version>
+<version>2.1.1</version>
 ```
 
 #### Propertiesモジュール
@@ -48,7 +48,7 @@ Propertiesモジュールを使うと武器およびキャラクターデータ�
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>2.1.0</version>
+<version>2.1.1</version>
 ```
 
 ## 使用例
