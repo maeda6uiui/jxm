@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <name>jxm</name>
-    <description>JXM enables you to work with the data relating to X operations.</description>
+    <description>JXM enables you to handle data related to X operations.</description>
     <url>https://github.com/maeda6uiui/jxm</url>
 
     <licenses>
