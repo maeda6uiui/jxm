@@ -21,12 +21,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PD1ManipulatorTest {
     private static final String TARGET_DIR = "./TestData/SnowBase";
     private PD1Manipulator manipulator;
+    private List<PD1Point> origPoints;
 
     @BeforeAll
     public void loadPD1() {
         assertDoesNotThrow(() -> {
             manipulator = new PD1Manipulator(Paths.get(TARGET_DIR, "point.pd1").toString());
         });
+
+        origPoints = new ArrayList<>();
+        manipulator.getPoints().forEach(point -> origPoints.add(new PD1Point(point)));
     }
 
     @Test
@@ -50,8 +54,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "transform.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        var invMat = mat.invert();
-        manipulator.transform(invMat);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -64,7 +67,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "translate.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.translate(-amountX, -amountY, -amountZ);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -75,7 +78,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rot_x.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.rotX(-amount);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -86,7 +89,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rot_y.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.rotY(-amount);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -97,7 +100,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rot_z.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.rotZ(-amount);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -124,7 +127,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rescale.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.rescale(1.0f / scaleX, 1.0f / scaleY, 1.0f / scaleZ);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -134,7 +137,7 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "invert_z.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.invertZ();
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -149,13 +152,10 @@ public class PD1ManipulatorTest {
             return;
         }
 
-        var currentPoints = new ArrayList<PD1Point>();
-        manipulator.getPoints().forEach(p -> currentPoints.add(new PD1Point(p)));
-
         manipulator.setPoints(tmpPoints);
         assertEquals(tmpPoints, manipulator.getPoints());
 
-        manipulator.setPoints(currentPoints);
+        manipulator.setPoints(origPoints);
     }
 
     @Test
@@ -166,6 +166,6 @@ public class PD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rotate_direction.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
-        manipulator.rotateDirection(-amount);
+        manipulator.setPoints(origPoints);
     }
 }
