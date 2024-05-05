@@ -7,102 +7,26 @@ package com.github.dabasan.jxm.bd1;
  */
 class BD1Functions {
     public static int[] getFaceCorrespondingVertexIndices(int faceIndex) {
-        final int[] ret = new int[4];
-
-        switch (faceIndex) {
-            case 0:
-                ret[0] = 0;
-                ret[1] = 1;
-                ret[2] = 2;
-                ret[3] = 3;
-                break;
-            case 1:
-                ret[0] = 5;
-                ret[1] = 4;
-                ret[2] = 7;
-                ret[3] = 6;
-                break;
-            case 2:
-                ret[0] = 1;
-                ret[1] = 0;
-                ret[2] = 4;
-                ret[3] = 5;
-                break;
-            case 3:
-                ret[0] = 2;
-                ret[1] = 1;
-                ret[2] = 5;
-                ret[3] = 6;
-                break;
-            case 4:
-                ret[0] = 3;
-                ret[1] = 2;
-                ret[2] = 6;
-                ret[3] = 7;
-                break;
-            case 5:
-                ret[0] = 0;
-                ret[1] = 3;
-                ret[2] = 7;
-                ret[3] = 4;
-                break;
-            default:
-                for (int i = 0; i < 4; i++) {
-                    ret[i] = 0;
-                }
-                break;
-        }
-
-        return ret;
+        return switch (faceIndex) {
+            case 0 -> new int[]{0, 1, 2, 3};
+            case 1 -> new int[]{5, 4, 7, 6};
+            case 2 -> new int[]{1, 0, 4, 5};
+            case 3 -> new int[]{2, 1, 5, 6};
+            case 4 -> new int[]{3, 2, 6, 7};
+            case 5 -> new int[]{0, 3, 7, 4};
+            default -> new int[]{0, 0, 0, 0};
+        };
     }
 
     public static int[] getFaceCorrespondingUVIndices(int faceIndex) {
-        final int[] ret = new int[4];
-
-        switch (faceIndex) {
-            case 0:
-                ret[0] = 3;
-                ret[1] = 2;
-                ret[2] = 1;
-                ret[3] = 0;
-                break;
-            case 1:
-                ret[0] = 7;
-                ret[1] = 6;
-                ret[2] = 5;
-                ret[3] = 4;
-                break;
-            case 2:
-                ret[0] = 9;
-                ret[1] = 8;
-                ret[2] = 11;
-                ret[3] = 10;
-                break;
-            case 3:
-                ret[0] = 13;
-                ret[1] = 12;
-                ret[2] = 15;
-                ret[3] = 14;
-                break;
-            case 4:
-                ret[0] = 17;
-                ret[1] = 16;
-                ret[2] = 19;
-                ret[3] = 18;
-                break;
-            case 5:
-                ret[0] = 21;
-                ret[1] = 20;
-                ret[2] = 23;
-                ret[3] = 22;
-                break;
-            default:
-                for (int i = 0; i < 4; i++) {
-                    ret[i] = 0;
-                }
-                break;
-        }
-
-        return ret;
+        return switch (faceIndex) {
+            case 0 -> new int[]{3, 2, 1, 0};
+            case 1 -> new int[]{7, 6, 5, 4};
+            case 2 -> new int[]{9, 8, 11, 10};
+            case 3 -> new int[]{13, 12, 15, 14};
+            case 4 -> new int[]{17, 16, 19, 18};
+            case 5 -> new int[]{21, 20, 23, 22};
+            default -> new int[]{0, 0, 0, 0};
+        };
     }
 }
