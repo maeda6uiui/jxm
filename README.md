@@ -87,7 +87,7 @@ Place required files under the `TestData` folder of each module before executing
 Some files are not available on GitHub due to copyright reasons.
 Listed below is the list of files you have to prepare by yourself:
 
-### BD1 module
+#### BD1 module
 
 - ./jxm-bd1/TestData/SnowBase/map.bd1
 - ./jxm-bd1/TestData/SnowBase/map_2.bd1
@@ -95,7 +95,7 @@ Listed below is the list of files you have to prepare by yourself:
 `map.bd1` is a standard map file of SNOW BASE (from `data/map2/temp.bd1`).
 `map_2.bd1` can be any map file as long as it is different from `map.bd1`.
 
-### PD1 module
+#### PD1 module
 
 - ./jxm-pd1/TestData/SnowBase/point.pd1
 - ./jxm-pd1/TestData/SnowBase/point_2.pd1
@@ -103,7 +103,7 @@ Listed below is the list of files you have to prepare by yourself:
 `point.pd1` is a standard point file of SNOW BASE_EXT (from `data/map2/ext.pd1`).
 `point_2.pd1` can be any point file as long it is different from `point.pd1`. 
 
-### Properties module
+#### Properties module
 
 - ./jxm-properties/TestData/Character/xops0975t.exe
 - ./jxm-properties/TestData/Weapon/xops0975t.exe
