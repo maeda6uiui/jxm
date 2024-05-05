@@ -2,6 +2,7 @@ package com.github.dabasan.jxm.pd1;
 
 import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
+import org.joml.Vector3f;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,16 +17,22 @@ import java.util.Objects;
 public class PD1Manipulator {
     private List<PD1Point> points;
 
+    private Matrix4f transformationMat;
+
     /**
      * Creates a PD1 manipulator.
      */
     public PD1Manipulator() {
         points = new ArrayList<>();
+
+        transformationMat = new Matrix4f().identity();
     }
 
     private void readConstructorBase(InputStream is) throws IOException {
         var reader = new PD1Reader(is);
         points = reader.getPoints();
+
+        transformationMat = new Matrix4f().identity();
     }
 
     /**
@@ -110,16 +117,30 @@ public class PD1Manipulator {
     }
 
     /**
+     * Applies transformation.
+     */
+    public void applyTransformation() {
+        points.forEach(point -> {
+            Vector3f newPosition = transformationMat.transformPosition(new Vector3f(point.position));
+            point.setPosition(newPosition);
+        });
+    }
+
+    /**
+     * Resets transformation.
+     */
+    public void resetTransformation() {
+        transformationMat = new Matrix4f().identity();
+    }
+
+    /**
      * Transforms the points with a matrix.
      *
      * @param mat matrix for transformation
      * @return this
      */
     public PD1Manipulator transform(Matrix4fc mat) {
-        for (var point : points) {
-            point.position = mat.transformPosition(point.position);
-        }
-
+        transformationMat = transformationMat.mul(mat);
         return this;
     }
 

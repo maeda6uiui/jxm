@@ -16,6 +16,8 @@ public class BD1Manipulator {
     private List<BD1Block> blocks;
     private Map<Integer, String> textureFilenames;
 
+    private Matrix4f transformationMat;
+
     /**
      * Creates a BD1 manipulator.
      */
@@ -26,6 +28,8 @@ public class BD1Manipulator {
         for (int i = 0; i < 10; i++) {
             textureFilenames.put(i, "");
         }
+
+        transformationMat = new Matrix4f().identity();
     }
 
     private void readConstructorBase(InputStream is) throws IOException {
@@ -33,6 +37,8 @@ public class BD1Manipulator {
 
         blocks = reader.getBlocks();
         textureFilenames = reader.getTextureFilenames();
+
+        transformationMat = new Matrix4f().identity();
     }
 
     /**
@@ -136,18 +142,35 @@ public class BD1Manipulator {
     }
 
     /**
+     * Applies transformation.
+     */
+    public void applyTransformation() {
+        blocks.forEach(block -> {
+            var newVertexPositions = new ArrayList<Vector3f>();
+            Arrays.asList(block.vertexPositions).forEach(p -> {
+                var newVertexPosition = transformationMat.transformPosition(new Vector3f(p));
+                newVertexPositions.add(newVertexPosition);
+            });
+
+            block.setVertexPositions(newVertexPositions.toArray(new Vector3f[]{}));
+        });
+    }
+
+    /**
+     * Resets transformation.
+     */
+    public void resetTransformation() {
+        transformationMat = new Matrix4f().identity();
+    }
+
+    /**
      * Transforms the blocks with a matrix.
      *
      * @param mat matrix for transformation
      * @return this
      */
     public BD1Manipulator transform(Matrix4fc mat) {
-        for (var block : blocks) {
-            for (Vector3f vertexPosition : block.vertexPositions) {
-                vertexPosition = mat.transformPosition(vertexPosition);
-            }
-        }
-
+        transformationMat = transformationMat.mul(mat);
         return this;
     }
 
