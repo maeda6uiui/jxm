@@ -73,6 +73,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -86,6 +87,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -97,6 +99,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -108,6 +111,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -119,6 +123,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -130,6 +135,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -143,6 +149,7 @@ public class BD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
         manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test

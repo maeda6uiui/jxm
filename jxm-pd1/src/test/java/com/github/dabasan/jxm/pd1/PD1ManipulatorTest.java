@@ -49,12 +49,13 @@ public class PD1ManipulatorTest {
         var mat = new Matrix4f().rotate((float) Math.PI / 4.0f, 1.0f, 0.0f, 0.0f)
                 .rotate((float) Math.PI / 4.0f, 0.0f, 1.0f, 0.0f)
                 .rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f).scale(1.0f, 2.0f, 1.0f);
-        manipulator.transform(mat);
+        manipulator.transform(mat).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "transform.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -68,53 +69,55 @@ public class PD1ManipulatorTest {
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
     public void rotX() {
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rotX(amount);
+        manipulator.rotX(amount).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_x.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
     public void rotY() {
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rotY(amount);
+        manipulator.rotY(amount).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_y.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
     public void rotZ() {
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rotZ(amount);
+        manipulator.rotZ(amount).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_z.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
     public void rot() {
-        var origPoints = new ArrayList<PD1Point>();
-        manipulator.getPoints().forEach(p -> origPoints.add(new PD1Point(p)));
-
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rot(amount, 1.0f, 1.0f, 1.0f);
+        manipulator.rot(amount, 1.0f, 1.0f, 1.0f).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -122,12 +125,13 @@ public class PD1ManipulatorTest {
         float scaleX = 2.0f;
         float scaleY = 2.0f;
         float scaleZ = 2.0f;
-        manipulator.rescale(scaleX, scaleY, scaleZ);
+        manipulator.rescale(scaleX, scaleY, scaleZ).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rescale.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
 
         manipulator.setPoints(origPoints);
+        manipulator.resetTransformation();
     }
 
     @Test
