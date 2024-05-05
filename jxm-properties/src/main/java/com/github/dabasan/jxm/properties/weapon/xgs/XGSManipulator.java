@@ -70,7 +70,7 @@ public class XGSManipulator {
      * @return array containing weapon data
      */
     public Weapon[] getWeapons() {
-        return weapons.clone();
+        return weapons;
     }
 
     /**

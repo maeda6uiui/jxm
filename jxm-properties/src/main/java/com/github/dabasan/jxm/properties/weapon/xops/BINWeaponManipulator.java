@@ -42,7 +42,7 @@ public class BINWeaponManipulator {
      * @return array containing weapon data
      */
     public Weapon[] getWeapons() {
-        return weapons.clone();
+        return weapons;
     }
 
     /**

@@ -75,7 +75,7 @@ public class BD1Manipulator {
      * @return blocks
      */
     public List<BD1Block> getBlocks() {
-        return new ArrayList<>(blocks);
+        return blocks;
     }
 
     /**

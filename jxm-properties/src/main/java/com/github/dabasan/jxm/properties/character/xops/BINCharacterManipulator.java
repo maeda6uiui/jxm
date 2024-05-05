@@ -41,7 +41,7 @@ public class BINCharacterManipulator {
      * @return array containing character data
      */
     public Character[] getCharacters() {
-        return characters.clone();
+        return characters;
     }
 
     /**

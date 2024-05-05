@@ -68,7 +68,7 @@ public class PD1Manipulator {
      * @return points
      */
     public List<PD1Point> getPoints() {
-        return new ArrayList<>(points);
+        return points;
     }
 
     /**
