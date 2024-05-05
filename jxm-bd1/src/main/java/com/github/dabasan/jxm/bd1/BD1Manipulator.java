@@ -164,6 +164,15 @@ public class BD1Manipulator {
     }
 
     /**
+     * Returns current transformation matrix.
+     *
+     * @return Transformation matrix
+     */
+    public Matrix4f getTransformationMat() {
+        return transformationMat;
+    }
+
+    /**
      * Transforms the blocks with a matrix.
      *
      * @param mat matrix for transformation
