@@ -56,9 +56,11 @@ public class PD1ManipulatorTest {
 
     @Test
     public void transform() {
-        var mat = new Matrix4f().rotate((float) Math.PI / 4.0f, 1.0f, 0.0f, 0.0f)
+        var mat = new Matrix4f()
+                .rotate((float) Math.PI / 4.0f, 1.0f, 0.0f, 0.0f)
                 .rotate((float) Math.PI / 4.0f, 0.0f, 1.0f, 0.0f)
-                .rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f).scale(1.0f, 2.0f, 1.0f);
+                .rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f)
+                .scale(1.0f, 2.0f, 1.0f);
         manipulator.transform(mat).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "transform.pd1").toString();
