@@ -19,25 +19,25 @@ class PD1Writer {
     public void write(OutputStream os, List<PD1Point> points) throws IOException {
         List<Byte> bin = new ArrayList<>();
 
-        // Number of points
+        //Number of points
         int numPoints = points.size();
         addUnsignedShortToBinLE(bin, numPoints);
 
-        // Point data
+        //Point data
         for (int i = 0; i < numPoints; i++) {
             PD1Point point = points.get(i);
 
-            // Position
+            //Position
             Vector3fc position = point.position;
             addFloatToBinLE(bin, position.x());
             addFloatToBinLE(bin, position.y());
             addFloatToBinLE(bin, position.z());
 
-            // Rotation
+            //Rotation
             float rotation = point.rotation;
             addFloatToBinLE(bin, rotation);
 
-            // Parameters
+            //Parameters
             int[] parameters = point.parameters;
             for (int j = 0; j < 4; j++) {
                 bin.add((byte) parameters[j]);

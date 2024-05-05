@@ -8,7 +8,7 @@ package com.github.dabasan.jxm.properties.character.openxops;
 public class CharacterVariableNameSettings {
     public String arrayName;
 
-    // Character data
+    //Character data
     public String texture;
     public String model;
     public String hp;

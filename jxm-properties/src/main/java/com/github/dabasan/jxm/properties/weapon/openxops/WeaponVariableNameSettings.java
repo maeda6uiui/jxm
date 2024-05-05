@@ -8,7 +8,7 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
 public class WeaponVariableNameSettings {
     public String arrayName;
 
-    // Weapon data
+    //Weapon data
     public String name;
     public String model;
     public String texture;

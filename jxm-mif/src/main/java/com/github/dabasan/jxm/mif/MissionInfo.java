@@ -20,7 +20,7 @@ public class MissionInfo {
     public String pathnameOfObj;
     public String pathnameOfImage1;
     public String pathnameOfImage2;
-    public List<String> briefingText;// per line
+    public List<String> briefingText;//per line
 
     /**
      * Creates a mission info instance.

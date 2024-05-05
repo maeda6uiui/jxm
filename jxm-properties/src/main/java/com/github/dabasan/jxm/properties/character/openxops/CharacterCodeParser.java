@@ -68,7 +68,7 @@ public class CharacterCodeParser {
             }
             var character = ret.get(arrayIndex);
 
-            // Texture
+            //Texture
             if (parsed[2].equals(settings.texture)) {
                 int openXOPSTextureID;
                 try {
@@ -82,7 +82,7 @@ public class CharacterCodeParser {
                         .getXOPSTextureTypeFromOpenXOPSTextureID(openXOPSTextureID);
                 character.texture = xopsTextureType;
             }
-            // Model
+            //Model
             else if (parsed[2].equals(settings.model)) {
                 int modelSpc;
                 try {
@@ -94,7 +94,7 @@ public class CharacterCodeParser {
 
                 character.model = CharacterModelType.values()[modelSpc];
             }
-            // HP
+            //HP
             else if (parsed[2].equals(settings.hp)) {
                 int hp;
                 try {
@@ -106,7 +106,7 @@ public class CharacterCodeParser {
 
                 character.hp = hp;
             }
-            // AILevel
+            //AILevel
             else if (parsed[2].equals(settings.aiLevel)) {
                 int openXOPSAILevel;
                 try {
@@ -120,7 +120,7 @@ public class CharacterCodeParser {
                         .getXOPSAILevelFromOpenXOPSAILevel(openXOPSAILevel);
                 character.aiLevel = xopsAILevel;
             }
-            // Weapon 0
+            //Weapon 0
             else if (parsed[2].equals(settings.weapon0)) {
                 int weapon0;
                 try {
@@ -132,7 +132,7 @@ public class CharacterCodeParser {
 
                 character.weapons.set(0, weapon0);
             }
-            // Weapon 1
+            //Weapon 1
             else if (parsed[2].equals(settings.weapon1)) {
                 int weapon1;
                 try {
@@ -144,7 +144,7 @@ public class CharacterCodeParser {
 
                 character.weapons.set(1, weapon1);
             }
-            // Type
+            //Type
             else if (parsed[2].equals(settings.type)) {
                 int typeSpc;
                 try {

@@ -18,110 +18,110 @@ class IDSReader {
     public IDSReader(InputStream is) throws IOException {
         weapon = new Weapon();
 
-        // Read all bytes from a stream
+        //Read all bytes from a stream
         byte[] bin = is.readAllBytes();
 
         int pos = 0x0000000A;
 
-        // Attacks
+        //Attacks
         weapon.attacks = getShortFromBinLE(bin, pos);
         pos += 2;
-        // Penetration
+        //Penetration
         weapon.penetration = getShortFromBinLE(bin, pos);
         pos += 2;
-        // Blazings
+        //Blazings
         weapon.blazings = getShortFromBinLE(bin, pos);
         pos += 2;
-        // Speed
+        //Speed
         weapon.speed = getShortFromBinLE(bin, pos);
         pos += 2;
-        // NbsMax
+        //NbsMax
         weapon.nbsMax = getShortFromBinLE(bin, pos);
         pos += 2;
-        // Reloads
+        //Reloads
         weapon.reloads = getShortFromBinLE(bin, pos);
         pos += 2;
-        // Reaction
+        //Reaction
         weapon.reaction = getShortFromBinLE(bin, pos);
         pos += 2;
-        // ErrorRangeMin
+        //ErrorRangeMin
         weapon.errorRangeMin = getShortFromBinLE(bin, pos);
         pos += 2;
-        // ErrorRangeMax
+        //ErrorRangeMax
         weapon.errorRangeMax = getShortFromBinLE(bin, pos);
         pos += 2;
-        // ModelPositionX
+        //ModelPositionX
         weapon.modelPositionX = getShortFromBinLE(bin, pos);
         pos += 2;
-        // ModelPositionY
+        //ModelPositionY
         weapon.modelPositionY = getShortFromBinLE(bin, pos);
         pos += 2;
-        // ModelPositionZ
+        //ModelPositionZ
         weapon.modelPositionZ = getShortFromBinLE(bin, pos);
         pos += 2;
-        // FlashPositionX
+        //FlashPositionX
         weapon.flashPositionX = getShortFromBinLE(bin, pos);
         pos += 2;
-        // FlashPositionY
+        //FlashPositionY
         weapon.flashPositionY = getShortFromBinLE(bin, pos);
         pos += 2;
-        // FlashPositionZ
+        //FlashPositionZ
         weapon.flashPositionZ = getShortFromBinLE(bin, pos);
         pos += 2;
-        // YakkyouPositionX
+        //YakkyouPositionX
         weapon.yakkyouPositionX = getShortFromBinLE(bin, pos);
         pos += 2;
-        // YakkyouPositionY
+        //YakkyouPositionY
         weapon.yakkyouPositionY = getShortFromBinLE(bin, pos);
         pos += 2;
-        // YakkyouPositionZ
+        //YakkyouPositionZ
         weapon.yakkyouPositionZ = getShortFromBinLE(bin, pos);
         pos += 2;
-        // WeaponP
+        //WeaponP
         int shootingStanceSpc = getShortFromBinLE(bin, pos);
         pos += 2;
         weapon.weaponP = WeaponBinEnumConverter
                 .getShootingStanceFromBinSpecifier(shootingStanceSpc);
-        // BlazingMode
+        //BlazingMode
         int blazingModeSpc = getShortFromBinLE(bin, pos);
         pos += 2;
         weapon.blazingMode = (blazingModeSpc == 0) ? true : false;
-        // ScopeMode
+        //ScopeMode
         int scopeModeSpc = getShortFromBinLE(bin, pos);
         pos += 2;
         weapon.scopeMode = WeaponBinEnumConverter.getScopeModeFromBinSpecifier(scopeModeSpc);
-        // Texture
+        //Texture
         int textureTypeSpc = getShortFromBinLE(bin, pos);
         pos += 2;
         WeaponTextureType textureType = WeaponBinEnumConverter
                 .getTextureTypeFromBinSpecifier(textureTypeSpc);
         weapon.texture = TextureFilepaths.getTextureFilepath(textureType.ordinal());
-        // Model
+        //Model
         int modelTypeSpc = getShortFromBinLE(bin, pos);
         pos += 2;
         WeaponModelType modelType = WeaponBinEnumConverter
                 .getModelTypeFromBinSpecifier(modelTypeSpc);
         weapon.model = ModelFilepaths.getModelFilepath(modelType.ordinal());
-        // Size
+        //Size
         weapon.size = getShortFromBinLE(bin, pos) * 0.1f;
         pos += 2;
-        // YakkyouSpeedX
+        //YakkyouSpeedX
         weapon.yakkyouSpeedX = getShortFromBinLE(bin, pos);
         pos += 2;
-        // YakkyouSpeedY
+        //YakkyouSpeedY
         weapon.yakkyouSpeedY = getShortFromBinLE(bin, pos);
         pos += 2;
-        // SoundID
+        //SoundID
         weapon.soundID = getShortFromBinLE(bin, pos);
         pos += 2;
-        // SoundVolume
+        //SoundVolume
         weapon.soundVolume = getShortFromBinLE(bin, pos);
         pos += 2;
-        // Silencer
+        //Silencer
         int silencerSpc = getShortFromBinLE(bin, pos);
         pos += 2;
         weapon.silencer = (silencerSpc == 0) ? false : true;
-        // Name
+        //Name
         weapon.name = this.getNameFromBin(bin, pos);
         pos += 2;
     }

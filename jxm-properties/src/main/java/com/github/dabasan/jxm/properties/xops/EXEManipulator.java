@@ -211,16 +211,16 @@ public class EXEManipulator {
         return srcXOPSVersion;
     }
 
-    // Base method for write().
-    // Pass a non-null value to fileBackup to make a backup file before
-    // overwriting the file.
+    //Base method for write().
+    //Pass a non-null value to fileBackup to make a backup file before
+    //overwriting the file.
     private void writeBase(File file, File fileBackup) throws IOException {
         byte[] bin;
         try (var bis = new BufferedInputStream(new FileInputStream(file))) {
             bin = bis.readAllBytes();
         }
 
-        // Make a backup file
+        //Make a backup file
         if (fileBackup != null) {
             try (var bosBackup = new BufferedOutputStream(new FileOutputStream(fileBackup))) {
                 bosBackup.write(bin);
@@ -235,7 +235,7 @@ public class EXEManipulator {
         weaponManipulator.write(bin, weaponDataStartPos, weaponNameStartPos);
         characterManipulator.write(bin, characterDataStartPos);
 
-        // Overwrite an EXE file of XOPS
+        //Overwrite an EXE file of XOPS
         try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
             bos.write(bin);
         }

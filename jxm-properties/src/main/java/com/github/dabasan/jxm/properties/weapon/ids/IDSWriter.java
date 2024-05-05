@@ -18,9 +18,9 @@ class IDSWriter {
     public void write(OutputStream os, Weapon weapon) throws IOException {
         var bin = new ArrayList<Byte>();
 
-        bin.add((byte) 0x49);// I
-        bin.add((byte) 0x44);// D
-        bin.add((byte) 0x53);// S
+        bin.add((byte) 0x49);//I
+        bin.add((byte) 0x44);//D
+        bin.add((byte) 0x53);//S
         bin.add((byte) 0x00);
         bin.add((byte) 0x01);
         bin.add((byte) 0x00);
@@ -29,80 +29,80 @@ class IDSWriter {
         bin.add((byte) 0x1D);
         bin.add((byte) 0x00);
 
-        // Attacks
+        //Attacks
         addShortToBinLE(bin, (short) weapon.attacks);
-        // Penetration
+        //Penetration
         addShortToBinLE(bin, (short) weapon.penetration);
-        // Blazings
+        //Blazings
         addShortToBinLE(bin, (short) weapon.blazings);
-        // Speed
+        //Speed
         addShortToBinLE(bin, (short) weapon.speed);
-        // NbsMax
+        //NbsMax
         addShortToBinLE(bin, (short) weapon.nbsMax);
-        // Reloads
+        //Reloads
         addShortToBinLE(bin, (short) weapon.reloads);
-        // Reaction
+        //Reaction
         addShortToBinLE(bin, (short) weapon.reaction);
-        // ErrorRangeMin
+        //ErrorRangeMin
         addShortToBinLE(bin, (short) weapon.errorRangeMin);
-        // ErrorRangeMax
+        //ErrorRangeMax
         addShortToBinLE(bin, (short) weapon.errorRangeMax);
-        // ModelPositionX
+        //ModelPositionX
         addShortToBinLE(bin, (short) Math.round(weapon.modelPositionX));
-        // ModelPositionY
+        //ModelPositionY
         addShortToBinLE(bin, (short) Math.round(weapon.modelPositionY));
-        // ModelPositionZ
+        //ModelPositionZ
         addShortToBinLE(bin, (short) Math.round(weapon.modelPositionZ));
-        // FlashPositionX
+        //FlashPositionX
         addShortToBinLE(bin, (short) Math.round(weapon.flashPositionX));
-        // FlashPositionY
+        //FlashPositionY
         addShortToBinLE(bin, (short) Math.round(weapon.flashPositionY));
-        // FlashPositionZ
+        //FlashPositionZ
         addShortToBinLE(bin, (short) Math.round(weapon.flashPositionZ));
-        // YakkyouPositionX
+        //YakkyouPositionX
         addShortToBinLE(bin, (short) Math.round(weapon.yakkyouPositionX));
-        // YakkyouPositionY
+        //YakkyouPositionY
         addShortToBinLE(bin, (short) Math.round(weapon.yakkyouPositionY));
-        // YakkyouPositionZ
+        //YakkyouPositionZ
         addShortToBinLE(bin, (short) Math.round(weapon.yakkyouPositionZ));
-        // WeaponP
+        //WeaponP
         ShootingStance shootingStance = weapon.weaponP;
         int shootingStanceSpc = WeaponBinEnumConverter
                 .getBinSpecifierFromShootingStance(shootingStance);
         addShortToBinLE(bin, (short) shootingStanceSpc);
-        // BlazingMode
+        //BlazingMode
         boolean blazingMode = weapon.blazingMode;
         int blazingModeSpc = (blazingMode) ? 0 : 1;
         addShortToBinLE(bin, (short) blazingModeSpc);
-        // ScopeMode
+        //ScopeMode
         ScopeMode scopeMode = weapon.scopeMode;
         int scopeModeSpc = WeaponBinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
         addShortToBinLE(bin, (short) scopeModeSpc);
-        // Texture
+        //Texture
         String textureFilepath = weapon.texture;
         WeaponTextureType textureType = TextureFilepaths.getEnumFromFilepath(textureFilepath);
         int textureTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromTextureType(textureType);
         addShortToBinLE(bin, (short) textureTypeSpc);
-        // Model
+        //Model
         String modelFilepath = weapon.model;
         WeaponModelType modelType = ModelFilepaths.getEnumFromFilepath(modelFilepath);
         int modelTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromModelType(modelType);
         addShortToBinLE(bin, (short) modelTypeSpc);
-        // Size
+        //Size
         addShortToBinLE(bin, (short) Math.round(weapon.size * 10.0f));
-        // YakkyouSpeedX
+        //YakkyouSpeedX
         addShortToBinLE(bin, (short) Math.round(weapon.yakkyouSpeedX));
-        // YakkyouSpeedY
+        //YakkyouSpeedY
         addShortToBinLE(bin, (short) Math.round(weapon.yakkyouSpeedY));
-        // SoundID
+        //SoundID
         addShortToBinLE(bin, (short) weapon.soundID);
-        // SoundVolume
+        //SoundVolume
         addShortToBinLE(bin, (short) weapon.soundVolume);
-        // Silencer
+        //Silencer
         boolean silencer = weapon.silencer;
         int silencerSpc = (silencer) ? 1 : 0;
         addShortToBinLE(bin, (short) silencerSpc);
-        // Name
+        //Name
         this.addNameToBin(bin, weapon.name);
 
         for (byte b : bin) {

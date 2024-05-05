@@ -19,46 +19,46 @@ class BD1Writer {
             throws IOException {
         List<Byte> bin = new ArrayList<>();
 
-        // Texture filenames
+        //Texture filenames
         this.addTextureFilenamesToBin(bin, textureFilenames);
 
-        // Number of blocks
+        //Number of blocks
         int numBlocks = blocks.size();
         addUnsignedShortToBinLE(bin, numBlocks);
 
-        // Blocks
+        //Blocks
         for (int i = 0; i < numBlocks; i++) {
             BD1Block block = blocks.get(i);
 
-            // Vertex positions
+            //Vertex positions
             Vector3fc[] vertexPositions = block.vertexPositions;
 
-            // X
+            //X
             for (int j = 0; j < 8; j++) {
                 addFloatToBinLE(bin, vertexPositions[j].x());
             }
-            // Y
+            //Y
             for (int j = 0; j < 8; j++) {
                 addFloatToBinLE(bin, vertexPositions[j].y());
             }
-            // Z
+            //Z
             for (int j = 0; j < 8; j++) {
                 addFloatToBinLE(bin, vertexPositions[j].z());
             }
 
-            // UVs
+            //UVs
             UV[] uvs = block.uvs;
 
-            // U
+            //U
             for (int j = 0; j < 24; j++) {
                 addFloatToBinLE(bin, uvs[j].u);
             }
-            // V
+            //V
             for (int j = 0; j < 24; j++) {
                 addFloatToBinLE(bin, uvs[j].v);
             }
 
-            // Texture IDs
+            //Texture IDs
             int[] textureIDs = block.textureIDs;
 
             for (int j = 0; j < 6; j++) {
@@ -68,7 +68,7 @@ class BD1Writer {
                 }
             }
 
-            // Enabled flag
+            //Enabled flag
             if (block.enabled) {
                 bin.add((byte) 0x01);
             } else {

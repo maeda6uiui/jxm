@@ -69,19 +69,19 @@ public class WeaponCodeParser {
             }
             var weapon = ret.get(arrayIndex);
 
-            // Name
+            //Name
             if (parsed[2].equals(settings.name)) {
                 weapon.name = parsed[3];
             }
-            // Model
+            //Model
             else if (parsed[2].equals(settings.model)) {
                 weapon.model = parsed[3];
             }
-            // Texture
+            //Texture
             else if (parsed[2].equals(settings.texture)) {
                 weapon.texture = parsed[3];
             }
-            // Attacks
+            //Attacks
             else if (parsed[2].equals(settings.attacks)) {
                 int attacks;
                 try {
@@ -93,7 +93,7 @@ public class WeaponCodeParser {
 
                 weapon.attacks = attacks;
             }
-            // Penetration
+            //Penetration
             else if (parsed[2].equals(settings.penetration)) {
                 int penetration;
                 try {
@@ -105,7 +105,7 @@ public class WeaponCodeParser {
 
                 weapon.penetration = penetration;
             }
-            // Blazings
+            //Blazings
             else if (parsed[2].equals(settings.blazings)) {
                 int blazings;
                 try {
@@ -117,7 +117,7 @@ public class WeaponCodeParser {
 
                 weapon.blazings = blazings;
             }
-            // Speed
+            //Speed
             else if (parsed[2].equals(settings.speed)) {
                 int speed;
                 try {
@@ -129,7 +129,7 @@ public class WeaponCodeParser {
 
                 weapon.speed = speed;
             }
-            // NbsMax
+            //NbsMax
             else if (parsed[2].equals(settings.nbsMax)) {
                 int nbsMax;
                 try {
@@ -141,7 +141,7 @@ public class WeaponCodeParser {
 
                 weapon.nbsMax = nbsMax;
             }
-            // Reloads
+            //Reloads
             else if (parsed[2].equals(settings.reloads)) {
                 int reloads;
                 try {
@@ -153,7 +153,7 @@ public class WeaponCodeParser {
 
                 weapon.reloads = reloads;
             }
-            // Reaction
+            //Reaction
             else if (parsed[2].equals(settings.reaction)) {
                 int reaction;
                 try {
@@ -165,7 +165,7 @@ public class WeaponCodeParser {
 
                 weapon.reaction = reaction;
             }
-            // ErrorRangeMin
+            //ErrorRangeMin
             else if (parsed[2].equals(settings.errorRangeMin)) {
                 int errorRangeMin;
                 try {
@@ -177,7 +177,7 @@ public class WeaponCodeParser {
 
                 weapon.errorRangeMin = errorRangeMin;
             }
-            // ErrorRangeMax
+            //ErrorRangeMax
             else if (parsed[2].equals(settings.errorRangeMax)) {
                 int errorRangeMax;
                 try {
@@ -189,7 +189,7 @@ public class WeaponCodeParser {
 
                 weapon.errorRangeMax = errorRangeMax;
             }
-            // ModelPositionX
+            //ModelPositionX
             else if (parsed[2].equals(settings.modelPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -203,7 +203,7 @@ public class WeaponCodeParser {
 
                 weapon.modelPositionX = modelPositionX;
             }
-            // ModelPositionY
+            //ModelPositionY
             else if (parsed[2].equals(settings.modelPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -217,7 +217,7 @@ public class WeaponCodeParser {
 
                 weapon.modelPositionY = modelPositionY;
             }
-            // ModelPositionZ
+            //ModelPositionZ
             else if (parsed[2].equals(settings.modelPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -231,7 +231,7 @@ public class WeaponCodeParser {
 
                 weapon.modelPositionZ = modelPositionZ;
             }
-            // FlashPositionX
+            //FlashPositionX
             else if (parsed[2].equals(settings.flashPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -245,7 +245,7 @@ public class WeaponCodeParser {
 
                 weapon.flashPositionX = flashPositionX;
             }
-            // FlashPositionY
+            //FlashPositionY
             else if (parsed[2].equals(settings.flashPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -259,7 +259,7 @@ public class WeaponCodeParser {
 
                 weapon.flashPositionY = flashPositionY;
             }
-            // FlashPositionZ
+            //FlashPositionZ
             else if (parsed[2].equals(settings.flashPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -273,7 +273,7 @@ public class WeaponCodeParser {
 
                 weapon.flashPositionZ = flashPositionZ;
             }
-            // YakkyouPositionX
+            //YakkyouPositionX
             else if (parsed[2].equals(settings.yakkyouPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -287,7 +287,7 @@ public class WeaponCodeParser {
 
                 weapon.yakkyouPositionX = yakkyouPositionX;
             }
-            // YakkyouPositionY
+            //YakkyouPositionY
             else if (parsed[2].equals(settings.yakkyouPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -301,7 +301,7 @@ public class WeaponCodeParser {
 
                 weapon.yakkyouPositionY = yakkyouPositionY;
             }
-            // YakkyouPositionZ
+            //YakkyouPositionZ
             else if (parsed[2].equals(settings.yakkyouPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -315,7 +315,7 @@ public class WeaponCodeParser {
 
                 weapon.yakkyouPositionZ = yakkyouPositionZ;
             }
-            // YakkyouSpeedX
+            //YakkyouSpeedX
             else if (parsed[2].equals(settings.yakkyouSpeedX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -329,7 +329,7 @@ public class WeaponCodeParser {
 
                 weapon.yakkyouSpeedX = yakkyouSpeedX;
             }
-            // YakkyouSpeedY
+            //YakkyouSpeedY
             else if (parsed[2].equals(settings.yakkyouSpeedY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -343,7 +343,7 @@ public class WeaponCodeParser {
 
                 weapon.yakkyouSpeedY = yakkyouSpeedY;
             }
-            // BlazingMode
+            //BlazingMode
             else if (parsed[2].equals(settings.blazingMode)) {
                 boolean blazingMode;
                 if (parsed[3].equals("false")) {
@@ -357,7 +357,7 @@ public class WeaponCodeParser {
 
                 weapon.blazingMode = blazingMode;
             }
-            // ScopeMode
+            //ScopeMode
             else if (parsed[2].equals(settings.scopeMode)) {
                 int scopeModeSpc;
                 try {
@@ -369,7 +369,7 @@ public class WeaponCodeParser {
 
                 weapon.scopeMode = ScopeMode.values()[scopeModeSpc];
             }
-            // Size
+            //Size
             else if (parsed[2].equals(settings.size)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
@@ -383,7 +383,7 @@ public class WeaponCodeParser {
 
                 weapon.size = size;
             }
-            // SoundID
+            //SoundID
             else if (parsed[2].equals(settings.soundID)) {
                 int openXOPSSoundID;
                 try {
@@ -396,7 +396,7 @@ public class WeaponCodeParser {
                 weapon.soundID = WeaponSpecifierConverter
                         .getXOPSSoundIDFromOpenXOPSSoundID(openXOPSSoundID);
             }
-            // SoundVolume
+            //SoundVolume
             else if (parsed[2].equals(settings.soundVolume)) {
                 int soundVolume;
                 try {
@@ -408,7 +408,7 @@ public class WeaponCodeParser {
 
                 weapon.soundVolume = soundVolume;
             }
-            // Silencer
+            //Silencer
             else if (parsed[2].equals(settings.silencer)) {
                 boolean silencer;
                 if (parsed[3].equals("false")) {
@@ -422,7 +422,7 @@ public class WeaponCodeParser {
 
                 weapon.silencer = silencer;
             }
-            // WeaponP
+            //WeaponP
             else if (parsed[2].equals(settings.weaponP)) {
                 int weaponPSpc;
                 try {
@@ -434,7 +434,7 @@ public class WeaponCodeParser {
 
                 weapon.weaponP = ShootingStance.values()[weaponPSpc];
             }
-            // ChangeWeapon
+            //ChangeWeapon
             else if (parsed[2].equals(settings.changeWeapon)) {
                 int changeWeapon;
                 try {
@@ -446,7 +446,7 @@ public class WeaponCodeParser {
 
                 weapon.changeWeapon = changeWeapon;
             }
-            // Burst
+            //Burst
             else if (parsed[2].equals(settings.burst)) {
                 int burst;
                 try {

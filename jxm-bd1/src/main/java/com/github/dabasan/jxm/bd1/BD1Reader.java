@@ -23,12 +23,12 @@ class BD1Reader {
         textureFilenames = new HashMap<>();
         blocks = new ArrayList<>();
 
-        // Read all bytes from a stream
+        //Read all bytes from a stream
         byte[] bin = is.readAllBytes();
 
         int pos = 0;
 
-        // Texture filenames
+        //Texture filenames
         for (int i = 0; i < 10; i++) {
             byte[] textureFilenameBuffer = new byte[31];
             String textureFilename;
@@ -54,15 +54,15 @@ class BD1Reader {
             textureFilenames.put(i, textureFilename);
         }
 
-        // Number of blocks
+        //Number of blocks
         int numBlocks = getUnsignedShortFromBinLE(bin, pos);
         pos += 2;
 
-        // Blocks
+        //Blocks
         for (int i = 0; i < numBlocks; i++) {
             var block = new BD1Block();
 
-            // Vertex positions
+            //Vertex positions
             for (int j = 0; j < 8; j++) {
                 block.vertexPositions[j].x = getFloatFromBinLE(bin, pos);
                 pos += 4;
@@ -76,7 +76,7 @@ class BD1Reader {
                 pos += 4;
             }
 
-            // UVs
+            //UVs
             for (int j = 0; j < 24; j++) {
                 block.uvs[j].u = getFloatFromBinLE(bin, pos);
                 pos += 4;
@@ -86,13 +86,13 @@ class BD1Reader {
                 pos += 4;
             }
 
-            // Texture IDs
+            //Texture IDs
             for (int j = 0; j < 6; j++) {
                 block.textureIDs[j] = Byte.toUnsignedInt(bin[pos]);
                 pos += 4;
             }
 
-            // Enabled flag
+            //Enabled flag
             int enabled = Byte.toUnsignedInt(bin[pos]);
             if (enabled != 0) {
                 block.enabled = true;

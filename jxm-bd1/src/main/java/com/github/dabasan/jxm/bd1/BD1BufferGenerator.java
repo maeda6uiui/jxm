@@ -30,29 +30,29 @@ class BD1BufferGenerator {
                 UV[] uvs = face.uvs;
                 Vector3fc normal = face.normal;
 
-                // First triangle
+                //First triangle
                 indexValues.add(countIndex);
                 indexValues.add(countIndex + 1);
                 indexValues.add(countIndex + 2);
-                // Second triangle
+                //Second triangle
                 indexValues.add(countIndex + 2);
                 indexValues.add(countIndex + 3);
                 indexValues.add(countIndex);
                 countIndex += 4;
 
                 for (int i = 3; i >= 0; i--) {
-                    // Position
+                    //Position
                     posValues.add(vertexPositions[i].x());
                     posValues.add(vertexPositions[i].y());
                     posValues.add(vertexPositions[i].z());
-                    // UVs
+                    //UVs
                     uvValues.add(uvs[i].u);
                     if (flipV == true) {
                         uvValues.add(uvs[i].v * (-1.0f));
                     } else {
                         uvValues.add(uvs[i].v);
                     }
-                    // Normal
+                    //Normal
                     normValues.add(normal.x());
                     normValues.add(normal.y());
                     normValues.add(normal.z());

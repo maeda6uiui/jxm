@@ -40,35 +40,35 @@ public class CharacterCodeGenerator {
         for (int i = 0; i < characters.size(); i++) {
             var character = characters.get(i);
 
-            // Texture
+            //Texture
             int openXOPSTextureID = CharacterSpecifierConverter
                     .getOpenXOPSTextureIDFromXOPSTextureType(character.texture);
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.texture,
                     openXOPSTextureID));
             sb.append("\n");
-            // Model
+            //Model
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.model,
                     character.model.ordinal()));
             sb.append("\n");
-            // HP
+            //HP
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.hp,
                     character.hp));
             sb.append("\n");
-            // AILevel
+            //AILevel
             int openXOPSAILevel = CharacterSpecifierConverter
                     .getOpenXOPSAILevelFromXOPSAILevel(character.aiLevel);
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.aiLevel,
                     openXOPSAILevel));
             sb.append("\n");
-            // Weapon[0]
+            //Weapon[0]
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weapon0,
                     character.weapons.get(0)));
             sb.append("\n");
-            // Weapon[1]
+            //Weapon[1]
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weapon1,
                     character.weapons.get(1)));
             sb.append("\n");
-            // Type
+            //Type
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.type,
                     character.type.ordinal()));
             sb.append("\n");

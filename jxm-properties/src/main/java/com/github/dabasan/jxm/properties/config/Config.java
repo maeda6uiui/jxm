@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author maeda6uiui
  */
 public class Config {
-    // Key code
+    //Key code
     public KeyCode turnUp;
     public KeyCode turnDown;
     public KeyCode turnLeft;
@@ -27,7 +27,7 @@ public class Config {
     public KeyCode weapon1;
     public KeyCode weapon2;
     public KeyCode fire;
-    // Other config
+    //Other config
     public int mouseSensitivity;
     public int brightness;
     public WindowMode windowMode;
@@ -84,7 +84,7 @@ public class Config {
      * Resets every field to its default value.
      */
     public void reset() {
-        // Key code
+        //Key code
         turnUp = KeyCode.KEY_UP;
         turnDown = KeyCode.KEY_DOWN;
         turnLeft = KeyCode.KEY_LEFT;
@@ -103,7 +103,7 @@ public class Config {
         weapon1 = KeyCode.KEY_1;
         weapon2 = KeyCode.KEY_2;
         fire = KeyCode.KEY_MOUSE_L;
-        // Other config
+        //Other config
         mouseSensitivity = 25;
         brightness = 4;
         windowMode = WindowMode.FULL_SCREEN;

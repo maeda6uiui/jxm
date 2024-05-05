@@ -21,7 +21,7 @@ class BD1FaceGenerator {
             UV[] uvs = block.uvs;
             int[] textureIDs = block.textureIDs;
 
-            // Calculate normals
+            //Calculate normals
             var normals = new Vector3f[6];
 
             for (int i = 0; i < 6; i++) {
@@ -36,7 +36,7 @@ class BD1FaceGenerator {
                 normals[i].normalize(normals[i]);
             }
 
-            // Generate faces
+            //Generate faces
             var faces = new BD1Face[6];
             for (int i = 0; i < 6; i++) {
                 faces[i] = new BD1Face();
@@ -59,12 +59,12 @@ class BD1FaceGenerator {
             }
 
             for (int i = 0; i < 6; i++) {
-                // Create a list for this texture ID if it does not exist
+                //Create a list for this texture ID if it does not exist
                 if (facesMap.containsKey(textureIDs[i]) == false) {
                     var facesList = new ArrayList<BD1Face>();
                     facesMap.put(textureIDs[i], facesList);
                 }
-                // Add a face to the list
+                //Add a face to the list
                 var facesList = facesMap.get(textureIDs[i]);
                 facesList.add(faces[i]);
             }

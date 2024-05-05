@@ -284,7 +284,7 @@ public class BD1Manipulator {
                 flippedVertexPositions[i] = new Vector3f(block.vertexPositions[i]).mul(new Vector3f(1.0f, 1.0f, -1.0f));
             }
 
-            // Reverse the order of the vertices
+            //Reverse the order of the vertices
             var reorderedVertexPositions = new Vector3f[8];
             for (int i = 0; i < 4; i++) {
                 reorderedVertexPositions[i] = flippedVertexPositions[3 - i];
@@ -319,7 +319,7 @@ public class BD1Manipulator {
 
             block.setUvs(newUVs);
 
-            // Arrange texture IDs
+            //Arrange texture IDs
             var origTextureIDs = block.textureIDs.clone();
 
             var newTextureIDs = new int[6];

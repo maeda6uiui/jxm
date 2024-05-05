@@ -21,29 +21,29 @@ class BINCharacterReader {
         for (int i = 0; i < numCharacters; i++) {
             var character = new Character();
 
-            // Texture
+            //Texture
             int textureTypeSpc = getShortFromBinLE(bin, pos);
             pos += 2;
             character.texture = CharacterTextureType.values()[textureTypeSpc];
-            // Model
+            //Model
             int modelTypeSpc = getShortFromBinLE(bin, pos);
             pos += 2;
             character.model = CharacterBinEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
-            // HP
+            //HP
             character.hp = getUnsignedShortFromBinLE(bin, pos);
             pos += 2;
-            // AI level
+            //AI level
             int aiLevelSpc = getShortFromBinLE(bin, pos);
             pos += 2;
             character.aiLevel = AILevel.values()[aiLevelSpc];
-            // Weapons
+            //Weapons
             int[] weapons = new int[2];
             weapons[0] = getShortFromBinLE(bin, pos);
             weapons[1] = getShortFromBinLE(bin, pos + 2);
             pos += 4;
             character.weapons.set(0, weapons[0]);
             character.weapons.set(1, weapons[1]);
-            // Type
+            //Type
             int typeSpc = getShortFromBinLE(bin, pos);
             pos += 2;
             character.type = CharacterType.values()[typeSpc];

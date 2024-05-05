@@ -15,12 +15,12 @@ class ConfigReader {
     public ConfigReader(InputStream is) throws IOException {
         config = new Config();
 
-        // Read all bytes from a stream
+        //Read all bytes from a stream
         byte[] bin = is.readAllBytes();
 
         var keyCodes = KeyCode.values();
 
-        // Key code
+        //Key code
         config.turnUp = keyCodes[bin[0]];
         config.turnDown = keyCodes[bin[1]];
         config.turnLeft = keyCodes[bin[2]];
@@ -40,7 +40,7 @@ class ConfigReader {
         config.weapon2 = keyCodes[bin[16]];
         config.fire = keyCodes[bin[17]];
 
-        // Other config
+        //Other config
         Function<Byte, Boolean> byteToBoolean = (b) -> {
             if (b == 0) {
                 return false;

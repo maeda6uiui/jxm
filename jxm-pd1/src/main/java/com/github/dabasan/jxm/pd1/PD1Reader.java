@@ -19,20 +19,20 @@ class PD1Reader {
     public PD1Reader(InputStream is) throws IOException {
         points = new ArrayList<>();
 
-        // Read all bytes from a stream
+        //Read all bytes from a stream
         byte[] bin = is.readAllBytes();
 
         int pos = 0;
 
-        // Number of points
+        //Number of points
         int numPoints = getUnsignedShortFromBinLE(bin, pos);
         pos += 2;
 
-        // Points
+        //Points
         for (int i = 0; i < numPoints; i++) {
             var point = new PD1Point();
 
-            // Point position
+            //Point position
             point.position.x = getFloatFromBinLE(bin, pos);
             pos += 4;
             point.position.y = getFloatFromBinLE(bin, pos);
@@ -40,11 +40,11 @@ class PD1Reader {
             point.position.z = getFloatFromBinLE(bin, pos);
             pos += 4;
 
-            // Rotation
+            //Rotation
             point.rotation = getFloatFromBinLE(bin, pos);
             pos += 4;
 
-            // Parameters
+            //Parameters
             for (int j = 0; j < 4; j++) {
                 point.parameters[j] = bin[pos];
                 pos++;

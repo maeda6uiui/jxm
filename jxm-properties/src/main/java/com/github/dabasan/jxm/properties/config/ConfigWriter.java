@@ -35,7 +35,7 @@ class ConfigWriter {
         bin.add((byte) config.weapon2.ordinal());
         bin.add((byte) config.fire.ordinal());
 
-        // Other config
+        //Other config
         Function<Boolean, Byte> booleanToByte = (b) -> {
             if (b == false) {
                 return (byte) 0;
