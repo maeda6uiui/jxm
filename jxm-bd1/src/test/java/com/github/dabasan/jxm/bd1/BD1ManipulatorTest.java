@@ -21,12 +21,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BD1ManipulatorTest {
     private static final String TARGET_DIR = "./TestData/SnowBase";
     private BD1Manipulator manipulator;
+    private List<BD1Block> origBlocks;
 
     @BeforeAll
     public void loadBD1() {
         assertDoesNotThrow(() -> {
             manipulator = new BD1Manipulator(Paths.get(TARGET_DIR, "map.bd1").toString());
         });
+
+        origBlocks = new ArrayList<>();
+        manipulator.getBlocks().forEach(block -> origBlocks.add(new BD1Block(block)));
     }
 
     @Test
@@ -63,13 +67,12 @@ public class BD1ManipulatorTest {
         var mat = new Matrix4f().rotate((float) Math.PI / 4.0f, 1.0f, 0.0f, 0.0f)
                 .rotate((float) Math.PI / 4.0f, 0.0f, 1.0f, 0.0f)
                 .rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f).scale(1.0f, 2.0f, 1.0f);
-        manipulator.transform(mat);
+        manipulator.transform(mat).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "transform.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        var invMat = mat.invert();
-        manipulator.transform(invMat);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
@@ -77,54 +80,51 @@ public class BD1ManipulatorTest {
         float amountX = 50.0f;
         float amountY = 50.0f;
         float amountZ = 50.0f;
-        manipulator.translate(amountX, amountY, amountZ);
+        manipulator.translate(amountX, amountY, amountZ).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "translate.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        manipulator.translate(-amountX, -amountY, -amountZ);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
     public void rotX() {
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rotX(amount);
+        manipulator.rotX(amount).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_x.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        manipulator.rotX(-amount);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
     public void rotY() {
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rotY(amount);
+        manipulator.rotY(amount).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_y.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        manipulator.rotY(-amount);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
     public void rotZ() {
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rotZ(amount);
+        manipulator.rotZ(amount).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_z.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        manipulator.rotZ(-amount);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
     public void rot() {
-        var origBlocks = new ArrayList<BD1Block>();
-        manipulator.getBlocks().forEach(b -> origBlocks.add(new BD1Block(b)));
-
         float amount = (float) Math.PI / 4.0f;
-        manipulator.rot(amount, 1.0f, 1.0f, 1.0f);
+        manipulator.rot(amount, 1.0f, 1.0f, 1.0f).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
@@ -142,7 +142,7 @@ public class BD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "rescale.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        manipulator.rescale(1.0f / scaleX, 1.0f / scaleY, 1.0f / scaleZ);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
@@ -152,7 +152,7 @@ public class BD1ManipulatorTest {
         var saveFilepath = Paths.get(TARGET_DIR, "invert_z.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
 
-        manipulator.invertZ();
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
@@ -167,13 +167,10 @@ public class BD1ManipulatorTest {
             return;
         }
 
-        var currentBlocks = new ArrayList<BD1Block>();
-        manipulator.getBlocks().forEach(b -> currentBlocks.add(new BD1Block(b)));
-
         manipulator.setBlocks(tmpBlocks);
         assertEquals(tmpBlocks, manipulator.getBlocks());
 
-        manipulator.setBlocks(currentBlocks);
+        manipulator.setBlocks(origBlocks);
     }
 
     @Test
