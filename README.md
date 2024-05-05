@@ -1,18 +1,18 @@
 # JXM
 
-**JXM (Java XOPSManipulator)** は[X operations](https://hp.vector.co.jp/authors/VA022962/xops/)に関連するデータを操作するためのJavaライブラリです。
+**JXM (Java XOPSManipulator)** is a Java library to handle data related to [X operations](https://hp.vector.co.jp/authors/VA022962/xops/).
 
-## 必要環境
+## Requirements
 
 Java ≥ 17
 
-## インストール
+## Installation
 
 ### Maven
 
-#### BD1モジュール
+#### BD1 module
 
-BD1モジュールを使うとX operationsのBD1形式を扱うことができます。
+Supports operations of the BD1 format.
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -20,9 +20,9 @@ BD1モジュールを使うとX operationsのBD1形式を扱うことができ�
 <version>2.2.0-SNAPSHOT</version>
 ```
 
-#### MIFモジュール
+#### MIF module
 
-MIFモジュールを使うとX operationsのMIF形式を扱うことができます。
+Supports operations of the MIF format.
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -30,9 +30,9 @@ MIFモジュールを使うとX operationsのMIF形式を扱うことができ�
 <version>2.2.0-SNAPSHOT</version>
 ```
 
-#### PD1モジュール
+#### PD1 module
 
-PD1モジュールを使うとX operationsのPD1形式を扱うことができます。
+Supports operations of the PD1 format.
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -42,8 +42,22 @@ PD1モジュールを使うとX operationsのPD1形式を扱うことができ�
 
 #### Propertiesモジュール
 
-Propertiesモジュールを使うと武器およびキャラクターデータを扱うことができます。
-これにはXMS (X operations Mod Supporter)でサポートされる形式、OpenXOPS、および複数バージョンのX operations実行ファイルが含まれます。
+Supports operations of
+
+- XMS (X operations Mod Supporter)
+  - IDS (Individual weapon data)
+  - XGS (Set of all weapon data)
+  - XCS (Set of all character data)
+- OpenXOPS source code format
+  - Weapon data
+  - Character data
+- X operations binaries
+  - 0.96
+  - 0.96t
+  - 0.97ft
+  - 0.975t
+  - olt18f2
+  - olt19f2
 
 ```xml
 <groupId>com.github.dabasan</groupId>
@@ -51,40 +65,45 @@ Propertiesモジュールを使うと武器およびキャラクターデータ�
 <version>2.2.0-SNAPSHOT</version>
 ```
 
-## 使用例
+## Code sample
 
-要更新
+Must update here...
 
-## サンプルコード
+## Other code samples
 
-- [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2)
+See [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2) for the code samples of JXM v2 (current version).
+
+### Previous versions
+
 - [jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1)
 
-## テストの実行方法
+## For developers
 
-Mavenが利用できる環境であれば、`mvn test`でテストを実行できます。
+### How to run tests
 
-テストに必要なファイルは各モジュールのTestDataフォルダに配置します。
-Gitで管理していないファイルについては、開発者側でテストを実行する前に別途用意していただく必要があります。
-以下に、別途用意する必要のあるファイルを列挙します。
+You can run tests with `mvn test` if you have Maven installed.
 
-### BD1モジュール
+Place required files under the `TestData` folder of each module before executing tests.
+Some files are not uploaded to GitHub due to copyright reasons.
+Listed below is the list of files you have to prepare by yourself:
+
+### BD1 module
 
 - ./jxm-bd1/TestData/SnowBase/map.bd1
 - ./jxm-bd1/TestData/SnowBase/map_2.bd1
 
-map.bd1はXOPSの標準マップであるSNOW BASE (data/map2/temp.bd1)を使用します。
-map_2.bd1はmap.bd1と違うマップなら何でも構いません。
+`map.bd1` is a standard map file of SNOW BASE (from `data/map2/temp.bd1`).
+`map_2.bd1` can be any map file as long as it is different from `map.bd1`.
 
-### PD1モジュール
+### PD1 module
 
 - ./jxm-pd1/TestData/SnowBase/point.pd1
 - ./jxm-pd1/TestData/SnowBase/point_2.pd1
 
-point.pd1はXOPSの標準ミッションであるSNOW BASE_EXT (data/map2/ext.pd1)を使用します。
-point_2.pd1はpoint.pd1と違うポイントデータなら何でも構いません。
+`point.pd1` is a standard point file of SNOW BASE_EXT (from `data/map2/ext.pd1`).
+`point_2.pd1` can be any point file as long it is different from `point.pd1`. 
 
-### Propertiesモジュール
+### Properties module
 
 - ./jxm-properties/TestData/Character/xops0975t.exe
 - ./jxm-properties/TestData/Weapon/xops0975t.exe
