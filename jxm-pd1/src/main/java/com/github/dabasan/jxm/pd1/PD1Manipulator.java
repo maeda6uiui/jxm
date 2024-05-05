@@ -249,12 +249,18 @@ public class PD1Manipulator {
      * @return this
      */
     public PD1Manipulator invertZ() {
-        for (var point : points) {
-            point.position.z *= (-1.0f);
+        var newPoints = new ArrayList<PD1Point>();
+        points.forEach(point -> newPoints.add(new PD1Point(point)));
 
-            point.rotation *= (-1.0f);
-            point.rotation += (float) Math.PI;
-        }
+        newPoints.forEach(point -> {
+            var newPosition = new Vector3f(point.position).mul(new Vector3f(1.0f, 1.0f, -1.0f));
+            point.setPosition(newPosition);
+
+            float newRotation = point.rotation * (-1.0f) + (float) Math.PI;
+            point.setRotation(newRotation);
+        });
+
+        this.points = newPoints;
 
         return this;
     }

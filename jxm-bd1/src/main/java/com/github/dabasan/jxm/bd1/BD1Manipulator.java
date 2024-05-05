@@ -265,45 +265,36 @@ public class BD1Manipulator {
      * @return this
      */
     public BD1Manipulator invertZ() {
-        for (var block : blocks) {
-            for (int i = 0; i < 8; i++) {
-                block.vertexPositions[i].z *= (-1.0f);
-            }
-        }
+        var newBlocks = new ArrayList<BD1Block>();
+        blocks.forEach(block -> newBlocks.add(new BD1Block(block)));
 
-        for (var block : blocks) {
-            // Vertex positions
-            // Copy original vertex positions
-            var origVertexPositions = new Vector3f[8];
+        newBlocks.forEach(block -> {
+            //Flip z-coordinate
+            var flippedVertexPositions = new Vector3f[8];
             for (int i = 0; i < 8; i++) {
-                origVertexPositions[i] = new Vector3f(block.vertexPositions[i]);
+                flippedVertexPositions[i] = new Vector3f(block.vertexPositions[i]).mul(new Vector3f(1.0f, 1.0f, -1.0f));
             }
 
             // Reverse the order of the vertices
-            var newVertexPositions = new Vector3f[8];
+            var reorderedVertexPositions = new Vector3f[8];
             for (int i = 0; i < 4; i++) {
-                newVertexPositions[i] = origVertexPositions[3 - i];
+                reorderedVertexPositions[i] = flippedVertexPositions[3 - i];
             }
             for (int i = 0; i < 4; i++) {
-                newVertexPositions[i + 4] = origVertexPositions[7 - i];
+                reorderedVertexPositions[i + 4] = flippedVertexPositions[7 - i];
             }
 
-            block.vertexPositions = newVertexPositions;
+            block.setVertexPositions(reorderedVertexPositions);
 
-            // UVs
-            UV[] uvs = block.uvs;
-
-            // Copy original UVs
+            //Arrange UVs
             var origUVs = new UV[24];
             for (int i = 0; i < 24; i++) {
-                origUVs[i] = new UV(uvs[i]);
+                origUVs[i] = new UV(block.uvs[i]);
             }
 
-            // Arrange UVs
             var newUVs = new UV[24];
             for (int i = 0; i < 6; i++) {
                 int[] uvIndices;
-
                 if (i == 2) {
                     uvIndices = BD1Functions.getFaceCorrespondingUVIndices(4);
                 } else if (i == 4) {
@@ -317,11 +308,10 @@ public class BD1Manipulator {
                 }
             }
 
-            block.uvs = newUVs;
+            block.setUvs(newUVs);
 
             // Arrange texture IDs
-            int[] textureIDs = block.textureIDs;
-            var origTextureIDs = textureIDs.clone();
+            var origTextureIDs = block.textureIDs.clone();
 
             var newTextureIDs = new int[6];
             for (int i = 0; i < 6; i++) {
@@ -334,8 +324,10 @@ public class BD1Manipulator {
                 }
             }
 
-            block.textureIDs = newTextureIDs;
-        }
+            block.setTextureIDs(newTextureIDs);
+        });
+
+        this.blocks = newBlocks;
 
         return this;
     }
