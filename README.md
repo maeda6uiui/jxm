@@ -84,7 +84,7 @@ See [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2) for the code 
 You can run tests with `mvn test` if you have Maven installed.
 
 Place required files under the `TestData` folder of each module before executing tests.
-Some files are not uploaded to GitHub due to copyright reasons.
+Some files are not available on GitHub due to copyright reasons.
 Listed below is the list of files you have to prepare by yourself:
 
 ### BD1 module
