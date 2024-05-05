@@ -36,7 +36,10 @@ public class BD1ManipulatorTest {
 
     @AfterEach
     public void resetBlocks() {
-        manipulator.setBlocks(origBlocks);
+        var origBlocksCopy = new ArrayList<BD1Block>();
+        origBlocks.forEach(block -> origBlocksCopy.add(new BD1Block(block)));
+
+        manipulator.setBlocks(origBlocksCopy);
         manipulator.resetTransformation();
     }
 

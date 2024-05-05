@@ -36,7 +36,10 @@ public class PD1ManipulatorTest {
 
     @AfterEach
     public void resetPoints() {
-        manipulator.setPoints(origPoints);
+        var origPointsCopy = new ArrayList<PD1Point>();
+        origPoints.forEach(point -> origPointsCopy.add(new PD1Point(point)));
+
+        manipulator.setPoints(origPointsCopy);
         manipulator.resetTransformation();
     }
 
