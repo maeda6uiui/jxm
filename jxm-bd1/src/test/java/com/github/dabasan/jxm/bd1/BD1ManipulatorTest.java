@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.bd1;
 
 import org.joml.Matrix4f;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -31,6 +32,12 @@ public class BD1ManipulatorTest {
 
         origBlocks = new ArrayList<>();
         manipulator.getBlocks().forEach(block -> origBlocks.add(new BD1Block(block)));
+    }
+
+    @AfterEach
+    public void resetBlocks() {
+        manipulator.setBlocks(origBlocks);
+        manipulator.resetTransformation();
     }
 
     @Test
@@ -71,9 +78,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "transform.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -85,9 +89,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "translate.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -97,9 +98,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_x.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -109,9 +107,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_y.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -121,9 +116,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot_z.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -133,9 +125,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "rot.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -143,13 +132,10 @@ public class BD1ManipulatorTest {
         float scaleX = 2.0f;
         float scaleY = 2.0f;
         float scaleZ = 2.0f;
-        manipulator.rescale(scaleX, scaleY, scaleZ);
+        manipulator.rescale(scaleX, scaleY, scaleZ).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "rescale.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
-        manipulator.resetTransformation();
     }
 
     @Test
@@ -158,8 +144,6 @@ public class BD1ManipulatorTest {
 
         var saveFilepath = Paths.get(TARGET_DIR, "invert_z.bd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
-
-        manipulator.setBlocks(origBlocks);
     }
 
     @Test
@@ -176,8 +160,6 @@ public class BD1ManipulatorTest {
 
         manipulator.setBlocks(tmpBlocks);
         assertEquals(tmpBlocks, manipulator.getBlocks());
-
-        manipulator.setBlocks(origBlocks);
     }
 
     @Test
