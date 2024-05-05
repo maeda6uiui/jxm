@@ -40,7 +40,7 @@ Supports operations of the PD1 format.
 <version>2.2.0-SNAPSHOT</version>
 ```
 
-#### Propertiesモジュール
+#### Properties module
 
 Supports operations of
 
