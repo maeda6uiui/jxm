@@ -11,7 +11,7 @@ import java.util.List;
  * @author maeda6uiui
  */
 public class CharacterCodeGenerator {
-    private CharacterVariableNameSettings settings;
+    private final CharacterVariableNameSettings settings;
 
     /**
      * Creates a code generator.

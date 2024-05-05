@@ -60,7 +60,7 @@ class BD1FaceGenerator {
 
             for (int i = 0; i < 6; i++) {
                 //Create a list for this texture ID if it does not exist
-                if (facesMap.containsKey(textureIDs[i]) == false) {
+                if (!facesMap.containsKey(textureIDs[i])) {
                     var facesList = new ArrayList<BD1Face>();
                     facesMap.put(textureIDs[i], facesList);
                 }

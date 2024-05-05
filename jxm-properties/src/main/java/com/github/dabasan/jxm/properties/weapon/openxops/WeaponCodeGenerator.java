@@ -11,7 +11,7 @@ import java.util.List;
  * @author maeda6uiui
  */
 public class WeaponCodeGenerator {
-    private WeaponVariableNameSettings settings;
+    private final WeaponVariableNameSettings settings;
 
     /**
      * Creates a code generator.

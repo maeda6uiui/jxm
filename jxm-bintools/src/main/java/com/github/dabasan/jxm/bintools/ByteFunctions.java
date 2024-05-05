@@ -284,9 +284,7 @@ public class ByteFunctions {
      */
     public static void setFloatToBinLE(byte[] bin, int pos, float value) {
         byte[] buffer = ByteFunctions.floatToBytesLE(value);
-        for (int i = 0; i < 4; i++) {
-            bin[pos + i] = buffer[i];
-        }
+        System.arraycopy(buffer, 0, bin, pos + 0, 4);
     }
 
     /**
@@ -298,9 +296,7 @@ public class ByteFunctions {
      */
     public static void setShortToBinLE(byte[] bin, int pos, short value) {
         byte[] buffer = ByteFunctions.shortToBytesLE(value);
-        for (int i = 0; i < 2; i++) {
-            bin[pos + i] = buffer[i];
-        }
+        System.arraycopy(buffer, 0, bin, pos + 0, 2);
     }
 
     /**
@@ -312,9 +308,7 @@ public class ByteFunctions {
      */
     public static void setUnsignedShortToBinLE(byte[] bin, int pos, int value) {
         byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
-        for (int i = 0; i < 2; i++) {
-            bin[pos + i] = buffer[i];
-        }
+        System.arraycopy(buffer, 0, bin, pos + 0, 2);
     }
 
     /**

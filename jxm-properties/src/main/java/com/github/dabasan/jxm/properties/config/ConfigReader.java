@@ -10,7 +10,7 @@ import java.util.function.Function;
  * @author maeda6uiui
  */
 class ConfigReader {
-    private Config config;
+    private final Config config;
 
     public ConfigReader(InputStream is) throws IOException {
         config = new Config();
@@ -42,11 +42,7 @@ class ConfigReader {
 
         //Other config
         Function<Byte, Boolean> byteToBoolean = (b) -> {
-            if (b == 0) {
-                return false;
-            } else {
-                return true;
-            }
+            return b != 0;
         };
         config.mouseSensitivity = Byte.toUnsignedInt(bin[18]);
         config.windowMode = WindowMode.values()[bin[19]];
@@ -61,9 +57,7 @@ class ConfigReader {
 
     private String getNameFromBin(byte[] bin, int start) {
         var nameBuffer = new byte[21];
-        for (int i = 0; i < 20; i++) {
-            nameBuffer[i] = bin[start + i];
-        }
+        System.arraycopy(bin, start + 0, nameBuffer, 0, 20);
         nameBuffer[20] = 0;
 
         var name = new String(nameBuffer);

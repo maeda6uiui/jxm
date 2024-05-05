@@ -14,7 +14,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class PD1Reader {
-    private List<PD1Point> points;
+    private final List<PD1Point> points;
 
     public PD1Reader(InputStream is) throws IOException {
         points = new ArrayList<>();

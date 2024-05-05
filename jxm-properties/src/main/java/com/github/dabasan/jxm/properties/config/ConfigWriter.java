@@ -37,7 +37,7 @@ class ConfigWriter {
 
         //Other config
         Function<Boolean, Byte> booleanToByte = (b) -> {
-            if (b == false) {
+            if (!b) {
                 return (byte) 0;
             } else {
                 return (byte) 1;

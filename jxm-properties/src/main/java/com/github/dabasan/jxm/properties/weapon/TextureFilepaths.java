@@ -9,7 +9,7 @@ import java.util.Map;
  * @author maeda6uiui
  */
 public class TextureFilepaths {
-    private static Map<Integer, String> textureFilepaths;
+    private static final Map<Integer, String> textureFilepaths;
 
     static {
         textureFilepaths = new HashMap<>();

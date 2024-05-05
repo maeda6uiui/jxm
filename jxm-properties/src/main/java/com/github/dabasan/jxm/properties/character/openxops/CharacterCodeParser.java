@@ -18,7 +18,7 @@ import java.util.Map;
 public class CharacterCodeParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private CharacterVariableNameSettings settings;
+    private final CharacterVariableNameSettings settings;
 
     /**
      * Creates a code parser.
@@ -62,7 +62,7 @@ public class CharacterCodeParser {
                 continue;
             }
 
-            if (ret.containsKey(arrayIndex) == false) {
+            if (!ret.containsKey(arrayIndex)) {
                 var character = new Character();
                 ret.put(arrayIndex, character);
             }

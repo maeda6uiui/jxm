@@ -13,7 +13,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
  * @author maeda6uiui
  */
 class IDSReader {
-    private Weapon weapon;
+    private final Weapon weapon;
 
     public IDSReader(InputStream is) throws IOException {
         weapon = new Weapon();
@@ -85,7 +85,7 @@ class IDSReader {
         //BlazingMode
         int blazingModeSpc = getShortFromBinLE(bin, pos);
         pos += 2;
-        weapon.blazingMode = (blazingModeSpc == 0) ? true : false;
+        weapon.blazingMode = blazingModeSpc == 0;
         //ScopeMode
         int scopeModeSpc = getShortFromBinLE(bin, pos);
         pos += 2;
@@ -120,7 +120,7 @@ class IDSReader {
         //Silencer
         int silencerSpc = getShortFromBinLE(bin, pos);
         pos += 2;
-        weapon.silencer = (silencerSpc == 0) ? false : true;
+        weapon.silencer = silencerSpc != 0;
         //Name
         weapon.name = this.getNameFromBin(bin, pos);
         pos += 2;
@@ -128,9 +128,7 @@ class IDSReader {
 
     private String getNameFromBin(byte[] bin, int start) {
         var nameBuffer = new byte[16];
-        for (int i = 0; i < 15; i++) {
-            nameBuffer[i] = bin[start + i];
-        }
+        System.arraycopy(bin, start + 0, nameBuffer, 0, 15);
         nameBuffer[15] = 0;
 
         var name = new String(nameBuffer);

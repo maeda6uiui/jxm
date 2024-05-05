@@ -27,10 +27,10 @@ public class CPPArrayStringGenerator {
 
         if (value instanceof String) {
             sb.append("\"");
-            sb.append(value.toString());
+            sb.append(value);
             sb.append("\"");
         } else if (value instanceof Float) {
-            sb.append(value.toString());
+            sb.append(value);
             sb.append("f");
         } else {
             sb.append(value.toString());

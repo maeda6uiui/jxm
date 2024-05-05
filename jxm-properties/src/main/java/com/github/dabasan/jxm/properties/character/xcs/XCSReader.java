@@ -15,7 +15,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class XCSReader {
-    private Character[] characters;
+    private final Character[] characters;
 
     public XCSReader(InputStream is, int numCharacters) throws IOException {
         characters = new Character[numCharacters];

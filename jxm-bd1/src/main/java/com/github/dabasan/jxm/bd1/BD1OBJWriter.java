@@ -6,10 +6,7 @@ import org.joml.Vector3fc;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Writes out BD1 blocks into an OBJ file.
@@ -27,8 +24,8 @@ class BD1OBJWriter {
         Obj obj = Objs.create();
         var mtls = new ArrayList<Mtl>();
 
-        obj.setMtlFileNames(Arrays.asList(mtlFilename));
-        obj.setActiveGroupNames(Arrays.asList("map"));
+        obj.setMtlFileNames(Collections.singletonList(mtlFilename));
+        obj.setActiveGroupNames(List.of("map"));
 
         int countIndex = 0;
         for (var entry : facesMap.entrySet()) {
@@ -64,7 +61,7 @@ class BD1OBJWriter {
                 for (int i = 3; i >= 0; i--) {
                     obj.addVertex(vertexPositions[i].x(), vertexPositions[i].y(),
                             vertexPositions[i].z());
-                    if (flipV == true) {
+                    if (flipV) {
                         obj.addTexCoord(uvs[i].u, uvs[i].v * (-1.0f));
                     } else {
                         obj.addTexCoord(uvs[i].u, uvs[i].v);

@@ -9,7 +9,7 @@ import java.util.Map;
  * @author maeda6uiui
  */
 public class ModelFilepaths {
-    private static Map<Integer, String> modelFilepaths;
+    private static final Map<Integer, String> modelFilepaths;
 
     static {
         modelFilepaths = new HashMap<>();

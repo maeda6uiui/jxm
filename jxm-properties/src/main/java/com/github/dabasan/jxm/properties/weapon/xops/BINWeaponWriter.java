@@ -142,8 +142,6 @@ class BINWeaponWriter {
             nameBuffer[i] = (byte) name.charAt(i);
         }
 
-        for (int i = 0; i < 16; i++) {
-            bin[pos + i] = nameBuffer[i];
-        }
+        System.arraycopy(nameBuffer, 0, bin, pos + 0, 16);
     }
 }

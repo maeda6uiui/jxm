@@ -251,7 +251,7 @@ public class EXEManipulator {
      * @throws IOException if it fails to write
      */
     public void write(File file, File fileBackup) throws IOException {
-        if (file.exists() == false) {
+        if (!file.exists()) {
             logger.error("The file specified does not exist. filename={}", file.getName());
             return;
         }
@@ -270,7 +270,7 @@ public class EXEManipulator {
      */
     public void write(String filepath, String filepathBackup) throws IOException {
         var file = new File(filepath);
-        if (file.exists() == false) {
+        if (!file.exists()) {
             logger.error("The file specified does not exist. filename={}", file.getName());
             return;
         }

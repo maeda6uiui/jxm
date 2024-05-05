@@ -19,7 +19,7 @@ import java.util.Map;
 public class WeaponCodeParser {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private WeaponVariableNameSettings settings;
+    private final WeaponVariableNameSettings settings;
 
     /**
      * Creates a code parser.
@@ -63,7 +63,7 @@ public class WeaponCodeParser {
                 continue;
             }
 
-            if (ret.containsKey(arrayIndex) == false) {
+            if (!ret.containsKey(arrayIndex)) {
                 var weapon = new Weapon();
                 ret.put(arrayIndex, weapon);
             }

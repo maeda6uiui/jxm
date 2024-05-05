@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author maeda6uiui
  */
 class MIFReader {
-    private MissionInfo missionInfo;
+    private final MissionInfo missionInfo;
 
     public MIFReader(InputStream is, String encoding) throws IOException, NumberFormatException {
         missionInfo = new MissionInfo();
@@ -39,16 +39,8 @@ class MIFReader {
         missionInfo.skyType = SkyType.values()[skyTypeIndex];
 
         int flags = Integer.parseInt(lines.get(5));
-        if ((flags & 0b00000010) != 0) {
-            missionInfo.darkScreen = true;
-        } else {
-            missionInfo.darkScreen = false;
-        }
-        if ((flags & 0b00000001) != 0) {
-            missionInfo.extraCollision = true;
-        } else {
-            missionInfo.extraCollision = false;
-        }
+        missionInfo.darkScreen = (flags & 0b00000010) != 0;
+        missionInfo.extraCollision = (flags & 0b00000001) != 0;
 
         missionInfo.pathnameOfObj = lines.get(6);
         missionInfo.pathnameOfImage1 = lines.get(7);

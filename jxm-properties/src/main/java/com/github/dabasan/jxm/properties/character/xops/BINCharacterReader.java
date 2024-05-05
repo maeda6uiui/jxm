@@ -12,7 +12,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class BINCharacterReader {
-    private Character[] characters;
+    private final Character[] characters;
 
     public BINCharacterReader(byte[] bin, int numCharacters, int dataStartPos) {
         characters = new Character[numCharacters];

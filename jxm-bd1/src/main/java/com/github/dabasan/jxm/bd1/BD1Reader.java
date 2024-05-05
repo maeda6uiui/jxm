@@ -16,8 +16,8 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class BD1Reader {
-    private Map<Integer, String> textureFilenames;
-    private List<BD1Block> blocks;
+    private final Map<Integer, String> textureFilenames;
+    private final List<BD1Block> blocks;
 
     public BD1Reader(InputStream is) throws IOException, IndexOutOfBoundsException {
         textureFilenames = new HashMap<>();
@@ -94,11 +94,7 @@ class BD1Reader {
 
             //Enabled flag
             int enabled = Byte.toUnsignedInt(bin[pos]);
-            if (enabled != 0) {
-                block.enabled = true;
-            } else {
-                block.enabled = false;
-            }
+            block.enabled = enabled != 0;
             pos += 4;
 
             blocks.add(block);

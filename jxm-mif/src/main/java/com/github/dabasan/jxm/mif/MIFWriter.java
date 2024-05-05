@@ -26,10 +26,10 @@ class MIFWriter {
         int flags = 0;
         boolean extraCollision = missionInfo.extraCollision;
         boolean darkScreen = missionInfo.darkScreen;
-        if (extraCollision == true) {
+        if (extraCollision) {
             flags = flags | 0b00000001;
         }
-        if (darkScreen == true) {
+        if (darkScreen) {
             flags = flags | 0b00000010;
         }
         lines.add(String.valueOf(flags));
