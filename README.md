@@ -96,8 +96,8 @@ public class ReadmeSample {
         manipulator.setTextureFilename(1, "test_2.bmp");
 
         //Transform the map
-        //The operation order here is:
-        //Rescaling -> Rotation around the Y-axis -> Translation
+        //The operation order is
+        //rescaling -> rotation around the y-axis -> translation
         manipulator
                 .translate(0.0f, 100.0f, 0.0f)
                 .rotY((float) Math.toRadians(45))
