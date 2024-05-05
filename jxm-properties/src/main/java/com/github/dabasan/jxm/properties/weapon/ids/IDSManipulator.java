@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.Objects;
 
 /**
  * IDS manipulator
@@ -78,7 +77,7 @@ public class IDSManipulator {
      * @param weapon weapon data to set
      */
     public void setWeapon(Weapon weapon) {
-        this.weapon = Objects.requireNonNull(weapon);
+        this.weapon = weapon;
     }
 
     private void innerSaveAsIDS(OutputStream os) throws IOException {

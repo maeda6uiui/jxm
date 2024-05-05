@@ -90,7 +90,7 @@ public class BD1Manipulator {
      * @param blocks blocks to set
      */
     public void setBlocks(List<BD1Block> blocks) {
-        this.blocks = Objects.requireNonNull(blocks);
+        this.blocks = blocks;
     }
 
     /**
@@ -129,7 +129,7 @@ public class BD1Manipulator {
      * @param textureFilename texture filename
      */
     public void setTextureFilename(int textureID, String textureFilename) {
-        textureFilenames.put(textureID, Objects.requireNonNull(textureFilename));
+        textureFilenames.put(textureID, textureFilename);
     }
 
     /**
@@ -138,7 +138,7 @@ public class BD1Manipulator {
      * @param textureFilenames filenames of the textures
      */
     public void setTextureFilenames(Map<Integer, String> textureFilenames) {
-        this.textureFilenames = Objects.requireNonNull(textureFilenames);
+        this.textureFilenames = textureFilenames;
     }
 
     /**

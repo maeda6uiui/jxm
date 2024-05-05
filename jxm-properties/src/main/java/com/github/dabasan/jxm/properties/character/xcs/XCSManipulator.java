@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.Objects;
 
 /**
  * XCS manipulator
@@ -79,8 +78,6 @@ public class XCSManipulator {
      * @param characters array containing character data
      */
     public void setCharacters(Character[] characters) {
-        Objects.requireNonNull(characters);
-
         if (characters.length != NUM_CHARACTERS) {
             logger.warn("Invalid number of data contained in the array. number={}",
                     characters.length);

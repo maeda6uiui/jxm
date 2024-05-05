@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.Objects;
 
 /**
  * XGS manipulator
@@ -79,8 +78,6 @@ public class XGSManipulator {
      * @param weapons array containing weapon data
      */
     public void setWeapons(Weapon[] weapons) {
-        Objects.requireNonNull(weapons);
-
         if (weapons.length != NUM_WEAPONS) {
             logger.warn("Invalid number of data contained in the array. number={}", weapons.length);
             return;

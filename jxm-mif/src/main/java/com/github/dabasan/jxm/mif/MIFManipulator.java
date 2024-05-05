@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.mif;
 
 import java.io.*;
-import java.util.Objects;
 
 /**
  * MIF manipulator
@@ -75,7 +74,7 @@ public class MIFManipulator {
      * @param missionInfo mission info to set
      */
     public void setMissionInfo(MissionInfo missionInfo) {
-        this.missionInfo = Objects.requireNonNull(missionInfo);
+        this.missionInfo = missionInfo;
     }
 
     private void saveAsMIFBase(OutputStream os, String encoding) throws IOException {

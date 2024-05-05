@@ -7,7 +7,6 @@ import org.joml.Vector3f;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * PD1 manipulator
@@ -84,7 +83,7 @@ public class PD1Manipulator {
      * @param points points to set
      */
     public void setPoints(List<PD1Point> points) {
-        this.points = Objects.requireNonNull(points);
+        this.points = points;
     }
 
     /**
