@@ -72,7 +72,7 @@ public class PD1ManipulatorTest {
         float amountX = 50.0f;
         float amountY = 50.0f;
         float amountZ = 50.0f;
-        manipulator.translate(amountX, amountY, amountZ);
+        manipulator.translate(amountX, amountY, amountZ).applyTransformation();
 
         var saveFilepath = Paths.get(TARGET_DIR, "translate.pd1").toString();
         assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
