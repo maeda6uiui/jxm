@@ -17,7 +17,7 @@ Supports operations of the BD1 format.
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-bd1</artifactId>
-<version>2.2.0-SNAPSHOT</version>
+<version>2.2.0</version>
 ```
 
 #### MIF module
@@ -27,7 +27,7 @@ Supports operations of the MIF format.
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-mif</artifactId>
-<version>2.2.0-SNAPSHOT</version>
+<version>2.2.0</version>
 ```
 
 #### PD1 module
@@ -37,7 +37,7 @@ Supports operations of the PD1 format.
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-pd1</artifactId>
-<version>2.2.0-SNAPSHOT</version>
+<version>2.2.0</version>
 ```
 
 #### Properties module
@@ -62,7 +62,7 @@ Supports operations of
 ```xml
 <groupId>com.github.dabasan</groupId>
 <artifactId>jxm-properties</artifactId>
-<version>2.2.0-SNAPSHOT</version>
+<version>2.2.0</version>
 ```
 
 ## Code sample
