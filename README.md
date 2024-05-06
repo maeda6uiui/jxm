@@ -146,9 +146,12 @@ Listed below is the list of files you have to prepare by yourself:
 
 - ./jxm-bd1/TestData/SnowBase/map.bd1
 - ./jxm-bd1/TestData/SnowBase/map_2.bd1
+- ./jxm-bd1/TestData/TrainingYard/map.bd1
 
-`map.bd1` is a standard map file of SNOW BASE (from `data/map2/temp.bd1`).
-`map_2.bd1` can be any map file as long as it is different from `map.bd1`.
+`SnowBase/map.bd1` is a standard map file of SNOW BASE (from `data/map2/temp.bd1`).
+`SnowBase/map_2.bd1` can be any map file as long as it is different from `SnowBase/map.bd1`.
+
+`TrainingYard/map.bd1` is a standard map file of TRAINING YARD (from `data/map0/temp.bd1`).
 
 #### PD1 module
 
