@@ -7,62 +7,28 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
  */
 class WeaponSpecifierConverter {
     public static int getOpenXOPSSoundIDFromXOPSSoundID(int xopsSoundID) {
-        int ret;
-
-        switch (xopsSoundID) {
-            case 0:
-                ret = 0;
-                break;
-            case 1:
-                ret = 1;
-                break;
-            case 2:
-                ret = 2;
-                break;
-            case 3:
-                ret = 3;
-                break;
-            case 9:
-                ret = 13;
-                break;
-            case 13:
-                ret = 4;
-                break;
-            default:
-                ret = 0;
-                break;
-        }
-
-        return ret;
+        return switch (xopsSoundID) {
+            case 0 -> 0;
+            case 1 -> 1;
+            case 2 -> 2;
+            case 3 -> 3;
+            case 9 -> 13;
+            case 13 -> 4;
+            default ->
+                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", xopsSoundID));
+        };
     }
 
     public static int getXOPSSoundIDFromOpenXOPSSoundID(int openXOPSSoundID) {
-        int ret;
-
-        switch (openXOPSSoundID) {
-            case 0:
-                ret = 0;
-                break;
-            case 1:
-                ret = 1;
-                break;
-            case 2:
-                ret = 2;
-                break;
-            case 3:
-                ret = 3;
-                break;
-            case 13:
-                ret = 9;
-                break;
-            case 4:
-                ret = 13;
-                break;
-            default:
-                ret = 0;
-                break;
-        }
-
-        return ret;
+        return switch (openXOPSSoundID) {
+            case 0 -> 0;
+            case 1 -> 1;
+            case 2 -> 2;
+            case 3 -> 3;
+            case 13 -> 9;
+            case 4 -> 13;
+            default ->
+                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", openXOPSSoundID));
+        };
     }
 }
