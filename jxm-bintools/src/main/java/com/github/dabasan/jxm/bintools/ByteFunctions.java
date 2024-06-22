@@ -18,7 +18,7 @@ public class ByteFunctions {
      */
     public static float bytesToFloat(byte[] b) {
         if (b.length != 4) {
-            return 0.0f;
+            throw new IllegalArgumentException(String.format("Array must have length of 4, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);
@@ -36,7 +36,7 @@ public class ByteFunctions {
      */
     public static float bytesToFloatLE(byte[] b) {
         if (b.length != 4) {
-            return 0.0f;
+            throw new IllegalArgumentException(String.format("Array must have length of 4, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN);
@@ -76,7 +76,7 @@ public class ByteFunctions {
      */
     public static short bytesToShort(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(2).order(ByteOrder.BIG_ENDIAN);
@@ -94,7 +94,7 @@ public class ByteFunctions {
      */
     public static short bytesToShortLE(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(2).order(ByteOrder.LITTLE_ENDIAN);
@@ -134,7 +134,7 @@ public class ByteFunctions {
      */
     public static int bytesToUnsignedShort(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         int first = Byte.toUnsignedInt(b[0]);
@@ -153,7 +153,7 @@ public class ByteFunctions {
      */
     public static int bytesToUnsignedShortLE(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         int first = Byte.toUnsignedInt(b[1]);
