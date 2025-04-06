@@ -7,380 +7,144 @@ package com.github.dabasan.jxm.properties.weapon;
  */
 public class WeaponBinEnumConverter {
     public static WeaponModelType getModelTypeFromBinSpecifier(int spc) {
-        WeaponModelType modelType;
-
-        switch (spc) {
-            case 0x00:
-                modelType = WeaponModelType.NONE;
-                break;
-            case 0x0B:
-                modelType = WeaponModelType.MP5;
-                break;
-            case 0x0A:
-                modelType = WeaponModelType.PSG_1;
-                break;
-            case 0x0D:
-                modelType = WeaponModelType.M92F;
-                break;
-            case 0x10:
-                modelType = WeaponModelType.GLOCK;
-                break;
-            case 0x15:
-                modelType = WeaponModelType.DESERT_EAGLE;
-                break;
-            case 0x0E:
-                modelType = WeaponModelType.MAC10;
-                break;
-            case 0x1E:
-                modelType = WeaponModelType.UMP;
-                break;
-            case 0x0F:
-                modelType = WeaponModelType.P90;
-                break;
-            case 0x1D:
-                modelType = WeaponModelType.M4;
-                break;
-            case 0x18:
-                modelType = WeaponModelType.AK47;
-                break;
-            case 0x16:
-                modelType = WeaponModelType.AUG;
-                break;
-            case 0x1C:
-                modelType = WeaponModelType.M249;
-                break;
-            case 0x17:
-                modelType = WeaponModelType.GRENADE;
-                break;
-            case 0x19:
-                modelType = WeaponModelType.MP5SD;
-                break;
-            case 0x20:
-                modelType = WeaponModelType.CASE;
-                break;
-            case 0x22:
-                modelType = WeaponModelType.M1911;
-                break;
-            case 0x39:
-                modelType = WeaponModelType.M1;
-                break;
-            case 0x3A:
-                modelType = WeaponModelType.FAMAS;
-                break;
-            case 0x3B:
-                modelType = WeaponModelType.MK23;
-                break;
-            case 0x3C:
-                modelType = WeaponModelType.MK23SD;
-                break;
-            default:
-                modelType = WeaponModelType.NONE;
-                break;
-        }
-
-        return modelType;
+        return switch (spc) {
+            case 0x00 -> WeaponModelType.NONE;
+            case 0x0B -> WeaponModelType.MP5;
+            case 0x0A -> WeaponModelType.PSG_1;
+            case 0x0D -> WeaponModelType.M92F;
+            case 0x10 -> WeaponModelType.GLOCK;
+            case 0x15 -> WeaponModelType.DESERT_EAGLE;
+            case 0x0E -> WeaponModelType.MAC10;
+            case 0x1E -> WeaponModelType.UMP;
+            case 0x0F -> WeaponModelType.P90;
+            case 0x1D -> WeaponModelType.M4;
+            case 0x18 -> WeaponModelType.AK47;
+            case 0x16 -> WeaponModelType.AUG;
+            case 0x1C -> WeaponModelType.M249;
+            case 0x17 -> WeaponModelType.GRENADE;
+            case 0x19 -> WeaponModelType.MP5SD;
+            case 0x20 -> WeaponModelType.CASE;
+            case 0x22 -> WeaponModelType.M1911;
+            case 0x39 -> WeaponModelType.M1;
+            case 0x3A -> WeaponModelType.FAMAS;
+            case 0x3B -> WeaponModelType.MK23;
+            case 0x3C -> WeaponModelType.MK23SD;
+            default -> throw new IllegalArgumentException(String.format("Unknown specifier was given: 0x%02X", spc));
+        };
     }
 
     public static int getBinSpecifierFromModelType(WeaponModelType modelType) {
-        int spc = 0x00;
-
-        switch (modelType) {
-            case NONE:
-                spc = 0x00;
-                break;
-            case MP5:
-                spc = 0x0B;
-                break;
-            case PSG_1:
-                spc = 0x0A;
-                break;
-            case M92F:
-                spc = 0x0D;
-                break;
-            case GLOCK:
-                spc = 0x10;
-                break;
-            case DESERT_EAGLE:
-                spc = 0x15;
-                break;
-            case MAC10:
-                spc = 0x0E;
-                break;
-            case UMP:
-                spc = 0x1E;
-                break;
-            case P90:
-                spc = 0x0F;
-                break;
-            case M4:
-                spc = 0x1D;
-                break;
-            case AK47:
-                spc = 0x18;
-                break;
-            case AUG:
-                spc = 0x16;
-                break;
-            case M249:
-                spc = 0x1C;
-                break;
-            case GRENADE:
-                spc = 0x17;
-                break;
-            case MP5SD:
-                spc = 0x19;
-                break;
-            case CASE:
-                spc = 0x20;
-                break;
-            case M1911:
-                spc = 0x22;
-                break;
-            case M1:
-                spc = 0x39;
-                break;
-            case FAMAS:
-                spc = 0x3A;
-                break;
-            case MK23:
-                spc = 0x3B;
-                break;
-            case MK23SD:
-                spc = 0x3C;
-                break;
-        }
-
-        return spc;
+        return switch (modelType) {
+            case NONE -> 0x00;
+            case MP5 -> 0x0B;
+            case PSG_1 -> 0x0A;
+            case M92F -> 0x0D;
+            case GLOCK -> 0x10;
+            case DESERT_EAGLE -> 0x15;
+            case MAC10 -> 0x0E;
+            case UMP -> 0x1E;
+            case P90 -> 0x0F;
+            case M4 -> 0x1D;
+            case AK47 -> 0x18;
+            case AUG -> 0x16;
+            case M249 -> 0x1C;
+            case GRENADE -> 0x17;
+            case MP5SD -> 0x19;
+            case CASE -> 0x20;
+            case M1911 -> 0x22;
+            case M1 -> 0x39;
+            case FAMAS -> 0x3A;
+            case MK23 -> 0x3B;
+            case MK23SD -> 0x3C;
+        };
     }
 
     public static WeaponTextureType getTextureTypeFromBinSpecifier(int spc) {
-        WeaponTextureType textureType;
-
-        switch (spc) {
-            case 0x00:
-                textureType = WeaponTextureType.NONE;
-                break;
-            case 0x10:
-                textureType = WeaponTextureType.MP5;
-                break;
-            case 0x0B:
-                textureType = WeaponTextureType.PSG_1;
-                break;
-            case 0x13:
-                textureType = WeaponTextureType.M92F;
-                break;
-            case 0x11:
-                textureType = WeaponTextureType.GLOCK18;
-                break;
-            case 0x32:
-                textureType = WeaponTextureType.DESERT_EAGLE;
-                break;
-            case 0x28:
-                textureType = WeaponTextureType.MAC10;
-                break;
-            case 0x27:
-                textureType = WeaponTextureType.UMP;
-                break;
-            case 0x24:
-                textureType = WeaponTextureType.P90;
-                break;
-            case 0x26:
-                textureType = WeaponTextureType.M4;
-                break;
-            case 0x21:
-                textureType = WeaponTextureType.AK47;
-                break;
-            case 0x33:
-                textureType = WeaponTextureType.AUG;
-                break;
-            case 0x25:
-                textureType = WeaponTextureType.M249;
-                break;
-            case 0x20:
-                textureType = WeaponTextureType.GRENADE;
-                break;
-            case 0x22:
-                textureType = WeaponTextureType.MP5SD;
-                break;
-            case 0x2C:
-                textureType = WeaponTextureType.CASE;
-                break;
-            case 0x2D:
-                textureType = WeaponTextureType.M1911;
-                break;
-            case 0x30:
-                textureType = WeaponTextureType.GLOCK17;
-                break;
-            case 0x36:
-                textureType = WeaponTextureType.M1;
-                break;
-            case 0x37:
-                textureType = WeaponTextureType.FAMAS;
-                break;
-            case 0x38:
-                textureType = WeaponTextureType.MK23;
-                break;
-            default:
-                textureType = WeaponTextureType.NONE;
-                break;
-        }
-
-        return textureType;
+        return switch (spc) {
+            case 0x00 -> WeaponTextureType.NONE;
+            case 0x10 -> WeaponTextureType.MP5;
+            case 0x0B -> WeaponTextureType.PSG_1;
+            case 0x13 -> WeaponTextureType.M92F;
+            case 0x11 -> WeaponTextureType.GLOCK18;
+            case 0x32 -> WeaponTextureType.DESERT_EAGLE;
+            case 0x28 -> WeaponTextureType.MAC10;
+            case 0x27 -> WeaponTextureType.UMP;
+            case 0x24 -> WeaponTextureType.P90;
+            case 0x26 -> WeaponTextureType.M4;
+            case 0x21 -> WeaponTextureType.AK47;
+            case 0x33 -> WeaponTextureType.AUG;
+            case 0x25 -> WeaponTextureType.M249;
+            case 0x20 -> WeaponTextureType.GRENADE;
+            case 0x22 -> WeaponTextureType.MP5SD;
+            case 0x2C -> WeaponTextureType.CASE;
+            case 0x2D -> WeaponTextureType.M1911;
+            case 0x30 -> WeaponTextureType.GLOCK17;
+            case 0x36 -> WeaponTextureType.M1;
+            case 0x37 -> WeaponTextureType.FAMAS;
+            case 0x38 -> WeaponTextureType.MK23;
+            default -> throw new IllegalArgumentException(String.format("Unknown specifier was given: 0x%02X", spc));
+        };
     }
 
     public static int getBinSpecifierFromTextureType(WeaponTextureType textureType) {
-        int spc = 0x00;
-
-        switch (textureType) {
-            case NONE:
-                spc = 0x00;
-                break;
-            case MP5:
-                spc = 0x10;
-                break;
-            case PSG_1:
-                spc = 0x0B;
-                break;
-            case M92F:
-                spc = 0x13;
-                break;
-            case GLOCK18:
-                spc = 0x11;
-                break;
-            case DESERT_EAGLE:
-                spc = 0x32;
-                break;
-            case MAC10:
-                spc = 0x28;
-                break;
-            case UMP:
-                spc = 0x27;
-                break;
-            case P90:
-                spc = 0x24;
-                break;
-            case M4:
-                spc = 0x26;
-                break;
-            case AK47:
-                spc = 0x21;
-                break;
-            case AUG:
-                spc = 0x33;
-                break;
-            case M249:
-                spc = 0x25;
-                break;
-            case GRENADE:
-                spc = 0x20;
-                break;
-            case MP5SD:
-                spc = 0x22;
-                break;
-            case CASE:
-                spc = 0x2C;
-                break;
-            case M1911:
-                spc = 0x2D;
-                break;
-            case GLOCK17:
-                spc = 0x30;
-                break;
-            case M1:
-                spc = 0x36;
-                break;
-            case FAMAS:
-                spc = 0x37;
-                break;
-            case MK23:
-                spc = 0x38;
-                break;
-        }
-
-        return spc;
+        return switch (textureType) {
+            case NONE -> 0x00;
+            case MP5 -> 0x10;
+            case PSG_1 -> 0x0B;
+            case M92F -> 0x13;
+            case GLOCK18 -> 0x11;
+            case DESERT_EAGLE -> 0x32;
+            case MAC10 -> 0x28;
+            case UMP -> 0x27;
+            case P90 -> 0x24;
+            case M4 -> 0x26;
+            case AK47 -> 0x21;
+            case AUG -> 0x33;
+            case M249 -> 0x25;
+            case GRENADE -> 0x20;
+            case MP5SD -> 0x22;
+            case CASE -> 0x2C;
+            case M1911 -> 0x2D;
+            case GLOCK17 -> 0x30;
+            case M1 -> 0x36;
+            case FAMAS -> 0x37;
+            case MK23 -> 0x38;
+        };
     }
 
     public static ShootingStance getShootingStanceFromBinSpecifier(int spc) {
-        ShootingStance shootingStance;
-
-        switch (spc) {
-            case 0x08:
-                shootingStance = ShootingStance.RIFLE;
-                break;
-            case 0x09:
-                shootingStance = ShootingStance.HANDGUN;
-                break;
-            case 0x1B:
-                shootingStance = ShootingStance.CARRY;
-                break;
-            default:
-                shootingStance = ShootingStance.RIFLE;
-                break;
-        }
-
-        return shootingStance;
+        return switch (spc) {
+            case 0x08 -> ShootingStance.RIFLE;
+            case 0x09 -> ShootingStance.HANDGUN;
+            case 0x1B -> ShootingStance.CARRY;
+            default -> throw new IllegalArgumentException(String.format("Unknown specifier was given: 0x%02X", spc));
+        };
     }
 
     public static int getBinSpecifierFromShootingStance(ShootingStance shootingStance) {
-        int spc = 0x08;
-
-        switch (shootingStance) {
-            case RIFLE:
-                spc = 0x08;
-                break;
-            case HANDGUN:
-                spc = 0x09;
-                break;
-            case CARRY:
-                spc = 0x1B;
-                break;
-        }
-
-        return spc;
+        return switch (shootingStance) {
+            case RIFLE -> 0x08;
+            case HANDGUN -> 0x09;
+            case CARRY -> 0x1B;
+        };
     }
 
     public static ScopeMode getScopeModeFromBinSpecifier(int spc) {
-        ScopeMode scopeMode;
-
-        switch (spc) {
-            case 0x00:
-                scopeMode = ScopeMode.NONE;
-                break;
-            case 0x01:
-                scopeMode = ScopeMode.LOW;
-                break;
-            case 0x02:
-                scopeMode = ScopeMode.HIGH;
-                break;
-            case 0x03:
-                scopeMode = ScopeMode.EQUAL;
-                break;
-            default:
-                scopeMode = ScopeMode.NONE;
-                break;
-        }
-
-        return scopeMode;
+        return switch (spc) {
+            case 0x00 -> ScopeMode.NONE;
+            case 0x01 -> ScopeMode.LOW;
+            case 0x02 -> ScopeMode.HIGH;
+            case 0x03 -> ScopeMode.EQUAL;
+            default -> throw new IllegalArgumentException(String.format("Unknown specifier was given: 0x%02X", spc));
+        };
     }
 
     public static int getBinSpecifierFromScopeMode(ScopeMode scopeMode) {
-        int spc = 0x00;
-
-        switch (scopeMode) {
-            case NONE:
-                spc = 0x00;
-                break;
-            case LOW:
-                spc = 0x01;
-                break;
-            case HIGH:
-                spc = 0x02;
-                break;
-            case EQUAL:
-                spc = 0x03;
-                break;
-        }
-
-        return spc;
+        return switch (scopeMode) {
+            case NONE -> 0x00;
+            case LOW -> 0x01;
+            case HIGH -> 0x02;
+            case EQUAL -> 0x03;
+        };
     }
 }

@@ -14,7 +14,7 @@ class BD1Functions {
             case 3 -> new int[]{2, 1, 5, 6};
             case 4 -> new int[]{3, 2, 6, 7};
             case 5 -> new int[]{0, 3, 7, 4};
-            default -> new int[]{0, 0, 0, 0};
+            default -> throw new IllegalArgumentException(String.format("Unknown face index was given: %d", faceIndex));
         };
     }
 
@@ -26,7 +26,7 @@ class BD1Functions {
             case 3 -> new int[]{13, 12, 15, 14};
             case 4 -> new int[]{17, 16, 19, 18};
             case 5 -> new int[]{21, 20, 23, 22};
-            default -> new int[]{0, 0, 0, 0};
+            default -> throw new IllegalArgumentException(String.format("Unknown face index was given: %d", faceIndex));
         };
     }
 }

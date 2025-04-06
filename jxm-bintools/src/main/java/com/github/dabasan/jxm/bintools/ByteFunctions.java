@@ -18,7 +18,7 @@ public class ByteFunctions {
      */
     public static float bytesToFloat(byte[] b) {
         if (b.length != 4) {
-            return 0.0f;
+            throw new IllegalArgumentException(String.format("Array must have length of 4, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN);
@@ -36,7 +36,7 @@ public class ByteFunctions {
      */
     public static float bytesToFloatLE(byte[] b) {
         if (b.length != 4) {
-            return 0.0f;
+            throw new IllegalArgumentException(String.format("Array must have length of 4, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN);
@@ -76,7 +76,7 @@ public class ByteFunctions {
      */
     public static short bytesToShort(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(2).order(ByteOrder.BIG_ENDIAN);
@@ -94,7 +94,7 @@ public class ByteFunctions {
      */
     public static short bytesToShortLE(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         ByteBuffer buffer = ByteBuffer.allocate(2).order(ByteOrder.LITTLE_ENDIAN);
@@ -134,15 +134,12 @@ public class ByteFunctions {
      */
     public static int bytesToUnsignedShort(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         int first = Byte.toUnsignedInt(b[0]);
         int second = Byte.toUnsignedInt(b[1]);
-
-        int ret = (first << 8) + second;
-
-        return ret;
+        return (first << 8) + second;
     }
 
     /**
@@ -153,15 +150,12 @@ public class ByteFunctions {
      */
     public static int bytesToUnsignedShortLE(byte[] b) {
         if (b.length != 2) {
-            return 0;
+            throw new IllegalArgumentException(String.format("Array must have length of 2, got %d",b.length));
         }
 
         int first = Byte.toUnsignedInt(b[1]);
         int second = Byte.toUnsignedInt(b[0]);
-
-        int ret = (first << 8) + second;
-
-        return ret;
+        return (first << 8) + second;
     }
 
     /**
@@ -284,7 +278,7 @@ public class ByteFunctions {
      */
     public static void setFloatToBinLE(byte[] bin, int pos, float value) {
         byte[] buffer = ByteFunctions.floatToBytesLE(value);
-        System.arraycopy(buffer, 0, bin, pos + 0, 4);
+        System.arraycopy(buffer, 0, bin, pos, 4);
     }
 
     /**
@@ -296,7 +290,7 @@ public class ByteFunctions {
      */
     public static void setShortToBinLE(byte[] bin, int pos, short value) {
         byte[] buffer = ByteFunctions.shortToBytesLE(value);
-        System.arraycopy(buffer, 0, bin, pos + 0, 2);
+        System.arraycopy(buffer, 0, bin, pos, 2);
     }
 
     /**
@@ -308,7 +302,7 @@ public class ByteFunctions {
      */
     public static void setUnsignedShortToBinLE(byte[] bin, int pos, int value) {
         byte[] buffer = ByteFunctions.unsignedShortToBytesLE(value);
-        System.arraycopy(buffer, 0, bin, pos + 0, 2);
+        System.arraycopy(buffer, 0, bin, pos, 2);
     }
 
     /**
@@ -320,9 +314,7 @@ public class ByteFunctions {
      */
     public static float getFloatFromBinLE(byte[] bin, int pos) {
         byte[] buffer = new byte[]{bin[pos], bin[pos + 1], bin[pos + 2], bin[pos + 3]};
-        float ret = ByteFunctions.bytesToFloatLE(buffer);
-
-        return ret;
+        return ByteFunctions.bytesToFloatLE(buffer);
     }
 
     /**
@@ -334,9 +326,7 @@ public class ByteFunctions {
      */
     public static short getShortFromBinLE(byte[] bin, int pos) {
         byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
-        short ret = ByteFunctions.bytesToShortLE(buffer);
-
-        return ret;
+        return ByteFunctions.bytesToShortLE(buffer);
     }
 
     /**
@@ -348,8 +338,6 @@ public class ByteFunctions {
      */
     public static int getUnsignedShortFromBinLE(byte[] bin, int pos) {
         byte[] buffer = new byte[]{bin[pos], bin[pos + 1]};
-        int ret = ByteFunctions.bytesToUnsignedShortLE(buffer);
-
-        return ret;
+        return ByteFunctions.bytesToUnsignedShortLE(buffer);
     }
 }
