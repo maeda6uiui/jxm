@@ -31,9 +31,9 @@ class BINWeaponWriter {
             this.setShortAndIncrementPos(bin, Math.round(weapons[i].muzzleFlashPositionX));
             this.setShortAndIncrementPos(bin, Math.round(weapons[i].muzzleFlashPositionY));
             this.setShortAndIncrementPos(bin, Math.round(weapons[i].muzzleFlashPositionZ));
-            this.setShortAndIncrementPos(bin, Math.round(weapons[i].cartridgePositionX));
-            this.setShortAndIncrementPos(bin, Math.round(weapons[i].cartridgePositionY));
-            this.setShortAndIncrementPos(bin, Math.round(weapons[i].cartridgePositionZ));
+            this.setShortAndIncrementPos(bin, Math.round(weapons[i].cartridgeEjectionPositionX));
+            this.setShortAndIncrementPos(bin, Math.round(weapons[i].cartridgeEjectionPositionY));
+            this.setShortAndIncrementPos(bin, Math.round(weapons[i].cartridgeEjectionPositionZ));
 
             ShootingStance shootingStance = weapons[i].shootingStance;
             int shootingStanceSpc = WeaponBinEnumConverter.getBinSpecifierFromShootingStance(shootingStance);

@@ -44,9 +44,9 @@ class IDSWriter {
         addShortToBinLE(bin, (short) Math.round(weapon.muzzleFlashPositionX));
         addShortToBinLE(bin, (short) Math.round(weapon.muzzleFlashPositionY));
         addShortToBinLE(bin, (short) Math.round(weapon.muzzleFlashPositionZ));
-        addShortToBinLE(bin, (short) Math.round(weapon.cartridgePositionX));
-        addShortToBinLE(bin, (short) Math.round(weapon.cartridgePositionY));
-        addShortToBinLE(bin, (short) Math.round(weapon.cartridgePositionZ));
+        addShortToBinLE(bin, (short) Math.round(weapon.cartridgeEjectionPositionX));
+        addShortToBinLE(bin, (short) Math.round(weapon.cartridgeEjectionPositionY));
+        addShortToBinLE(bin, (short) Math.round(weapon.cartridgeEjectionPositionZ));
 
         ShootingStance shootingStance = weapon.shootingStance;
         int shootingStanceSpc = WeaponBinEnumConverter

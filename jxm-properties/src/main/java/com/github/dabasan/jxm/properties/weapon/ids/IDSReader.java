@@ -37,9 +37,9 @@ class IDSReader {
         weapon.muzzleFlashPositionX = this.readShortAndIncrementPos(bin);
         weapon.muzzleFlashPositionY = this.readShortAndIncrementPos(bin);
         weapon.muzzleFlashPositionZ = this.readShortAndIncrementPos(bin);
-        weapon.cartridgePositionX = this.readShortAndIncrementPos(bin);
-        weapon.cartridgePositionY = this.readShortAndIncrementPos(bin);
-        weapon.cartridgePositionZ = this.readShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionPositionX = this.readShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionPositionY = this.readShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionPositionZ = this.readShortAndIncrementPos(bin);
 
         int shootingStanceSpc = this.readShortAndIncrementPos(bin);
         weapon.shootingStance = WeaponBinEnumConverter.getShootingStanceFromBinSpecifier(shootingStanceSpc);

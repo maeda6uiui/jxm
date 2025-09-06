@@ -26,9 +26,9 @@ public class Weapon {
     public float muzzleFlashPositionX;
     public float muzzleFlashPositionY;
     public float muzzleFlashPositionZ;
-    public float cartridgePositionX;
-    public float cartridgePositionY;
-    public float cartridgePositionZ;
+    public float cartridgeEjectionPositionX;
+    public float cartridgeEjectionPositionY;
+    public float cartridgeEjectionPositionZ;
     public float cartridgeEjectionVelocityX;
     public float cartridgeEjectionVelocityY;
     public boolean rapidFire;
@@ -63,9 +63,9 @@ public class Weapon {
         muzzleFlashPositionX = 0.0f;
         muzzleFlashPositionY = 0.0f;
         muzzleFlashPositionZ = 0.0f;
-        cartridgePositionX = 0.0f;
-        cartridgePositionY = 0.0f;
-        cartridgePositionZ = 0.0f;
+        cartridgeEjectionPositionX = 0.0f;
+        cartridgeEjectionPositionY = 0.0f;
+        cartridgeEjectionPositionZ = 0.0f;
         cartridgeEjectionVelocityX = 0.0f;
         cartridgeEjectionVelocityY = 0.0f;
         rapidFire = false;
@@ -103,9 +103,9 @@ public class Weapon {
         this.muzzleFlashPositionX = weapon.muzzleFlashPositionX;
         this.muzzleFlashPositionY = weapon.muzzleFlashPositionY;
         this.muzzleFlashPositionZ = weapon.muzzleFlashPositionZ;
-        this.cartridgePositionX = weapon.cartridgePositionX;
-        this.cartridgePositionY = weapon.cartridgePositionY;
-        this.cartridgePositionZ = weapon.cartridgePositionZ;
+        this.cartridgeEjectionPositionX = weapon.cartridgeEjectionPositionX;
+        this.cartridgeEjectionPositionY = weapon.cartridgeEjectionPositionY;
+        this.cartridgeEjectionPositionZ = weapon.cartridgeEjectionPositionZ;
         this.cartridgeEjectionVelocityX = weapon.cartridgeEjectionVelocityX;
         this.cartridgeEjectionVelocityY = weapon.cartridgeEjectionVelocityY;
         this.rapidFire = weapon.rapidFire;
@@ -137,12 +137,12 @@ public class Weapon {
                 ", modelPositionX=" + modelPositionX +
                 ", modelPositionY=" + modelPositionY +
                 ", modelPositionZ=" + modelPositionZ +
-                ", flashPositionX=" + muzzleFlashPositionX +
-                ", flashPositionY=" + muzzleFlashPositionY +
-                ", flashPositionZ=" + muzzleFlashPositionZ +
-                ", cartridgePositionX=" + cartridgePositionX +
-                ", cartridgePositionY=" + cartridgePositionY +
-                ", cartridgePositionZ=" + cartridgePositionZ +
+                ", muzzleFlashPositionX=" + muzzleFlashPositionX +
+                ", muzzleFlashPositionY=" + muzzleFlashPositionY +
+                ", muzzleFlashPositionZ=" + muzzleFlashPositionZ +
+                ", cartridgeEjectionPositionX=" + cartridgeEjectionPositionX +
+                ", cartridgeEjectionPositionY=" + cartridgeEjectionPositionY +
+                ", cartridgeEjectionPositionZ=" + cartridgeEjectionPositionZ +
                 ", cartridgeEjectionVelocityX=" + cartridgeEjectionVelocityX +
                 ", cartridgeEjectionVelocityY=" + cartridgeEjectionVelocityY +
                 ", rapidFire=" + rapidFire +
@@ -177,9 +177,9 @@ public class Weapon {
                 && Float.compare(weapon.muzzleFlashPositionX, muzzleFlashPositionX) == 0
                 && Float.compare(weapon.muzzleFlashPositionY, muzzleFlashPositionY) == 0
                 && Float.compare(weapon.muzzleFlashPositionZ, muzzleFlashPositionZ) == 0
-                && Float.compare(weapon.cartridgePositionX, cartridgePositionX) == 0
-                && Float.compare(weapon.cartridgePositionY, cartridgePositionY) == 0
-                && Float.compare(weapon.cartridgePositionZ, cartridgePositionZ) == 0
+                && Float.compare(weapon.cartridgeEjectionPositionX, cartridgeEjectionPositionX) == 0
+                && Float.compare(weapon.cartridgeEjectionPositionY, cartridgeEjectionPositionY) == 0
+                && Float.compare(weapon.cartridgeEjectionPositionZ, cartridgeEjectionPositionZ) == 0
                 && Float.compare(weapon.cartridgeEjectionVelocityX, cartridgeEjectionVelocityX) == 0
                 && Float.compare(weapon.cartridgeEjectionVelocityY, cartridgeEjectionVelocityY) == 0
                 && rapidFire == weapon.rapidFire
@@ -217,9 +217,9 @@ public class Weapon {
                 muzzleFlashPositionX,
                 muzzleFlashPositionY,
                 muzzleFlashPositionZ,
-                cartridgePositionX,
-                cartridgePositionY,
-                cartridgePositionZ,
+                cartridgeEjectionPositionX,
+                cartridgeEjectionPositionY,
+                cartridgeEjectionPositionZ,
                 cartridgeEjectionVelocityX,
                 cartridgeEjectionVelocityY,
                 rapidFire,
@@ -324,18 +324,18 @@ public class Weapon {
         return this;
     }
 
-    public Weapon setCartridgePositionX(float cartridgePositionX) {
-        this.cartridgePositionX = cartridgePositionX;
+    public Weapon setCartridgeEjectionPositionX(float cartridgeEjectionPositionX) {
+        this.cartridgeEjectionPositionX = cartridgeEjectionPositionX;
         return this;
     }
 
-    public Weapon setCartridgePositionY(float cartridgePositionY) {
-        this.cartridgePositionY = cartridgePositionY;
+    public Weapon setCartridgeEjectionPositionY(float cartridgeEjectionPositionY) {
+        this.cartridgeEjectionPositionY = cartridgeEjectionPositionY;
         return this;
     }
 
-    public Weapon setCartridgePositionZ(float cartridgePositionZ) {
-        this.cartridgePositionZ = cartridgePositionZ;
+    public Weapon setCartridgeEjectionPositionZ(float cartridgeEjectionPositionZ) {
+        this.cartridgeEjectionPositionZ = cartridgeEjectionPositionZ;
         return this;
     }
 

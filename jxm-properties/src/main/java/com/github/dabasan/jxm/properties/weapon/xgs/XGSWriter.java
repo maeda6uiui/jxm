@@ -50,9 +50,9 @@ class XGSWriter {
             addShortToBinLE(bin, (short) Math.round(weapons[i].muzzleFlashPositionX));
             addShortToBinLE(bin, (short) Math.round(weapons[i].muzzleFlashPositionY));
             addShortToBinLE(bin, (short) Math.round(weapons[i].muzzleFlashPositionZ));
-            addShortToBinLE(bin, (short) Math.round(weapons[i].cartridgePositionX));
-            addShortToBinLE(bin, (short) Math.round(weapons[i].cartridgePositionY));
-            addShortToBinLE(bin, (short) Math.round(weapons[i].cartridgePositionZ));
+            addShortToBinLE(bin, (short) Math.round(weapons[i].cartridgeEjectionPositionX));
+            addShortToBinLE(bin, (short) Math.round(weapons[i].cartridgeEjectionPositionY));
+            addShortToBinLE(bin, (short) Math.round(weapons[i].cartridgeEjectionPositionZ));
 
             ShootingStance shootingStance = weapons[i].shootingStance;
             int shootingStanceSpc = WeaponBinEnumConverter
