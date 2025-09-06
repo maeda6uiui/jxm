@@ -74,7 +74,7 @@ public class WeaponCodeGenerator {
             this.appendToBuffer(settings.arrayName, i, settings.modelScale, weapon.modelScale);
 
             int soundId = weapon.fireSoundId;
-            int openXOPSSoundId = WeaponSpecifierConverter.getOpenXOPSSoundIDFromXOPSSoundID(soundId);
+            int openXOPSSoundId = WeaponSpecifierConverter.getOpenXOPSSoundIdFromXOPSSoundId(soundId);
             this.appendToBuffer(settings.arrayName, i, settings.fireSoundId, openXOPSSoundId);
 
             this.appendToBuffer(settings.arrayName, i, settings.fireSoundVolume, weapon.fireSoundVolume);

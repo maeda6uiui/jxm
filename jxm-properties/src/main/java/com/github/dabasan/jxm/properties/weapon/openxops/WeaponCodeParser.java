@@ -332,16 +332,16 @@ public class WeaponCodeParser {
 
                 weapon.modelScale = size;
             } else if (parsed[2].equals(settings.fireSoundId)) {
-                int openXOPSSoundID;
+                int openXOPSSoundId;
                 try {
-                    openXOPSSoundID = Integer.parseInt(parsed[3]);
+                    openXOPSSoundId = Integer.parseInt(parsed[3]);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
                 weapon.fireSoundId = WeaponSpecifierConverter
-                        .getXOPSSoundIDFromOpenXOPSSoundID(openXOPSSoundID);
+                        .getXOPSSoundIdFromOpenXOPSSoundId(openXOPSSoundId);
             } else if (parsed[2].equals(settings.fireSoundVolume)) {
                 int soundVolume;
                 try {
