@@ -19,10 +19,7 @@ class IDSReader {
     public IDSReader(InputStream is) throws IOException {
         weapon = new Weapon();
 
-        //Read all bytes from a stream
         byte[] bin = is.readAllBytes();
-
-        //Read values
         pos = 0x0000000A;
 
         weapon.attackPower = this.readShortAndIncrementPos(bin);
