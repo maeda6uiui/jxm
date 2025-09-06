@@ -1,10 +1,12 @@
+<!-- @formatter:off -->
+
 # JXM
 
 **JXM (Java XOPSManipulator)** is a Java library to handle data related to [X operations](https://hp.vector.co.jp/authors/VA022962/xops/).
 
 ## Requirements
 
-Java ≥ 17
+Java ≥ 21
 
 ## Installation
 
