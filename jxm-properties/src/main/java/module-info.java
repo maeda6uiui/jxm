@@ -13,5 +13,4 @@ module com.github.dabasan.jxm.properties {
 
     requires transitive org.slf4j;
     requires com.github.dabasan.jxm.bintools;
-    requires com.github.dabasan.jxm.properties;
 }
