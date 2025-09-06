@@ -78,7 +78,7 @@ class IDSReader {
 
     private String getNameFromBin(byte[] bin, int start) {
         var nameBuffer = new byte[16];
-        System.arraycopy(bin, start + 0, nameBuffer, 0, 15);
+        System.arraycopy(bin, start, nameBuffer, 0, 15);
         nameBuffer[15] = 0;
 
         var name = new String(nameBuffer);
