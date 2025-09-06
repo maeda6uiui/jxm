@@ -1,7 +1,7 @@
 package com.github.dabasan.jxm.properties.character.openxops;
 
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.*;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,16 +70,16 @@ public class CharacterCodeParser {
 
             //Texture
             if (parsed[2].equals(settings.texture)) {
-                int openXOPSTextureID;
+                int openXOPSTextureId;
                 try {
-                    openXOPSTextureID = Integer.parseInt(parsed[3]);
+                    openXOPSTextureId = Integer.parseInt(parsed[3]);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
                 CharacterTextureType xopsTextureType = CharacterSpecifierConverter
-                        .getXOPSTextureTypeFromOpenXOPSTextureID(openXOPSTextureID);
+                        .getXOPSTextureTypeFromOpenXOPSTextureId(openXOPSTextureId);
                 character.texture = xopsTextureType;
             }
             //Model

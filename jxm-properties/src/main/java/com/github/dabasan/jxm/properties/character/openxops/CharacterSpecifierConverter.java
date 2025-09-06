@@ -9,7 +9,7 @@ import com.github.dabasan.jxm.properties.character.CharacterTextureType;
  * @author maeda6uiui
  */
 class CharacterSpecifierConverter {
-    public static int getOpenXOPSTextureIDFromXOPSTextureType(
+    public static int getOpenXOPSTextureIdFromXOPSTextureType(
             CharacterTextureType xopsTextureType) {
         return switch (xopsTextureType) {
             case CIV1 -> 0;
@@ -45,9 +45,9 @@ class CharacterSpecifierConverter {
         };
     }
 
-    public static CharacterTextureType getXOPSTextureTypeFromOpenXOPSTextureID(
-            int openXOPSTextureID) {
-        return switch (openXOPSTextureID) {
+    public static CharacterTextureType getXOPSTextureTypeFromOpenXOPSTextureId(
+            int openXOPSTextureId) {
+        return switch (openXOPSTextureId) {
             case 0 -> CharacterTextureType.CIV1;
             case 1 -> CharacterTextureType.CIV2;
             case 2 -> CharacterTextureType.CIV3;
@@ -79,7 +79,7 @@ class CharacterSpecifierConverter {
             case 28 -> CharacterTextureType.ZOMBIE3;
             case 29 -> CharacterTextureType.ZOMBIE4;
             default ->
-                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", openXOPSTextureID));
+                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", openXOPSTextureId));
         };
     }
 

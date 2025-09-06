@@ -46,9 +46,9 @@ public class CharacterCodeGenerator {
         for (int i = 0; i < characters.size(); i++) {
             var character = characters.get(i);
 
-            int openXOPSTextureID = CharacterSpecifierConverter
-                    .getOpenXOPSTextureIDFromXOPSTextureType(character.texture);
-            this.appendToBuffer(settings.arrayName, i, settings.texture, openXOPSTextureID);
+            int openXOPSTextureId = CharacterSpecifierConverter
+                    .getOpenXOPSTextureIdFromXOPSTextureType(character.texture);
+            this.appendToBuffer(settings.arrayName, i, settings.texture, openXOPSTextureId);
 
             this.appendToBuffer(settings.arrayName, i, settings.model, character.model.ordinal());
             this.appendToBuffer(settings.arrayName, i, settings.hp, character.hp);
