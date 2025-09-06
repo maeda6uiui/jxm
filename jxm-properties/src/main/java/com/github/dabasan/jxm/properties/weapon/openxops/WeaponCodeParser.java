@@ -204,99 +204,99 @@ public class WeaponCodeParser {
             } else if (parsed[2].equals(settings.muzzleFlashPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float flashPositionX;
+                float muzzleFlashPositionX;
                 try {
-                    flashPositionX = Float.parseFloat(valString);
+                    muzzleFlashPositionX = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.muzzleFlashPositionX = flashPositionX;
+                weapon.muzzleFlashPositionX = muzzleFlashPositionX;
             } else if (parsed[2].equals(settings.muzzleFlashPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float flashPositionY;
+                float muzzleFlashPositionY;
                 try {
-                    flashPositionY = Float.parseFloat(valString);
+                    muzzleFlashPositionY = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.muzzleFlashPositionY = flashPositionY;
+                weapon.muzzleFlashPositionY = muzzleFlashPositionY;
             } else if (parsed[2].equals(settings.muzzleFlashPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float flashPositionZ;
+                float muzzleFlashPositionZ;
                 try {
-                    flashPositionZ = Float.parseFloat(valString);
+                    muzzleFlashPositionZ = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.muzzleFlashPositionZ = flashPositionZ;
+                weapon.muzzleFlashPositionZ = muzzleFlashPositionZ;
             } else if (parsed[2].equals(settings.cartridgeEjectionPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouPositionX;
+                float cartridgeEjectionPositionX;
                 try {
-                    yakkyouPositionX = Float.parseFloat(valString);
+                    cartridgeEjectionPositionX = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.cartridgeEjectionPositionX = yakkyouPositionX;
+                weapon.cartridgeEjectionPositionX = cartridgeEjectionPositionX;
             } else if (parsed[2].equals(settings.cartridgeEjectionPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouPositionY;
+                float cartridgeEjectionPositionY;
                 try {
-                    yakkyouPositionY = Float.parseFloat(valString);
+                    cartridgeEjectionPositionY = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.cartridgeEjectionPositionY = yakkyouPositionY;
+                weapon.cartridgeEjectionPositionY = cartridgeEjectionPositionY;
             } else if (parsed[2].equals(settings.cartridgeEjectionPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouPositionZ;
+                float cartridgeEjectionPositionZ;
                 try {
-                    yakkyouPositionZ = Float.parseFloat(valString);
+                    cartridgeEjectionPositionZ = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.cartridgeEjectionPositionZ = yakkyouPositionZ;
+                weapon.cartridgeEjectionPositionZ = cartridgeEjectionPositionZ;
             } else if (parsed[2].equals(settings.cartridgeEjectionVelocityX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouSpeedX;
+                float cartridgeEjectionVelocityX;
                 try {
-                    yakkyouSpeedX = Float.parseFloat(valString);
+                    cartridgeEjectionVelocityX = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.cartridgeEjectionVelocityX = yakkyouSpeedX;
+                weapon.cartridgeEjectionVelocityX = cartridgeEjectionVelocityX;
             } else if (parsed[2].equals(settings.cartridgeEjectionVelocityY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouSpeedY;
+                float cartridgeEjectionVelocityY;
                 try {
-                    yakkyouSpeedY = Float.parseFloat(valString);
+                    cartridgeEjectionVelocityY = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.cartridgeEjectionVelocityY = yakkyouSpeedY;
+                weapon.cartridgeEjectionVelocityY = cartridgeEjectionVelocityY;
             } else if (parsed[2].equals(settings.rapidFire)) {
                 boolean blazingMode;
                 if (parsed[3].equals("false")) {
