@@ -91,7 +91,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.attacks = attacks;
+                weapon.attackPower = attacks;
             }
             //Penetration
             else if (parsed[2].equals(settings.penetration)) {
@@ -115,7 +115,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.blazings = blazings;
+                weapon.fireInterval = blazings;
             }
             //Speed
             else if (parsed[2].equals(settings.speed)) {
@@ -127,7 +127,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.speed = speed;
+                weapon.bulletSpeed = speed;
             }
             //NbsMax
             else if (parsed[2].equals(settings.nbsMax)) {
@@ -139,7 +139,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.nbsMax = nbsMax;
+                weapon.magazineCapacity = nbsMax;
             }
             //Reloads
             else if (parsed[2].equals(settings.reloads)) {
@@ -151,7 +151,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.reloads = reloads;
+                weapon.reloadTime = reloads;
             }
             //Reaction
             else if (parsed[2].equals(settings.reaction)) {
@@ -163,7 +163,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.reaction = reaction;
+                weapon.recoil = reaction;
             }
             //ErrorRangeMin
             else if (parsed[2].equals(settings.errorRangeMin)) {
@@ -243,7 +243,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.flashPositionX = flashPositionX;
+                weapon.muzzleFlashPositionX = flashPositionX;
             }
             //FlashPositionY
             else if (parsed[2].equals(settings.flashPositionY)) {
@@ -257,7 +257,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.flashPositionY = flashPositionY;
+                weapon.muzzleFlashPositionY = flashPositionY;
             }
             //FlashPositionZ
             else if (parsed[2].equals(settings.flashPositionZ)) {
@@ -271,7 +271,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.flashPositionZ = flashPositionZ;
+                weapon.muzzleFlashPositionZ = flashPositionZ;
             }
             //YakkyouPositionX
             else if (parsed[2].equals(settings.yakkyouPositionX)) {
@@ -285,7 +285,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.yakkyouPositionX = yakkyouPositionX;
+                weapon.cartridgePositionX = yakkyouPositionX;
             }
             //YakkyouPositionY
             else if (parsed[2].equals(settings.yakkyouPositionY)) {
@@ -299,7 +299,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.yakkyouPositionY = yakkyouPositionY;
+                weapon.cartridgePositionY = yakkyouPositionY;
             }
             //YakkyouPositionZ
             else if (parsed[2].equals(settings.yakkyouPositionZ)) {
@@ -313,7 +313,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.yakkyouPositionZ = yakkyouPositionZ;
+                weapon.cartridgePositionZ = yakkyouPositionZ;
             }
             //YakkyouSpeedX
             else if (parsed[2].equals(settings.yakkyouSpeedX)) {
@@ -327,7 +327,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.yakkyouSpeedX = yakkyouSpeedX;
+                weapon.cartridgeEjectionVelocityX = yakkyouSpeedX;
             }
             //YakkyouSpeedY
             else if (parsed[2].equals(settings.yakkyouSpeedY)) {
@@ -341,7 +341,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.yakkyouSpeedY = yakkyouSpeedY;
+                weapon.cartridgeEjectionVelocityY = yakkyouSpeedY;
             }
             //BlazingMode
             else if (parsed[2].equals(settings.blazingMode)) {
@@ -355,7 +355,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.blazingMode = blazingMode;
+                weapon.rapidFire = blazingMode;
             }
             //ScopeMode
             else if (parsed[2].equals(settings.scopeMode)) {
@@ -381,7 +381,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.size = size;
+                weapon.modelScale = size;
             }
             //SoundID
             else if (parsed[2].equals(settings.soundID)) {
@@ -393,7 +393,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.soundID = WeaponSpecifierConverter
+                weapon.fireSoundId = WeaponSpecifierConverter
                         .getXOPSSoundIDFromOpenXOPSSoundID(openXOPSSoundID);
             }
             //SoundVolume
@@ -406,7 +406,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.soundVolume = soundVolume;
+                weapon.fireSoundVolume = soundVolume;
             }
             //Silencer
             else if (parsed[2].equals(settings.silencer)) {
@@ -420,7 +420,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.silencer = silencer;
+                weapon.suppressor = silencer;
             }
             //WeaponP
             else if (parsed[2].equals(settings.weaponP)) {
@@ -432,7 +432,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.weaponP = ShootingStance.values()[weaponPSpc];
+                weapon.shootingStance = ShootingStance.values()[weaponPSpc];
             }
             //ChangeWeapon
             else if (parsed[2].equals(settings.changeWeapon)) {
@@ -444,7 +444,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.changeWeapon = changeWeapon;
+                weapon.switchableWeaponId = changeWeapon;
             }
             //Burst
             else if (parsed[2].equals(settings.burst)) {
@@ -456,7 +456,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.burst = burst;
+                weapon.numProjectiles = burst;
             } else {
                 logger.warn("Parse error ({}): {}", i, line);
                 continue;

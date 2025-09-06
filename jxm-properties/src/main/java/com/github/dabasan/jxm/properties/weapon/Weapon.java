@@ -11,35 +11,35 @@ public class Weapon {
     public String name;
     public String model;
     public String texture;
-    public int attacks;
+    public int attackPower;
     public int penetration;
-    public int blazings;
-    public int speed;
-    public int nbsMax;
-    public int reloads;
-    public int reaction;
+    public int fireInterval;
+    public int bulletSpeed;
+    public int magazineCapacity;
+    public int reloadTime;
+    public int recoil;
     public int errorRangeMin;
     public int errorRangeMax;
     public float modelPositionX;
     public float modelPositionY;
     public float modelPositionZ;
-    public float flashPositionX;
-    public float flashPositionY;
-    public float flashPositionZ;
-    public float yakkyouPositionX;
-    public float yakkyouPositionY;
-    public float yakkyouPositionZ;
-    public float yakkyouSpeedX;
-    public float yakkyouSpeedY;
-    public boolean blazingMode;
+    public float muzzleFlashPositionX;
+    public float muzzleFlashPositionY;
+    public float muzzleFlashPositionZ;
+    public float cartridgePositionX;
+    public float cartridgePositionY;
+    public float cartridgePositionZ;
+    public float cartridgeEjectionVelocityX;
+    public float cartridgeEjectionVelocityY;
+    public boolean rapidFire;
     public ScopeMode scopeMode;
-    public float size;
-    public int soundID;
-    public int soundVolume;
-    public boolean silencer;
-    public ShootingStance weaponP;
-    public int changeWeapon;
-    public int burst;
+    public float modelScale;
+    public int fireSoundId;
+    public int fireSoundVolume;
+    public boolean suppressor;
+    public ShootingStance shootingStance;
+    public int switchableWeaponId;
+    public int numProjectiles;
 
     /**
      * Creates a weapon.
@@ -48,35 +48,35 @@ public class Weapon {
         name = "";
         model = "";
         texture = "";
-        attacks = 0;
+        attackPower = 0;
         penetration = 0;
-        blazings = 0;
-        speed = 0;
-        nbsMax = 0;
-        reloads = 0;
-        reaction = 0;
+        fireInterval = 0;
+        bulletSpeed = 0;
+        magazineCapacity = 0;
+        reloadTime = 0;
+        recoil = 0;
         errorRangeMin = 0;
         errorRangeMax = 0;
         modelPositionX = 0.0f;
         modelPositionY = 0.0f;
         modelPositionZ = 0.0f;
-        flashPositionX = 0.0f;
-        flashPositionY = 0.0f;
-        flashPositionZ = 0.0f;
-        yakkyouPositionX = 0.0f;
-        yakkyouPositionY = 0.0f;
-        yakkyouPositionZ = 0.0f;
-        yakkyouSpeedX = 0.0f;
-        yakkyouSpeedY = 0.0f;
-        blazingMode = false;
+        muzzleFlashPositionX = 0.0f;
+        muzzleFlashPositionY = 0.0f;
+        muzzleFlashPositionZ = 0.0f;
+        cartridgePositionX = 0.0f;
+        cartridgePositionY = 0.0f;
+        cartridgePositionZ = 0.0f;
+        cartridgeEjectionVelocityX = 0.0f;
+        cartridgeEjectionVelocityY = 0.0f;
+        rapidFire = false;
         scopeMode = ScopeMode.NONE;
-        size = 1.0f;
-        soundID = 0;
-        soundVolume = 0;
-        silencer = false;
-        weaponP = ShootingStance.RIFLE;
-        changeWeapon = -1;
-        burst = 1;
+        modelScale = 1.0f;
+        fireSoundId = 0;
+        fireSoundVolume = 0;
+        suppressor = false;
+        shootingStance = ShootingStance.RIFLE;
+        switchableWeaponId = -1;
+        numProjectiles = 1;
     }
 
     /**
@@ -88,52 +88,73 @@ public class Weapon {
         this.name = weapon.name;
         this.model = weapon.model;
         this.texture = weapon.texture;
-        this.attacks = weapon.attacks;
+        this.attackPower = weapon.attackPower;
         this.penetration = weapon.penetration;
-        this.blazings = weapon.blazings;
-        this.speed = weapon.speed;
-        this.nbsMax = weapon.nbsMax;
-        this.reloads = weapon.reloads;
-        this.reaction = weapon.reaction;
+        this.fireInterval = weapon.fireInterval;
+        this.bulletSpeed = weapon.bulletSpeed;
+        this.magazineCapacity = weapon.magazineCapacity;
+        this.reloadTime = weapon.reloadTime;
+        this.recoil = weapon.recoil;
         this.errorRangeMin = weapon.errorRangeMin;
         this.errorRangeMax = weapon.errorRangeMax;
         this.modelPositionX = weapon.modelPositionX;
         this.modelPositionY = weapon.modelPositionY;
         this.modelPositionZ = weapon.modelPositionZ;
-        this.flashPositionX = weapon.flashPositionX;
-        this.flashPositionY = weapon.flashPositionY;
-        this.flashPositionZ = weapon.flashPositionZ;
-        this.yakkyouPositionX = weapon.yakkyouPositionX;
-        this.yakkyouPositionY = weapon.yakkyouPositionY;
-        this.yakkyouPositionZ = weapon.yakkyouPositionZ;
-        this.yakkyouSpeedX = weapon.yakkyouSpeedX;
-        this.yakkyouSpeedY = weapon.yakkyouSpeedY;
-        this.blazingMode = weapon.blazingMode;
+        this.muzzleFlashPositionX = weapon.muzzleFlashPositionX;
+        this.muzzleFlashPositionY = weapon.muzzleFlashPositionY;
+        this.muzzleFlashPositionZ = weapon.muzzleFlashPositionZ;
+        this.cartridgePositionX = weapon.cartridgePositionX;
+        this.cartridgePositionY = weapon.cartridgePositionY;
+        this.cartridgePositionZ = weapon.cartridgePositionZ;
+        this.cartridgeEjectionVelocityX = weapon.cartridgeEjectionVelocityX;
+        this.cartridgeEjectionVelocityY = weapon.cartridgeEjectionVelocityY;
+        this.rapidFire = weapon.rapidFire;
         this.scopeMode = weapon.scopeMode;
-        this.size = weapon.size;
-        this.soundID = weapon.soundID;
-        this.soundVolume = weapon.soundVolume;
-        this.silencer = weapon.silencer;
-        this.weaponP = weapon.weaponP;
-        this.changeWeapon = weapon.changeWeapon;
-        this.burst = weapon.burst;
+        this.modelScale = weapon.modelScale;
+        this.fireSoundId = weapon.fireSoundId;
+        this.fireSoundVolume = weapon.fireSoundVolume;
+        this.suppressor = weapon.suppressor;
+        this.shootingStance = weapon.shootingStance;
+        this.switchableWeaponId = weapon.switchableWeaponId;
+        this.numProjectiles = weapon.numProjectiles;
     }
 
     @Override
     public String toString() {
-        return "WeaponData [name=" + name + ", model=" + model + ", texture=" + texture
-                + ", attacks=" + attacks + ", penetration=" + penetration + ", blazings=" + blazings
-                + ", speed=" + speed + ", nbsMax=" + nbsMax + ", reloads=" + reloads + ", reaction="
-                + reaction + ", errorRangeMin=" + errorRangeMin + ", errorRangeMax=" + errorRangeMax
-                + ", modelPositionX=" + modelPositionX + ", modelPositionY=" + modelPositionY
-                + ", modelPositionZ=" + modelPositionZ + ", flashPositionX=" + flashPositionX
-                + ", flashPositionY=" + flashPositionY + ", flashPositionZ=" + flashPositionZ
-                + ", yakkyouPositionX=" + yakkyouPositionX + ", yakkyouPositionY="
-                + yakkyouPositionY + ", yakkyouPositionZ=" + yakkyouPositionZ + ", yakkyouSpeedX="
-                + yakkyouSpeedX + ", yakkyouSpeedY=" + yakkyouSpeedY + ", blazingMode="
-                + blazingMode + ", scopeMode=" + scopeMode + ", size=" + size + ", soundID="
-                + soundID + ", soundVolume=" + soundVolume + ", silencer=" + silencer + ", weaponP="
-                + weaponP + ", changeWeapon=" + changeWeapon + ", burst=" + burst + "]";
+        return "Weapon{" +
+                "name='" + name + '\'' +
+                ", model='" + model + '\'' +
+                ", texture='" + texture + '\'' +
+                ", attackPower=" + attackPower +
+                ", penetration=" + penetration +
+                ", fireInterval=" + fireInterval +
+                ", bulletSpeed=" + bulletSpeed +
+                ", magazineCapacity=" + magazineCapacity +
+                ", reloadTime=" + reloadTime +
+                ", recoil=" + recoil +
+                ", errorRangeMin=" + errorRangeMin +
+                ", errorRangeMax=" + errorRangeMax +
+                ", modelPositionX=" + modelPositionX +
+                ", modelPositionY=" + modelPositionY +
+                ", modelPositionZ=" + modelPositionZ +
+                ", flashPositionX=" + muzzleFlashPositionX +
+                ", flashPositionY=" + muzzleFlashPositionY +
+                ", flashPositionZ=" + muzzleFlashPositionZ +
+                ", cartridgePositionX=" + cartridgePositionX +
+                ", cartridgePositionY=" + cartridgePositionY +
+                ", cartridgePositionZ=" + cartridgePositionZ +
+                ", cartridgeEjectionVelocityX=" + cartridgeEjectionVelocityX +
+                ", cartridgeEjectionVelocityY=" + cartridgeEjectionVelocityY +
+                ", rapidFire=" + rapidFire +
+                ", scopeMode=" + scopeMode +
+                ", modelScale=" + modelScale +
+                ", fireSoundId=" + fireSoundId +
+                ", fireSoundVolume=" + fireSoundVolume +
+                ", suppressor=" + suppressor +
+                ", shootingStance=" + shootingStance +
+                ", switchableWeaponId=" + switchableWeaponId +
+                ", numProjectiles=" + numProjectiles +
+                '}';
     }
 
     @Override
@@ -141,38 +162,38 @@ public class Weapon {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Weapon weapon = (Weapon) o;
-        return attacks == weapon.attacks
+        return attackPower == weapon.attackPower
                 && penetration == weapon.penetration
-                && blazings == weapon.blazings
-                && speed == weapon.speed
-                && nbsMax == weapon.nbsMax
-                && reloads == weapon.reloads
-                && reaction == weapon.reaction
+                && fireInterval == weapon.fireInterval
+                && bulletSpeed == weapon.bulletSpeed
+                && magazineCapacity == weapon.magazineCapacity
+                && reloadTime == weapon.reloadTime
+                && recoil == weapon.recoil
                 && errorRangeMin == weapon.errorRangeMin
                 && errorRangeMax == weapon.errorRangeMax
                 && Float.compare(weapon.modelPositionX, modelPositionX) == 0
                 && Float.compare(weapon.modelPositionY, modelPositionY) == 0
                 && Float.compare(weapon.modelPositionZ, modelPositionZ) == 0
-                && Float.compare(weapon.flashPositionX, flashPositionX) == 0
-                && Float.compare(weapon.flashPositionY, flashPositionY) == 0
-                && Float.compare(weapon.flashPositionZ, flashPositionZ) == 0
-                && Float.compare(weapon.yakkyouPositionX, yakkyouPositionX) == 0
-                && Float.compare(weapon.yakkyouPositionY, yakkyouPositionY) == 0
-                && Float.compare(weapon.yakkyouPositionZ, yakkyouPositionZ) == 0
-                && Float.compare(weapon.yakkyouSpeedX, yakkyouSpeedX) == 0
-                && Float.compare(weapon.yakkyouSpeedY, yakkyouSpeedY) == 0
-                && blazingMode == weapon.blazingMode
-                && Float.compare(weapon.size, size) == 0
-                && soundID == weapon.soundID
-                && soundVolume == weapon.soundVolume
-                && silencer == weapon.silencer
-                && changeWeapon == weapon.changeWeapon
-                && burst == weapon.burst
+                && Float.compare(weapon.muzzleFlashPositionX, muzzleFlashPositionX) == 0
+                && Float.compare(weapon.muzzleFlashPositionY, muzzleFlashPositionY) == 0
+                && Float.compare(weapon.muzzleFlashPositionZ, muzzleFlashPositionZ) == 0
+                && Float.compare(weapon.cartridgePositionX, cartridgePositionX) == 0
+                && Float.compare(weapon.cartridgePositionY, cartridgePositionY) == 0
+                && Float.compare(weapon.cartridgePositionZ, cartridgePositionZ) == 0
+                && Float.compare(weapon.cartridgeEjectionVelocityX, cartridgeEjectionVelocityX) == 0
+                && Float.compare(weapon.cartridgeEjectionVelocityY, cartridgeEjectionVelocityY) == 0
+                && rapidFire == weapon.rapidFire
+                && Float.compare(weapon.modelScale, modelScale) == 0
+                && fireSoundId == weapon.fireSoundId
+                && fireSoundVolume == weapon.fireSoundVolume
+                && suppressor == weapon.suppressor
+                && switchableWeaponId == weapon.switchableWeaponId
+                && numProjectiles == weapon.numProjectiles
                 && Objects.equals(name, weapon.name)
                 && Objects.equals(model, weapon.model)
                 && Objects.equals(texture, weapon.texture)
                 && scopeMode == weapon.scopeMode
-                && weaponP == weapon.weaponP;
+                && shootingStance == weapon.shootingStance;
     }
 
     @Override
@@ -181,35 +202,35 @@ public class Weapon {
                 name,
                 model,
                 texture,
-                attacks,
+                attackPower,
                 penetration,
-                blazings,
-                speed,
-                nbsMax,
-                reloads,
-                reaction,
+                fireInterval,
+                bulletSpeed,
+                magazineCapacity,
+                reloadTime,
+                recoil,
                 errorRangeMin,
                 errorRangeMax,
                 modelPositionX,
                 modelPositionY,
                 modelPositionZ,
-                flashPositionX,
-                flashPositionY,
-                flashPositionZ,
-                yakkyouPositionX,
-                yakkyouPositionY,
-                yakkyouPositionZ,
-                yakkyouSpeedX,
-                yakkyouSpeedY,
-                blazingMode,
+                muzzleFlashPositionX,
+                muzzleFlashPositionY,
+                muzzleFlashPositionZ,
+                cartridgePositionX,
+                cartridgePositionY,
+                cartridgePositionZ,
+                cartridgeEjectionVelocityX,
+                cartridgeEjectionVelocityY,
+                rapidFire,
                 scopeMode,
-                size,
-                soundID,
-                soundVolume,
-                silencer,
-                weaponP,
-                changeWeapon,
-                burst
+                modelScale,
+                fireSoundId,
+                fireSoundVolume,
+                suppressor,
+                shootingStance,
+                switchableWeaponId,
+                numProjectiles
         );
     }
 
@@ -228,8 +249,8 @@ public class Weapon {
         return this;
     }
 
-    public Weapon setAttacks(int attacks) {
-        this.attacks = attacks;
+    public Weapon setAttackPower(int attackPower) {
+        this.attackPower = attackPower;
         return this;
     }
 
@@ -238,28 +259,28 @@ public class Weapon {
         return this;
     }
 
-    public Weapon setBlazings(int blazings) {
-        this.blazings = blazings;
+    public Weapon setFireInterval(int fireInterval) {
+        this.fireInterval = fireInterval;
         return this;
     }
 
-    public Weapon setSpeed(int speed) {
-        this.speed = speed;
+    public Weapon setBulletSpeed(int bulletSpeed) {
+        this.bulletSpeed = bulletSpeed;
         return this;
     }
 
-    public Weapon setNbsMax(int nbsMax) {
-        this.nbsMax = nbsMax;
+    public Weapon setMagazineCapacity(int magazineCapacity) {
+        this.magazineCapacity = magazineCapacity;
         return this;
     }
 
-    public Weapon setReloads(int reloads) {
-        this.reloads = reloads;
+    public Weapon setReloadTime(int reloadTime) {
+        this.reloadTime = reloadTime;
         return this;
     }
 
-    public Weapon setReaction(int reaction) {
-        this.reaction = reaction;
+    public Weapon setRecoil(int recoil) {
+        this.recoil = recoil;
         return this;
     }
 
@@ -288,48 +309,48 @@ public class Weapon {
         return this;
     }
 
-    public Weapon setFlashPositionX(float flashPositionX) {
-        this.flashPositionX = flashPositionX;
+    public Weapon setMuzzleFlashPositionX(float muzzleFlashPositionX) {
+        this.muzzleFlashPositionX = muzzleFlashPositionX;
         return this;
     }
 
-    public Weapon setFlashPositionY(float flashPositionY) {
-        this.flashPositionY = flashPositionY;
+    public Weapon setMuzzleFlashPositionY(float muzzleFlashPositionY) {
+        this.muzzleFlashPositionY = muzzleFlashPositionY;
         return this;
     }
 
-    public Weapon setFlashPositionZ(float flashPositionZ) {
-        this.flashPositionZ = flashPositionZ;
+    public Weapon setMuzzleFlashPositionZ(float muzzleFlashPositionZ) {
+        this.muzzleFlashPositionZ = muzzleFlashPositionZ;
         return this;
     }
 
-    public Weapon setYakkyouPositionX(float yakkyouPositionX) {
-        this.yakkyouPositionX = yakkyouPositionX;
+    public Weapon setCartridgePositionX(float cartridgePositionX) {
+        this.cartridgePositionX = cartridgePositionX;
         return this;
     }
 
-    public Weapon setYakkyouPositionY(float yakkyouPositionY) {
-        this.yakkyouPositionY = yakkyouPositionY;
+    public Weapon setCartridgePositionY(float cartridgePositionY) {
+        this.cartridgePositionY = cartridgePositionY;
         return this;
     }
 
-    public Weapon setYakkyouPositionZ(float yakkyouPositionZ) {
-        this.yakkyouPositionZ = yakkyouPositionZ;
+    public Weapon setCartridgePositionZ(float cartridgePositionZ) {
+        this.cartridgePositionZ = cartridgePositionZ;
         return this;
     }
 
-    public Weapon setYakkyouSpeedX(float yakkyouSpeedX) {
-        this.yakkyouSpeedX = yakkyouSpeedX;
+    public Weapon setCartridgeEjectionVelocityX(float cartridgeEjectionVelocityX) {
+        this.cartridgeEjectionVelocityX = cartridgeEjectionVelocityX;
         return this;
     }
 
-    public Weapon setYakkyouSpeedY(float yakkyouSpeedY) {
-        this.yakkyouSpeedY = yakkyouSpeedY;
+    public Weapon setCartridgeEjectionVelocityY(float cartridgeEjectionVelocityY) {
+        this.cartridgeEjectionVelocityY = cartridgeEjectionVelocityY;
         return this;
     }
 
-    public Weapon setBlazingMode(boolean blazingMode) {
-        this.blazingMode = blazingMode;
+    public Weapon setRapidFire(boolean rapidFire) {
+        this.rapidFire = rapidFire;
         return this;
     }
 
@@ -338,38 +359,38 @@ public class Weapon {
         return this;
     }
 
-    public Weapon setSize(float size) {
-        this.size = size;
+    public Weapon setModelScale(float modelScale) {
+        this.modelScale = modelScale;
         return this;
     }
 
-    public Weapon setSoundID(int soundID) {
-        this.soundID = soundID;
+    public Weapon setFireSoundId(int fireSoundId) {
+        this.fireSoundId = fireSoundId;
         return this;
     }
 
-    public Weapon setSoundVolume(int soundVolume) {
-        this.soundVolume = soundVolume;
+    public Weapon setFireSoundVolume(int fireSoundVolume) {
+        this.fireSoundVolume = fireSoundVolume;
         return this;
     }
 
-    public Weapon setSilencer(boolean silencer) {
-        this.silencer = silencer;
+    public Weapon setSuppressor(boolean suppressor) {
+        this.suppressor = suppressor;
         return this;
     }
 
-    public Weapon setWeaponP(ShootingStance weaponP) {
-        this.weaponP = weaponP;
+    public Weapon setShootingStance(ShootingStance shootingStance) {
+        this.shootingStance = shootingStance;
         return this;
     }
 
-    public Weapon setChangeWeapon(int changeWeapon) {
-        this.changeWeapon = changeWeapon;
+    public Weapon setSwitchableWeaponId(int switchableWeaponId) {
+        this.switchableWeaponId = switchableWeaponId;
         return this;
     }
 
-    public Weapon setBurst(int burst) {
-        this.burst = burst;
+    public Weapon setNumProjectiles(int numProjectiles) {
+        this.numProjectiles = numProjectiles;
         return this;
     }
 }

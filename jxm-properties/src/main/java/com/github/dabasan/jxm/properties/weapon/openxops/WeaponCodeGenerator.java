@@ -54,7 +54,7 @@ public class WeaponCodeGenerator {
             sb.append("\n");
             //Attacks
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.attacks,
-                    weapon.attacks));
+                    weapon.attackPower));
             sb.append("\n");
             //Penetration
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.penetration,
@@ -62,23 +62,23 @@ public class WeaponCodeGenerator {
             sb.append("\n");
             //Blazings
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.blazings,
-                    weapon.blazings));
+                    weapon.fireInterval));
             sb.append("\n");
             //Speed
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.speed,
-                    weapon.speed));
+                    weapon.bulletSpeed));
             sb.append("\n");
             //NbsMax
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.nbsMax,
-                    weapon.nbsMax));
+                    weapon.magazineCapacity));
             sb.append("\n");
             //Reloads
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.reloads,
-                    weapon.reloads));
+                    weapon.reloadTime));
             sb.append("\n");
             //Reaction
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.reaction,
-                    weapon.reaction));
+                    weapon.recoil));
             sb.append("\n");
             //ErrorRangeMin
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
@@ -102,39 +102,39 @@ public class WeaponCodeGenerator {
             sb.append("\n");
             //FlashPositionX
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.flashPositionX, weapon.flashPositionX));
+                    settings.flashPositionX, weapon.muzzleFlashPositionX));
             sb.append("\n");
             //FlashPositionY
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.flashPositionY, weapon.flashPositionY));
+                    settings.flashPositionY, weapon.muzzleFlashPositionY));
             sb.append("\n");
             //FlashPositionZ
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.flashPositionZ, weapon.flashPositionZ));
+                    settings.flashPositionZ, weapon.muzzleFlashPositionZ));
             sb.append("\n");
             //YakkyouPositionX
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.yakkyouPositionX, weapon.yakkyouPositionX));
+                    settings.yakkyouPositionX, weapon.cartridgePositionX));
             sb.append("\n");
             //YakkyouPositionY
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.yakkyouPositionY, weapon.yakkyouPositionY));
+                    settings.yakkyouPositionY, weapon.cartridgePositionY));
             sb.append("\n");
             //YakkyouPositionZ
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.yakkyouPositionZ, weapon.yakkyouPositionZ));
+                    settings.yakkyouPositionZ, weapon.cartridgePositionZ));
             sb.append("\n");
             //YakkyouSpeedX
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.yakkyouSpeedX, weapon.yakkyouSpeedX));
+                    settings.yakkyouSpeedX, weapon.cartridgeEjectionVelocityX));
             sb.append("\n");
             //YakkyouSpeedY
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i,
-                    settings.yakkyouSpeedY, weapon.yakkyouSpeedY));
+                    settings.yakkyouSpeedY, weapon.cartridgeEjectionVelocityY));
             sb.append("\n");
             //BlazingMode
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.blazingMode,
-                    weapon.blazingMode));
+                    weapon.rapidFire));
             sb.append("\n");
             //ScopeMode
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.scopeMode,
@@ -142,10 +142,10 @@ public class WeaponCodeGenerator {
             sb.append("\n");
             //Size
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.size,
-                    weapon.size));
+                    weapon.modelScale));
             sb.append("\n");
             //SoundID
-            int soundID = weapon.soundID;
+            int soundID = weapon.fireSoundId;
             int openXOPSSoundID = WeaponSpecifierConverter
                     .getOpenXOPSSoundIDFromXOPSSoundID(soundID);
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.soundID,
@@ -153,23 +153,23 @@ public class WeaponCodeGenerator {
             sb.append("\n");
             //SoundVolume
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.soundVolume,
-                    weapon.soundVolume));
+                    weapon.fireSoundVolume));
             sb.append("\n");
             //Silencer
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.silencer,
-                    weapon.silencer));
+                    weapon.suppressor));
             sb.append("\n");
             //WeaponP
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weaponP,
-                    weapon.weaponP.ordinal()));
+                    weapon.shootingStance.ordinal()));
             sb.append("\n");
             //ChangeWeapon
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.changeWeapon,
-                    weapon.changeWeapon));
+                    weapon.switchableWeaponId));
             sb.append("\n");
             //Burst
             sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.burst,
-                    weapon.burst));
+                    weapon.numProjectiles));
             sb.append("\n");
         }
 

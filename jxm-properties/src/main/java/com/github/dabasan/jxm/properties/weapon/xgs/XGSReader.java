@@ -26,25 +26,25 @@ class XGSReader {
             var weapon = new Weapon();
 
             //Attacks
-            weapon.attacks = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.attackPower = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //Penetration
             weapon.penetration = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //Blazings
-            weapon.blazings = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.fireInterval = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //Speed
-            weapon.speed = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.bulletSpeed = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //NbsMax
-            weapon.nbsMax = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.magazineCapacity = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //Reloads
-            weapon.reloads = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.reloadTime = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //Reaction
-            weapon.reaction = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.recoil = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //ErrorRangeMin
             weapon.errorRangeMin = ByteFunctions.getShortFromBinLE(bin, pos);
@@ -62,32 +62,32 @@ class XGSReader {
             weapon.modelPositionZ = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //FlashPositionX
-            weapon.flashPositionX = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.muzzleFlashPositionX = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //FlashPositionY
-            weapon.flashPositionY = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.muzzleFlashPositionY = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //FlashPositionZ
-            weapon.flashPositionZ = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.muzzleFlashPositionZ = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //YakkyouPositionX
-            weapon.yakkyouPositionX = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.cartridgePositionX = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //YakkyouPositionY
-            weapon.yakkyouPositionY = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.cartridgePositionY = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //YakkyouPositionZ
-            weapon.yakkyouPositionZ = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.cartridgePositionZ = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //WeaponP
             int shootingStanceSpc = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
-            weapon.weaponP = WeaponBinEnumConverter
+            weapon.shootingStance = WeaponBinEnumConverter
                     .getShootingStanceFromBinSpecifier(shootingStanceSpc);
             //BlazingMode
             int blazingModeSpc = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
-            weapon.blazingMode = blazingModeSpc == 0;
+            weapon.rapidFire = blazingModeSpc == 0;
             //ScopeMode
             int scopeModeSpc = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
@@ -105,35 +105,35 @@ class XGSReader {
                     .getModelTypeFromBinSpecifier(modelTypeSpc);
             weapon.model = ModelFilepaths.getModelFilepath(modelType.ordinal());
             //Size
-            weapon.size = ByteFunctions.getShortFromBinLE(bin, pos) * 0.1f;
+            weapon.modelScale = ByteFunctions.getShortFromBinLE(bin, pos) * 0.1f;
             pos += 2;
             //YakkyouSpeedX
-            weapon.yakkyouSpeedX = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.cartridgeEjectionVelocityX = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //YakkyouSpeedY
-            weapon.yakkyouSpeedY = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.cartridgeEjectionVelocityY = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //SoundID
-            weapon.soundID = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.fireSoundId = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //SoundVolume
-            weapon.soundVolume = ByteFunctions.getShortFromBinLE(bin, pos);
+            weapon.fireSoundVolume = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
             //Silencer
             int silencerSpc = ByteFunctions.getShortFromBinLE(bin, pos);
             pos += 2;
-            weapon.silencer = silencerSpc != 0;
+            weapon.suppressor = silencerSpc != 0;
 
             //Change weapon
             if (i == 4) {
-                weapon.changeWeapon = 16;
+                weapon.switchableWeaponId = 16;
             } else if (i == 16) {
-                weapon.changeWeapon = 4;
+                weapon.switchableWeaponId = 4;
             }
 
             //Burst
             if (i == 19) {
-                weapon.burst = 6;
+                weapon.numProjectiles = 6;
             }
 
             weapons[i] = weapon;
