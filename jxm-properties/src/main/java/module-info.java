@@ -1,4 +1,4 @@
-module com.github.dabasan.jxm.properties {
+module com.github.maeda6uiui.jxm.properties {
     exports com.github.maeda6uiui.jxm.properties.character;
     exports com.github.maeda6uiui.jxm.properties.character.openxops;
     exports com.github.maeda6uiui.jxm.properties.character.xcs;
@@ -12,5 +12,5 @@ module com.github.dabasan.jxm.properties {
     exports com.github.maeda6uiui.jxm.properties.xops;
 
     requires transitive org.slf4j;
-    requires com.github.dabasan.jxm.bintools;
+    requires com.github.maeda6uiui.jxm.bintools;
 }
