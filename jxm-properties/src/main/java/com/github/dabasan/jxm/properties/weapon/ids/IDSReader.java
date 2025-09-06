@@ -22,55 +22,55 @@ class IDSReader {
         byte[] bin = is.readAllBytes();
         pos = 0x0000000A;
 
-        weapon.attackPower = this.readShortAndIncrementPos(bin);
-        weapon.penetration = this.readShortAndIncrementPos(bin);
-        weapon.fireInterval = this.readShortAndIncrementPos(bin);
-        weapon.bulletSpeed = this.readShortAndIncrementPos(bin);
-        weapon.magazineCapacity = this.readShortAndIncrementPos(bin);
-        weapon.reloadTime = this.readShortAndIncrementPos(bin);
-        weapon.recoil = this.readShortAndIncrementPos(bin);
-        weapon.errorRangeMin = this.readShortAndIncrementPos(bin);
-        weapon.errorRangeMax = this.readShortAndIncrementPos(bin);
-        weapon.modelPositionX = this.readShortAndIncrementPos(bin);
-        weapon.modelPositionY = this.readShortAndIncrementPos(bin);
-        weapon.modelPositionZ = this.readShortAndIncrementPos(bin);
-        weapon.muzzleFlashPositionX = this.readShortAndIncrementPos(bin);
-        weapon.muzzleFlashPositionY = this.readShortAndIncrementPos(bin);
-        weapon.muzzleFlashPositionZ = this.readShortAndIncrementPos(bin);
-        weapon.cartridgeEjectionPositionX = this.readShortAndIncrementPos(bin);
-        weapon.cartridgeEjectionPositionY = this.readShortAndIncrementPos(bin);
-        weapon.cartridgeEjectionPositionZ = this.readShortAndIncrementPos(bin);
+        weapon.attackPower = this.getShortAndIncrementPos(bin);
+        weapon.penetration = this.getShortAndIncrementPos(bin);
+        weapon.fireInterval = this.getShortAndIncrementPos(bin);
+        weapon.bulletSpeed = this.getShortAndIncrementPos(bin);
+        weapon.magazineCapacity = this.getShortAndIncrementPos(bin);
+        weapon.reloadTime = this.getShortAndIncrementPos(bin);
+        weapon.recoil = this.getShortAndIncrementPos(bin);
+        weapon.errorRangeMin = this.getShortAndIncrementPos(bin);
+        weapon.errorRangeMax = this.getShortAndIncrementPos(bin);
+        weapon.modelPositionX = this.getShortAndIncrementPos(bin);
+        weapon.modelPositionY = this.getShortAndIncrementPos(bin);
+        weapon.modelPositionZ = this.getShortAndIncrementPos(bin);
+        weapon.muzzleFlashPositionX = this.getShortAndIncrementPos(bin);
+        weapon.muzzleFlashPositionY = this.getShortAndIncrementPos(bin);
+        weapon.muzzleFlashPositionZ = this.getShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionPositionX = this.getShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionPositionY = this.getShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionPositionZ = this.getShortAndIncrementPos(bin);
 
-        int shootingStanceSpc = this.readShortAndIncrementPos(bin);
+        int shootingStanceSpc = this.getShortAndIncrementPos(bin);
         weapon.shootingStance = WeaponBinEnumConverter.getShootingStanceFromBinSpecifier(shootingStanceSpc);
 
-        int rapidFireSpc = this.readShortAndIncrementPos(bin);
+        int rapidFireSpc = this.getShortAndIncrementPos(bin);
         weapon.rapidFire = rapidFireSpc == 0;
 
-        int scopeModeSpc = this.readShortAndIncrementPos(bin);
+        int scopeModeSpc = this.getShortAndIncrementPos(bin);
         weapon.scopeMode = WeaponBinEnumConverter.getScopeModeFromBinSpecifier(scopeModeSpc);
 
-        int textureTypeSpc = this.readShortAndIncrementPos(bin);
+        int textureTypeSpc = this.getShortAndIncrementPos(bin);
         WeaponTextureType textureType = WeaponBinEnumConverter.getTextureTypeFromBinSpecifier(textureTypeSpc);
         weapon.texture = TextureFilepaths.getTextureFilepath(textureType.ordinal());
 
-        int modelTypeSpc = this.readShortAndIncrementPos(bin);
+        int modelTypeSpc = this.getShortAndIncrementPos(bin);
         WeaponModelType modelType = WeaponBinEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
         weapon.model = ModelFilepaths.getModelFilepath(modelType.ordinal());
 
-        weapon.modelScale = this.readShortAndIncrementPos(bin) * 0.1f;
-        weapon.cartridgeEjectionVelocityX = this.readShortAndIncrementPos(bin);
-        weapon.cartridgeEjectionVelocityY = this.readShortAndIncrementPos(bin);
-        weapon.fireSoundId = this.readShortAndIncrementPos(bin);
-        weapon.fireSoundVolume = this.readShortAndIncrementPos(bin);
+        weapon.modelScale = this.getShortAndIncrementPos(bin) * 0.1f;
+        weapon.cartridgeEjectionVelocityX = this.getShortAndIncrementPos(bin);
+        weapon.cartridgeEjectionVelocityY = this.getShortAndIncrementPos(bin);
+        weapon.fireSoundId = this.getShortAndIncrementPos(bin);
+        weapon.fireSoundVolume = this.getShortAndIncrementPos(bin);
 
-        int suppressorSpc = this.readShortAndIncrementPos(bin);
+        int suppressorSpc = this.getShortAndIncrementPos(bin);
         weapon.suppressor = suppressorSpc != 0;
 
         weapon.name = this.getNameFromBin(bin, pos);
     }
 
-    private int readShortAndIncrementPos(byte[] bin) {
+    private int getShortAndIncrementPos(byte[] bin) {
         int ret = getShortFromBinLE(bin, pos);
         pos += 2;
         return ret;
