@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -32,7 +33,10 @@ public class CharacterCodeParserTest {
             var manipulator = new XCSManipulator("./TestData/Character/characters.xcs");
             expectedCharacters = manipulator.getCharacters();
 
-            codeLines = Files.readAllLines(Paths.get("./TestData/character/character_code.txt"));
+            codeLines = Files.readAllLines(
+                    Paths.get("./TestData/Character/character_code.txt"),
+                    StandardCharsets.UTF_8
+            );
         });
     }
 
