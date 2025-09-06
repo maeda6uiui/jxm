@@ -32,7 +32,7 @@ public class CharacterCodeParserTest {
             var manipulator = new XCSManipulator("./TestData/Character/characters.xcs");
             expectedCharacters = manipulator.getCharacters();
 
-            codeLines = Files.readAllLines(Paths.get("./TestData/character/character_code.txt"));
+            codeLines = Files.readAllLines(Paths.get("./TestData/Character/character_code.txt"));
         });
     }
 
