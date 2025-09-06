@@ -16,19 +16,18 @@ class BINCharacterWriter {
 
     public void write(byte[] bin, Character[] characters, int dataStartPos) {
         pos = dataStartPos;
-        int numCharacters = characters.length;
-        for (int i = 0; i < numCharacters; i++) {
-            this.setShortAndIncrementPos(bin, characters[i].texture.ordinal());
+        for (Character character : characters) {
+            this.setShortAndIncrementPos(bin, character.texture.ordinal());
 
-            CharacterModelType modelType = characters[i].model;
+            CharacterModelType modelType = character.model;
             int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
             this.setShortAndIncrementPos(bin, modelTypeSpc);
 
-            this.setShortAndIncrementPos(bin, characters[i].hp);
-            this.setShortAndIncrementPos(bin, characters[i].aiLevel.ordinal());
-            this.setShortAndIncrementPos(bin, characters[i].weapons.get(0));
-            this.setShortAndIncrementPos(bin, characters[i].weapons.get(1));
-            this.setShortAndIncrementPos(bin, characters[i].type.ordinal());
+            this.setShortAndIncrementPos(bin, character.hp);
+            this.setShortAndIncrementPos(bin, character.aiLevel.ordinal());
+            this.setShortAndIncrementPos(bin, character.weapons.get(0));
+            this.setShortAndIncrementPos(bin, character.weapons.get(1));
+            this.setShortAndIncrementPos(bin, character.type.ordinal());
         }
     }
 
