@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class CharacterCodeGenerator {
     private final CharacterVariableNameSettings settings;
+    private StringBuilder sb;
 
     /**
      * Creates a code generator.
@@ -29,6 +30,11 @@ public class CharacterCodeGenerator {
         this.settings = settings;
     }
 
+    private void appendToBuffer(String arrayName, int index, String fieldName, Object value) {
+        sb.append(CPPArrayStringGenerator.generate(arrayName, index, fieldName, value));
+        sb.append("\n");
+    }
+
     /**
      * Generates C++ code containing character data.
      *
@@ -36,42 +42,24 @@ public class CharacterCodeGenerator {
      * @return C++ code
      */
     public String generate(List<Character> characters) {
-        var sb = new StringBuilder();
+        sb = new StringBuilder();
         for (int i = 0; i < characters.size(); i++) {
             var character = characters.get(i);
 
-            //Texture
             int openXOPSTextureID = CharacterSpecifierConverter
                     .getOpenXOPSTextureIDFromXOPSTextureType(character.texture);
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.texture,
-                    openXOPSTextureID));
-            sb.append("\n");
-            //Model
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.model,
-                    character.model.ordinal()));
-            sb.append("\n");
-            //HP
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.hp,
-                    character.hp));
-            sb.append("\n");
-            //AILevel
+            this.appendToBuffer(settings.arrayName, i, settings.texture, openXOPSTextureID);
+
+            this.appendToBuffer(settings.arrayName, i, settings.model, character.model.ordinal());
+            this.appendToBuffer(settings.arrayName, i, settings.hp, character.hp);
+
             int openXOPSAILevel = CharacterSpecifierConverter
                     .getOpenXOPSAILevelFromXOPSAILevel(character.aiLevel);
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.aiLevel,
-                    openXOPSAILevel));
-            sb.append("\n");
-            //Weapon[0]
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weapon0,
-                    character.weapons.get(0)));
-            sb.append("\n");
-            //Weapon[1]
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.weapon1,
-                    character.weapons.get(1)));
-            sb.append("\n");
-            //Type
-            sb.append(CPPArrayStringGenerator.generate(settings.arrayName, i, settings.type,
-                    character.type.ordinal()));
-            sb.append("\n");
+            this.appendToBuffer(settings.arrayName, i, settings.aiLevel, openXOPSAILevel);
+
+            this.appendToBuffer(settings.arrayName, i, settings.weapon0, character.weapons.get(0));
+            this.appendToBuffer(settings.arrayName, i, settings.weapon1, character.weapons.get(1));
+            this.appendToBuffer(settings.arrayName, i, settings.type, character.type.ordinal());
         }
 
         return sb.toString();
