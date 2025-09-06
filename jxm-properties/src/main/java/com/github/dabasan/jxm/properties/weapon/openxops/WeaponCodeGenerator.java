@@ -64,9 +64,9 @@ public class WeaponCodeGenerator {
             this.appendToBuffer(settings.arrayName, i, settings.muzzleFlashPositionX, weapon.muzzleFlashPositionX);
             this.appendToBuffer(settings.arrayName, i, settings.muzzleFlashPositionY, weapon.muzzleFlashPositionY);
             this.appendToBuffer(settings.arrayName, i, settings.muzzleFlashPositionZ, weapon.muzzleFlashPositionZ);
-            this.appendToBuffer(settings.arrayName, i, settings.cartridgePositionX, weapon.cartridgePositionX);
-            this.appendToBuffer(settings.arrayName, i, settings.cartridgePositionY, weapon.cartridgePositionY);
-            this.appendToBuffer(settings.arrayName, i, settings.cartridgePositionZ, weapon.cartridgePositionZ);
+            this.appendToBuffer(settings.arrayName, i, settings.cartridgeEjectionPositionX, weapon.cartridgeEjectionPositionX);
+            this.appendToBuffer(settings.arrayName, i, settings.cartridgeEjectionPositionY, weapon.cartridgeEjectionPositionY);
+            this.appendToBuffer(settings.arrayName, i, settings.cartridgeEjectionPositionZ, weapon.cartridgeEjectionPositionZ);
             this.appendToBuffer(settings.arrayName, i, settings.cartridgeEjectionVelocityX, weapon.cartridgeEjectionVelocityX);
             this.appendToBuffer(settings.arrayName, i, settings.cartridgeEjectionVelocityY, weapon.cartridgeEjectionVelocityY);
             this.appendToBuffer(settings.arrayName, i, settings.rapidFire, weapon.rapidFire);

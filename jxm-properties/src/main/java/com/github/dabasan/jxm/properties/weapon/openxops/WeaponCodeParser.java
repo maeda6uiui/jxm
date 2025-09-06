@@ -237,7 +237,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.muzzleFlashPositionZ = flashPositionZ;
-            } else if (parsed[2].equals(settings.cartridgePositionX)) {
+            } else if (parsed[2].equals(settings.cartridgeEjectionPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouPositionX;
@@ -248,8 +248,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.cartridgePositionX = yakkyouPositionX;
-            } else if (parsed[2].equals(settings.cartridgePositionY)) {
+                weapon.cartridgeEjectionPositionX = yakkyouPositionX;
+            } else if (parsed[2].equals(settings.cartridgeEjectionPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouPositionY;
@@ -260,8 +260,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.cartridgePositionY = yakkyouPositionY;
-            } else if (parsed[2].equals(settings.cartridgePositionZ)) {
+                weapon.cartridgeEjectionPositionY = yakkyouPositionY;
+            } else if (parsed[2].equals(settings.cartridgeEjectionPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float yakkyouPositionZ;
@@ -272,7 +272,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.cartridgePositionZ = yakkyouPositionZ;
+                weapon.cartridgeEjectionPositionZ = yakkyouPositionZ;
             } else if (parsed[2].equals(settings.cartridgeEjectionVelocityX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 

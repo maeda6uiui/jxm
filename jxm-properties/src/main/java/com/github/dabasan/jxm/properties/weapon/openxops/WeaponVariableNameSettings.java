@@ -26,9 +26,9 @@ public class WeaponVariableNameSettings {
     public String muzzleFlashPositionX;
     public String muzzleFlashPositionY;
     public String muzzleFlashPositionZ;
-    public String cartridgePositionX;
-    public String cartridgePositionY;
-    public String cartridgePositionZ;
+    public String cartridgeEjectionPositionX;
+    public String cartridgeEjectionPositionY;
+    public String cartridgeEjectionPositionZ;
     public String cartridgeEjectionVelocityX;
     public String cartridgeEjectionVelocityY;
     public String rapidFire;
@@ -65,9 +65,9 @@ public class WeaponVariableNameSettings {
         muzzleFlashPositionX = "flashx";
         muzzleFlashPositionY = "flashy";
         muzzleFlashPositionZ = "flashz";
-        cartridgePositionX = "yakkyou_px";
-        cartridgePositionY = "yakkyou_py";
-        cartridgePositionZ = "yakkyou_pz";
+        cartridgeEjectionPositionX = "yakkyou_px";
+        cartridgeEjectionPositionY = "yakkyou_py";
+        cartridgeEjectionPositionZ = "yakkyou_pz";
         cartridgeEjectionVelocityX = "yakkyou_sx";
         cartridgeEjectionVelocityY = "yakkyou_sy";
         rapidFire = "blazingmode";
