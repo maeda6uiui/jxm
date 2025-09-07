@@ -1,8 +1,8 @@
 package com.github.dabasan.jxm.properties.character.xcs;
 
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -17,7 +17,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBi
  * @author maeda6uiui
  */
 class XCSWriter {
-    public void write(OutputStream os, Character[] characters) throws IOException {
+    public void write(OutputStream os, JXMCharacter[] characters) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) 0x58);//X
@@ -33,7 +33,7 @@ class XCSWriter {
         bin.add((byte) 0x07);
         bin.add((byte) 0x00);
 
-        for (Character character : characters) {
+        for (JXMCharacter character : characters) {
             addShortToBinLE(bin, (short) character.texture.ordinal());
 
             CharacterModelType modelType = character.model;

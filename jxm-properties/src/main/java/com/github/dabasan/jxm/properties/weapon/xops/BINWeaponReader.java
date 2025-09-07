@@ -12,15 +12,15 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
  * @author maeda6uiui
  */
 class BINWeaponReader {
-    private final Weapon[] weapons;
+    private final JXMWeapon[] weapons;
     private int pos;
 
     public BINWeaponReader(byte[] bin, int numWeapons, int dataStartPos, int nameStartPos) {
-        weapons = new Weapon[numWeapons];
+        weapons = new JXMWeapon[numWeapons];
 
         pos = dataStartPos;
         for (int i = 0; i < numWeapons; i++) {
-            var weapon = new Weapon();
+            var weapon = new JXMWeapon();
 
             weapon.attackPower = this.getShortAndIncrementPos(bin);
             weapon.penetration = this.getShortAndIncrementPos(bin);
@@ -120,7 +120,7 @@ class BINWeaponReader {
         return name.substring(0, firstNullPos);
     }
 
-    public Weapon[] getWeaponData() {
+    public JXMWeapon[] getWeaponData() {
         return weapons;
     }
 }

@@ -15,7 +15,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addShortToBinLE;
  * @author maeda6uiui
  */
 class XGSWriter {
-    public void write(OutputStream os, Weapon[] weapons) throws IOException {
+    public void write(OutputStream os, JXMWeapon[] weapons) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) 0x58);//X
@@ -33,7 +33,7 @@ class XGSWriter {
         bin.add((byte) 0x08);
         bin.add((byte) 0x00);
 
-        for (Weapon weapon : weapons) {
+        for (JXMWeapon weapon : weapons) {
             addShortToBinLE(bin, (short) weapon.attackPower);
             addShortToBinLE(bin, (short) weapon.penetration);
             addShortToBinLE(bin, (short) weapon.fireInterval);

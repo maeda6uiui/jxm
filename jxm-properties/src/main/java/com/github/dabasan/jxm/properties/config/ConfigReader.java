@@ -10,10 +10,10 @@ import java.util.function.Function;
  * @author maeda6uiui
  */
 class ConfigReader {
-    private final Config config;
+    private final JXMConfig config;
 
     public ConfigReader(InputStream is) throws IOException {
-        config = new Config();
+        config = new JXMConfig();
 
         //Read all bytes from a stream
         byte[] bin = is.readAllBytes();
@@ -73,7 +73,7 @@ class ConfigReader {
         return name.substring(0, firstNullPos);
     }
 
-    public Config getConfig() {
+    public JXMConfig getConfig() {
         return config;
     }
 }

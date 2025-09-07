@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author maeda6uiui
  */
-public class Character {
+public class JXMCharacter {
     public CharacterTextureType texture;
     public CharacterModelType model;
     public int hp;
@@ -21,7 +21,7 @@ public class Character {
     /**
      * Creates a character.
      */
-    public Character() {
+    public JXMCharacter() {
         texture = CharacterTextureType.SOLDIER_BLACK;
         model = CharacterModelType.MALE;
         hp = 100;
@@ -35,7 +35,7 @@ public class Character {
      *
      * @param character Character
      */
-    public Character(Character character) {
+    public JXMCharacter(JXMCharacter character) {
         this.texture = character.texture;
         this.model = character.model;
         this.hp = character.hp;
@@ -54,7 +54,7 @@ public class Character {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Character character = (Character) o;
+        JXMCharacter character = (JXMCharacter) o;
         return hp == character.hp
                 && texture == character.texture
                 && model == character.model
@@ -68,32 +68,32 @@ public class Character {
         return Objects.hash(texture, model, hp, aiLevel, weapons, type);
     }
 
-    public Character setTexture(CharacterTextureType texture) {
+    public JXMCharacter setTexture(CharacterTextureType texture) {
         this.texture = texture;
         return this;
     }
 
-    public Character setModel(CharacterModelType model) {
+    public JXMCharacter setModel(CharacterModelType model) {
         this.model = model;
         return this;
     }
 
-    public Character setHp(int hp) {
+    public JXMCharacter setHp(int hp) {
         this.hp = hp;
         return this;
     }
 
-    public Character setAiLevel(AILevel aiLevel) {
+    public JXMCharacter setAiLevel(AILevel aiLevel) {
         this.aiLevel = aiLevel;
         return this;
     }
 
-    public Character setWeapons(List<Integer> weapons) {
+    public JXMCharacter setWeapons(List<Integer> weapons) {
         this.weapons = weapons;
         return this;
     }
 
-    public Character setType(CharacterType type) {
+    public JXMCharacter setType(CharacterType type) {
         this.type = type;
         return this;
     }

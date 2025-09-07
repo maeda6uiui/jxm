@@ -12,9 +12,9 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.setShortToBinLE;
 class BINWeaponWriter {
     private int pos;
 
-    public void write(byte[] bin, Weapon[] weapons, int dataStartPos, int nameStartPos) {
+    public void write(byte[] bin, JXMWeapon[] weapons, int dataStartPos, int nameStartPos) {
         pos = dataStartPos;
-        for (Weapon weapon : weapons) {
+        for (JXMWeapon weapon : weapons) {
             this.setShortAndIncrementPos(bin, weapon.attackPower);
             this.setShortAndIncrementPos(bin, weapon.penetration);
             this.setShortAndIncrementPos(bin, weapon.fireInterval);

@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.weapon.xgs;
 
-import com.github.dabasan.jxm.properties.weapon.Weapon;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,13 +15,13 @@ public class XGSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_WEAPONS = 23;
-    private Weapon[] weapons;
+    private JXMWeapon[] weapons;
 
     /**
      * Creates a XGS manipulator.
      */
     public XGSManipulator() {
-        weapons = new Weapon[NUM_WEAPONS];
+        weapons = new JXMWeapon[NUM_WEAPONS];
     }
 
     private void readConstructorBase(InputStream is) throws IOException {
@@ -68,7 +68,7 @@ public class XGSManipulator {
      *
      * @return array containing weapon data
      */
-    public Weapon[] getWeapons() {
+    public JXMWeapon[] getWeapons() {
         return weapons;
     }
 
@@ -77,7 +77,7 @@ public class XGSManipulator {
      *
      * @param weapons array containing weapon data
      */
-    public void setWeapons(Weapon[] weapons) {
+    public void setWeapons(JXMWeapon[] weapons) {
         if (weapons.length != NUM_WEAPONS) {
             logger.warn("Invalid number of data contained in the array. number={}", weapons.length);
             return;

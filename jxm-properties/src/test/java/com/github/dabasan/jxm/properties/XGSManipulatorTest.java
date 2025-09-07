@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.weapon.Weapon;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class XGSManipulatorTest {
     private static final String TARGET_DIR = "./TestData/Weapon";
     private XGSManipulator manipulator;
-    private Weapon[] expectedWeapons;
+    private JXMWeapon[] expectedWeapons;
 
     @BeforeAll
     public void loadWeapons() {
@@ -34,15 +34,15 @@ public class XGSManipulatorTest {
 
     @Test
     public void testWeapons() {
-        Weapon[] actualWeapons = manipulator.getWeapons();
+        JXMWeapon[] actualWeapons = manipulator.getWeapons();
         assertArrayEquals(expectedWeapons, actualWeapons);
     }
 
     @Test
     public void testUpdateWeapons() {
-        Weapon[] currentWeapons = manipulator.getWeapons();
+        JXMWeapon[] currentWeapons = manipulator.getWeapons();
 
-        var newWeapons = new Weapon[currentWeapons.length];
+        var newWeapons = new JXMWeapon[currentWeapons.length];
         for (int i = 0; i < currentWeapons.length; i++) {
             newWeapons[i] = TestUtils.generateRandomWeapon();
         }

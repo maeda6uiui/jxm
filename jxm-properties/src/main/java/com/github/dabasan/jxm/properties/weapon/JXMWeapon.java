@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author maeda6uiui
  */
-public class Weapon {
+public class JXMWeapon {
     public String name;
     public String model;
     public String texture;
@@ -44,7 +44,7 @@ public class Weapon {
     /**
      * Creates a weapon.
      */
-    public Weapon() {
+    public JXMWeapon() {
         name = "";
         model = "";
         texture = "";
@@ -84,7 +84,7 @@ public class Weapon {
      *
      * @param weapon Weapon
      */
-    public Weapon(Weapon weapon) {
+    public JXMWeapon(JXMWeapon weapon) {
         this.name = weapon.name;
         this.model = weapon.model;
         this.texture = weapon.texture;
@@ -161,7 +161,7 @@ public class Weapon {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Weapon weapon = (Weapon) o;
+        JXMWeapon weapon = (JXMWeapon) o;
         return attackPower == weapon.attackPower
                 && penetration == weapon.penetration
                 && fireInterval == weapon.fireInterval
@@ -234,162 +234,162 @@ public class Weapon {
         );
     }
 
-    public Weapon setName(String name) {
+    public JXMWeapon setName(String name) {
         this.name = name;
         return this;
     }
 
-    public Weapon setModel(String model) {
+    public JXMWeapon setModel(String model) {
         this.model = model;
         return this;
     }
 
-    public Weapon setTexture(String texture) {
+    public JXMWeapon setTexture(String texture) {
         this.texture = texture;
         return this;
     }
 
-    public Weapon setAttackPower(int attackPower) {
+    public JXMWeapon setAttackPower(int attackPower) {
         this.attackPower = attackPower;
         return this;
     }
 
-    public Weapon setPenetration(int penetration) {
+    public JXMWeapon setPenetration(int penetration) {
         this.penetration = penetration;
         return this;
     }
 
-    public Weapon setFireInterval(int fireInterval) {
+    public JXMWeapon setFireInterval(int fireInterval) {
         this.fireInterval = fireInterval;
         return this;
     }
 
-    public Weapon setBulletSpeed(int bulletSpeed) {
+    public JXMWeapon setBulletSpeed(int bulletSpeed) {
         this.bulletSpeed = bulletSpeed;
         return this;
     }
 
-    public Weapon setMagazineCapacity(int magazineCapacity) {
+    public JXMWeapon setMagazineCapacity(int magazineCapacity) {
         this.magazineCapacity = magazineCapacity;
         return this;
     }
 
-    public Weapon setReloadTime(int reloadTime) {
+    public JXMWeapon setReloadTime(int reloadTime) {
         this.reloadTime = reloadTime;
         return this;
     }
 
-    public Weapon setRecoil(int recoil) {
+    public JXMWeapon setRecoil(int recoil) {
         this.recoil = recoil;
         return this;
     }
 
-    public Weapon setErrorRangeMin(int errorRangeMin) {
+    public JXMWeapon setErrorRangeMin(int errorRangeMin) {
         this.errorRangeMin = errorRangeMin;
         return this;
     }
 
-    public Weapon setErrorRangeMax(int errorRangeMax) {
+    public JXMWeapon setErrorRangeMax(int errorRangeMax) {
         this.errorRangeMax = errorRangeMax;
         return this;
     }
 
-    public Weapon setModelPositionX(float modelPositionX) {
+    public JXMWeapon setModelPositionX(float modelPositionX) {
         this.modelPositionX = modelPositionX;
         return this;
     }
 
-    public Weapon setModelPositionY(float modelPositionY) {
+    public JXMWeapon setModelPositionY(float modelPositionY) {
         this.modelPositionY = modelPositionY;
         return this;
     }
 
-    public Weapon setModelPositionZ(float modelPositionZ) {
+    public JXMWeapon setModelPositionZ(float modelPositionZ) {
         this.modelPositionZ = modelPositionZ;
         return this;
     }
 
-    public Weapon setMuzzleFlashPositionX(float muzzleFlashPositionX) {
+    public JXMWeapon setMuzzleFlashPositionX(float muzzleFlashPositionX) {
         this.muzzleFlashPositionX = muzzleFlashPositionX;
         return this;
     }
 
-    public Weapon setMuzzleFlashPositionY(float muzzleFlashPositionY) {
+    public JXMWeapon setMuzzleFlashPositionY(float muzzleFlashPositionY) {
         this.muzzleFlashPositionY = muzzleFlashPositionY;
         return this;
     }
 
-    public Weapon setMuzzleFlashPositionZ(float muzzleFlashPositionZ) {
+    public JXMWeapon setMuzzleFlashPositionZ(float muzzleFlashPositionZ) {
         this.muzzleFlashPositionZ = muzzleFlashPositionZ;
         return this;
     }
 
-    public Weapon setCartridgeEjectionPositionX(float cartridgeEjectionPositionX) {
+    public JXMWeapon setCartridgeEjectionPositionX(float cartridgeEjectionPositionX) {
         this.cartridgeEjectionPositionX = cartridgeEjectionPositionX;
         return this;
     }
 
-    public Weapon setCartridgeEjectionPositionY(float cartridgeEjectionPositionY) {
+    public JXMWeapon setCartridgeEjectionPositionY(float cartridgeEjectionPositionY) {
         this.cartridgeEjectionPositionY = cartridgeEjectionPositionY;
         return this;
     }
 
-    public Weapon setCartridgeEjectionPositionZ(float cartridgeEjectionPositionZ) {
+    public JXMWeapon setCartridgeEjectionPositionZ(float cartridgeEjectionPositionZ) {
         this.cartridgeEjectionPositionZ = cartridgeEjectionPositionZ;
         return this;
     }
 
-    public Weapon setCartridgeEjectionVelocityX(float cartridgeEjectionVelocityX) {
+    public JXMWeapon setCartridgeEjectionVelocityX(float cartridgeEjectionVelocityX) {
         this.cartridgeEjectionVelocityX = cartridgeEjectionVelocityX;
         return this;
     }
 
-    public Weapon setCartridgeEjectionVelocityY(float cartridgeEjectionVelocityY) {
+    public JXMWeapon setCartridgeEjectionVelocityY(float cartridgeEjectionVelocityY) {
         this.cartridgeEjectionVelocityY = cartridgeEjectionVelocityY;
         return this;
     }
 
-    public Weapon setRapidFire(boolean rapidFire) {
+    public JXMWeapon setRapidFire(boolean rapidFire) {
         this.rapidFire = rapidFire;
         return this;
     }
 
-    public Weapon setScopeMode(ScopeMode scopeMode) {
+    public JXMWeapon setScopeMode(ScopeMode scopeMode) {
         this.scopeMode = scopeMode;
         return this;
     }
 
-    public Weapon setModelScale(float modelScale) {
+    public JXMWeapon setModelScale(float modelScale) {
         this.modelScale = modelScale;
         return this;
     }
 
-    public Weapon setFireSoundId(int fireSoundId) {
+    public JXMWeapon setFireSoundId(int fireSoundId) {
         this.fireSoundId = fireSoundId;
         return this;
     }
 
-    public Weapon setFireSoundVolume(int fireSoundVolume) {
+    public JXMWeapon setFireSoundVolume(int fireSoundVolume) {
         this.fireSoundVolume = fireSoundVolume;
         return this;
     }
 
-    public Weapon setSuppressor(boolean suppressor) {
+    public JXMWeapon setSuppressor(boolean suppressor) {
         this.suppressor = suppressor;
         return this;
     }
 
-    public Weapon setShootingStance(ShootingStance shootingStance) {
+    public JXMWeapon setShootingStance(ShootingStance shootingStance) {
         this.shootingStance = shootingStance;
         return this;
     }
 
-    public Weapon setSwitchableWeaponId(int switchableWeaponId) {
+    public JXMWeapon setSwitchableWeaponId(int switchableWeaponId) {
         this.switchableWeaponId = switchableWeaponId;
         return this;
     }
 
-    public Weapon setNumProjectiles(int numProjectiles) {
+    public JXMWeapon setNumProjectiles(int numProjectiles) {
         this.numProjectiles = numProjectiles;
         return this;
     }

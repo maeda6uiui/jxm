@@ -1,7 +1,7 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.config.Config;
 import com.github.dabasan.jxm.properties.config.ConfigManipulator;
+import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
 import org.junit.jupiter.api.BeforeAll;
@@ -32,7 +32,7 @@ public class ConfigManipulatorTest {
 
     @Test
     public void testRead() {
-        Config expectedConfig = new Config()
+        JXMConfig expectedConfig = new JXMConfig()
                 .setTurnUp(KeyCode.KEY_UP)
                 .setTurnDown(KeyCode.KEY_DOWN)
                 .setTurnLeft(KeyCode.KEY_LEFT)
@@ -60,15 +60,15 @@ public class ConfigManipulatorTest {
                 .setFrameSkip(false)
                 .setAnotherGunsight(false)
                 .setName("maeda6uiui");
-        Config actualConfig = manipulator.getConfig();
+        JXMConfig actualConfig = manipulator.getConfig();
         assertEquals(expectedConfig, actualConfig);
     }
 
     @Test
     public void testUpdate() {
-        Config currentConfig = manipulator.getConfig();
+        JXMConfig currentConfig = manipulator.getConfig();
 
-        Config newConfig = TestUtils.generateRandomConfig();
+        JXMConfig newConfig = TestUtils.generateRandomConfig();
         manipulator.setConfig(newConfig);
         assertEquals(newConfig, manipulator.getConfig());
 

@@ -1,13 +1,12 @@
 package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.character.Character;
-import com.github.dabasan.jxm.properties.config.Config;
+import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
-import com.github.dabasan.jxm.properties.weapon.Weapon;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -71,8 +70,8 @@ public class TestUtils {
         return ret;
     }
 
-    public static Weapon generateRandomWeapon() {
-        return new Weapon()
+    public static JXMWeapon generateRandomWeapon() {
+        return new JXMWeapon()
                 .setName(generateRandomString(10))
                 .setModel(generateRandomString(20))
                 .setTexture(generateRandomString(20))
@@ -107,8 +106,8 @@ public class TestUtils {
                 .setNumProjectiles(random.nextInt());
     }
 
-    public static Character generateRandomCharacter() {
-        return new Character()
+    public static JXMCharacter generateRandomCharacter() {
+        return new JXMCharacter()
                 .setTexture(CharacterTextureType.values()[random.nextInt(CharacterTextureType.values().length)])
                 .setModel(CharacterModelType.values()[random.nextInt(CharacterModelType.values().length)])
                 .setAiLevel(AILevel.values()[random.nextInt(AILevel.values().length)])
@@ -116,8 +115,8 @@ public class TestUtils {
                 .setType(CharacterType.values()[random.nextInt(CharacterType.values().length)]);
     }
 
-    public static Config generateRandomConfig() {
-        return new Config()
+    public static JXMConfig generateRandomConfig() {
+        return new JXMConfig()
                 .setTurnUp(KeyCode.values()[random.nextInt(KeyCode.values().length)])
                 .setTurnDown(KeyCode.values()[random.nextInt(KeyCode.values().length)])
                 .setTurnLeft(KeyCode.values()[random.nextInt(KeyCode.values().length)])

@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.character.Character;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFromBinLE;
@@ -12,15 +11,15 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class BINCharacterReader {
-    private final Character[] characters;
+    private final JXMCharacter[] characters;
     private int pos;
 
     public BINCharacterReader(byte[] bin, int numCharacters, int dataStartPos) {
-        characters = new Character[numCharacters];
+        characters = new JXMCharacter[numCharacters];
 
         pos = dataStartPos;
         for (int i = 0; i < numCharacters; i++) {
-            var character = new Character();
+            var character = new JXMCharacter();
 
             int textureTypeSpc = this.getShortAndIncrementPos(bin);
             character.texture = CharacterTextureType.values()[textureTypeSpc];
@@ -58,7 +57,7 @@ class BINCharacterReader {
         return ret;
     }
 
-    public Character[] getCharacterData() {
+    public JXMCharacter[] getCharacterData() {
         return characters;
     }
 }

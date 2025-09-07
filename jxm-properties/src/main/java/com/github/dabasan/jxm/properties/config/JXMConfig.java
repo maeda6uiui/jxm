@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author maeda6uiui
  */
-public class Config {
+public class JXMConfig {
     //Key code
     public KeyCode turnUp;
     public KeyCode turnDown;
@@ -41,7 +41,7 @@ public class Config {
     /**
      * Creates a config instance.
      */
-    public Config() {
+    public JXMConfig() {
         this.reset();
     }
 
@@ -50,7 +50,7 @@ public class Config {
      *
      * @param config Config
      */
-    public Config(Config config) {
+    public JXMConfig(JXMConfig config) {
         this.turnUp = config.turnUp;
         this.turnDown = config.turnDown;
         this.turnLeft = config.turnLeft;
@@ -133,7 +133,7 @@ public class Config {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Config config = (Config) o;
+        JXMConfig config = (JXMConfig) o;
         return mouseSensitivity == config.mouseSensitivity
                 && brightness == config.brightness
                 && enableSound == config.enableSound
@@ -196,137 +196,137 @@ public class Config {
         );
     }
 
-    public Config setTurnUp(KeyCode turnUp) {
+    public JXMConfig setTurnUp(KeyCode turnUp) {
         this.turnUp = turnUp;
         return this;
     }
 
-    public Config setTurnDown(KeyCode turnDown) {
+    public JXMConfig setTurnDown(KeyCode turnDown) {
         this.turnDown = turnDown;
         return this;
     }
 
-    public Config setTurnLeft(KeyCode turnLeft) {
+    public JXMConfig setTurnLeft(KeyCode turnLeft) {
         this.turnLeft = turnLeft;
         return this;
     }
 
-    public Config setTurnRight(KeyCode turnRight) {
+    public JXMConfig setTurnRight(KeyCode turnRight) {
         this.turnRight = turnRight;
         return this;
     }
 
-    public Config setMoveForward(KeyCode moveForward) {
+    public JXMConfig setMoveForward(KeyCode moveForward) {
         this.moveForward = moveForward;
         return this;
     }
 
-    public Config setMoveBackward(KeyCode moveBackward) {
+    public JXMConfig setMoveBackward(KeyCode moveBackward) {
         this.moveBackward = moveBackward;
         return this;
     }
 
-    public Config setMoveLeft(KeyCode moveLeft) {
+    public JXMConfig setMoveLeft(KeyCode moveLeft) {
         this.moveLeft = moveLeft;
         return this;
     }
 
-    public Config setMoveRight(KeyCode moveRight) {
+    public JXMConfig setMoveRight(KeyCode moveRight) {
         this.moveRight = moveRight;
         return this;
     }
 
-    public Config setWalk(KeyCode walk) {
+    public JXMConfig setWalk(KeyCode walk) {
         this.walk = walk;
         return this;
     }
 
-    public Config setJump(KeyCode jump) {
+    public JXMConfig setJump(KeyCode jump) {
         this.jump = jump;
         return this;
     }
 
-    public Config setReload(KeyCode reload) {
+    public JXMConfig setReload(KeyCode reload) {
         this.reload = reload;
         return this;
     }
 
-    public Config setDropWeapon(KeyCode dropWeapon) {
+    public JXMConfig setDropWeapon(KeyCode dropWeapon) {
         this.dropWeapon = dropWeapon;
         return this;
     }
 
-    public Config setZoom(KeyCode zoom) {
+    public JXMConfig setZoom(KeyCode zoom) {
         this.zoom = zoom;
         return this;
     }
 
-    public Config setFireMode(KeyCode fireMode) {
+    public JXMConfig setFireMode(KeyCode fireMode) {
         this.fireMode = fireMode;
         return this;
     }
 
-    public Config setSwitchWeapon(KeyCode switchWeapon) {
+    public JXMConfig setSwitchWeapon(KeyCode switchWeapon) {
         this.switchWeapon = switchWeapon;
         return this;
     }
 
-    public Config setWeapon1(KeyCode weapon1) {
+    public JXMConfig setWeapon1(KeyCode weapon1) {
         this.weapon1 = weapon1;
         return this;
     }
 
-    public Config setWeapon2(KeyCode weapon2) {
+    public JXMConfig setWeapon2(KeyCode weapon2) {
         this.weapon2 = weapon2;
         return this;
     }
 
-    public Config setFire(KeyCode fire) {
+    public JXMConfig setFire(KeyCode fire) {
         this.fire = fire;
         return this;
     }
 
-    public Config setMouseSensitivity(int mouseSensitivity) {
+    public JXMConfig setMouseSensitivity(int mouseSensitivity) {
         this.mouseSensitivity = mouseSensitivity;
         return this;
     }
 
-    public Config setBrightness(int brightness) {
+    public JXMConfig setBrightness(int brightness) {
         this.brightness = brightness;
         return this;
     }
 
-    public Config setWindowMode(WindowMode windowMode) {
+    public JXMConfig setWindowMode(WindowMode windowMode) {
         this.windowMode = windowMode;
         return this;
     }
 
-    public Config setEnableSound(boolean enableSound) {
+    public JXMConfig setEnableSound(boolean enableSound) {
         this.enableSound = enableSound;
         return this;
     }
 
-    public Config setEnableBlood(boolean enableBlood) {
+    public JXMConfig setEnableBlood(boolean enableBlood) {
         this.enableBlood = enableBlood;
         return this;
     }
 
-    public Config setInvertMouse(boolean invertMouse) {
+    public JXMConfig setInvertMouse(boolean invertMouse) {
         this.invertMouse = invertMouse;
         return this;
     }
 
-    public Config setFrameSkip(boolean frameSkip) {
+    public JXMConfig setFrameSkip(boolean frameSkip) {
         this.frameSkip = frameSkip;
         return this;
     }
 
-    public Config setAnotherGunsight(boolean anotherGunsight) {
+    public JXMConfig setAnotherGunsight(boolean anotherGunsight) {
         this.anotherGunsight = anotherGunsight;
         return this;
     }
 
-    public Config setName(String name) {
+    public JXMConfig setName(String name) {
         this.name = name;
         return this;
     }

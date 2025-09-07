@@ -1,8 +1,8 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.character.Character;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
-import com.github.dabasan.jxm.properties.weapon.Weapon;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 import com.github.dabasan.jxm.properties.xops.XOPSVersion;
@@ -30,8 +30,8 @@ public class EXEManipulatorTest {
     private static final String TARGET_DIR = "./TestData/XOPS";
     private Map<String, EXEManipulator> manipulators;
     private Map<String, XOPSVersion> expectedVersions;  //(filename, version)
-    private Weapon[] expectedWeapons;
-    private Character[] expectedCharacters;
+    private JXMWeapon[] expectedWeapons;
+    private JXMCharacter[] expectedCharacters;
 
     @BeforeAll
     public void prepareForTest() {
@@ -84,7 +84,7 @@ public class EXEManipulatorTest {
     @Test
     public void testWeapons() {
         manipulators.values().forEach(manipulator -> {
-            Weapon[] actualWeapons = manipulator.getWeapons();
+            JXMWeapon[] actualWeapons = manipulator.getWeapons();
             assertArrayEquals(expectedWeapons, actualWeapons);
         });
     }
@@ -92,9 +92,9 @@ public class EXEManipulatorTest {
     @Test
     public void testUpdateWeapons() {
         manipulators.values().forEach(manipulator -> {
-            Weapon[] currentWeapons = manipulator.getWeapons();
+            JXMWeapon[] currentWeapons = manipulator.getWeapons();
 
-            var newWeapons = new Weapon[currentWeapons.length];
+            var newWeapons = new JXMWeapon[currentWeapons.length];
             for (int i = 0; i < currentWeapons.length; i++) {
                 newWeapons[i] = TestUtils.generateRandomWeapon();
             }
@@ -108,7 +108,7 @@ public class EXEManipulatorTest {
     @Test
     public void testCharacters() {
         manipulators.values().forEach(manipulator -> {
-            Character[] actualCharacters = manipulator.getCharacters();
+            JXMCharacter[] actualCharacters = manipulator.getCharacters();
             assertArrayEquals(expectedCharacters, actualCharacters);
         });
     }
@@ -116,9 +116,9 @@ public class EXEManipulatorTest {
     @Test
     public void testUpdateCharacters() {
         manipulators.values().forEach(manipulator -> {
-            Character[] currentCharacters = manipulator.getCharacters();
+            JXMCharacter[] currentCharacters = manipulator.getCharacters();
 
-            var newCharacters = new Character[currentCharacters.length];
+            var newCharacters = new JXMCharacter[currentCharacters.length];
             for (int i = 0; i < currentCharacters.length; i++) {
                 newCharacters[i] = TestUtils.generateRandomCharacter();
             }

@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.properties.character.openxops;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +41,8 @@ public class CharacterCodeParser {
      * @param code C++ code
      * @return map containing character data
      */
-    public Map<Integer, Character> parse(List<String> code) {
-        var ret = new HashMap<Integer, Character>();
+    public Map<Integer, JXMCharacter> parse(List<String> code) {
+        var ret = new HashMap<Integer, JXMCharacter>();
 
         for (int i = 0; i < code.size(); i++) {
             var line = code.get(i);
@@ -63,7 +62,7 @@ public class CharacterCodeParser {
             }
 
             if (!ret.containsKey(arrayIndex)) {
-                var character = new Character();
+                var character = new JXMCharacter();
                 ret.put(arrayIndex, character);
             }
             var character = ret.get(arrayIndex);
