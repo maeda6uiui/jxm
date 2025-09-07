@@ -2,6 +2,8 @@ package com.github.dabasan.jxm.properties.weapon.xops;
 
 import com.github.dabasan.jxm.properties.weapon.*;
 
+import java.util.Arrays;
+
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
 
 /**
@@ -98,7 +100,11 @@ class BINWeaponReader {
 
     private String getNameFromBin(byte[] bin, int start) {
         var nameBuffer = new byte[16];
-        System.arraycopy(bin, start, nameBuffer, 0, 15);
+        if (start + 15 <= bin.length) {
+            System.arraycopy(bin, start, nameBuffer, 0, 15);
+        } else {
+            Arrays.fill(nameBuffer, (byte) 0);
+        }
         nameBuffer[15] = 0;
 
         var name = new String(nameBuffer);
