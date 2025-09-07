@@ -13,13 +13,13 @@ import java.io.*;
 public class ConfigManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private Config config;
+    private JXMConfig config;
 
     /**
      * Creates a config manipulator.
      */
     public ConfigManipulator() {
-        config = new Config();
+        config = new JXMConfig();
     }
 
     private void readConstructorBase(InputStream is) throws IOException {
@@ -66,7 +66,7 @@ public class ConfigManipulator {
      *
      * @return config
      */
-    public Config getConfig() {
+    public JXMConfig getConfig() {
         return config;
     }
 
@@ -75,7 +75,7 @@ public class ConfigManipulator {
      *
      * @param config config to set
      */
-    public void setConfig(Config config) {
+    public void setConfig(JXMConfig config) {
         this.config = config;
     }
 

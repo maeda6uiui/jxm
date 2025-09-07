@@ -1,7 +1,7 @@
 package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.config.Config;
+import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
 import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
@@ -115,8 +115,8 @@ public class TestUtils {
                 .setType(CharacterType.values()[random.nextInt(CharacterType.values().length)]);
     }
 
-    public static Config generateRandomConfig() {
-        return new Config()
+    public static JXMConfig generateRandomConfig() {
+        return new JXMConfig()
                 .setTurnUp(KeyCode.values()[random.nextInt(KeyCode.values().length)])
                 .setTurnDown(KeyCode.values()[random.nextInt(KeyCode.values().length)])
                 .setTurnLeft(KeyCode.values()[random.nextInt(KeyCode.values().length)])
