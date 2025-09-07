@@ -14,17 +14,17 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
  * @author maeda6uiui
  */
 class XGSReader {
-    private final Weapon[] weapons;
+    private final JXMWeapon[] weapons;
     private int pos;
 
     public XGSReader(InputStream is, int numWeapons) throws IOException {
-        weapons = new Weapon[numWeapons];
+        weapons = new JXMWeapon[numWeapons];
 
         byte[] bin = is.readAllBytes();
         pos = 0x0000000E;
 
         for (int i = 0; i < numWeapons; i++) {
-            var weapon = new Weapon();
+            var weapon = new JXMWeapon();
 
             weapon.attackPower = this.getShortAndIncrementPos(bin);
             weapon.penetration = this.getShortAndIncrementPos(bin);
@@ -123,7 +123,7 @@ class XGSReader {
         return name.substring(0, firstNullPos);
     }
 
-    public Weapon[] getWeaponData() {
+    public JXMWeapon[] getWeaponData() {
         return weapons;
     }
 }

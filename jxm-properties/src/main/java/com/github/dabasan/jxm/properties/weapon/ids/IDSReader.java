@@ -14,11 +14,11 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
  * @author maeda6uiui
  */
 class IDSReader {
-    private final Weapon weapon;
+    private final JXMWeapon weapon;
     private int pos;
 
     public IDSReader(InputStream is) throws IOException {
-        weapon = new Weapon();
+        weapon = new JXMWeapon();
 
         byte[] bin = is.readAllBytes();
         pos = 0x0000000A;
@@ -99,7 +99,7 @@ class IDSReader {
         return name.substring(0, firstNullPos);
     }
 
-    public Weapon getWeaponData() {
+    public JXMWeapon getWeaponData() {
         return weapon;
     }
 }

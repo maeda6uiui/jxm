@@ -2,7 +2,7 @@ package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
-import com.github.dabasan.jxm.properties.weapon.Weapon;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 import com.github.dabasan.jxm.properties.xops.XOPSVersion;
@@ -30,7 +30,7 @@ public class EXEManipulatorTest {
     private static final String TARGET_DIR = "./TestData/XOPS";
     private Map<String, EXEManipulator> manipulators;
     private Map<String, XOPSVersion> expectedVersions;  //(filename, version)
-    private Weapon[] expectedWeapons;
+    private JXMWeapon[] expectedWeapons;
     private Character[] expectedCharacters;
 
     @BeforeAll
@@ -84,7 +84,7 @@ public class EXEManipulatorTest {
     @Test
     public void testWeapons() {
         manipulators.values().forEach(manipulator -> {
-            Weapon[] actualWeapons = manipulator.getWeapons();
+            JXMWeapon[] actualWeapons = manipulator.getWeapons();
             assertArrayEquals(expectedWeapons, actualWeapons);
         });
     }
@@ -92,9 +92,9 @@ public class EXEManipulatorTest {
     @Test
     public void testUpdateWeapons() {
         manipulators.values().forEach(manipulator -> {
-            Weapon[] currentWeapons = manipulator.getWeapons();
+            JXMWeapon[] currentWeapons = manipulator.getWeapons();
 
-            var newWeapons = new Weapon[currentWeapons.length];
+            var newWeapons = new JXMWeapon[currentWeapons.length];
             for (int i = 0; i < currentWeapons.length; i++) {
                 newWeapons[i] = TestUtils.generateRandomWeapon();
             }

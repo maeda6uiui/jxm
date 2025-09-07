@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.weapon.ids;
 
-import com.github.dabasan.jxm.properties.weapon.Weapon;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,13 +14,13 @@ import java.io.*;
 public class IDSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private Weapon weapon;
+    private JXMWeapon weapon;
 
     /**
      * Creates an IDS manipulator.
      */
     public IDSManipulator() {
-        weapon = new Weapon();
+        weapon = new JXMWeapon();
     }
 
     private void readConstructorBase(InputStream is) throws IOException {
@@ -67,7 +67,7 @@ public class IDSManipulator {
      *
      * @return weapon data
      */
-    public Weapon getWeapon() {
+    public JXMWeapon getWeapon() {
         return weapon;
     }
 
@@ -76,7 +76,7 @@ public class IDSManipulator {
      *
      * @param weapon weapon data to set
      */
-    public void setWeapon(Weapon weapon) {
+    public void setWeapon(JXMWeapon weapon) {
         this.weapon = weapon;
     }
 

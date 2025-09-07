@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.weapon.Weapon;
+import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeGenerator;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
@@ -42,7 +42,7 @@ public class WeaponCodeGeneratorTest {
 
         var generator = new WeaponCodeGenerator(settings);
 
-        Weapon[] weapons = manipulator.getWeapons();
+        JXMWeapon[] weapons = manipulator.getWeapons();
         String actualCode = generator.generate(Arrays.asList(weapons));
         String[] actualLines = actualCode.split("\n");
         assertLinesMatch(expectedLines, Arrays.asList(actualLines));
