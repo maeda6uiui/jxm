@@ -7,8 +7,6 @@ on:
         required: true
       centralPassword:
         required: true
-      gpgKeyId:
-        required: true
       gpgPrivateKey:
         required: true
       gpgPassphrase:
