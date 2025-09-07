@@ -4,6 +4,7 @@ import com.github.dabasan.jxm.properties.character.*;
 import com.github.dabasan.jxm.properties.character.Character;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFromBinLE;
 
 /**
  * BIN character reader
@@ -27,7 +28,7 @@ class BINCharacterReader {
             int modelTypeSpc = this.getShortAndIncrementPos(bin);
             character.model = CharacterBinEnumConverter.getModelTypeFromBinSpecifier(modelTypeSpc);
 
-            character.hp = this.getShortAndIncrementPos(bin);
+            character.hp = this.getUnsignedShortAndIncrementPos(bin);
 
             int aiLevelSpc = this.getShortAndIncrementPos(bin);
             character.aiLevel = AILevel.values()[aiLevelSpc];
@@ -47,6 +48,12 @@ class BINCharacterReader {
 
     private int getShortAndIncrementPos(byte[] bin) {
         int ret = getShortFromBinLE(bin, pos);
+        pos += 2;
+        return ret;
+    }
+
+    private int getUnsignedShortAndIncrementPos(byte[] bin) {
+        int ret = getUnsignedShortFromBinLE(bin, pos);
         pos += 2;
         return ret;
     }

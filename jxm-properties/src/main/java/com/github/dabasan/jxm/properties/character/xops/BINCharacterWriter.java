@@ -5,6 +5,7 @@ import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.setShortToBinLE;
+import static com.github.dabasan.jxm.bintools.ByteFunctions.setUnsignedShortToBinLE;
 
 /**
  * BIN character writer
@@ -23,7 +24,7 @@ class BINCharacterWriter {
             int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
             this.setShortAndIncrementPos(bin, modelTypeSpc);
 
-            this.setShortAndIncrementPos(bin, character.hp);
+            this.setUnsignedShortAndIncrementPos(bin, character.hp);
             this.setShortAndIncrementPos(bin, character.aiLevel.ordinal());
             this.setShortAndIncrementPos(bin, character.weapons.get(0));
             this.setShortAndIncrementPos(bin, character.weapons.get(1));
@@ -33,6 +34,11 @@ class BINCharacterWriter {
 
     private void setShortAndIncrementPos(byte[] bin, int v) {
         setShortToBinLE(bin, pos, (short) v);
+        pos += 2;
+    }
+
+    private void setUnsignedShortAndIncrementPos(byte[] bin, int v) {
+        setUnsignedShortToBinLE(bin, pos, v);
         pos += 2;
     }
 }
