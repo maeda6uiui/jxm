@@ -10,123 +10,76 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.setShortToBinLE;
  * @author maeda6uiui
  */
 class BINWeaponWriter {
+    private int pos;
+
     public void write(byte[] bin, Weapon[] weapons, int dataStartPos, int nameStartPos) {
-        int pos = dataStartPos;
-        int numWeapons = weapons.length;
-        for (int i = 0; i < numWeapons; i++) {
-            //Attacks
-            setShortToBinLE(bin, pos, (short) weapons[i].attacks);
-            pos += 2;
-            //Penetration
-            setShortToBinLE(bin, pos, (short) weapons[i].penetration);
-            pos += 2;
-            //Blazings
-            setShortToBinLE(bin, pos, (short) weapons[i].blazings);
-            pos += 2;
-            //Speed
-            setShortToBinLE(bin, pos, (short) weapons[i].speed);
-            pos += 2;
-            //NbsMax
-            setShortToBinLE(bin, pos, (short) weapons[i].nbsMax);
-            pos += 2;
-            //Reloads
-            setShortToBinLE(bin, pos, (short) weapons[i].reloads);
-            pos += 2;
-            //Reaction
-            setShortToBinLE(bin, pos, (short) weapons[i].reaction);
-            pos += 2;
-            //ErrorRangeMin
-            setShortToBinLE(bin, pos, (short) weapons[i].errorRangeMin);
-            pos += 2;
-            //ErrorRangeMax
-            setShortToBinLE(bin, pos, (short) weapons[i].errorRangeMax);
-            pos += 2;
-            //ModelPositionX
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionX));
-            pos += 2;
-            //ModelPositionY
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionY));
-            pos += 2;
-            //ModelPositionZ
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].modelPositionZ));
-            pos += 2;
-            //FlashPositionX
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionX));
-            pos += 2;
-            //FlashPositionY
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionY));
-            pos += 2;
-            //FlashPositionZ
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].flashPositionZ));
-            pos += 2;
-            //YakkyouPositionX
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionX));
-            pos += 2;
-            //YakkyouPositionY
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionY));
-            pos += 2;
-            //YakkyouPositionZ
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouPositionZ));
-            pos += 2;
-            //WeaponP
-            ShootingStance shootingStance = weapons[i].weaponP;
-            int shootingStanceSpc = WeaponBinEnumConverter
-                    .getBinSpecifierFromShootingStance(shootingStance);
-            setShortToBinLE(bin, pos, (short) shootingStanceSpc);
-            pos += 2;
-            //BlazingMode
-            boolean blazingMode = weapons[i].blazingMode;
-            int blazingModeSpc = (blazingMode) ? 0 : 1;
-            setShortToBinLE(bin, pos, (short) blazingModeSpc);
-            pos += 2;
-            //ScopeMode
-            ScopeMode scopeMode = weapons[i].scopeMode;
+        pos = dataStartPos;
+        for (Weapon weapon : weapons) {
+            this.setShortAndIncrementPos(bin, weapon.attackPower);
+            this.setShortAndIncrementPos(bin, weapon.penetration);
+            this.setShortAndIncrementPos(bin, weapon.fireInterval);
+            this.setShortAndIncrementPos(bin, weapon.bulletSpeed);
+            this.setShortAndIncrementPos(bin, weapon.magazineCapacity);
+            this.setShortAndIncrementPos(bin, weapon.reloadTime);
+            this.setShortAndIncrementPos(bin, weapon.recoil);
+            this.setShortAndIncrementPos(bin, weapon.errorRangeMin);
+            this.setShortAndIncrementPos(bin, weapon.errorRangeMax);
+            this.setShortAndIncrementPos(bin, Math.round(weapon.modelPositionX));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.modelPositionY));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.modelPositionZ));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.muzzleFlashPositionX));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.muzzleFlashPositionY));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.muzzleFlashPositionZ));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.cartridgeEjectionPositionX));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.cartridgeEjectionPositionY));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.cartridgeEjectionPositionZ));
+
+            ShootingStance shootingStance = weapon.shootingStance;
+            int shootingStanceSpc = WeaponBinEnumConverter.getBinSpecifierFromShootingStance(shootingStance);
+            this.setShortAndIncrementPos(bin, shootingStanceSpc);
+
+            boolean rapidFire = weapon.rapidFire;
+            int rapidFireSpc = (rapidFire) ? 0 : 1;
+            this.setShortAndIncrementPos(bin, rapidFireSpc);
+
+            ScopeMode scopeMode = weapon.scopeMode;
             int scopeModeSpc = WeaponBinEnumConverter.getBinSpecifierFromScopeMode(scopeMode);
-            setShortToBinLE(bin, pos, (short) scopeModeSpc);
-            pos += 2;
-            //Texture
-            String textureFilepath = weapons[i].texture;
+            this.setShortAndIncrementPos(bin, scopeModeSpc);
+
+            String textureFilepath = weapon.texture;
             WeaponTextureType textureType = TextureFilepaths.getEnumFromFilepath(textureFilepath);
             int textureTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromTextureType(textureType);
-            setShortToBinLE(bin, pos, (short) textureTypeSpc);
-            pos += 2;
-            //Model
-            String modelFilepath = weapons[i].model;
+            this.setShortAndIncrementPos(bin, textureTypeSpc);
+
+            String modelFilepath = weapon.model;
             WeaponModelType modelType = ModelFilepaths.getEnumFromFilepath(modelFilepath);
             int modelTypeSpc = WeaponBinEnumConverter.getBinSpecifierFromModelType(modelType);
-            setShortToBinLE(bin, pos, (short) modelTypeSpc);
-            pos += 2;
-            //Size
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].size * 10.0));
-            pos += 2;
-            //YakkyouSpeedX
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedX));
-            pos += 2;
-            //YakkyouSpeedY
-            setShortToBinLE(bin, pos, (short) Math.round(weapons[i].yakkyouSpeedY));
-            pos += 2;
-            //SoundID
-            setShortToBinLE(bin, pos, (short) weapons[i].soundID);
-            pos += 2;
-            //SoundVolume
-            setShortToBinLE(bin, pos, (short) weapons[i].soundVolume);
-            pos += 2;
-            //Silencer
-            boolean silencer = weapons[i].silencer;
-            int silencerSpc = (silencer) ? 1 : 0;
-            setShortToBinLE(bin, pos, (short) silencerSpc);
-            pos += 2;
+            this.setShortAndIncrementPos(bin, modelTypeSpc);
+
+            this.setShortAndIncrementPos(bin, Math.round(weapon.modelScale * 10.0f));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.cartridgeEjectionVelocityX));
+            this.setShortAndIncrementPos(bin, Math.round(weapon.cartridgeEjectionVelocityY));
+            this.setShortAndIncrementPos(bin, weapon.fireSoundId);
+            this.setShortAndIncrementPos(bin, weapon.fireSoundVolume);
+
+            boolean suppressor = weapon.suppressor;
+            int suppressorSpc = (suppressor) ? 1 : 0;
+            this.setShortAndIncrementPos(bin, suppressorSpc);
         }
 
-        //Name
         pos = nameStartPos;
-
+        int numWeapons = weapons.length;
         for (int i = 0; i < numWeapons; i++) {
             String name = weapons[numWeapons - 1 - i].name;
             this.setNameToBin(bin, pos, name);
 
             pos += 16;
         }
+    }
+
+    private void setShortAndIncrementPos(byte[] bin, int v) {
+        setShortToBinLE(bin, pos, (short) v);
+        pos += 2;
     }
 
     private void setNameToBin(byte[] bin, int pos, String name) {

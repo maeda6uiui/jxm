@@ -69,20 +69,13 @@ public class WeaponCodeParser {
             }
             var weapon = ret.get(arrayIndex);
 
-            //Name
             if (parsed[2].equals(settings.name)) {
                 weapon.name = parsed[3];
-            }
-            //Model
-            else if (parsed[2].equals(settings.model)) {
+            } else if (parsed[2].equals(settings.model)) {
                 weapon.model = parsed[3];
-            }
-            //Texture
-            else if (parsed[2].equals(settings.texture)) {
+            } else if (parsed[2].equals(settings.texture)) {
                 weapon.texture = parsed[3];
-            }
-            //Attacks
-            else if (parsed[2].equals(settings.attacks)) {
+            } else if (parsed[2].equals(settings.attackPower)) {
                 int attacks;
                 try {
                     attacks = Integer.parseInt(parsed[3]);
@@ -91,10 +84,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.attacks = attacks;
-            }
-            //Penetration
-            else if (parsed[2].equals(settings.penetration)) {
+                weapon.attackPower = attacks;
+            } else if (parsed[2].equals(settings.penetration)) {
                 int penetration;
                 try {
                     penetration = Integer.parseInt(parsed[3]);
@@ -104,9 +95,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.penetration = penetration;
-            }
-            //Blazings
-            else if (parsed[2].equals(settings.blazings)) {
+            } else if (parsed[2].equals(settings.fireInterval)) {
                 int blazings;
                 try {
                     blazings = Integer.parseInt(parsed[3]);
@@ -115,10 +104,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.blazings = blazings;
-            }
-            //Speed
-            else if (parsed[2].equals(settings.speed)) {
+                weapon.fireInterval = blazings;
+            } else if (parsed[2].equals(settings.bulletSpeed)) {
                 int speed;
                 try {
                     speed = Integer.parseInt(parsed[3]);
@@ -127,10 +114,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.speed = speed;
-            }
-            //NbsMax
-            else if (parsed[2].equals(settings.nbsMax)) {
+                weapon.bulletSpeed = speed;
+            } else if (parsed[2].equals(settings.magazineCapacity)) {
                 int nbsMax;
                 try {
                     nbsMax = Integer.parseInt(parsed[3]);
@@ -139,10 +124,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.nbsMax = nbsMax;
-            }
-            //Reloads
-            else if (parsed[2].equals(settings.reloads)) {
+                weapon.magazineCapacity = nbsMax;
+            } else if (parsed[2].equals(settings.reloadTime)) {
                 int reloads;
                 try {
                     reloads = Integer.parseInt(parsed[3]);
@@ -151,10 +134,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.reloads = reloads;
-            }
-            //Reaction
-            else if (parsed[2].equals(settings.reaction)) {
+                weapon.reloadTime = reloads;
+            } else if (parsed[2].equals(settings.recoil)) {
                 int reaction;
                 try {
                     reaction = Integer.parseInt(parsed[3]);
@@ -163,10 +144,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.reaction = reaction;
-            }
-            //ErrorRangeMin
-            else if (parsed[2].equals(settings.errorRangeMin)) {
+                weapon.recoil = reaction;
+            } else if (parsed[2].equals(settings.errorRangeMin)) {
                 int errorRangeMin;
                 try {
                     errorRangeMin = Integer.parseInt(parsed[3]);
@@ -176,9 +155,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.errorRangeMin = errorRangeMin;
-            }
-            //ErrorRangeMax
-            else if (parsed[2].equals(settings.errorRangeMax)) {
+            } else if (parsed[2].equals(settings.errorRangeMax)) {
                 int errorRangeMax;
                 try {
                     errorRangeMax = Integer.parseInt(parsed[3]);
@@ -188,9 +165,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.errorRangeMax = errorRangeMax;
-            }
-            //ModelPositionX
-            else if (parsed[2].equals(settings.modelPositionX)) {
+            } else if (parsed[2].equals(settings.modelPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float modelPositionX;
@@ -202,9 +177,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.modelPositionX = modelPositionX;
-            }
-            //ModelPositionY
-            else if (parsed[2].equals(settings.modelPositionY)) {
+            } else if (parsed[2].equals(settings.modelPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float modelPositionY;
@@ -216,9 +189,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.modelPositionY = modelPositionY;
-            }
-            //ModelPositionZ
-            else if (parsed[2].equals(settings.modelPositionZ)) {
+            } else if (parsed[2].equals(settings.modelPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float modelPositionZ;
@@ -230,121 +201,103 @@ public class WeaponCodeParser {
                 }
 
                 weapon.modelPositionZ = modelPositionZ;
-            }
-            //FlashPositionX
-            else if (parsed[2].equals(settings.flashPositionX)) {
+            } else if (parsed[2].equals(settings.muzzleFlashPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float flashPositionX;
+                float muzzleFlashPositionX;
                 try {
-                    flashPositionX = Float.parseFloat(valString);
+                    muzzleFlashPositionX = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.flashPositionX = flashPositionX;
-            }
-            //FlashPositionY
-            else if (parsed[2].equals(settings.flashPositionY)) {
+                weapon.muzzleFlashPositionX = muzzleFlashPositionX;
+            } else if (parsed[2].equals(settings.muzzleFlashPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float flashPositionY;
+                float muzzleFlashPositionY;
                 try {
-                    flashPositionY = Float.parseFloat(valString);
+                    muzzleFlashPositionY = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.flashPositionY = flashPositionY;
-            }
-            //FlashPositionZ
-            else if (parsed[2].equals(settings.flashPositionZ)) {
+                weapon.muzzleFlashPositionY = muzzleFlashPositionY;
+            } else if (parsed[2].equals(settings.muzzleFlashPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float flashPositionZ;
+                float muzzleFlashPositionZ;
                 try {
-                    flashPositionZ = Float.parseFloat(valString);
+                    muzzleFlashPositionZ = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.flashPositionZ = flashPositionZ;
-            }
-            //YakkyouPositionX
-            else if (parsed[2].equals(settings.yakkyouPositionX)) {
+                weapon.muzzleFlashPositionZ = muzzleFlashPositionZ;
+            } else if (parsed[2].equals(settings.cartridgeEjectionPositionX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouPositionX;
+                float cartridgeEjectionPositionX;
                 try {
-                    yakkyouPositionX = Float.parseFloat(valString);
+                    cartridgeEjectionPositionX = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.yakkyouPositionX = yakkyouPositionX;
-            }
-            //YakkyouPositionY
-            else if (parsed[2].equals(settings.yakkyouPositionY)) {
+                weapon.cartridgeEjectionPositionX = cartridgeEjectionPositionX;
+            } else if (parsed[2].equals(settings.cartridgeEjectionPositionY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouPositionY;
+                float cartridgeEjectionPositionY;
                 try {
-                    yakkyouPositionY = Float.parseFloat(valString);
+                    cartridgeEjectionPositionY = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.yakkyouPositionY = yakkyouPositionY;
-            }
-            //YakkyouPositionZ
-            else if (parsed[2].equals(settings.yakkyouPositionZ)) {
+                weapon.cartridgeEjectionPositionY = cartridgeEjectionPositionY;
+            } else if (parsed[2].equals(settings.cartridgeEjectionPositionZ)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouPositionZ;
+                float cartridgeEjectionPositionZ;
                 try {
-                    yakkyouPositionZ = Float.parseFloat(valString);
+                    cartridgeEjectionPositionZ = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.yakkyouPositionZ = yakkyouPositionZ;
-            }
-            //YakkyouSpeedX
-            else if (parsed[2].equals(settings.yakkyouSpeedX)) {
+                weapon.cartridgeEjectionPositionZ = cartridgeEjectionPositionZ;
+            } else if (parsed[2].equals(settings.cartridgeEjectionVelocityX)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouSpeedX;
+                float cartridgeEjectionVelocityX;
                 try {
-                    yakkyouSpeedX = Float.parseFloat(valString);
+                    cartridgeEjectionVelocityX = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.yakkyouSpeedX = yakkyouSpeedX;
-            }
-            //YakkyouSpeedY
-            else if (parsed[2].equals(settings.yakkyouSpeedY)) {
+                weapon.cartridgeEjectionVelocityX = cartridgeEjectionVelocityX;
+            } else if (parsed[2].equals(settings.cartridgeEjectionVelocityY)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
-                float yakkyouSpeedY;
+                float cartridgeEjectionVelocityY;
                 try {
-                    yakkyouSpeedY = Float.parseFloat(valString);
+                    cartridgeEjectionVelocityY = Float.parseFloat(valString);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.yakkyouSpeedY = yakkyouSpeedY;
-            }
-            //BlazingMode
-            else if (parsed[2].equals(settings.blazingMode)) {
+                weapon.cartridgeEjectionVelocityY = cartridgeEjectionVelocityY;
+            } else if (parsed[2].equals(settings.rapidFire)) {
                 boolean blazingMode;
                 if (parsed[3].equals("false")) {
                     blazingMode = false;
@@ -355,10 +308,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.blazingMode = blazingMode;
-            }
-            //ScopeMode
-            else if (parsed[2].equals(settings.scopeMode)) {
+                weapon.rapidFire = blazingMode;
+            } else if (parsed[2].equals(settings.scopeMode)) {
                 int scopeModeSpc;
                 try {
                     scopeModeSpc = Integer.parseInt(parsed[3]);
@@ -368,9 +319,7 @@ public class WeaponCodeParser {
                 }
 
                 weapon.scopeMode = ScopeMode.values()[scopeModeSpc];
-            }
-            //Size
-            else if (parsed[2].equals(settings.size)) {
+            } else if (parsed[2].equals(settings.modelScale)) {
                 String valString = this.removeTrailingF(parsed[3]);
 
                 float size;
@@ -381,23 +330,19 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.size = size;
-            }
-            //SoundID
-            else if (parsed[2].equals(settings.soundID)) {
-                int openXOPSSoundID;
+                weapon.modelScale = size;
+            } else if (parsed[2].equals(settings.fireSoundId)) {
+                int openXOPSSoundId;
                 try {
-                    openXOPSSoundID = Integer.parseInt(parsed[3]);
+                    openXOPSSoundId = Integer.parseInt(parsed[3]);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
-                weapon.soundID = WeaponSpecifierConverter
-                        .getXOPSSoundIDFromOpenXOPSSoundID(openXOPSSoundID);
-            }
-            //SoundVolume
-            else if (parsed[2].equals(settings.soundVolume)) {
+                weapon.fireSoundId = WeaponSpecifierConverter
+                        .getXOPSSoundIdFromOpenXOPSSoundId(openXOPSSoundId);
+            } else if (parsed[2].equals(settings.fireSoundVolume)) {
                 int soundVolume;
                 try {
                     soundVolume = Integer.parseInt(parsed[3]);
@@ -406,10 +351,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.soundVolume = soundVolume;
-            }
-            //Silencer
-            else if (parsed[2].equals(settings.silencer)) {
+                weapon.fireSoundVolume = soundVolume;
+            } else if (parsed[2].equals(settings.suppressor)) {
                 boolean silencer;
                 if (parsed[3].equals("false")) {
                     silencer = false;
@@ -420,10 +363,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.silencer = silencer;
-            }
-            //WeaponP
-            else if (parsed[2].equals(settings.weaponP)) {
+                weapon.suppressor = silencer;
+            } else if (parsed[2].equals(settings.shootingStance)) {
                 int weaponPSpc;
                 try {
                     weaponPSpc = Integer.parseInt(parsed[3]);
@@ -432,10 +373,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.weaponP = ShootingStance.values()[weaponPSpc];
-            }
-            //ChangeWeapon
-            else if (parsed[2].equals(settings.changeWeapon)) {
+                weapon.shootingStance = ShootingStance.values()[weaponPSpc];
+            } else if (parsed[2].equals(settings.switchableWeaponId)) {
                 int changeWeapon;
                 try {
                     changeWeapon = Integer.parseInt(parsed[3]);
@@ -444,10 +383,8 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.changeWeapon = changeWeapon;
-            }
-            //Burst
-            else if (parsed[2].equals(settings.burst)) {
+                weapon.switchableWeaponId = changeWeapon;
+            } else if (parsed[2].equals(settings.numProjectiles)) {
                 int burst;
                 try {
                     burst = Integer.parseInt(parsed[3]);
@@ -456,7 +393,7 @@ public class WeaponCodeParser {
                     continue;
                 }
 
-                weapon.burst = burst;
+                weapon.numProjectiles = burst;
             } else {
                 logger.warn("Parse error ({}): {}", i, line);
                 continue;

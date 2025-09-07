@@ -6,8 +6,8 @@ package com.github.dabasan.jxm.properties.weapon.openxops;
  * @author maeda6uiui
  */
 class WeaponSpecifierConverter {
-    public static int getOpenXOPSSoundIDFromXOPSSoundID(int xopsSoundID) {
-        return switch (xopsSoundID) {
+    public static int getOpenXOPSSoundIdFromXOPSSoundId(int xopsSoundId) {
+        return switch (xopsSoundId) {
             case 0 -> 0;
             case 1 -> 1;
             case 2 -> 2;
@@ -15,12 +15,12 @@ class WeaponSpecifierConverter {
             case 9 -> 13;
             case 13 -> 4;
             default ->
-                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", xopsSoundID));
+                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", xopsSoundId));
         };
     }
 
-    public static int getXOPSSoundIDFromOpenXOPSSoundID(int openXOPSSoundID) {
-        return switch (openXOPSSoundID) {
+    public static int getXOPSSoundIdFromOpenXOPSSoundId(int openXOPSSoundId) {
+        return switch (openXOPSSoundId) {
             case 0 -> 0;
             case 1 -> 1;
             case 2 -> 2;
@@ -28,7 +28,7 @@ class WeaponSpecifierConverter {
             case 13 -> 9;
             case 4 -> 13;
             default ->
-                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", openXOPSSoundID));
+                    throw new IllegalArgumentException(String.format("Unknown specifier was given: %d", openXOPSSoundId));
         };
     }
 }

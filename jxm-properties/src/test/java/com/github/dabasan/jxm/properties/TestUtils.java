@@ -1,7 +1,7 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.*;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.config.Config;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
@@ -76,35 +76,35 @@ public class TestUtils {
                 .setName(generateRandomString(10))
                 .setModel(generateRandomString(20))
                 .setTexture(generateRandomString(20))
-                .setAttacks(random.nextInt())
+                .setAttackPower(random.nextInt())
                 .setPenetration(random.nextInt())
-                .setBlazings(random.nextInt())
-                .setSpeed(random.nextInt())
-                .setNbsMax(random.nextInt())
-                .setReloads(random.nextInt())
-                .setReaction(random.nextInt())
+                .setFireInterval(random.nextInt())
+                .setBulletSpeed(random.nextInt())
+                .setMagazineCapacity(random.nextInt())
+                .setReloadTime(random.nextInt())
+                .setRecoil(random.nextInt())
                 .setErrorRangeMin(random.nextInt())
                 .setErrorRangeMax(random.nextInt())
                 .setModelPositionX(random.nextFloat())
                 .setModelPositionY(random.nextFloat())
                 .setModelPositionZ(random.nextFloat())
-                .setFlashPositionX(random.nextFloat())
-                .setFlashPositionY(random.nextFloat())
-                .setFlashPositionZ(random.nextFloat())
-                .setYakkyouPositionX(random.nextFloat())
-                .setYakkyouPositionY(random.nextFloat())
-                .setYakkyouPositionZ(random.nextFloat())
-                .setYakkyouSpeedX(random.nextFloat())
-                .setYakkyouSpeedY(random.nextFloat())
-                .setBlazingMode(random.nextBoolean())
+                .setMuzzleFlashPositionX(random.nextFloat())
+                .setMuzzleFlashPositionY(random.nextFloat())
+                .setMuzzleFlashPositionZ(random.nextFloat())
+                .setCartridgeEjectionPositionX(random.nextFloat())
+                .setCartridgeEjectionPositionY(random.nextFloat())
+                .setCartridgeEjectionPositionZ(random.nextFloat())
+                .setCartridgeEjectionVelocityX(random.nextFloat())
+                .setCartridgeEjectionVelocityY(random.nextFloat())
+                .setRapidFire(random.nextBoolean())
                 .setScopeMode(ScopeMode.values()[random.nextInt(ScopeMode.values().length)])
-                .setSize(random.nextFloat())
-                .setSoundID(random.nextInt())
-                .setSoundVolume(random.nextInt())
-                .setSilencer(random.nextBoolean())
-                .setWeaponP(ShootingStance.values()[random.nextInt(ShootingStance.values().length)])
-                .setChangeWeapon(random.nextInt())
-                .setBurst(random.nextInt());
+                .setModelScale(random.nextFloat())
+                .setFireSoundId(random.nextInt())
+                .setFireSoundVolume(random.nextInt())
+                .setSuppressor(random.nextBoolean())
+                .setShootingStance(ShootingStance.values()[random.nextInt(ShootingStance.values().length)])
+                .setSwitchableWeaponId(random.nextInt())
+                .setNumProjectiles(random.nextInt());
     }
 
     public static Character generateRandomCharacter() {
