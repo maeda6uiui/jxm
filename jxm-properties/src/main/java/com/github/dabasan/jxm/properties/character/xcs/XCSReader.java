@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.properties.character.xcs;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.character.Character;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,18 +14,18 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class XCSReader {
-    private final Character[] characters;
+    private final JXMCharacter[] characters;
 
     private int pos;
 
     public XCSReader(InputStream is, int numCharacters) throws IOException {
-        characters = new Character[numCharacters];
+        characters = new JXMCharacter[numCharacters];
 
         byte[] bin = is.readAllBytes();
         pos = 0x0000000C;
 
         for (int i = 0; i < numCharacters; i++) {
-            var character = new Character();
+            var character = new JXMCharacter();
 
             int textureTypeSpc = this.getShortAndIncrementPos(bin);
             character.texture = CharacterTextureType.values()[textureTypeSpc];
@@ -64,7 +63,7 @@ class XCSReader {
         return ret;
     }
 
-    public Character[] getCharacterData() {
+    public JXMCharacter[] getCharacterData() {
         return characters;
     }
 }

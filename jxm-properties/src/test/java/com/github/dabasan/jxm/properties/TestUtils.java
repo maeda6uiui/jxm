@@ -1,7 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.config.Config;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
@@ -107,8 +106,8 @@ public class TestUtils {
                 .setNumProjectiles(random.nextInt());
     }
 
-    public static Character generateRandomCharacter() {
-        return new Character()
+    public static JXMCharacter generateRandomCharacter() {
+        return new JXMCharacter()
                 .setTexture(CharacterTextureType.values()[random.nextInt(CharacterTextureType.values().length)])
                 .setModel(CharacterModelType.values()[random.nextInt(CharacterModelType.values().length)])
                 .setAiLevel(AILevel.values()[random.nextInt(AILevel.values().length)])

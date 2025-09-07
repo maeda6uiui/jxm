@@ -1,8 +1,8 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.CharacterBinEnumConverter;
 import com.github.dabasan.jxm.properties.character.CharacterModelType;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.setShortToBinLE;
 import static com.github.dabasan.jxm.bintools.ByteFunctions.setUnsignedShortToBinLE;
@@ -15,9 +15,9 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.setUnsignedShortToBi
 class BINCharacterWriter {
     private int pos;
 
-    public void write(byte[] bin, Character[] characters, int dataStartPos) {
+    public void write(byte[] bin, JXMCharacter[] characters, int dataStartPos) {
         pos = dataStartPos;
-        for (Character character : characters) {
+        for (JXMCharacter character : characters) {
             this.setShortAndIncrementPos(bin, character.texture.ordinal());
 
             CharacterModelType modelType = character.model;

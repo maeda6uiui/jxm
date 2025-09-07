@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.xops;
 
-import com.github.dabasan.jxm.properties.character.Character;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 import com.github.dabasan.jxm.properties.character.xops.BINCharacterManipulator;
 import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.xops.BINWeaponManipulator;
@@ -189,7 +189,7 @@ public class EXEManipulator {
      *
      * @return array containing character data
      */
-    public Character[] getCharacters() {
+    public JXMCharacter[] getCharacters() {
         return characterManipulator.getCharacters();
     }
 
@@ -198,7 +198,7 @@ public class EXEManipulator {
      *
      * @param characters array containing character data
      */
-    public void setCharacters(Character[] characters) {
+    public void setCharacters(JXMCharacter[] characters) {
         characterManipulator.setCharacters(characters);
     }
 

@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.character.Character;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeGenerator;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
@@ -42,7 +42,7 @@ public class CharacterCodeGeneratorTest {
 
         var generator = new CharacterCodeGenerator(settings);
 
-        Character[] characters = manipulator.getCharacters();
+        JXMCharacter[] characters = manipulator.getCharacters();
         String actualCode = generator.generate(Arrays.asList(characters));
         String[] actualLines = actualCode.split("\n");
         assertLinesMatch(expectedLines, Arrays.asList(actualLines));

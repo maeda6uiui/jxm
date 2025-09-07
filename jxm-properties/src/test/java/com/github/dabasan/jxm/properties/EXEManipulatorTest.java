@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.character.Character;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
 import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
@@ -31,7 +31,7 @@ public class EXEManipulatorTest {
     private Map<String, EXEManipulator> manipulators;
     private Map<String, XOPSVersion> expectedVersions;  //(filename, version)
     private JXMWeapon[] expectedWeapons;
-    private Character[] expectedCharacters;
+    private JXMCharacter[] expectedCharacters;
 
     @BeforeAll
     public void prepareForTest() {
@@ -108,7 +108,7 @@ public class EXEManipulatorTest {
     @Test
     public void testCharacters() {
         manipulators.values().forEach(manipulator -> {
-            Character[] actualCharacters = manipulator.getCharacters();
+            JXMCharacter[] actualCharacters = manipulator.getCharacters();
             assertArrayEquals(expectedCharacters, actualCharacters);
         });
     }
@@ -116,9 +116,9 @@ public class EXEManipulatorTest {
     @Test
     public void testUpdateCharacters() {
         manipulators.values().forEach(manipulator -> {
-            Character[] currentCharacters = manipulator.getCharacters();
+            JXMCharacter[] currentCharacters = manipulator.getCharacters();
 
-            var newCharacters = new Character[currentCharacters.length];
+            var newCharacters = new JXMCharacter[currentCharacters.length];
             for (int i = 0; i < currentCharacters.length; i++) {
                 newCharacters[i] = TestUtils.generateRandomCharacter();
             }

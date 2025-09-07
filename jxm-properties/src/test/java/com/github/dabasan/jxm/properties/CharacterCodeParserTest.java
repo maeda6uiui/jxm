@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.character.Character;
+import com.github.dabasan.jxm.properties.character.JXMCharacter;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterCodeParser;
 import com.github.dabasan.jxm.properties.character.openxops.CharacterVariableNameSettings;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CharacterCodeParserTest {
-    private Character[] expectedCharacters;
+    private JXMCharacter[] expectedCharacters;
     private List<String> codeLines;
 
     @BeforeAll
@@ -47,9 +47,9 @@ public class CharacterCodeParserTest {
         settings.texture = "テクスチャ";
 
         var parser = new CharacterCodeParser(settings);
-        Map<Integer, Character> actualCharacters = parser.parse(codeLines);
+        Map<Integer, JXMCharacter> actualCharacters = parser.parse(codeLines);
         actualCharacters.forEach((id, actualCharacter) -> {
-            Character expectedCharacter = expectedCharacters[id];
+            JXMCharacter expectedCharacter = expectedCharacters[id];
             assertEquals(expectedCharacter, actualCharacter);
         });
     }
