@@ -33,23 +33,20 @@ class XCSWriter {
         bin.add((byte) 0x07);
         bin.add((byte) 0x00);
 
-        int numCharacters = characters.length;
-        for (int i = 0; i < numCharacters; i++) {
-            //Texture
-            addShortToBinLE(bin, (short) characters[i].texture.ordinal());
-            //Model
-            CharacterModelType modelType = characters[i].model;
+        for (Character character : characters) {
+            addShortToBinLE(bin, (short) character.texture.ordinal());
+
+            CharacterModelType modelType = character.model;
             int modelTypeSpc = CharacterBinEnumConverter.getBinSpecifierFromModelType(modelType);
             addShortToBinLE(bin, (short) modelTypeSpc);
-            //HP
-            addUnsignedShortToBinLE(bin, (short) characters[i].hp);
-            //AI level
-            addShortToBinLE(bin, (short) characters[i].aiLevel.ordinal());
-            //Weapons
-            addShortToBinLE(bin, characters[i].weapons.get(0).shortValue());
-            addShortToBinLE(bin, characters[i].weapons.get(1).shortValue());
-            //Type
-            addShortToBinLE(bin, (short) characters[i].type.ordinal());
+
+            addUnsignedShortToBinLE(bin, (short) character.hp);
+            addShortToBinLE(bin, (short) character.aiLevel.ordinal());
+
+            addShortToBinLE(bin, character.weapons.get(0).shortValue());
+            addShortToBinLE(bin, character.weapons.get(1).shortValue());
+
+            addShortToBinLE(bin, (short) character.type.ordinal());
         }
 
         for (byte b : bin) {

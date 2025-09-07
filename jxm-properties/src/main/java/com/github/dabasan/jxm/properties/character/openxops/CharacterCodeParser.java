@@ -1,7 +1,7 @@
 package com.github.dabasan.jxm.properties.character.openxops;
 
-import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.character.*;
+import com.github.dabasan.jxm.properties.character.Character;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,22 +68,19 @@ public class CharacterCodeParser {
             }
             var character = ret.get(arrayIndex);
 
-            //Texture
             if (parsed[2].equals(settings.texture)) {
-                int openXOPSTextureID;
+                int openXOPSTextureId;
                 try {
-                    openXOPSTextureID = Integer.parseInt(parsed[3]);
+                    openXOPSTextureId = Integer.parseInt(parsed[3]);
                 } catch (NumberFormatException e) {
                     logger.warn("Parse error ({}): {}", i, line);
                     continue;
                 }
 
                 CharacterTextureType xopsTextureType = CharacterSpecifierConverter
-                        .getXOPSTextureTypeFromOpenXOPSTextureID(openXOPSTextureID);
+                        .getXOPSTextureTypeFromOpenXOPSTextureId(openXOPSTextureId);
                 character.texture = xopsTextureType;
-            }
-            //Model
-            else if (parsed[2].equals(settings.model)) {
+            } else if (parsed[2].equals(settings.model)) {
                 int modelSpc;
                 try {
                     modelSpc = Integer.parseInt(parsed[3]);
@@ -93,9 +90,7 @@ public class CharacterCodeParser {
                 }
 
                 character.model = CharacterModelType.values()[modelSpc];
-            }
-            //HP
-            else if (parsed[2].equals(settings.hp)) {
+            } else if (parsed[2].equals(settings.hp)) {
                 int hp;
                 try {
                     hp = Integer.parseInt(parsed[3]);
@@ -105,9 +100,7 @@ public class CharacterCodeParser {
                 }
 
                 character.hp = hp;
-            }
-            //AILevel
-            else if (parsed[2].equals(settings.aiLevel)) {
+            } else if (parsed[2].equals(settings.aiLevel)) {
                 int openXOPSAILevel;
                 try {
                     openXOPSAILevel = Integer.parseInt(parsed[3]);
@@ -119,9 +112,7 @@ public class CharacterCodeParser {
                 AILevel xopsAILevel = CharacterSpecifierConverter
                         .getXOPSAILevelFromOpenXOPSAILevel(openXOPSAILevel);
                 character.aiLevel = xopsAILevel;
-            }
-            //Weapon 0
-            else if (parsed[2].equals(settings.weapon0)) {
+            } else if (parsed[2].equals(settings.weapon0)) {
                 int weapon0;
                 try {
                     weapon0 = Integer.parseInt(parsed[3]);
@@ -131,9 +122,7 @@ public class CharacterCodeParser {
                 }
 
                 character.weapons.set(0, weapon0);
-            }
-            //Weapon 1
-            else if (parsed[2].equals(settings.weapon1)) {
+            } else if (parsed[2].equals(settings.weapon1)) {
                 int weapon1;
                 try {
                     weapon1 = Integer.parseInt(parsed[3]);
@@ -143,9 +132,7 @@ public class CharacterCodeParser {
                 }
 
                 character.weapons.set(1, weapon1);
-            }
-            //Type
-            else if (parsed[2].equals(settings.type)) {
+            } else if (parsed[2].equals(settings.type)) {
                 int typeSpc;
                 try {
                     typeSpc = Integer.parseInt(parsed[3]);
