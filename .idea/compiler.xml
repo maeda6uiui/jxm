@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="jxm-bd1" />
         <module name="jxm-mif" />
+        <module name="jxm-logging" />
         <module name="jxm-properties" />
         <module name="jxm-bintools" />
         <module name="jxm-pd1" />
