@@ -4,7 +4,8 @@ import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * IDS manipulator
@@ -23,43 +24,15 @@ public class IDSManipulator {
         weapon = new JXMWeapon();
     }
 
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new IDSReader(is);
+    /**
+     * Creates an IDS manipulator and loads an IDS file.
+     *
+     * @param path Path of the IDS file
+     * @throws IOException If it fails to load the file
+     */
+    public IDSManipulator(Path path) throws IOException {
+        var reader = new IDSReader(path);
         weapon = reader.getWeaponData();
-    }
-
-    /**
-     * Creates an IDS manipulator.
-     *
-     * @param is input stream to load an IDS from
-     * @throws IOException if it fails to load
-     */
-    public IDSManipulator(InputStream is) throws IOException {
-        this.readConstructorBase(is);
-    }
-
-    /**
-     * Creates an IDS manipulator.
-     *
-     * @param file file to load an IDS from
-     * @throws IOException if it fails to load
-     */
-    public IDSManipulator(File file) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
-            this.readConstructorBase(bis);
-        }
-    }
-
-    /**
-     * Creates an IDS manipulator.
-     *
-     * @param filepath filepath to load an IDS from
-     * @throws IOException if it fails to load
-     */
-    public IDSManipulator(String filepath) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
-            this.readConstructorBase(bis);
-        }
     }
 
     /**
@@ -80,42 +53,14 @@ public class IDSManipulator {
         this.weapon = weapon;
     }
 
-    private void innerSaveAsIDS(OutputStream os) throws IOException {
+    /**
+     * Saves the weapon data in an IDS file.
+     *
+     * @param path Path of the IDS file
+     * @throws IOException if it fails to write to the file
+     */
+    public void save(Path path) throws IOException {
         var writer = new IDSWriter();
-        writer.write(os, weapon);
-    }
-
-    /**
-     * Saves weapon data as an IDS.
-     *
-     * @param os output stream to write the weapon data to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsIDS(OutputStream os) throws IOException {
-        this.innerSaveAsIDS(os);
-    }
-
-    /**
-     * Saves weapon data as an IDS.
-     *
-     * @param file file to write the weapon data to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsIDS(File file) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
-            this.innerSaveAsIDS(bos);
-        }
-    }
-
-    /**
-     * Saves weapon data as an IDS.
-     *
-     * @param filepath filepath to write the weapon data to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsIDS(String filepath) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
-            this.innerSaveAsIDS(bos);
-        }
+        writer.write(path, weapon);
     }
 }

@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * EXE manipulator
@@ -29,8 +31,14 @@ public class EXEManipulator {
         characterManipulator = new BINCharacterManipulator();
     }
 
-    private void constructorBase(InputStream is) throws IOException {
-        byte[] bin = is.readAllBytes();
+    /**
+     * Creates an EXE manipulator and loads an EXE file.
+     *
+     * @param path Path of the EXE file
+     * @throws IOException If it fails to load the file
+     */
+    public EXEManipulator(Path path) throws IOException {
+        byte[] bin = Files.readAllBytes(path);
 
         XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
         int weaponDataStartPos = this.getWeaponDataStartPos(version);
@@ -40,40 +48,6 @@ public class EXEManipulator {
 
         weaponManipulator = new BINWeaponManipulator(bin, weaponDataStartPos, weaponNameStartPos);
         characterManipulator = new BINCharacterManipulator(bin, characterDataStartPos);
-    }
-
-    /**
-     * Creates an EXE manipulator and loads an EXE.
-     *
-     * @param is input stream load an EXE from
-     * @throws IOException if it fails to load
-     */
-    public EXEManipulator(InputStream is) throws IOException {
-        this.constructorBase(is);
-    }
-
-    /**
-     * Creates an EXE manipulator and loads an EXE.
-     *
-     * @param file file to load an EXE from
-     * @throws IOException if it fails to load
-     */
-    public EXEManipulator(File file) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
-            this.constructorBase(bis);
-        }
-    }
-
-    /**
-     * Creates an EXE manipulator and loads an EXE.
-     *
-     * @param filepath filepath to load an EXE from
-     * @throws IOException if it fails to load
-     */
-    public EXEManipulator(String filepath) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
-            this.constructorBase(bis);
-        }
     }
 
     private int getWeaponDataStartPos(XOPSVersion version) {
@@ -242,44 +216,32 @@ public class EXEManipulator {
     }
 
     /**
-     * Writes data to an existing EXE. Pass a non-null value to the second
-     * argument if you want to make a backup file before overwriting the
-     * existing EXE.
+     * Writes the data to an existing EXE file.
+     * Pass a non-null value to the second argument
+     * if you want to make a backup file before overwriting the existing EXE file.
      *
-     * @param file       file to write the data to
-     * @param fileBackup file for backup
-     * @throws IOException if it fails to write
+     * @param path       Path of the XOPS executable
+     * @param pathBackup Path of the backup file
+     * @throws IOException If it fails to write to the file
      */
-    public void write(File file, File fileBackup) throws IOException {
-        if (!file.exists()) {
-            logger.error("The file specified does not exist. filename={}", file.getName());
-            return;
+    public void write(Path path, Path pathBackup) throws IOException {
+        byte[] bin = Files.readAllBytes(path);
+
+        //Make a backup file
+        if (pathBackup != null) {
+            Files.write(pathBackup, bin);
         }
 
-        this.writeBase(file, fileBackup);
-    }
+        //Detect the version of XOPS
+        XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
+        int weaponDataStartPos = this.getWeaponDataStartPos(version);
+        int weaponNameStartPos = this.getWeaponNameStartPos(version);
+        int characterDataStartPos = this.getCharacterDataStartPos(version);
 
-    /**
-     * Writes data to an existing EXE. Pass a non-null value to the second
-     * argument if you want to make a backup file before overwriting the
-     * existing EXE.
-     *
-     * @param filepath       filepath to write the data to
-     * @param filepathBackup filepath for backup
-     * @throws IOException if it fails to write
-     */
-    public void write(String filepath, String filepathBackup) throws IOException {
-        var file = new File(filepath);
-        if (!file.exists()) {
-            logger.error("The file specified does not exist. filename={}", file.getName());
-            return;
-        }
+        weaponManipulator.write(bin, weaponDataStartPos, weaponNameStartPos);
+        characterManipulator.write(bin, characterDataStartPos);
 
-        File fileBackup = null;
-        if (filepathBackup != null) {
-            fileBackup = new File(filepathBackup);
-        }
-
-        this.writeBase(file, fileBackup);
+        //Overwrite an EXE file of XOPS
+        Files.write(path, bin);
     }
 }
