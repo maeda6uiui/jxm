@@ -33,47 +33,19 @@ public class BD1Manipulator {
         transformationMat = new Matrix4f().identity();
     }
 
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new BD1Reader(is);
+    /**
+     * Creates a BD1 manipulator and loads a BD1 file.
+     *
+     * @param path Path of the BD1 file
+     * @throws IOException If it fails to load the BD1 file
+     */
+    public BD1Manipulator(Path path) throws IOException {
+        var reader = new BD1Reader(path);
 
         blocks = reader.getBlocks();
         textureFilenames = reader.getTextureFilenames();
 
         transformationMat = new Matrix4f().identity();
-    }
-
-    /**
-     * Creates a BD1 manipulator and loads a BD1.
-     *
-     * @param is input stream to load a BD1 from
-     * @throws IOException if it fails to load
-     */
-    public BD1Manipulator(InputStream is) throws IOException {
-        this.readConstructorBase(is);
-    }
-
-    /**
-     * Creates a BD1 manipulator and loads a BD1.
-     *
-     * @param file file to load a BD1 from
-     * @throws IOException if it fails to load
-     */
-    public BD1Manipulator(File file) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
-            this.readConstructorBase(bis);
-        }
-    }
-
-    /**
-     * Creates a BD1 manipulator and loads a BD1.
-     *
-     * @param filepath filepath to load a BD1 from
-     * @throws IOException if it fails to load
-     */
-    public BD1Manipulator(String filepath) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
-            this.readConstructorBase(bis);
-        }
     }
 
     /**
