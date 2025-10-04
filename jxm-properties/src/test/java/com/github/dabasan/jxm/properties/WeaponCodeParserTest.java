@@ -29,7 +29,7 @@ public class WeaponCodeParserTest {
     @BeforeAll
     public void loadWeapons() {
         assertDoesNotThrow(() -> {
-            var manipulator = new XGSManipulator("./TestData/Weapon/weapons.xgs");
+            var manipulator = new XGSManipulator(Paths.get("./TestData/Weapon/weapons.xgs"));
             expectedWeapons = manipulator.getWeapons();
 
             codeLines = Files.readAllLines(Paths.get("./TestData/Weapon/weapon_code.txt"));

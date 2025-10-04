@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,9 +26,9 @@ public class XGSManipulatorTest {
     @BeforeAll
     public void loadWeapons() {
         assertDoesNotThrow(() -> {
-            manipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs").toString());
+            manipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs"));
 
-            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe").toString());
+            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe"));
             expectedWeapons = exeManipulator.getWeapons();
         });
     }
@@ -54,12 +55,12 @@ public class XGSManipulatorTest {
 
     @Test
     public void saveAsXGS() {
-        var srcFilepath = Paths.get(TARGET_DIR, "weapons.xgs").toString();
-        var outputFilepath = Paths.get(TARGET_DIR, "weapons_2.xgs").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsXGS(outputFilepath));
+        Path srcPath = Paths.get(TARGET_DIR, "weapons.xgs");
+        Path outputPath = Paths.get(TARGET_DIR, "weapons_2.xgs");
+        assertDoesNotThrow(() -> manipulator.save(outputPath));
 
-        String srcFileHash = TestUtils.getFileHash(srcFilepath);
-        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcPath);
+        String outputFileHash = TestUtils.getFileHash(outputPath);
         assertEquals(srcFileHash, outputFileHash);
     }
 }

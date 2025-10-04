@@ -21,22 +21,22 @@ public class BD1ManipulatorTrainingYardTest {
     @BeforeAll
     public void loadBD1() {
         assertDoesNotThrow(() -> {
-            manipulator = new BD1Manipulator(Paths.get(TARGET_DIR, "map.bd1").toString());
+            manipulator = new BD1Manipulator(Paths.get(TARGET_DIR, "map.bd1"));
         });
     }
 
     @Test
-    public void saveAsOBJ() {
+    public void exportAsOBJ() {
         manipulator.invertZ();
 
-        var objFilepath = Paths.get(TARGET_DIR, "map.obj").toString();
-        var mtlFilepath = Paths.get(TARGET_DIR, "map.mtl").toString();
+        var objPath = Paths.get(TARGET_DIR, "map.obj");
+        var mtlPath = Paths.get(TARGET_DIR, "map.mtl");
         assertDoesNotThrow(
-                () -> manipulator.saveAsOBJ(objFilepath, mtlFilepath, "map.mtl", false));
+                () -> manipulator.exportAsOBJ(objPath, mtlPath, false));
 
-        var objFlipFilepath = Paths.get(TARGET_DIR, "map_flip.obj").toString();
-        var mtlFlipFilepath = Paths.get(TARGET_DIR, "map_flip.mtl").toString();
+        var objFlipPath = Paths.get(TARGET_DIR, "map_flip.obj");
+        var mtlFlipPath = Paths.get(TARGET_DIR, "map_flip.mtl");
         assertDoesNotThrow(
-                () -> manipulator.saveAsOBJ(objFlipFilepath, mtlFlipFilepath, "map_flip.mtl", true));
+                () -> manipulator.exportAsOBJ(objFlipPath, mtlFlipPath, true));
     }
 }

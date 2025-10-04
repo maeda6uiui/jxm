@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class MIFManipulatorTest {
     @BeforeAll
     public void loadMIF() {
         assertDoesNotThrow(() -> {
-            manipulator = new MIFManipulator(Paths.get(TARGET_DIR, "src.mif").toString(), "Shift-JIS");
+            manipulator = new MIFManipulator(Paths.get(TARGET_DIR, "src.mif"), "Shift-JIS");
         });
     }
 
@@ -67,10 +68,10 @@ public class MIFManipulatorTest {
 
     @Test
     public void saveAsMIF() {
-        var saveFilepath = Paths.get(TARGET_DIR, "dst_shift_jis.mif").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsMIF(saveFilepath, "Shift-JIS"));
+        Path path = Paths.get(TARGET_DIR, "dst_shift_jis.mif");
+        assertDoesNotThrow(() -> manipulator.saveAsMIF(path, "Shift-JIS"));
 
-        var saveFilepath2 = Paths.get(TARGET_DIR, "dst_utf_8.mif").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsMIF(saveFilepath2, "UTF-8"));
+        Path path2 = Paths.get(TARGET_DIR, "dst_utf_8.mif");
+        assertDoesNotThrow(() -> manipulator.saveAsMIF(path2, "UTF-8"));
     }
 }
