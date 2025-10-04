@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,9 +26,9 @@ public class XCSManipulatorTest {
     @BeforeAll
     public void loadCharacters() {
         assertDoesNotThrow(() -> {
-            manipulator = new XCSManipulator(Paths.get(TARGET_DIR, "characters.xcs").toString());
+            manipulator = new XCSManipulator(Paths.get(TARGET_DIR, "characters.xcs"));
 
-            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe").toString());
+            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe"));
             expectedCharacters = exeManipulator.getCharacters();
         });
     }
@@ -53,13 +54,13 @@ public class XCSManipulatorTest {
     }
 
     @Test
-    public void saveAsXCS() {
-        var srcFilepath = Paths.get(TARGET_DIR, "characters.xcs").toString();
-        var outputFilepath = Paths.get(TARGET_DIR, "characters_2.xcs").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsXCS(outputFilepath));
+    public void testSave() {
+        Path srcPath = Paths.get(TARGET_DIR, "characters.xcs");
+        Path outputPath = Paths.get(TARGET_DIR, "characters_2.xcs");
+        assertDoesNotThrow(() -> manipulator.save(outputPath));
 
-        String srcFileHash = TestUtils.getFileHash(srcFilepath);
-        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcPath);
+        String outputFileHash = TestUtils.getFileHash(outputPath);
         assertEquals(srcFileHash, outputFileHash);
     }
 }

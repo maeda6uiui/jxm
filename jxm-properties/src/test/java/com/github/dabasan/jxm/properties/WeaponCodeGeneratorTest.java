@@ -29,7 +29,7 @@ public class WeaponCodeGeneratorTest {
     @BeforeAll
     public void loadWeapons() {
         assertDoesNotThrow(() -> {
-            manipulator = new XGSManipulator(Paths.get("./TestData/Weapon/weapons.xgs").toString());
+            manipulator = new XGSManipulator(Paths.get("./TestData/Weapon/weapons.xgs"));
             expectedLines = Files.readAllLines(Paths.get("./TestData/Weapon/weapon_code.txt"));
         });
     }

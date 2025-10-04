@@ -27,7 +27,7 @@ public class PD1ManipulatorTest {
     @BeforeAll
     public void loadPD1() {
         assertDoesNotThrow(() -> {
-            manipulator = new PD1Manipulator(Paths.get(TARGET_DIR, "point.pd1").toString());
+            manipulator = new PD1Manipulator(Paths.get(TARGET_DIR, "point.pd1"));
         });
 
         origPoints = new ArrayList<>();
@@ -62,9 +62,7 @@ public class PD1ManipulatorTest {
                 .rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f)
                 .scale(1.0f, 2.0f, 1.0f);
         manipulator.transform(mat).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "transform.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "transform.pd1")));
     }
 
     @Test
@@ -73,45 +71,35 @@ public class PD1ManipulatorTest {
         float amountY = 50.0f;
         float amountZ = 50.0f;
         manipulator.translate(amountX, amountY, amountZ).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "translate.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "translate.pd1")));
     }
 
     @Test
     public void rotX() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotX(amount).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot_x.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot_x.pd1")));
     }
 
     @Test
     public void rotY() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotY(amount).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot_y.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot_y.pd1")));
     }
 
     @Test
     public void rotZ() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotZ(amount).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot_z.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot_z.pd1")));
     }
 
     @Test
     public void rot() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rot(amount, 1.0f, 1.0f, 1.0f).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot.pd1")));
     }
 
     @Test
@@ -120,25 +108,20 @@ public class PD1ManipulatorTest {
         float scaleY = 2.0f;
         float scaleZ = 2.0f;
         manipulator.rescale(scaleX, scaleY, scaleZ).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rescale.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rescale.pd1")));
     }
 
     @Test
     public void invertZ() {
         manipulator.invertZ();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "invert_z.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "invert_z.pd1")));
     }
 
     @Test
     public void testUpdate() {
         List<PD1Point> tmpPoints;
         try {
-            var tmpFilepath = Paths.get(TARGET_DIR, "point_2.pd1").toString();
-            var tmpManipulator = new PD1Manipulator(tmpFilepath);
+            var tmpManipulator = new PD1Manipulator(Paths.get(TARGET_DIR, "point_2.pd1"));
             tmpPoints = tmpManipulator.getPoints();
         } catch (IOException e) {
             fail(e);
@@ -153,8 +136,6 @@ public class PD1ManipulatorTest {
     public void rotateDirection() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotateDirection(amount);
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rotate_direction.pd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsPD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rotate_direction.pd1")));
     }
 }

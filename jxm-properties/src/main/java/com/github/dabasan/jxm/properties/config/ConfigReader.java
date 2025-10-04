@@ -1,7 +1,8 @@
 package com.github.dabasan.jxm.properties.config;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.function.Function;
 
 /**
@@ -12,11 +13,11 @@ import java.util.function.Function;
 class ConfigReader {
     private final JXMConfig config;
 
-    public ConfigReader(InputStream is) throws IOException {
+    public ConfigReader(Path path) throws IOException {
         config = new JXMConfig();
 
-        //Read all bytes from a stream
-        byte[] bin = is.readAllBytes();
+        //Read all bytes
+        byte[] bin = Files.readAllBytes(path);
 
         var keyCodes = KeyCode.values();
 

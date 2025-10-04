@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -26,9 +27,9 @@ public class IDSManipulatorTest {
     @BeforeAll
     public void loadWeapon() {
         assertDoesNotThrow(() -> {
-            manipulator = new IDSManipulator(Paths.get(TARGET_DIR, "mp5.ids").toString());
+            manipulator = new IDSManipulator(Paths.get(TARGET_DIR, "mp5.ids"));
 
-            var xgsManipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs").toString());
+            var xgsManipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs"));
             expectedWeapon = xgsManipulator.getWeapons()[1];
         });
     }
@@ -51,13 +52,13 @@ public class IDSManipulatorTest {
     }
 
     @Test
-    public void saveAsIDS() {
-        var srcFilepath = Paths.get(TARGET_DIR, "mp5.ids").toString();
-        var saveFilepath = Paths.get(TARGET_DIR, "mp5_2.ids").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsIDS(saveFilepath));
+    public void testSave() {
+        Path srcPath = Paths.get(TARGET_DIR, "mp5.ids");
+        Path savePath = Paths.get(TARGET_DIR, "mp5_2.ids");
+        assertDoesNotThrow(() -> manipulator.save(savePath));
 
-        String srcFileHash = TestUtils.getFileHash(srcFilepath);
-        String outputFileHash = TestUtils.getFileHash(saveFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcPath);
+        String outputFileHash = TestUtils.getFileHash(savePath);
         assertEquals(srcFileHash, outputFileHash);
     }
 }

@@ -26,7 +26,7 @@ public class ConfigManipulatorTest {
     @BeforeAll
     public void loadConfig() {
         assertDoesNotThrow(() -> {
-            manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config.dat").toString());
+            manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config.dat"));
         });
     }
 
@@ -76,13 +76,13 @@ public class ConfigManipulatorTest {
     }
 
     @Test
-    public void saveAsDAT() {
-        var srcFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
-        var outputFilepath = Paths.get(TARGET_DIR, "config_2.dat").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsDAT(outputFilepath));
+    public void testSave() {
+        var srcPath = Paths.get(TARGET_DIR, "config.dat");
+        var outputPath = Paths.get(TARGET_DIR, "config_2.dat");
+        assertDoesNotThrow(() -> manipulator.save(outputPath));
 
-        String srcFileHash = TestUtils.getFileHash(srcFilepath);
-        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcPath);
+        String outputFileHash = TestUtils.getFileHash(outputPath);
         assertEquals(srcFileHash, outputFileHash);
     }
 }

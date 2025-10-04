@@ -4,7 +4,8 @@ import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,45 +28,17 @@ public class PD1Manipulator {
         transformationMat = new Matrix4f().identity();
     }
 
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new PD1Reader(is);
+    /**
+     * Creates a PD1 manipulator and loads a PD1 file.
+     *
+     * @param path Path of the PD1 file
+     * @throws IOException If it fails to load the PD1 file
+     */
+    public PD1Manipulator(Path path) throws IOException {
+        var reader = new PD1Reader(path);
         points = reader.getPoints();
 
         transformationMat = new Matrix4f().identity();
-    }
-
-    /**
-     * Creates a PD1 manipulator and loads a PD1.
-     *
-     * @param is input stream to load a PD1 from
-     * @throws IOException if it fails to load
-     */
-    public PD1Manipulator(InputStream is) throws IOException {
-        this.readConstructorBase(is);
-    }
-
-    /**
-     * Creates a PD1 manipulator and loads a PD1.
-     *
-     * @param file file to load a PD1 from
-     * @throws IOException if it fails to load
-     */
-    public PD1Manipulator(File file) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
-            this.readConstructorBase(bis);
-        }
-    }
-
-    /**
-     * Creates a PD1 manipulator and loads a PD1.
-     *
-     * @param filepath filepath to load a PD1 from
-     * @throws IOException if it fails to load
-     */
-    public PD1Manipulator(String filepath) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
-            this.readConstructorBase(bis);
-        }
     }
 
     /**
@@ -274,42 +247,14 @@ public class PD1Manipulator {
         return this;
     }
 
-    private void saveAsPD1Base(OutputStream os) throws IOException {
+    /**
+     * Saves the point data in a PD1 file.
+     *
+     * @param path Path of the PD1 file
+     * @throws IOException If it fails to write to the file
+     */
+    public void save(Path path) throws IOException {
         var writer = new PD1Writer();
-        writer.write(os, points);
-    }
-
-    /**
-     * Saves the points as a PD1.
-     *
-     * @param os output stream to write the points to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsPD1(OutputStream os) throws IOException {
-        this.saveAsPD1Base(os);
-    }
-
-    /**
-     * Saves the points as a PD1.
-     *
-     * @param file file to write the points to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsPD1(File file) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
-            this.saveAsPD1Base(bos);
-        }
-    }
-
-    /**
-     * Saves the points as a PD1.
-     *
-     * @param filepath filepath to write the points to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsPD1(String filepath) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
-            this.saveAsPD1Base(bos);
-        }
+        writer.write(path, points);
     }
 }

@@ -9,8 +9,9 @@ import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -32,7 +33,7 @@ public class TestUtils {
         random = new Random();
     }
 
-    public static String getFileHash(String filepath) {
+    public static String getFileHash(Path path) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
@@ -41,7 +42,7 @@ public class TestUtils {
         }
 
         byte[] hash = null;
-        try (var dis = new DigestInputStream(new BufferedInputStream(new FileInputStream(filepath)), md)) {
+        try (var dis = new DigestInputStream(new BufferedInputStream(Files.newInputStream(path)), md)) {
             while (dis.read() != -1) {
 
             }

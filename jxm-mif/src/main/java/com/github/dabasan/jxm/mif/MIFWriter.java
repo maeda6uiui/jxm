@@ -1,9 +1,9 @@
 package com.github.dabasan.jxm.mif;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @author maeda6uiui
  */
 class MIFWriter {
-    public void write(OutputStream os, String encoding, MissionInfo missionInfo)
+    public void write(Path path, String encoding, MissionInfo missionInfo)
             throws IOException {
         var lines = new ArrayList<String>();
 
@@ -39,15 +39,13 @@ class MIFWriter {
         lines.add(missionInfo.pathnameOfImage2);
 
         List<String> briefingText = missionInfo.briefingText;
-        for (var line : briefingText) {
-            lines.add(line);
-        }
+        lines.addAll(briefingText);
 
-        try (var bw = new BufferedWriter(new OutputStreamWriter(os, encoding))) {
-            for (var line : lines) {
-                bw.write(line);
-                bw.newLine();
-            }
-        }
+        var sb = new StringBuilder();
+        lines.forEach(line -> {
+            sb.append(line);
+            sb.append(System.lineSeparator());
+        });
+        Files.writeString(path, sb, Charset.forName(encoding));
     }
 }

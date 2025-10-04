@@ -1,9 +1,11 @@
 package com.github.dabasan.jxm.bd1;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.joml.Vector3fc;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.addFloatToBinLE;
@@ -15,7 +17,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBi
  * @author maeda6uiui
  */
 class BD1Writer {
-    public void write(OutputStream os, List<BD1Block> blocks, Map<Integer, String> textureFilenames)
+    public void write(Path path, List<BD1Block> blocks, Map<Integer, String> textureFilenames)
             throws IOException {
         List<Byte> bin = new ArrayList<>();
 
@@ -79,9 +81,9 @@ class BD1Writer {
             }
         }
 
-        for (byte b : bin) {
-            os.write(b);
-        }
+        Byte[] boxedBytes = bin.toArray(Byte[]::new);
+        byte[] byteArray = ArrayUtils.toPrimitive(boxedBytes);
+        Files.write(path, byteArray);
     }
 
     private void addTextureFilenamesToBin(List<Byte> bin, Map<Integer, String> textureFilenames) {

@@ -3,8 +3,10 @@ package com.github.dabasan.jxm.bd1;
 import de.javagl.obj.*;
 import org.joml.Vector3fc;
 
+import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,8 +19,8 @@ import java.util.Map;
  * @author maeda6uiui
  */
 class BD1OBJWriter {
-    public static void write(OutputStream osObj, OutputStream osMtl, String mtlFilename,
-                             List<BD1Block> blocks, Map<Integer, String> textureFilenames, boolean flipV)
+    public static void write(
+            Path objPath, Path mtlPath, List<BD1Block> blocks, Map<Integer, String> textureFilenames, boolean flipV)
             throws IOException {
         //Prepare faces
         Map<Integer, List<BD1Face>> facesMap = BD1FaceGenerator.generateFaces(blocks);
@@ -27,7 +29,7 @@ class BD1OBJWriter {
         Obj obj = Objs.create();
         var mtls = new ArrayList<Mtl>();
 
-        obj.setMtlFileNames(Collections.singletonList(mtlFilename));
+        obj.setMtlFileNames(Collections.singletonList(mtlPath.getFileName().toString()));
         obj.setActiveGroupNames(Collections.singletonList("map"));
 
         int countIndex = 0;
@@ -80,8 +82,12 @@ class BD1OBJWriter {
             }
         }
 
-        ObjWriter.write(obj, osObj);
-        MtlWriter.write(mtls, osMtl);
+        try (var bosObj = new BufferedOutputStream(Files.newOutputStream(objPath))) {
+            ObjWriter.write(obj, bosObj);
+        }
+        try (var bosMtl = new BufferedOutputStream(Files.newOutputStream(mtlPath))) {
+            MtlWriter.write(mtls, bosMtl);
+        }
     }
 
     private static String getFilepathWithoutExtension(String filepath) {

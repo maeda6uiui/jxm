@@ -1,7 +1,10 @@
 package com.github.dabasan.jxm.properties.config;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.io.IOException;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.function.Function;
  * @author maeda6uiui
  */
 class ConfigWriter {
-    public void write(OutputStream os, JXMConfig config) throws IOException {
+    public void write(Path path, JXMConfig config) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) config.turnUp.ordinal());
@@ -53,9 +56,9 @@ class ConfigWriter {
         bin.add(booleanToByte.apply(config.anotherGunsight));
         this.addNameToBin(bin, config.name);
 
-        for (byte b : bin) {
-            os.write(b);
-        }
+        Byte[] boxedBytes = bin.toArray(Byte[]::new);
+        byte[] byteArray = ArrayUtils.toPrimitive(boxedBytes);
+        Files.write(path, byteArray);
     }
 
     private void addNameToBin(List<Byte> bin, String name) {

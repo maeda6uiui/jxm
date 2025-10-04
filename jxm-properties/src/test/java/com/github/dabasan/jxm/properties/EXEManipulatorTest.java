@@ -60,14 +60,14 @@ public class EXEManipulatorTest {
 
             manipulators = new HashMap<>();
             for (var srcFilename : srcFilenames) {
-                var manipulator = new EXEManipulator(Paths.get(TARGET_DIR, srcFilename).toString());
+                var manipulator = new EXEManipulator(Paths.get(TARGET_DIR, srcFilename));
                 manipulators.put(srcFilename, manipulator);
             }
 
-            var xgsManipulator = new XGSManipulator(Paths.get(TARGET_DIR, "Expected", "weapons.xgs").toString());
+            var xgsManipulator = new XGSManipulator(Paths.get(TARGET_DIR, "Expected", "weapons.xgs"));
             expectedWeapons = xgsManipulator.getWeapons();
 
-            var xcsManipulator = new XCSManipulator(Paths.get(TARGET_DIR, "Expected", "characters.xcs").toString());
+            var xcsManipulator = new XCSManipulator(Paths.get(TARGET_DIR, "Expected", "characters.xcs"));
             expectedCharacters = xcsManipulator.getCharacters();
         });
     }
@@ -130,21 +130,21 @@ public class EXEManipulatorTest {
     }
 
     @Test
-    public void write() {
+    public void testWrite() {
         manipulators.forEach((filename, manipulator) -> {
-            String exeFilepath = Paths.get(TARGET_DIR, filename).toString();
-            String backupFilepath = Paths.get(TARGET_DIR, filename + ".backup").toString();
-            assertDoesNotThrow(() -> manipulator.write(exeFilepath, backupFilepath));
+            Path exePath = Paths.get(TARGET_DIR, filename);
+            Path backupPath = Paths.get(TARGET_DIR, filename + ".backup");
+            assertDoesNotThrow(() -> manipulator.write(exePath, backupPath));
         });
 
         manipulators.keySet().forEach(filename -> {
-            String targetFilepath = Paths.get(TARGET_DIR, filename).toString();
-            String backupFilepath = Paths.get(TARGET_DIR, filename + ".backup").toString();
-            String originalFilepath = Paths.get(TARGET_DIR, "Original", filename).toString();
+            Path targetPath = Paths.get(TARGET_DIR, filename);
+            Path backupPath = Paths.get(TARGET_DIR, filename + ".backup");
+            Path originalPath = Paths.get(TARGET_DIR, "Original", filename);
 
-            String targetFileHash = TestUtils.getFileHash(targetFilepath);
-            String backupFileHash = TestUtils.getFileHash(backupFilepath);
-            String originalFileHash = TestUtils.getFileHash(originalFilepath);
+            String targetFileHash = TestUtils.getFileHash(targetPath);
+            String backupFileHash = TestUtils.getFileHash(backupPath);
+            String originalFileHash = TestUtils.getFileHash(originalPath);
 
             assertAll(
                     () -> assertEquals(targetFileHash, backupFileHash),

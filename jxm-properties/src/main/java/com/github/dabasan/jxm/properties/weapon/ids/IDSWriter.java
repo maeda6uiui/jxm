@@ -1,9 +1,11 @@
 package com.github.dabasan.jxm.properties.weapon.ids;
 
 import com.github.dabasan.jxm.properties.weapon.*;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addShortToBinLE;
  * @author maeda6uiui
  */
 class IDSWriter {
-    public void write(OutputStream os, JXMWeapon weapon) throws IOException {
+    public void write(Path path, JXMWeapon weapon) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) 0x49);//I
@@ -83,9 +85,9 @@ class IDSWriter {
 
         this.addNameToBin(bin, weapon.name);
 
-        for (byte b : bin) {
-            os.write(b);
-        }
+        Byte[] boxedBytes = bin.toArray(Byte[]::new);
+        byte[] byteArray = ArrayUtils.toPrimitive(boxedBytes);
+        Files.write(path, byteArray);
     }
 
     private void addNameToBin(List<Byte> bin, String name) {

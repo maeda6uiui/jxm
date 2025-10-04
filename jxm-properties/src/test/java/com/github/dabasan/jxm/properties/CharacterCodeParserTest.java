@@ -30,7 +30,7 @@ public class CharacterCodeParserTest {
     @BeforeAll
     public void loadCharacters() {
         assertDoesNotThrow(() -> {
-            var manipulator = new XCSManipulator("./TestData/Character/characters.xcs");
+            var manipulator = new XCSManipulator(Paths.get("./TestData/Character/characters.xcs"));
             expectedCharacters = manipulator.getCharacters();
 
             codeLines = Files.readAllLines(
