@@ -253,7 +253,7 @@ public class PD1Manipulator {
      * @param path Path of the PD1 file
      * @throws IOException If it fails to write to the file
      */
-    public void saveAsPD1(Path path) throws IOException {
+    public void save(Path path) throws IOException {
         var writer = new PD1Writer();
         writer.write(path, points);
     }
