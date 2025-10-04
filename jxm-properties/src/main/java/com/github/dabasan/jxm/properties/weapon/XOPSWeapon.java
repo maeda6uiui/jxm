@@ -121,7 +121,7 @@ public class XOPSWeapon {
 
     @Override
     public String toString() {
-        return "Weapon{" +
+        return "XOPSWeapon{" +
                 "name='" + name + '\'' +
                 ", model='" + model + '\'' +
                 ", texture='" + texture + '\'' +

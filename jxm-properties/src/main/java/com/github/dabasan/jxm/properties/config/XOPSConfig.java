@@ -117,16 +117,35 @@ public class XOPSConfig {
 
     @Override
     public String toString() {
-        return "Config [turnUp=" + turnUp + ", turnDown=" + turnDown + ", turnLeft=" + turnLeft
-                + ", turnRight=" + turnRight + ", moveForward=" + moveForward + ", moveBackward="
-                + moveBackward + ", moveLeft=" + moveLeft + ", moveRight=" + moveRight + ", walk="
-                + walk + ", jump=" + jump + ", reload=" + reload + ", dropWeapon=" + dropWeapon
-                + ", zoom=" + zoom + ", fireMode=" + fireMode + ", switchWeapon=" + switchWeapon
-                + ", weapon1=" + weapon1 + ", weapon2=" + weapon2 + ", fire=" + fire
-                + ", mouseSensitivity=" + mouseSensitivity + ", brightness=" + brightness
-                + ", windowMode=" + windowMode + ", enableSound=" + enableSound + ", enableBlood="
-                + enableBlood + ", invertMouse=" + invertMouse + ", frameSkip=" + frameSkip
-                + ", anotherGunsight=" + anotherGunsight + ", name=" + name + "]";
+        return "XOPSConfig{" +
+                "turnUp=" + turnUp +
+                ", turnDown=" + turnDown +
+                ", turnLeft=" + turnLeft +
+                ", turnRight=" + turnRight +
+                ", moveForward=" + moveForward +
+                ", moveBackward=" + moveBackward +
+                ", moveLeft=" + moveLeft +
+                ", moveRight=" + moveRight +
+                ", walk=" + walk +
+                ", jump=" + jump +
+                ", reload=" + reload +
+                ", dropWeapon=" + dropWeapon +
+                ", zoom=" + zoom +
+                ", fireMode=" + fireMode +
+                ", switchWeapon=" + switchWeapon +
+                ", weapon1=" + weapon1 +
+                ", weapon2=" + weapon2 +
+                ", fire=" + fire +
+                ", mouseSensitivity=" + mouseSensitivity +
+                ", brightness=" + brightness +
+                ", windowMode=" + windowMode +
+                ", enableSound=" + enableSound +
+                ", enableBlood=" + enableBlood +
+                ", invertMouse=" + invertMouse +
+                ", frameSkip=" + frameSkip +
+                ", anotherGunsight=" + anotherGunsight +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override

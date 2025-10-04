@@ -46,8 +46,14 @@ public class XOPSCharacter {
 
     @Override
     public String toString() {
-        return "CharacterData [texture=" + texture + ", model=" + model + ", hp=" + hp
-                + ", aiLevel=" + aiLevel + ", weapons=" + weapons + ", type=" + type + "]";
+        return "XOPSCharacter{" +
+                "texture=" + texture +
+                ", model=" + model +
+                ", hp=" + hp +
+                ", aiLevel=" + aiLevel +
+                ", weapons=" + weapons +
+                ", type=" + type +
+                '}';
     }
 
     @Override
