@@ -320,20 +320,20 @@ public class BD1Manipulator {
      * @param path Path of the output file
      * @throws IOException If it fails to write to the file
      */
-    public void saveAsBD1(Path path) throws IOException {
+    public void save(Path path) throws IOException {
         var writer = new BD1Writer();
         writer.write(path, blocks, textureFilenames);
     }
 
     /**
-     * Saves the block data in an OBJ file.
+     * Exports the block data to an OBJ file.
      *
      * @param objPath Path of the OBJ file
      * @param mtlPath Path of the MTL file
      * @param flipV   Flips texture V-coordinate if true
      * @throws IOException If it fails to write to the file
      */
-    public void saveAsOBJ(Path objPath, Path mtlPath, boolean flipV) throws IOException {
+    public void exportAsOBJ(Path objPath, Path mtlPath, boolean flipV) throws IOException {
         BD1OBJWriter.write(objPath, mtlPath, blocks, textureFilenames, flipV);
     }
 
