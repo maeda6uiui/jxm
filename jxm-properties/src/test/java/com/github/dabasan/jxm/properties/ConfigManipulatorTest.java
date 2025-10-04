@@ -1,9 +1,9 @@
 package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.config.ConfigManipulator;
-import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
+import com.github.dabasan.jxm.properties.config.XOPSConfig;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -32,7 +32,7 @@ public class ConfigManipulatorTest {
 
     @Test
     public void testRead() {
-        JXMConfig expectedConfig = new JXMConfig()
+        XOPSConfig expectedConfig = new XOPSConfig()
                 .setTurnUp(KeyCode.KEY_UP)
                 .setTurnDown(KeyCode.KEY_DOWN)
                 .setTurnLeft(KeyCode.KEY_LEFT)
@@ -60,15 +60,15 @@ public class ConfigManipulatorTest {
                 .setFrameSkip(false)
                 .setAnotherGunsight(false)
                 .setName("maeda6uiui");
-        JXMConfig actualConfig = manipulator.getConfig();
+        XOPSConfig actualConfig = manipulator.getConfig();
         assertEquals(expectedConfig, actualConfig);
     }
 
     @Test
     public void testUpdate() {
-        JXMConfig currentConfig = manipulator.getConfig();
+        XOPSConfig currentConfig = manipulator.getConfig();
 
-        JXMConfig newConfig = TestUtils.generateRandomConfig();
+        XOPSConfig newConfig = TestUtils.generateRandomConfig();
         manipulator.setConfig(newConfig);
         assertEquals(newConfig, manipulator.getConfig());
 

@@ -14,13 +14,13 @@ import java.nio.file.Path;
 public class ConfigManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private JXMConfig config;
+    private XOPSConfig config;
 
     /**
      * Creates a config manipulator.
      */
     public ConfigManipulator() {
-        config = new JXMConfig();
+        config = new XOPSConfig();
     }
 
     /**
@@ -39,7 +39,7 @@ public class ConfigManipulator {
      *
      * @return config
      */
-    public JXMConfig getConfig() {
+    public XOPSConfig getConfig() {
         return config;
     }
 
@@ -48,7 +48,7 @@ public class ConfigManipulator {
      *
      * @param config config to set
      */
-    public void setConfig(JXMConfig config) {
+    public void setConfig(XOPSConfig config) {
         this.config = config;
     }
 

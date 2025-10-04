@@ -1,9 +1,9 @@
 package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.character.*;
-import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
+import com.github.dabasan.jxm.properties.config.XOPSConfig;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
 import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
@@ -116,8 +116,8 @@ public class TestUtils {
                 .setType(CharacterType.values()[random.nextInt(CharacterType.values().length)]);
     }
 
-    public static JXMConfig generateRandomConfig() {
-        return new JXMConfig()
+    public static XOPSConfig generateRandomConfig() {
+        return new XOPSConfig()
                 .setTurnUp(KeyCode.values()[random.nextInt(KeyCode.values().length)])
                 .setTurnDown(KeyCode.values()[random.nextInt(KeyCode.values().length)])
                 .setTurnLeft(KeyCode.values()[random.nextInt(KeyCode.values().length)])
