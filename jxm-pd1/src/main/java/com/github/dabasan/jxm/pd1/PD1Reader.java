@@ -1,7 +1,8 @@
 package com.github.dabasan.jxm.pd1;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,11 +17,11 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
 class PD1Reader {
     private final List<PD1Point> points;
 
-    public PD1Reader(InputStream is) throws IOException {
+    public PD1Reader(Path path) throws IOException {
         points = new ArrayList<>();
 
-        //Read all bytes from a stream
-        byte[] bin = is.readAllBytes();
+        //Read all bytes
+        byte[] bin = Files.readAllBytes(path);
 
         int pos = 0;
 

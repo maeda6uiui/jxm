@@ -4,4 +4,5 @@ module com.github.dabasan.jxm.pd1 {
     requires transitive org.joml;
     requires transitive org.slf4j;
     requires com.github.dabasan.jxm.bintools;
+    requires org.apache.commons.lang3;
 }
