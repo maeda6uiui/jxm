@@ -5,6 +5,7 @@ import org.joml.Matrix4fc;
 import org.joml.Vector3f;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -341,43 +342,15 @@ public class BD1Manipulator {
         return this;
     }
 
-    private void saveAsBD1Base(OutputStream os) throws IOException {
+    /**
+     * Saves the block data in a BD1 file.
+     *
+     * @param path Path of the output file
+     * @throws IOException If it fails to write to the file
+     */
+    public void saveAsBD1(Path path) throws IOException {
         var writer = new BD1Writer();
-        writer.write(os, blocks, textureFilenames);
-    }
-
-    /**
-     * Saves the blocks as a BD1.
-     *
-     * @param os output stream to write the blocks to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsBD1(OutputStream os) throws IOException {
-        this.saveAsBD1Base(os);
-    }
-
-    /**
-     * Saves the blocks as a BD1.
-     *
-     * @param file file to write the blocks to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsBD1(File file) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
-            this.saveAsBD1(bos);
-        }
-    }
-
-    /**
-     * Saves the blocks as a BD1.
-     *
-     * @param filepath filepath to write the blocks to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsBD1(String filepath) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
-            this.saveAsBD1Base(bos);
-        }
+        writer.write(path, blocks, textureFilenames);
     }
 
     private void saveAsOBJBase(

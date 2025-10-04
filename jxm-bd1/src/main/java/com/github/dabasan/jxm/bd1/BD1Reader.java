@@ -1,7 +1,8 @@
 package com.github.dabasan.jxm.bd1;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +20,12 @@ class BD1Reader {
     private final Map<Integer, String> textureFilenames;
     private final List<BD1Block> blocks;
 
-    public BD1Reader(InputStream is) throws IOException, IndexOutOfBoundsException {
+    public BD1Reader(Path path) throws IOException, IndexOutOfBoundsException {
         textureFilenames = new HashMap<>();
         blocks = new ArrayList<>();
 
-        //Read all bytes from a stream
-        byte[] bin = is.readAllBytes();
+        //Read all bytes
+        byte[] bin = Files.readAllBytes(path);
 
         int pos = 0;
 
