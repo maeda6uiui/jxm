@@ -67,11 +67,11 @@ public class MIFManipulatorTest {
     }
 
     @Test
-    public void saveAsMIF() {
+    public void testSave() {
         Path path = Paths.get(TARGET_DIR, "dst_shift_jis.mif");
-        assertDoesNotThrow(() -> manipulator.saveAsMIF(path, "Shift-JIS"));
+        assertDoesNotThrow(() -> manipulator.save(path, "Shift-JIS"));
 
         Path path2 = Paths.get(TARGET_DIR, "dst_utf_8.mif");
-        assertDoesNotThrow(() -> manipulator.saveAsMIF(path2, "UTF-8"));
+        assertDoesNotThrow(() -> manipulator.save(path2, "UTF-8"));
     }
 }

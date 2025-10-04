@@ -55,7 +55,7 @@ public class MIFManipulator {
      * @param encoding Encoding of the MIF file
      * @throws IOException If it fails to write to the file
      */
-    public void saveAsMIF(Path path, String encoding) throws IOException {
+    public void save(Path path, String encoding) throws IOException {
         var writer = new MIFWriter();
         writer.write(path, encoding, missionInfo);
     }

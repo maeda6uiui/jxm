@@ -57,7 +57,7 @@ public class XCSManipulatorTest {
     public void testSave() {
         Path srcPath = Paths.get(TARGET_DIR, "characters.xcs");
         Path outputPath = Paths.get(TARGET_DIR, "characters_2.xcs");
-        assertDoesNotThrow(() -> manipulator.saveAsXCS(outputPath));
+        assertDoesNotThrow(() -> manipulator.save(outputPath));
 
         String srcFileHash = TestUtils.getFileHash(srcPath);
         String outputFileHash = TestUtils.getFileHash(outputPath);

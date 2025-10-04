@@ -66,7 +66,7 @@ public class XCSManipulator {
      * @param path Path of the XCS file
      * @throws IOException if it fails to write to the file
      */
-    public void saveAsXCS(Path path) throws IOException {
+    public void save(Path path) throws IOException {
         var writer = new XCSWriter();
         writer.write(path, characters);
     }
