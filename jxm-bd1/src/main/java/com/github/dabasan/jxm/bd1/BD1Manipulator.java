@@ -4,7 +4,7 @@ import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
 
-import java.io.*;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
 
@@ -325,56 +325,16 @@ public class BD1Manipulator {
         writer.write(path, blocks, textureFilenames);
     }
 
-    private void saveAsOBJBase(
-            OutputStream osObj, OutputStream osMtl, String mtlFilename, boolean flipV) throws IOException {
-        BD1OBJWriter.write(osObj, osMtl, mtlFilename, blocks, textureFilenames, flipV);
-    }
-
     /**
-     * Saves the blocks as an OBJ.
+     * Saves the block data in an OBJ file.
      *
-     * @param osObj       output stream for OBJ
-     * @param osMtl       output stream for MTL
-     * @param mtlFilename filename of the MTL
-     * @param flipV       flips texture V-coordinate if true
-     * @throws IOException if it fails to output
+     * @param objPath Path of the OBJ file
+     * @param mtlPath Path of the MTL file
+     * @param flipV   Flips texture V-coordinate if true
+     * @throws IOException If it fails to write to the file
      */
-    public void saveAsOBJ(
-            OutputStream osObj, OutputStream osMtl, String mtlFilename, boolean flipV) throws IOException {
-        this.saveAsOBJBase(osObj, osMtl, mtlFilename, flipV);
-    }
-
-    /**
-     * Saves the blocks as an OBJ.
-     *
-     * @param fileObj     file for the OBJ
-     * @param fileMtl     file for the MTL
-     * @param mtlFilename filename of the MTL
-     * @param flipV       Flips texture V-coordinate if true
-     * @throws IOException if it fails to output
-     */
-    public void saveAsOBJ(File fileObj, File fileMtl, String mtlFilename, boolean flipV) throws IOException {
-        try (var bosObj = new BufferedOutputStream(new FileOutputStream(fileObj));
-             var bosMtl = new BufferedOutputStream(new FileOutputStream(fileMtl))) {
-            this.saveAsOBJBase(bosObj, bosMtl, mtlFilename, flipV);
-        }
-    }
-
-    /**
-     * Saves the blocks as an OBJ.
-     *
-     * @param filepathObj filepath of the OBJ
-     * @param filepathMtl filepath of the MTL
-     * @param mtlFilename filename of the MTL
-     * @param flipV       flips texture V-coordinate if true
-     * @throws IOException if it fails to output
-     */
-    public void saveAsOBJ(
-            String filepathObj, String filepathMtl, String mtlFilename, boolean flipV) throws IOException {
-        try (var bosObj = new BufferedOutputStream(new FileOutputStream(filepathObj));
-             var bosMtl = new BufferedOutputStream(new FileOutputStream(filepathMtl))) {
-            this.saveAsOBJBase(bosObj, bosMtl, mtlFilename, flipV);
-        }
+    public void saveAsObj(Path objPath, Path mtlPath, boolean flipV) throws IOException {
+        BD1OBJWriter.write(objPath, mtlPath, blocks, textureFilenames, flipV);
     }
 
     /**
