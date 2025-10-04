@@ -49,7 +49,7 @@ class BD1Writer {
             }
 
             //UVs
-            UV[] uvs = block.uvs;
+            BD1UV[] uvs = block.uvs;
 
             //U
             for (int j = 0; j < 24; j++) {
