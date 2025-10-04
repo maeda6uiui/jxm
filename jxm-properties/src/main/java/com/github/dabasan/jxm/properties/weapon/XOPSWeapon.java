@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author maeda6uiui
  */
-public class JXMWeapon {
+public class XOPSWeapon {
     public String name;
     public String model;
     public String texture;
@@ -44,7 +44,7 @@ public class JXMWeapon {
     /**
      * Creates a weapon.
      */
-    public JXMWeapon() {
+    public XOPSWeapon() {
         name = "";
         model = "";
         texture = "";
@@ -84,7 +84,7 @@ public class JXMWeapon {
      *
      * @param weapon Weapon
      */
-    public JXMWeapon(JXMWeapon weapon) {
+    public XOPSWeapon(XOPSWeapon weapon) {
         this.name = weapon.name;
         this.model = weapon.model;
         this.texture = weapon.texture;
@@ -161,7 +161,7 @@ public class JXMWeapon {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JXMWeapon weapon = (JXMWeapon) o;
+        XOPSWeapon weapon = (XOPSWeapon) o;
         return attackPower == weapon.attackPower
                 && penetration == weapon.penetration
                 && fireInterval == weapon.fireInterval
@@ -234,162 +234,162 @@ public class JXMWeapon {
         );
     }
 
-    public JXMWeapon setName(String name) {
+    public XOPSWeapon setName(String name) {
         this.name = name;
         return this;
     }
 
-    public JXMWeapon setModel(String model) {
+    public XOPSWeapon setModel(String model) {
         this.model = model;
         return this;
     }
 
-    public JXMWeapon setTexture(String texture) {
+    public XOPSWeapon setTexture(String texture) {
         this.texture = texture;
         return this;
     }
 
-    public JXMWeapon setAttackPower(int attackPower) {
+    public XOPSWeapon setAttackPower(int attackPower) {
         this.attackPower = attackPower;
         return this;
     }
 
-    public JXMWeapon setPenetration(int penetration) {
+    public XOPSWeapon setPenetration(int penetration) {
         this.penetration = penetration;
         return this;
     }
 
-    public JXMWeapon setFireInterval(int fireInterval) {
+    public XOPSWeapon setFireInterval(int fireInterval) {
         this.fireInterval = fireInterval;
         return this;
     }
 
-    public JXMWeapon setBulletSpeed(int bulletSpeed) {
+    public XOPSWeapon setBulletSpeed(int bulletSpeed) {
         this.bulletSpeed = bulletSpeed;
         return this;
     }
 
-    public JXMWeapon setMagazineCapacity(int magazineCapacity) {
+    public XOPSWeapon setMagazineCapacity(int magazineCapacity) {
         this.magazineCapacity = magazineCapacity;
         return this;
     }
 
-    public JXMWeapon setReloadTime(int reloadTime) {
+    public XOPSWeapon setReloadTime(int reloadTime) {
         this.reloadTime = reloadTime;
         return this;
     }
 
-    public JXMWeapon setRecoil(int recoil) {
+    public XOPSWeapon setRecoil(int recoil) {
         this.recoil = recoil;
         return this;
     }
 
-    public JXMWeapon setErrorRangeMin(int errorRangeMin) {
+    public XOPSWeapon setErrorRangeMin(int errorRangeMin) {
         this.errorRangeMin = errorRangeMin;
         return this;
     }
 
-    public JXMWeapon setErrorRangeMax(int errorRangeMax) {
+    public XOPSWeapon setErrorRangeMax(int errorRangeMax) {
         this.errorRangeMax = errorRangeMax;
         return this;
     }
 
-    public JXMWeapon setModelPositionX(float modelPositionX) {
+    public XOPSWeapon setModelPositionX(float modelPositionX) {
         this.modelPositionX = modelPositionX;
         return this;
     }
 
-    public JXMWeapon setModelPositionY(float modelPositionY) {
+    public XOPSWeapon setModelPositionY(float modelPositionY) {
         this.modelPositionY = modelPositionY;
         return this;
     }
 
-    public JXMWeapon setModelPositionZ(float modelPositionZ) {
+    public XOPSWeapon setModelPositionZ(float modelPositionZ) {
         this.modelPositionZ = modelPositionZ;
         return this;
     }
 
-    public JXMWeapon setMuzzleFlashPositionX(float muzzleFlashPositionX) {
+    public XOPSWeapon setMuzzleFlashPositionX(float muzzleFlashPositionX) {
         this.muzzleFlashPositionX = muzzleFlashPositionX;
         return this;
     }
 
-    public JXMWeapon setMuzzleFlashPositionY(float muzzleFlashPositionY) {
+    public XOPSWeapon setMuzzleFlashPositionY(float muzzleFlashPositionY) {
         this.muzzleFlashPositionY = muzzleFlashPositionY;
         return this;
     }
 
-    public JXMWeapon setMuzzleFlashPositionZ(float muzzleFlashPositionZ) {
+    public XOPSWeapon setMuzzleFlashPositionZ(float muzzleFlashPositionZ) {
         this.muzzleFlashPositionZ = muzzleFlashPositionZ;
         return this;
     }
 
-    public JXMWeapon setCartridgeEjectionPositionX(float cartridgeEjectionPositionX) {
+    public XOPSWeapon setCartridgeEjectionPositionX(float cartridgeEjectionPositionX) {
         this.cartridgeEjectionPositionX = cartridgeEjectionPositionX;
         return this;
     }
 
-    public JXMWeapon setCartridgeEjectionPositionY(float cartridgeEjectionPositionY) {
+    public XOPSWeapon setCartridgeEjectionPositionY(float cartridgeEjectionPositionY) {
         this.cartridgeEjectionPositionY = cartridgeEjectionPositionY;
         return this;
     }
 
-    public JXMWeapon setCartridgeEjectionPositionZ(float cartridgeEjectionPositionZ) {
+    public XOPSWeapon setCartridgeEjectionPositionZ(float cartridgeEjectionPositionZ) {
         this.cartridgeEjectionPositionZ = cartridgeEjectionPositionZ;
         return this;
     }
 
-    public JXMWeapon setCartridgeEjectionVelocityX(float cartridgeEjectionVelocityX) {
+    public XOPSWeapon setCartridgeEjectionVelocityX(float cartridgeEjectionVelocityX) {
         this.cartridgeEjectionVelocityX = cartridgeEjectionVelocityX;
         return this;
     }
 
-    public JXMWeapon setCartridgeEjectionVelocityY(float cartridgeEjectionVelocityY) {
+    public XOPSWeapon setCartridgeEjectionVelocityY(float cartridgeEjectionVelocityY) {
         this.cartridgeEjectionVelocityY = cartridgeEjectionVelocityY;
         return this;
     }
 
-    public JXMWeapon setRapidFire(boolean rapidFire) {
+    public XOPSWeapon setRapidFire(boolean rapidFire) {
         this.rapidFire = rapidFire;
         return this;
     }
 
-    public JXMWeapon setScopeMode(ScopeMode scopeMode) {
+    public XOPSWeapon setScopeMode(ScopeMode scopeMode) {
         this.scopeMode = scopeMode;
         return this;
     }
 
-    public JXMWeapon setModelScale(float modelScale) {
+    public XOPSWeapon setModelScale(float modelScale) {
         this.modelScale = modelScale;
         return this;
     }
 
-    public JXMWeapon setFireSoundId(int fireSoundId) {
+    public XOPSWeapon setFireSoundId(int fireSoundId) {
         this.fireSoundId = fireSoundId;
         return this;
     }
 
-    public JXMWeapon setFireSoundVolume(int fireSoundVolume) {
+    public XOPSWeapon setFireSoundVolume(int fireSoundVolume) {
         this.fireSoundVolume = fireSoundVolume;
         return this;
     }
 
-    public JXMWeapon setSuppressor(boolean suppressor) {
+    public XOPSWeapon setSuppressor(boolean suppressor) {
         this.suppressor = suppressor;
         return this;
     }
 
-    public JXMWeapon setShootingStance(ShootingStance shootingStance) {
+    public XOPSWeapon setShootingStance(ShootingStance shootingStance) {
         this.shootingStance = shootingStance;
         return this;
     }
 
-    public JXMWeapon setSwitchableWeaponId(int switchableWeaponId) {
+    public XOPSWeapon setSwitchableWeaponId(int switchableWeaponId) {
         this.switchableWeaponId = switchableWeaponId;
         return this;
     }
 
-    public JXMWeapon setNumProjectiles(int numProjectiles) {
+    public XOPSWeapon setNumProjectiles(int numProjectiles) {
         this.numProjectiles = numProjectiles;
         return this;
     }

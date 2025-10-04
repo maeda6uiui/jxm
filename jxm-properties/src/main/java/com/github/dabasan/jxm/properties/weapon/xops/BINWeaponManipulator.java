@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.weapon.xops;
 
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,13 +13,13 @@ public class BINWeaponManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_WEAPONS = 23;
-    private JXMWeapon[] weapons;
+    private XOPSWeapon[] weapons;
 
     /**
      * Creates a BINWeaponManipulator instance.
      */
     public BINWeaponManipulator() {
-        weapons = new JXMWeapon[NUM_WEAPONS];
+        weapons = new XOPSWeapon[NUM_WEAPONS];
     }
 
     /**
@@ -39,7 +39,7 @@ public class BINWeaponManipulator {
      *
      * @return array containing weapon data
      */
-    public JXMWeapon[] getWeapons() {
+    public XOPSWeapon[] getWeapons() {
         return weapons;
     }
 
@@ -48,7 +48,7 @@ public class BINWeaponManipulator {
      *
      * @param weapons array containing weapon data
      */
-    public void setWeapons(JXMWeapon[] weapons) {
+    public void setWeapons(XOPSWeapon[] weapons) {
         if (weapons.length != NUM_WEAPONS) {
             logger.warn("Invalid number of data contained in the array. number={}", weapons.length);
             return;

@@ -2,7 +2,7 @@ package com.github.dabasan.jxm.properties.xops;
 
 import com.github.dabasan.jxm.properties.character.XOPSCharacter;
 import com.github.dabasan.jxm.properties.character.xops.BINCharacterManipulator;
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import com.github.dabasan.jxm.properties.weapon.xops.BINWeaponManipulator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -145,7 +145,7 @@ public class EXEManipulator {
      *
      * @return array containing weapon data
      */
-    public JXMWeapon[] getWeapons() {
+    public XOPSWeapon[] getWeapons() {
         return weaponManipulator.getWeapons();
     }
 
@@ -154,7 +154,7 @@ public class EXEManipulator {
      *
      * @param weapons array containing weapon data
      */
-    public void setWeapons(JXMWeapon[] weapons) {
+    public void setWeapons(XOPSWeapon[] weapons) {
         weaponManipulator.setWeapons(weapons);
     }
 

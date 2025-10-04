@@ -4,9 +4,9 @@ import com.github.dabasan.jxm.properties.character.*;
 import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
 import com.github.dabasan.jxm.properties.weapon.ScopeMode;
 import com.github.dabasan.jxm.properties.weapon.ShootingStance;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -71,8 +71,8 @@ public class TestUtils {
         return ret;
     }
 
-    public static JXMWeapon generateRandomWeapon() {
-        return new JXMWeapon()
+    public static XOPSWeapon generateRandomWeapon() {
+        return new XOPSWeapon()
                 .setName(generateRandomString(10))
                 .setModel(generateRandomString(20))
                 .setTexture(generateRandomString(20))

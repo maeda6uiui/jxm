@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.weapon.ids;
 
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,13 +15,13 @@ import java.nio.file.Path;
 public class IDSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private JXMWeapon weapon;
+    private XOPSWeapon weapon;
 
     /**
      * Creates an IDS manipulator.
      */
     public IDSManipulator() {
-        weapon = new JXMWeapon();
+        weapon = new XOPSWeapon();
     }
 
     /**
@@ -40,7 +40,7 @@ public class IDSManipulator {
      *
      * @return weapon data
      */
-    public JXMWeapon getWeapon() {
+    public XOPSWeapon getWeapon() {
         return weapon;
     }
 
@@ -49,7 +49,7 @@ public class IDSManipulator {
      *
      * @param weapon weapon data to set
      */
-    public void setWeapon(JXMWeapon weapon) {
+    public void setWeapon(XOPSWeapon weapon) {
         this.weapon = weapon;
     }
 

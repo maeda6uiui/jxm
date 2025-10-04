@@ -17,7 +17,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addShortToBinLE;
  * @author maeda6uiui
  */
 class IDSWriter {
-    public void write(Path path, JXMWeapon weapon) throws IOException {
+    public void write(Path path, XOPSWeapon weapon) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) 0x49);//I
