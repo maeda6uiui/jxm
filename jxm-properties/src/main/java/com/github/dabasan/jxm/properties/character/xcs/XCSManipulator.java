@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.character.xcs;
 
-import com.github.dabasan.jxm.properties.character.JXMCharacter;
+import com.github.dabasan.jxm.properties.character.XOPSCharacter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,13 +16,13 @@ public class XCSManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_CHARACTERS = 43;
-    private JXMCharacter[] characters;
+    private XOPSCharacter[] characters;
 
     /**
      * Creates a XCS manipulator.
      */
     public XCSManipulator() {
-        characters = new JXMCharacter[NUM_CHARACTERS];
+        characters = new XOPSCharacter[NUM_CHARACTERS];
     }
 
     /**
@@ -41,7 +41,7 @@ public class XCSManipulator {
      *
      * @return array containing character data
      */
-    public JXMCharacter[] getCharacters() {
+    public XOPSCharacter[] getCharacters() {
         return characters;
     }
 
@@ -50,7 +50,7 @@ public class XCSManipulator {
      *
      * @param characters array containing character data
      */
-    public void setCharacters(JXMCharacter[] characters) {
+    public void setCharacters(XOPSCharacter[] characters) {
         if (characters.length != NUM_CHARACTERS) {
             logger.warn("Invalid number of data contained in the array. number={}",
                     characters.length);

@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.character.xops;
 
-import com.github.dabasan.jxm.properties.character.JXMCharacter;
+import com.github.dabasan.jxm.properties.character.XOPSCharacter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,13 +13,13 @@ public class BINCharacterManipulator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final int NUM_CHARACTERS = 43;
-    private JXMCharacter[] characters;
+    private XOPSCharacter[] characters;
 
     /**
      * Creates a BINCharacterManipulator instance.
      */
     public BINCharacterManipulator() {
-        characters = new JXMCharacter[NUM_CHARACTERS];
+        characters = new XOPSCharacter[NUM_CHARACTERS];
     }
 
     /**
@@ -38,7 +38,7 @@ public class BINCharacterManipulator {
      *
      * @return array containing character data
      */
-    public JXMCharacter[] getCharacters() {
+    public XOPSCharacter[] getCharacters() {
         return characters;
     }
 
@@ -47,7 +47,7 @@ public class BINCharacterManipulator {
      *
      * @param characters array containing character data
      */
-    public void setCharacters(JXMCharacter[] characters) {
+    public void setCharacters(XOPSCharacter[] characters) {
         if (characters.length != NUM_CHARACTERS) {
             logger.warn("Invalid number of data contained in the array. number={}",
                     characters.length);

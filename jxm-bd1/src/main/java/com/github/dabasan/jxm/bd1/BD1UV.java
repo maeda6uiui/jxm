@@ -5,14 +5,14 @@ package com.github.dabasan.jxm.bd1;
  *
  * @author maeda6uiui
  */
-public class UV {
+public class BD1UV {
     public float u;
     public float v;
 
     /**
      * Creates a UV. U and V are set to 0.
      */
-    public UV() {
+    public BD1UV() {
         u = 0.0f;
         v = 0.0f;
     }
@@ -23,7 +23,7 @@ public class UV {
      * @param u U coordinate
      * @param v V coordinate
      */
-    public UV(float u, float v) {
+    public BD1UV(float u, float v) {
         this.u = u;
         this.v = v;
     }
@@ -33,7 +33,7 @@ public class UV {
      *
      * @param uv UV
      */
-    public UV(UV uv) {
+    public BD1UV(BD1UV uv) {
         this.u = uv.u;
         this.v = uv.v;
     }

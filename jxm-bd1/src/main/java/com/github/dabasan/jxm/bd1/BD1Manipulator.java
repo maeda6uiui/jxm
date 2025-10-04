@@ -269,12 +269,12 @@ public class BD1Manipulator {
             block.setVertexPositions(reorderedVertexPositions);
 
             //Arrange UVs
-            var origUVs = new UV[24];
+            var origUVs = new BD1UV[24];
             for (int i = 0; i < 24; i++) {
-                origUVs[i] = new UV(block.uvs[i]);
+                origUVs[i] = new BD1UV(block.uvs[i]);
             }
 
-            var newUVs = new UV[24];
+            var newUVs = new BD1UV[24];
             for (int i = 0; i < 6; i++) {
                 int[] uvIndices;
                 if (i == 2) {

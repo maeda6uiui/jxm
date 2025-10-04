@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponCodeParser;
 import com.github.dabasan.jxm.properties.weapon.openxops.WeaponVariableNameSettings;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WeaponCodeParserTest {
-    private JXMWeapon[] expectedWeapons;
+    private XOPSWeapon[] expectedWeapons;
     private List<String> codeLines;
 
     @BeforeAll
@@ -42,9 +42,9 @@ public class WeaponCodeParserTest {
         settings.model = "モデル";
 
         var parser = new WeaponCodeParser(settings);
-        Map<Integer, JXMWeapon> actualWeapons = parser.parse(codeLines);
+        Map<Integer, XOPSWeapon> actualWeapons = parser.parse(codeLines);
         actualWeapons.forEach((id, actualWeapon) -> {
-            JXMWeapon expectedWeapon = expectedWeapons[id];
+            XOPSWeapon expectedWeapon = expectedWeapons[id];
             assertEquals(expectedWeapon, actualWeapon);
         });
     }

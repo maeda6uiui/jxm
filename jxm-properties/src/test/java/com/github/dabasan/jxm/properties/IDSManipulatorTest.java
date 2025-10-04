@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import com.github.dabasan.jxm.properties.weapon.ids.IDSManipulator;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class IDSManipulatorTest {
     private static final String TARGET_DIR = "./TestData/Weapon";
     private IDSManipulator manipulator;
-    private JXMWeapon expectedWeapon;
+    private XOPSWeapon expectedWeapon;
 
     @BeforeAll
     public void loadWeapon() {
@@ -36,15 +36,15 @@ public class IDSManipulatorTest {
 
     @Test
     public void testWeapon() {
-        JXMWeapon actualWeapon = manipulator.getWeapon();
+        XOPSWeapon actualWeapon = manipulator.getWeapon();
         assertEquals(expectedWeapon, actualWeapon);
     }
 
     @Test
     public void testUpdateWeapon() {
-        JXMWeapon currentWeapon = manipulator.getWeapon();
+        XOPSWeapon currentWeapon = manipulator.getWeapon();
 
-        JXMWeapon newWeapon = TestUtils.generateRandomWeapon();
+        XOPSWeapon newWeapon = TestUtils.generateRandomWeapon();
         manipulator.setWeapon(newWeapon);
         assertEquals(newWeapon, manipulator.getWeapon());
 

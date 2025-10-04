@@ -27,7 +27,7 @@ class BD1BufferGenerator {
             int countIndex = 0;
             for (var face : entry.getValue()) {
                 Vector3fc[] vertexPositions = face.vertexPositions;
-                UV[] uvs = face.uvs;
+                BD1UV[] uvs = face.uvs;
                 Vector3fc normal = face.normal;
 
                 //First triangle

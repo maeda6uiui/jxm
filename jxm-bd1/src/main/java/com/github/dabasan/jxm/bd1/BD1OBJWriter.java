@@ -60,7 +60,7 @@ class BD1OBJWriter {
             var faces = entry.getValue();
             for (var face : faces) {
                 Vector3fc[] vertexPositions = face.vertexPositions;
-                UV[] uvs = face.uvs;
+                BD1UV[] uvs = face.uvs;
                 Vector3fc normal = face.normal;
 
                 for (int i = 3; i >= 0; i--) {

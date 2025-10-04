@@ -41,8 +41,8 @@ public class CharacterCodeParser {
      * @param code C++ code
      * @return map containing character data
      */
-    public Map<Integer, JXMCharacter> parse(List<String> code) {
-        var ret = new HashMap<Integer, JXMCharacter>();
+    public Map<Integer, XOPSCharacter> parse(List<String> code) {
+        var ret = new HashMap<Integer, XOPSCharacter>();
 
         for (int i = 0; i < code.size(); i++) {
             var line = code.get(i);
@@ -62,7 +62,7 @@ public class CharacterCodeParser {
             }
 
             if (!ret.containsKey(arrayIndex)) {
-                var character = new JXMCharacter();
+                var character = new XOPSCharacter();
                 ret.put(arrayIndex, character);
             }
             var character = ret.get(arrayIndex);

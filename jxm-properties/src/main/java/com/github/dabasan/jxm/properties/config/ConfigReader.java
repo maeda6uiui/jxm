@@ -11,10 +11,10 @@ import java.util.function.Function;
  * @author maeda6uiui
  */
 class ConfigReader {
-    private final JXMConfig config;
+    private final XOPSConfig config;
 
     public ConfigReader(Path path) throws IOException {
-        config = new JXMConfig();
+        config = new XOPSConfig();
 
         //Read all bytes
         byte[] bin = Files.readAllBytes(path);
@@ -74,7 +74,7 @@ class ConfigReader {
         return name.substring(0, firstNullPos);
     }
 
-    public JXMConfig getConfig() {
+    public XOPSConfig getConfig() {
         return config;
     }
 }

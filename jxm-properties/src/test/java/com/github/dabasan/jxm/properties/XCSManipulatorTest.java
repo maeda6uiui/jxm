@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.character.JXMCharacter;
+import com.github.dabasan.jxm.properties.character.XOPSCharacter;
 import com.github.dabasan.jxm.properties.character.xcs.XCSManipulator;
 import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 import org.junit.jupiter.api.BeforeAll;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class XCSManipulatorTest {
     private static final String TARGET_DIR = "./TestData/Character";
     private XCSManipulator manipulator;
-    private JXMCharacter[] expectedCharacters;
+    private XOPSCharacter[] expectedCharacters;
 
     @BeforeAll
     public void loadCharacters() {
@@ -35,15 +35,15 @@ public class XCSManipulatorTest {
 
     @Test
     public void testCharacters() {
-        JXMCharacter[] actualCharacters = manipulator.getCharacters();
+        XOPSCharacter[] actualCharacters = manipulator.getCharacters();
         assertArrayEquals(expectedCharacters, actualCharacters);
     }
 
     @Test
     public void testUpdateCharacters() {
-        JXMCharacter[] currentCharacters = manipulator.getCharacters();
+        XOPSCharacter[] currentCharacters = manipulator.getCharacters();
 
-        var newCharacters = new JXMCharacter[currentCharacters.length];
+        var newCharacters = new XOPSCharacter[currentCharacters.length];
         for (int i = 0; i < currentCharacters.length; i++) {
             newCharacters[i] = TestUtils.generateRandomCharacter();
         }

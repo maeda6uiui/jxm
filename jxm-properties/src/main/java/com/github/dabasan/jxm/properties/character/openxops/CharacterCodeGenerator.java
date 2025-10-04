@@ -1,6 +1,6 @@
 package com.github.dabasan.jxm.properties.character.openxops;
 
-import com.github.dabasan.jxm.properties.character.JXMCharacter;
+import com.github.dabasan.jxm.properties.character.XOPSCharacter;
 import com.github.dabasan.jxm.properties.util.CPPArrayStringGenerator;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class CharacterCodeGenerator {
      * @param characters list containing character data
      * @return C++ code
      */
-    public String generate(List<JXMCharacter> characters) {
+    public String generate(List<XOPSCharacter> characters) {
         sb = new StringBuilder();
         for (int i = 0; i < characters.size(); i++) {
             var character = characters.get(i);

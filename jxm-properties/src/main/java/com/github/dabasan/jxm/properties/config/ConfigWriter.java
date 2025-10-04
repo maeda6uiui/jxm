@@ -16,7 +16,7 @@ import java.util.function.Function;
  * @author maeda6uiui
  */
 class ConfigWriter {
-    public void write(Path path, JXMConfig config) throws IOException {
+    public void write(Path path, XOPSConfig config) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) config.turnUp.ordinal());
