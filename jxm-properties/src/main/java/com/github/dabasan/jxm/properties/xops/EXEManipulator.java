@@ -232,7 +232,7 @@ public class EXEManipulator {
             Files.write(pathBackup, bin);
         }
 
-        //Detect the version of XOPS
+        //Update weapon and character data
         XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
         int weaponDataStartPos = this.getWeaponDataStartPos(version);
         int weaponNameStartPos = this.getWeaponNameStartPos(version);
