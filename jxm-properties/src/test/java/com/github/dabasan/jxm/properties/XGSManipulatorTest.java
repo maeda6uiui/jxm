@@ -54,7 +54,7 @@ public class XGSManipulatorTest {
     }
 
     @Test
-    public void saveAsXGS() {
+    public void testSave() {
         Path srcPath = Paths.get(TARGET_DIR, "weapons.xgs");
         Path outputPath = Paths.get(TARGET_DIR, "weapons_2.xgs");
         assertDoesNotThrow(() -> manipulator.save(outputPath));

@@ -52,7 +52,7 @@ public class IDSManipulatorTest {
     }
 
     @Test
-    public void saveAsIDS() {
+    public void testSave() {
         Path srcPath = Paths.get(TARGET_DIR, "mp5.ids");
         Path savePath = Paths.get(TARGET_DIR, "mp5_2.ids");
         assertDoesNotThrow(() -> manipulator.save(savePath));

@@ -54,7 +54,7 @@ public class XCSManipulatorTest {
     }
 
     @Test
-    public void saveAsXCS() {
+    public void testSave() {
         Path srcPath = Paths.get(TARGET_DIR, "characters.xcs");
         Path outputPath = Paths.get(TARGET_DIR, "characters_2.xcs");
         assertDoesNotThrow(() -> manipulator.saveAsXCS(outputPath));

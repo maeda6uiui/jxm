@@ -130,7 +130,7 @@ public class EXEManipulatorTest {
     }
 
     @Test
-    public void write() {
+    public void testWrite() {
         manipulators.forEach((filename, manipulator) -> {
             Path exePath = Paths.get(TARGET_DIR, filename);
             Path backupPath = Paths.get(TARGET_DIR, filename + ".backup");

@@ -76,7 +76,7 @@ public class ConfigManipulatorTest {
     }
 
     @Test
-    public void saveAsDAT() {
+    public void testSave() {
         var srcPath = Paths.get(TARGET_DIR, "config.dat");
         var outputPath = Paths.get(TARGET_DIR, "config_2.dat");
         assertDoesNotThrow(() -> manipulator.save(outputPath));
