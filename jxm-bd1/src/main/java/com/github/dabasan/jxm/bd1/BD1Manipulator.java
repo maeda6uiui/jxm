@@ -333,7 +333,7 @@ public class BD1Manipulator {
      * @param flipV   Flips texture V-coordinate if true
      * @throws IOException If it fails to write to the file
      */
-    public void saveAsObj(Path objPath, Path mtlPath, boolean flipV) throws IOException {
+    public void saveAsOBJ(Path objPath, Path mtlPath, boolean flipV) throws IOException {
         BD1OBJWriter.write(objPath, mtlPath, blocks, textureFilenames, flipV);
     }
 
