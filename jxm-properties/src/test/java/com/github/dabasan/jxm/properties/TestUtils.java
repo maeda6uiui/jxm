@@ -107,8 +107,8 @@ public class TestUtils {
                 .setNumProjectiles(random.nextInt());
     }
 
-    public static JXMCharacter generateRandomCharacter() {
-        return new JXMCharacter()
+    public static XOPSCharacter generateRandomCharacter() {
+        return new XOPSCharacter()
                 .setTexture(CharacterTextureType.values()[random.nextInt(CharacterTextureType.values().length)])
                 .setModel(CharacterModelType.values()[random.nextInt(CharacterModelType.values().length)])
                 .setAiLevel(AILevel.values()[random.nextInt(AILevel.values().length)])
