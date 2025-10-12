@@ -51,93 +51,33 @@ public class EXEManipulator {
     }
 
     private int getWeaponDataStartPos(XOPSVersion version) {
-        int weaponDataStartPos;
-
-        switch (version) {
-            case XOPS096:
-                weaponDataStartPos = 0x0005D32C;
-                break;
-            case XOPS096T:
-                weaponDataStartPos = 0x0005D32C;
-                break;
-            case XOPS097FT:
-                weaponDataStartPos = 0x0005E32C;
-                break;
-            case XOPS0975T:
-                weaponDataStartPos = 0x00077FB0;
-                break;
-            case XOPSOLT18F2:
-                weaponDataStartPos = 0x0006640C;
-                break;
-            case XOPSOLT19F2:
-                weaponDataStartPos = 0x000777E8;
-                break;
-            default:
-                weaponDataStartPos = 0x00000000;
-                break;
-        }
-
-        return weaponDataStartPos;
+        return switch (version) {
+            case XOPS096, XOPS096T -> 0x0005D32C;
+            case XOPS097FT -> 0x0005E32C;
+            case XOPS0975T -> 0x00077FB0;
+            case XOPSOLT18F2 -> 0x0006640C;
+            case XOPSOLT19F2 -> 0x000777E8;
+        };
     }
 
     private int getWeaponNameStartPos(XOPSVersion version) {
-        int weaponNameStartPos;
-
-        switch (version) {
-            case XOPS096:
-                weaponNameStartPos = 0x000661E4;
-                break;
-            case XOPS096T:
-                weaponNameStartPos = 0x000661E4;
-                break;
-            case XOPS097FT:
-                weaponNameStartPos = 0x000671E4;
-                break;
-            case XOPS0975T:
-                weaponNameStartPos = 0x00079140;
-                break;
-            case XOPSOLT18F2:
-                weaponNameStartPos = 0x0006EF84;
-                break;
-            case XOPSOLT19F2:
-                weaponNameStartPos = 0x00077370;
-                break;
-            default:
-                weaponNameStartPos = 0x00000000;
-                break;
-        }
-
-        return weaponNameStartPos;
+        return switch (version) {
+            case XOPS096, XOPS096T -> 0x000661E4;
+            case XOPS097FT -> 0x000671E4;
+            case XOPS0975T -> 0x00079140;
+            case XOPSOLT18F2 -> 0x0006EF84;
+            case XOPSOLT19F2 -> 0x00077370;
+        };
     }
 
     private int getCharacterDataStartPos(XOPSVersion version) {
-        int characterDataStartPos;
-
-        switch (version) {
-            case XOPS096:
-                characterDataStartPos = 0x0005D864;
-                break;
-            case XOPS096T:
-                characterDataStartPos = 0x0005D864;
-                break;
-            case XOPS097FT:
-                characterDataStartPos = 0x0005E864;
-                break;
-            case XOPS0975T:
-                characterDataStartPos = 0x000784E8;
-                break;
-            case XOPSOLT18F2:
-                characterDataStartPos = 0x00066944;
-                break;
-            case XOPSOLT19F2:
-                characterDataStartPos = 0x00077D20;
-                break;
-            default:
-                characterDataStartPos = 0x00000000;
-                break;
-        }
-
-        return characterDataStartPos;
+        return switch (version) {
+            case XOPS096, XOPS096T -> 0x0005D864;
+            case XOPS097FT -> 0x0005E864;
+            case XOPS0975T -> 0x000784E8;
+            case XOPSOLT18F2 -> 0x00066944;
+            case XOPSOLT19F2 -> 0x00077D20;
+        };
     }
 
     /**
