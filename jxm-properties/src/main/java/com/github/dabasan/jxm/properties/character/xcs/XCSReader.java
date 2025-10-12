@@ -3,7 +3,8 @@ package com.github.dabasan.jxm.properties.character.xcs;
 import com.github.dabasan.jxm.properties.character.*;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFromBinLE;
@@ -14,18 +15,18 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  * @author maeda6uiui
  */
 class XCSReader {
-    private final JXMCharacter[] characters;
+    private final XOPSCharacter[] characters;
 
     private int pos;
 
-    public XCSReader(InputStream is, int numCharacters) throws IOException {
-        characters = new JXMCharacter[numCharacters];
+    public XCSReader(Path path, int numCharacters) throws IOException {
+        characters = new XOPSCharacter[numCharacters];
 
-        byte[] bin = is.readAllBytes();
+        byte[] bin = Files.readAllBytes(path);
         pos = 0x0000000C;
 
         for (int i = 0; i < numCharacters; i++) {
-            var character = new JXMCharacter();
+            var character = new XOPSCharacter();
 
             int textureTypeSpc = this.getShortAndIncrementPos(bin);
             character.texture = CharacterTextureType.values()[textureTypeSpc];
@@ -63,7 +64,7 @@ class XCSReader {
         return ret;
     }
 
-    public JXMCharacter[] getCharacterData() {
+    public XOPSCharacter[] getCharacterData() {
         return characters;
     }
 }

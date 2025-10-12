@@ -1,9 +1,9 @@
 package com.github.dabasan.jxm.properties;
 
 import com.github.dabasan.jxm.properties.config.ConfigManipulator;
-import com.github.dabasan.jxm.properties.config.JXMConfig;
 import com.github.dabasan.jxm.properties.config.KeyCode;
 import com.github.dabasan.jxm.properties.config.WindowMode;
+import com.github.dabasan.jxm.properties.config.XOPSConfig;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -26,13 +26,13 @@ public class ConfigManipulatorTest {
     @BeforeAll
     public void loadConfig() {
         assertDoesNotThrow(() -> {
-            manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config.dat").toString());
+            manipulator = new ConfigManipulator(Paths.get(TARGET_DIR, "config.dat"));
         });
     }
 
     @Test
     public void testRead() {
-        JXMConfig expectedConfig = new JXMConfig()
+        XOPSConfig expectedConfig = new XOPSConfig()
                 .setTurnUp(KeyCode.KEY_UP)
                 .setTurnDown(KeyCode.KEY_DOWN)
                 .setTurnLeft(KeyCode.KEY_LEFT)
@@ -60,15 +60,15 @@ public class ConfigManipulatorTest {
                 .setFrameSkip(false)
                 .setAnotherGunsight(false)
                 .setName("maeda6uiui");
-        JXMConfig actualConfig = manipulator.getConfig();
+        XOPSConfig actualConfig = manipulator.getConfig();
         assertEquals(expectedConfig, actualConfig);
     }
 
     @Test
     public void testUpdate() {
-        JXMConfig currentConfig = manipulator.getConfig();
+        XOPSConfig currentConfig = manipulator.getConfig();
 
-        JXMConfig newConfig = TestUtils.generateRandomConfig();
+        XOPSConfig newConfig = TestUtils.generateRandomConfig();
         manipulator.setConfig(newConfig);
         assertEquals(newConfig, manipulator.getConfig());
 
@@ -76,13 +76,13 @@ public class ConfigManipulatorTest {
     }
 
     @Test
-    public void saveAsDAT() {
-        var srcFilepath = Paths.get(TARGET_DIR, "config.dat").toString();
-        var outputFilepath = Paths.get(TARGET_DIR, "config_2.dat").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsDAT(outputFilepath));
+    public void testSave() {
+        var srcPath = Paths.get(TARGET_DIR, "config.dat");
+        var outputPath = Paths.get(TARGET_DIR, "config_2.dat");
+        assertDoesNotThrow(() -> manipulator.save(outputPath));
 
-        String srcFileHash = TestUtils.getFileHash(srcFilepath);
-        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcPath);
+        String outputFileHash = TestUtils.getFileHash(outputPath);
         assertEquals(srcFileHash, outputFileHash);
     }
 }

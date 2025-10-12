@@ -4,7 +4,8 @@ import org.joml.Matrix4f;
 import org.joml.Matrix4fc;
 import org.joml.Vector3f;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -32,47 +33,19 @@ public class BD1Manipulator {
         transformationMat = new Matrix4f().identity();
     }
 
-    private void readConstructorBase(InputStream is) throws IOException {
-        var reader = new BD1Reader(is);
+    /**
+     * Creates a BD1 manipulator and loads a BD1 file.
+     *
+     * @param path Path of the BD1 file
+     * @throws IOException If it fails to load the BD1 file
+     */
+    public BD1Manipulator(Path path) throws IOException {
+        var reader = new BD1Reader(path);
 
         blocks = reader.getBlocks();
         textureFilenames = reader.getTextureFilenames();
 
         transformationMat = new Matrix4f().identity();
-    }
-
-    /**
-     * Creates a BD1 manipulator and loads a BD1.
-     *
-     * @param is input stream to load a BD1 from
-     * @throws IOException if it fails to load
-     */
-    public BD1Manipulator(InputStream is) throws IOException {
-        this.readConstructorBase(is);
-    }
-
-    /**
-     * Creates a BD1 manipulator and loads a BD1.
-     *
-     * @param file file to load a BD1 from
-     * @throws IOException if it fails to load
-     */
-    public BD1Manipulator(File file) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
-            this.readConstructorBase(bis);
-        }
-    }
-
-    /**
-     * Creates a BD1 manipulator and loads a BD1.
-     *
-     * @param filepath filepath to load a BD1 from
-     * @throws IOException if it fails to load
-     */
-    public BD1Manipulator(String filepath) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
-            this.readConstructorBase(bis);
-        }
     }
 
     /**
@@ -296,12 +269,12 @@ public class BD1Manipulator {
             block.setVertexPositions(reorderedVertexPositions);
 
             //Arrange UVs
-            var origUVs = new UV[24];
+            var origUVs = new BD1UV[24];
             for (int i = 0; i < 24; i++) {
-                origUVs[i] = new UV(block.uvs[i]);
+                origUVs[i] = new BD1UV(block.uvs[i]);
             }
 
-            var newUVs = new UV[24];
+            var newUVs = new BD1UV[24];
             for (int i = 0; i < 6; i++) {
                 int[] uvIndices;
                 if (i == 2) {
@@ -341,95 +314,27 @@ public class BD1Manipulator {
         return this;
     }
 
-    private void saveAsBD1Base(OutputStream os) throws IOException {
+    /**
+     * Saves the block data in a BD1 file.
+     *
+     * @param path Path of the output file
+     * @throws IOException If it fails to write to the file
+     */
+    public void save(Path path) throws IOException {
         var writer = new BD1Writer();
-        writer.write(os, blocks, textureFilenames);
+        writer.write(path, blocks, textureFilenames);
     }
 
     /**
-     * Saves the blocks as a BD1.
+     * Exports the block data to an OBJ file.
      *
-     * @param os output stream to write the blocks to
-     * @throws IOException if it fails to output
+     * @param objPath Path of the OBJ file
+     * @param mtlPath Path of the MTL file
+     * @param flipV   Flips texture V-coordinate if true
+     * @throws IOException If it fails to write to the file
      */
-    public void saveAsBD1(OutputStream os) throws IOException {
-        this.saveAsBD1Base(os);
-    }
-
-    /**
-     * Saves the blocks as a BD1.
-     *
-     * @param file file to write the blocks to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsBD1(File file) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(file))) {
-            this.saveAsBD1(bos);
-        }
-    }
-
-    /**
-     * Saves the blocks as a BD1.
-     *
-     * @param filepath filepath to write the blocks to
-     * @throws IOException if it fails to output
-     */
-    public void saveAsBD1(String filepath) throws IOException {
-        try (var bos = new BufferedOutputStream(new FileOutputStream(filepath))) {
-            this.saveAsBD1Base(bos);
-        }
-    }
-
-    private void saveAsOBJBase(
-            OutputStream osObj, OutputStream osMtl, String mtlFilename, boolean flipV) throws IOException {
-        BD1OBJWriter.write(osObj, osMtl, mtlFilename, blocks, textureFilenames, flipV);
-    }
-
-    /**
-     * Saves the blocks as an OBJ.
-     *
-     * @param osObj       output stream for OBJ
-     * @param osMtl       output stream for MTL
-     * @param mtlFilename filename of the MTL
-     * @param flipV       flips texture V-coordinate if true
-     * @throws IOException if it fails to output
-     */
-    public void saveAsOBJ(
-            OutputStream osObj, OutputStream osMtl, String mtlFilename, boolean flipV) throws IOException {
-        this.saveAsOBJBase(osObj, osMtl, mtlFilename, flipV);
-    }
-
-    /**
-     * Saves the blocks as an OBJ.
-     *
-     * @param fileObj     file for the OBJ
-     * @param fileMtl     file for the MTL
-     * @param mtlFilename filename of the MTL
-     * @param flipV       Flips texture V-coordinate if true
-     * @throws IOException if it fails to output
-     */
-    public void saveAsOBJ(File fileObj, File fileMtl, String mtlFilename, boolean flipV) throws IOException {
-        try (var bosObj = new BufferedOutputStream(new FileOutputStream(fileObj));
-             var bosMtl = new BufferedOutputStream(new FileOutputStream(fileMtl))) {
-            this.saveAsOBJBase(bosObj, bosMtl, mtlFilename, flipV);
-        }
-    }
-
-    /**
-     * Saves the blocks as an OBJ.
-     *
-     * @param filepathObj filepath of the OBJ
-     * @param filepathMtl filepath of the MTL
-     * @param mtlFilename filename of the MTL
-     * @param flipV       flips texture V-coordinate if true
-     * @throws IOException if it fails to output
-     */
-    public void saveAsOBJ(
-            String filepathObj, String filepathMtl, String mtlFilename, boolean flipV) throws IOException {
-        try (var bosObj = new BufferedOutputStream(new FileOutputStream(filepathObj));
-             var bosMtl = new BufferedOutputStream(new FileOutputStream(filepathMtl))) {
-            this.saveAsOBJBase(bosObj, bosMtl, mtlFilename, flipV);
-        }
+    public void exportAsOBJ(Path objPath, Path mtlPath, boolean flipV) throws IOException {
+        BD1OBJWriter.write(objPath, mtlPath, blocks, textureFilenames, flipV);
     }
 
     /**

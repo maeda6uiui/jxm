@@ -1,7 +1,8 @@
 package com.github.dabasan.jxm.bd1;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,15 +19,15 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
 class BD1Reader {
     private final Map<Integer, String> textureFilenames;
     private final List<BD1Block> blocks;
+    private int pos;
 
-    public BD1Reader(InputStream is) throws IOException, IndexOutOfBoundsException {
+    public BD1Reader(Path path) throws IOException, IndexOutOfBoundsException {
         textureFilenames = new HashMap<>();
         blocks = new ArrayList<>();
 
-        //Read all bytes from a stream
-        byte[] bin = is.readAllBytes();
-
-        int pos = 0;
+        //Read all bytes
+        byte[] bin = Files.readAllBytes(path);
+        pos = 0;
 
         //Texture filenames
         for (int i = 0; i < 10; i++) {
@@ -64,41 +65,46 @@ class BD1Reader {
 
             //Vertex positions
             for (int j = 0; j < 8; j++) {
-                block.vertexPositions[j].x = getFloatFromBinLE(bin, pos);
-                pos += 4;
+                block.vertexPositions[j].x = this.getFloatAndIncrementPos(bin);
             }
             for (int j = 0; j < 8; j++) {
-                block.vertexPositions[j].y = getFloatFromBinLE(bin, pos);
-                pos += 4;
+                block.vertexPositions[j].y = this.getFloatAndIncrementPos(bin);
             }
             for (int j = 0; j < 8; j++) {
-                block.vertexPositions[j].z = getFloatFromBinLE(bin, pos);
-                pos += 4;
+                block.vertexPositions[j].z = this.getFloatAndIncrementPos(bin);
             }
 
             //UVs
             for (int j = 0; j < 24; j++) {
-                block.uvs[j].u = getFloatFromBinLE(bin, pos);
-                pos += 4;
+                block.uvs[j].u = this.getFloatAndIncrementPos(bin);
             }
             for (int j = 0; j < 24; j++) {
-                block.uvs[j].v = getFloatFromBinLE(bin, pos);
-                pos += 4;
+                block.uvs[j].v = this.getFloatAndIncrementPos(bin);
             }
 
             //Texture IDs
             for (int j = 0; j < 6; j++) {
-                block.textureIDs[j] = Byte.toUnsignedInt(bin[pos]);
-                pos += 4;
+                block.textureIDs[j] = this.getUnsignedIntAndIncrementPos(bin);
             }
 
             //Enabled flag
-            int enabled = Byte.toUnsignedInt(bin[pos]);
+            int enabled = this.getUnsignedIntAndIncrementPos(bin);
             block.enabled = enabled != 0;
-            pos += 4;
 
             blocks.add(block);
         }
+    }
+
+    private float getFloatAndIncrementPos(byte[] bin) {
+        float ret = getFloatFromBinLE(bin, pos);
+        pos += 4;
+        return ret;
+    }
+
+    private int getUnsignedIntAndIncrementPos(byte[] bin) {
+        int ret = Byte.toUnsignedInt(bin[pos]);
+        pos += 4;
+        return ret;
     }
 
     public List<BD1Block> getBlocks() {

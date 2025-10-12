@@ -1,12 +1,13 @@
 package com.github.dabasan.jxm.properties;
 
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import com.github.dabasan.jxm.properties.weapon.xgs.XGSManipulator;
 import com.github.dabasan.jxm.properties.xops.EXEManipulator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,29 +21,29 @@ import static org.junit.jupiter.api.Assertions.*;
 public class XGSManipulatorTest {
     private static final String TARGET_DIR = "./TestData/Weapon";
     private XGSManipulator manipulator;
-    private JXMWeapon[] expectedWeapons;
+    private XOPSWeapon[] expectedWeapons;
 
     @BeforeAll
     public void loadWeapons() {
         assertDoesNotThrow(() -> {
-            manipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs").toString());
+            manipulator = new XGSManipulator(Paths.get(TARGET_DIR, "weapons.xgs"));
 
-            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe").toString());
+            var exeManipulator = new EXEManipulator(Paths.get(TARGET_DIR, "xops0975t.exe"));
             expectedWeapons = exeManipulator.getWeapons();
         });
     }
 
     @Test
     public void testWeapons() {
-        JXMWeapon[] actualWeapons = manipulator.getWeapons();
+        XOPSWeapon[] actualWeapons = manipulator.getWeapons();
         assertArrayEquals(expectedWeapons, actualWeapons);
     }
 
     @Test
     public void testUpdateWeapons() {
-        JXMWeapon[] currentWeapons = manipulator.getWeapons();
+        XOPSWeapon[] currentWeapons = manipulator.getWeapons();
 
-        var newWeapons = new JXMWeapon[currentWeapons.length];
+        var newWeapons = new XOPSWeapon[currentWeapons.length];
         for (int i = 0; i < currentWeapons.length; i++) {
             newWeapons[i] = TestUtils.generateRandomWeapon();
         }
@@ -53,13 +54,13 @@ public class XGSManipulatorTest {
     }
 
     @Test
-    public void saveAsXGS() {
-        var srcFilepath = Paths.get(TARGET_DIR, "weapons.xgs").toString();
-        var outputFilepath = Paths.get(TARGET_DIR, "weapons_2.xgs").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsXGS(outputFilepath));
+    public void testSave() {
+        Path srcPath = Paths.get(TARGET_DIR, "weapons.xgs");
+        Path outputPath = Paths.get(TARGET_DIR, "weapons_2.xgs");
+        assertDoesNotThrow(() -> manipulator.save(outputPath));
 
-        String srcFileHash = TestUtils.getFileHash(srcFilepath);
-        String outputFileHash = TestUtils.getFileHash(outputFilepath);
+        String srcFileHash = TestUtils.getFileHash(srcPath);
+        String outputFileHash = TestUtils.getFileHash(outputPath);
         assertEquals(srcFileHash, outputFileHash);
     }
 }

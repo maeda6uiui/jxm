@@ -1,13 +1,15 @@
 package com.github.dabasan.jxm.properties.xops;
 
-import com.github.dabasan.jxm.properties.character.JXMCharacter;
+import com.github.dabasan.jxm.properties.character.XOPSCharacter;
 import com.github.dabasan.jxm.properties.character.xops.BINCharacterManipulator;
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 import com.github.dabasan.jxm.properties.weapon.xops.BINWeaponManipulator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  * EXE manipulator
@@ -29,8 +31,14 @@ public class EXEManipulator {
         characterManipulator = new BINCharacterManipulator();
     }
 
-    private void constructorBase(InputStream is) throws IOException {
-        byte[] bin = is.readAllBytes();
+    /**
+     * Creates an EXE manipulator and loads an EXE file.
+     *
+     * @param path Path of the EXE file
+     * @throws IOException If it fails to load the file
+     */
+    public EXEManipulator(Path path) throws IOException {
+        byte[] bin = Files.readAllBytes(path);
 
         XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
         int weaponDataStartPos = this.getWeaponDataStartPos(version);
@@ -42,128 +50,34 @@ public class EXEManipulator {
         characterManipulator = new BINCharacterManipulator(bin, characterDataStartPos);
     }
 
-    /**
-     * Creates an EXE manipulator and loads an EXE.
-     *
-     * @param is input stream load an EXE from
-     * @throws IOException if it fails to load
-     */
-    public EXEManipulator(InputStream is) throws IOException {
-        this.constructorBase(is);
-    }
-
-    /**
-     * Creates an EXE manipulator and loads an EXE.
-     *
-     * @param file file to load an EXE from
-     * @throws IOException if it fails to load
-     */
-    public EXEManipulator(File file) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(file))) {
-            this.constructorBase(bis);
-        }
-    }
-
-    /**
-     * Creates an EXE manipulator and loads an EXE.
-     *
-     * @param filepath filepath to load an EXE from
-     * @throws IOException if it fails to load
-     */
-    public EXEManipulator(String filepath) throws IOException {
-        try (var bis = new BufferedInputStream(new FileInputStream(filepath))) {
-            this.constructorBase(bis);
-        }
-    }
-
     private int getWeaponDataStartPos(XOPSVersion version) {
-        int weaponDataStartPos;
-
-        switch (version) {
-            case XOPS096:
-                weaponDataStartPos = 0x0005D32C;
-                break;
-            case XOPS096T:
-                weaponDataStartPos = 0x0005D32C;
-                break;
-            case XOPS097FT:
-                weaponDataStartPos = 0x0005E32C;
-                break;
-            case XOPS0975T:
-                weaponDataStartPos = 0x00077FB0;
-                break;
-            case XOPSOLT18F2:
-                weaponDataStartPos = 0x0006640C;
-                break;
-            case XOPSOLT19F2:
-                weaponDataStartPos = 0x000777E8;
-                break;
-            default:
-                weaponDataStartPos = 0x00000000;
-                break;
-        }
-
-        return weaponDataStartPos;
+        return switch (version) {
+            case XOPS096, XOPS096T -> 0x0005D32C;
+            case XOPS097FT -> 0x0005E32C;
+            case XOPS0975T -> 0x00077FB0;
+            case XOPSOLT18F2 -> 0x0006640C;
+            case XOPSOLT19F2 -> 0x000777E8;
+        };
     }
 
     private int getWeaponNameStartPos(XOPSVersion version) {
-        int weaponNameStartPos;
-
-        switch (version) {
-            case XOPS096:
-                weaponNameStartPos = 0x000661E4;
-                break;
-            case XOPS096T:
-                weaponNameStartPos = 0x000661E4;
-                break;
-            case XOPS097FT:
-                weaponNameStartPos = 0x000671E4;
-                break;
-            case XOPS0975T:
-                weaponNameStartPos = 0x00079140;
-                break;
-            case XOPSOLT18F2:
-                weaponNameStartPos = 0x0006EF84;
-                break;
-            case XOPSOLT19F2:
-                weaponNameStartPos = 0x00077370;
-                break;
-            default:
-                weaponNameStartPos = 0x00000000;
-                break;
-        }
-
-        return weaponNameStartPos;
+        return switch (version) {
+            case XOPS096, XOPS096T -> 0x000661E4;
+            case XOPS097FT -> 0x000671E4;
+            case XOPS0975T -> 0x00079140;
+            case XOPSOLT18F2 -> 0x0006EF84;
+            case XOPSOLT19F2 -> 0x00077370;
+        };
     }
 
     private int getCharacterDataStartPos(XOPSVersion version) {
-        int characterDataStartPos;
-
-        switch (version) {
-            case XOPS096:
-                characterDataStartPos = 0x0005D864;
-                break;
-            case XOPS096T:
-                characterDataStartPos = 0x0005D864;
-                break;
-            case XOPS097FT:
-                characterDataStartPos = 0x0005E864;
-                break;
-            case XOPS0975T:
-                characterDataStartPos = 0x000784E8;
-                break;
-            case XOPSOLT18F2:
-                characterDataStartPos = 0x00066944;
-                break;
-            case XOPSOLT19F2:
-                characterDataStartPos = 0x00077D20;
-                break;
-            default:
-                characterDataStartPos = 0x00000000;
-                break;
-        }
-
-        return characterDataStartPos;
+        return switch (version) {
+            case XOPS096, XOPS096T -> 0x0005D864;
+            case XOPS097FT -> 0x0005E864;
+            case XOPS0975T -> 0x000784E8;
+            case XOPSOLT18F2 -> 0x00066944;
+            case XOPSOLT19F2 -> 0x00077D20;
+        };
     }
 
     /**
@@ -171,7 +85,7 @@ public class EXEManipulator {
      *
      * @return array containing weapon data
      */
-    public JXMWeapon[] getWeapons() {
+    public XOPSWeapon[] getWeapons() {
         return weaponManipulator.getWeapons();
     }
 
@@ -180,7 +94,7 @@ public class EXEManipulator {
      *
      * @param weapons array containing weapon data
      */
-    public void setWeapons(JXMWeapon[] weapons) {
+    public void setWeapons(XOPSWeapon[] weapons) {
         weaponManipulator.setWeapons(weapons);
     }
 
@@ -189,7 +103,7 @@ public class EXEManipulator {
      *
      * @return array containing character data
      */
-    public JXMCharacter[] getCharacters() {
+    public XOPSCharacter[] getCharacters() {
         return characterManipulator.getCharacters();
     }
 
@@ -198,7 +112,7 @@ public class EXEManipulator {
      *
      * @param characters array containing character data
      */
-    public void setCharacters(JXMCharacter[] characters) {
+    public void setCharacters(XOPSCharacter[] characters) {
         characterManipulator.setCharacters(characters);
     }
 
@@ -242,44 +156,32 @@ public class EXEManipulator {
     }
 
     /**
-     * Writes data to an existing EXE. Pass a non-null value to the second
-     * argument if you want to make a backup file before overwriting the
-     * existing EXE.
+     * Writes the data to an existing EXE file.
+     * Pass a non-null value to the second argument
+     * if you want to make a backup file before overwriting the existing EXE file.
      *
-     * @param file       file to write the data to
-     * @param fileBackup file for backup
-     * @throws IOException if it fails to write
+     * @param path       Path of the XOPS executable
+     * @param pathBackup Path of the backup file
+     * @throws IOException If it fails to write to the file
      */
-    public void write(File file, File fileBackup) throws IOException {
-        if (!file.exists()) {
-            logger.error("The file specified does not exist. filename={}", file.getName());
-            return;
+    public void write(Path path, Path pathBackup) throws IOException {
+        byte[] bin = Files.readAllBytes(path);
+
+        //Make a backup file
+        if (pathBackup != null) {
+            Files.write(pathBackup, bin);
         }
 
-        this.writeBase(file, fileBackup);
-    }
+        //Update weapon and character data
+        XOPSVersion version = XOPSFunctions.getXOPSVersion(bin);
+        int weaponDataStartPos = this.getWeaponDataStartPos(version);
+        int weaponNameStartPos = this.getWeaponNameStartPos(version);
+        int characterDataStartPos = this.getCharacterDataStartPos(version);
 
-    /**
-     * Writes data to an existing EXE. Pass a non-null value to the second
-     * argument if you want to make a backup file before overwriting the
-     * existing EXE.
-     *
-     * @param filepath       filepath to write the data to
-     * @param filepathBackup filepath for backup
-     * @throws IOException if it fails to write
-     */
-    public void write(String filepath, String filepathBackup) throws IOException {
-        var file = new File(filepath);
-        if (!file.exists()) {
-            logger.error("The file specified does not exist. filename={}", file.getName());
-            return;
-        }
+        weaponManipulator.write(bin, weaponDataStartPos, weaponNameStartPos);
+        characterManipulator.write(bin, characterDataStartPos);
 
-        File fileBackup = null;
-        if (filepathBackup != null) {
-            fileBackup = new File(filepathBackup);
-        }
-
-        this.writeBase(file, fileBackup);
+        //Overwrite an EXE file of XOPS
+        Files.write(path, bin);
     }
 }

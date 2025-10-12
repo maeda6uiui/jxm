@@ -1,9 +1,11 @@
 package com.github.dabasan.jxm.pd1;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.joml.Vector3fc;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addUnsignedShortToBi
  * @author maeda6uiui
  */
 class PD1Writer {
-    public void write(OutputStream os, List<PD1Point> points) throws IOException {
+    public void write(Path path, List<PD1Point> points) throws IOException {
         List<Byte> bin = new ArrayList<>();
 
         //Number of points
@@ -44,8 +46,8 @@ class PD1Writer {
             }
         }
 
-        for (byte b : bin) {
-            os.write(b);
-        }
+        Byte[] boxedBytes = bin.toArray(Byte[]::new);
+        byte[] byteArray = ArrayUtils.toPrimitive(boxedBytes);
+        Files.write(path, byteArray);
     }
 }

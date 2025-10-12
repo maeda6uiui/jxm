@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author maeda6uiui
  */
-public class JXMCharacter {
+public class XOPSCharacter {
     public CharacterTextureType texture;
     public CharacterModelType model;
     public int hp;
@@ -21,7 +21,7 @@ public class JXMCharacter {
     /**
      * Creates a character.
      */
-    public JXMCharacter() {
+    public XOPSCharacter() {
         texture = CharacterTextureType.SOLDIER_BLACK;
         model = CharacterModelType.MALE;
         hp = 100;
@@ -35,7 +35,7 @@ public class JXMCharacter {
      *
      * @param character Character
      */
-    public JXMCharacter(JXMCharacter character) {
+    public XOPSCharacter(XOPSCharacter character) {
         this.texture = character.texture;
         this.model = character.model;
         this.hp = character.hp;
@@ -46,15 +46,21 @@ public class JXMCharacter {
 
     @Override
     public String toString() {
-        return "CharacterData [texture=" + texture + ", model=" + model + ", hp=" + hp
-                + ", aiLevel=" + aiLevel + ", weapons=" + weapons + ", type=" + type + "]";
+        return "XOPSCharacter{" +
+                "texture=" + texture +
+                ", model=" + model +
+                ", hp=" + hp +
+                ", aiLevel=" + aiLevel +
+                ", weapons=" + weapons +
+                ", type=" + type +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JXMCharacter character = (JXMCharacter) o;
+        XOPSCharacter character = (XOPSCharacter) o;
         return hp == character.hp
                 && texture == character.texture
                 && model == character.model
@@ -68,32 +74,32 @@ public class JXMCharacter {
         return Objects.hash(texture, model, hp, aiLevel, weapons, type);
     }
 
-    public JXMCharacter setTexture(CharacterTextureType texture) {
+    public XOPSCharacter setTexture(CharacterTextureType texture) {
         this.texture = texture;
         return this;
     }
 
-    public JXMCharacter setModel(CharacterModelType model) {
+    public XOPSCharacter setModel(CharacterModelType model) {
         this.model = model;
         return this;
     }
 
-    public JXMCharacter setHp(int hp) {
+    public XOPSCharacter setHp(int hp) {
         this.hp = hp;
         return this;
     }
 
-    public JXMCharacter setAiLevel(AILevel aiLevel) {
+    public XOPSCharacter setAiLevel(AILevel aiLevel) {
         this.aiLevel = aiLevel;
         return this;
     }
 
-    public JXMCharacter setWeapons(List<Integer> weapons) {
+    public XOPSCharacter setWeapons(List<Integer> weapons) {
         this.weapons = weapons;
         return this;
     }
 
-    public JXMCharacter setType(CharacterType type) {
+    public XOPSCharacter setType(CharacterType type) {
         this.type = type;
         return this;
     }

@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author maeda6uiui
  */
-public class JXMConfig {
+public class XOPSConfig {
     //Key code
     public KeyCode turnUp;
     public KeyCode turnDown;
@@ -41,7 +41,7 @@ public class JXMConfig {
     /**
      * Creates a config instance.
      */
-    public JXMConfig() {
+    public XOPSConfig() {
         this.reset();
     }
 
@@ -50,7 +50,7 @@ public class JXMConfig {
      *
      * @param config Config
      */
-    public JXMConfig(JXMConfig config) {
+    public XOPSConfig(XOPSConfig config) {
         this.turnUp = config.turnUp;
         this.turnDown = config.turnDown;
         this.turnLeft = config.turnLeft;
@@ -117,23 +117,42 @@ public class JXMConfig {
 
     @Override
     public String toString() {
-        return "Config [turnUp=" + turnUp + ", turnDown=" + turnDown + ", turnLeft=" + turnLeft
-                + ", turnRight=" + turnRight + ", moveForward=" + moveForward + ", moveBackward="
-                + moveBackward + ", moveLeft=" + moveLeft + ", moveRight=" + moveRight + ", walk="
-                + walk + ", jump=" + jump + ", reload=" + reload + ", dropWeapon=" + dropWeapon
-                + ", zoom=" + zoom + ", fireMode=" + fireMode + ", switchWeapon=" + switchWeapon
-                + ", weapon1=" + weapon1 + ", weapon2=" + weapon2 + ", fire=" + fire
-                + ", mouseSensitivity=" + mouseSensitivity + ", brightness=" + brightness
-                + ", windowMode=" + windowMode + ", enableSound=" + enableSound + ", enableBlood="
-                + enableBlood + ", invertMouse=" + invertMouse + ", frameSkip=" + frameSkip
-                + ", anotherGunsight=" + anotherGunsight + ", name=" + name + "]";
+        return "XOPSConfig{" +
+                "turnUp=" + turnUp +
+                ", turnDown=" + turnDown +
+                ", turnLeft=" + turnLeft +
+                ", turnRight=" + turnRight +
+                ", moveForward=" + moveForward +
+                ", moveBackward=" + moveBackward +
+                ", moveLeft=" + moveLeft +
+                ", moveRight=" + moveRight +
+                ", walk=" + walk +
+                ", jump=" + jump +
+                ", reload=" + reload +
+                ", dropWeapon=" + dropWeapon +
+                ", zoom=" + zoom +
+                ", fireMode=" + fireMode +
+                ", switchWeapon=" + switchWeapon +
+                ", weapon1=" + weapon1 +
+                ", weapon2=" + weapon2 +
+                ", fire=" + fire +
+                ", mouseSensitivity=" + mouseSensitivity +
+                ", brightness=" + brightness +
+                ", windowMode=" + windowMode +
+                ", enableSound=" + enableSound +
+                ", enableBlood=" + enableBlood +
+                ", invertMouse=" + invertMouse +
+                ", frameSkip=" + frameSkip +
+                ", anotherGunsight=" + anotherGunsight +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JXMConfig config = (JXMConfig) o;
+        XOPSConfig config = (XOPSConfig) o;
         return mouseSensitivity == config.mouseSensitivity
                 && brightness == config.brightness
                 && enableSound == config.enableSound
@@ -196,137 +215,137 @@ public class JXMConfig {
         );
     }
 
-    public JXMConfig setTurnUp(KeyCode turnUp) {
+    public XOPSConfig setTurnUp(KeyCode turnUp) {
         this.turnUp = turnUp;
         return this;
     }
 
-    public JXMConfig setTurnDown(KeyCode turnDown) {
+    public XOPSConfig setTurnDown(KeyCode turnDown) {
         this.turnDown = turnDown;
         return this;
     }
 
-    public JXMConfig setTurnLeft(KeyCode turnLeft) {
+    public XOPSConfig setTurnLeft(KeyCode turnLeft) {
         this.turnLeft = turnLeft;
         return this;
     }
 
-    public JXMConfig setTurnRight(KeyCode turnRight) {
+    public XOPSConfig setTurnRight(KeyCode turnRight) {
         this.turnRight = turnRight;
         return this;
     }
 
-    public JXMConfig setMoveForward(KeyCode moveForward) {
+    public XOPSConfig setMoveForward(KeyCode moveForward) {
         this.moveForward = moveForward;
         return this;
     }
 
-    public JXMConfig setMoveBackward(KeyCode moveBackward) {
+    public XOPSConfig setMoveBackward(KeyCode moveBackward) {
         this.moveBackward = moveBackward;
         return this;
     }
 
-    public JXMConfig setMoveLeft(KeyCode moveLeft) {
+    public XOPSConfig setMoveLeft(KeyCode moveLeft) {
         this.moveLeft = moveLeft;
         return this;
     }
 
-    public JXMConfig setMoveRight(KeyCode moveRight) {
+    public XOPSConfig setMoveRight(KeyCode moveRight) {
         this.moveRight = moveRight;
         return this;
     }
 
-    public JXMConfig setWalk(KeyCode walk) {
+    public XOPSConfig setWalk(KeyCode walk) {
         this.walk = walk;
         return this;
     }
 
-    public JXMConfig setJump(KeyCode jump) {
+    public XOPSConfig setJump(KeyCode jump) {
         this.jump = jump;
         return this;
     }
 
-    public JXMConfig setReload(KeyCode reload) {
+    public XOPSConfig setReload(KeyCode reload) {
         this.reload = reload;
         return this;
     }
 
-    public JXMConfig setDropWeapon(KeyCode dropWeapon) {
+    public XOPSConfig setDropWeapon(KeyCode dropWeapon) {
         this.dropWeapon = dropWeapon;
         return this;
     }
 
-    public JXMConfig setZoom(KeyCode zoom) {
+    public XOPSConfig setZoom(KeyCode zoom) {
         this.zoom = zoom;
         return this;
     }
 
-    public JXMConfig setFireMode(KeyCode fireMode) {
+    public XOPSConfig setFireMode(KeyCode fireMode) {
         this.fireMode = fireMode;
         return this;
     }
 
-    public JXMConfig setSwitchWeapon(KeyCode switchWeapon) {
+    public XOPSConfig setSwitchWeapon(KeyCode switchWeapon) {
         this.switchWeapon = switchWeapon;
         return this;
     }
 
-    public JXMConfig setWeapon1(KeyCode weapon1) {
+    public XOPSConfig setWeapon1(KeyCode weapon1) {
         this.weapon1 = weapon1;
         return this;
     }
 
-    public JXMConfig setWeapon2(KeyCode weapon2) {
+    public XOPSConfig setWeapon2(KeyCode weapon2) {
         this.weapon2 = weapon2;
         return this;
     }
 
-    public JXMConfig setFire(KeyCode fire) {
+    public XOPSConfig setFire(KeyCode fire) {
         this.fire = fire;
         return this;
     }
 
-    public JXMConfig setMouseSensitivity(int mouseSensitivity) {
+    public XOPSConfig setMouseSensitivity(int mouseSensitivity) {
         this.mouseSensitivity = mouseSensitivity;
         return this;
     }
 
-    public JXMConfig setBrightness(int brightness) {
+    public XOPSConfig setBrightness(int brightness) {
         this.brightness = brightness;
         return this;
     }
 
-    public JXMConfig setWindowMode(WindowMode windowMode) {
+    public XOPSConfig setWindowMode(WindowMode windowMode) {
         this.windowMode = windowMode;
         return this;
     }
 
-    public JXMConfig setEnableSound(boolean enableSound) {
+    public XOPSConfig setEnableSound(boolean enableSound) {
         this.enableSound = enableSound;
         return this;
     }
 
-    public JXMConfig setEnableBlood(boolean enableBlood) {
+    public XOPSConfig setEnableBlood(boolean enableBlood) {
         this.enableBlood = enableBlood;
         return this;
     }
 
-    public JXMConfig setInvertMouse(boolean invertMouse) {
+    public XOPSConfig setInvertMouse(boolean invertMouse) {
         this.invertMouse = invertMouse;
         return this;
     }
 
-    public JXMConfig setFrameSkip(boolean frameSkip) {
+    public XOPSConfig setFrameSkip(boolean frameSkip) {
         this.frameSkip = frameSkip;
         return this;
     }
 
-    public JXMConfig setAnotherGunsight(boolean anotherGunsight) {
+    public XOPSConfig setAnotherGunsight(boolean anotherGunsight) {
         this.anotherGunsight = anotherGunsight;
         return this;
     }
 
-    public JXMConfig setName(String name) {
+    public XOPSConfig setName(String name) {
         this.name = name;
         return this;
     }

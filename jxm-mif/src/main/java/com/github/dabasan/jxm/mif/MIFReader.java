@@ -1,10 +1,11 @@
 package com.github.dabasan.jxm.mif;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * MIF reader
@@ -14,22 +15,10 @@ import java.util.ArrayList;
 class MIFReader {
     private final MissionInfo missionInfo;
 
-    public MIFReader(InputStream is, String encoding) throws IOException, NumberFormatException {
+    public MIFReader(Path path, String encoding) throws IOException, NumberFormatException {
+        List<String> lines = Files.readAllLines(path, Charset.forName(encoding));
+
         missionInfo = new MissionInfo();
-
-        //Read all lines from a file
-        var lines = new ArrayList<String>();
-        try (var br = new BufferedReader(new InputStreamReader(is, encoding))) {
-            while (true) {
-                String line = br.readLine();
-                if (line == null) {
-                    break;
-                }
-
-                lines.add(line);
-            }
-        }
-
         missionInfo.missionTitle = lines.get(0);
         missionInfo.missionFullname = lines.get(1);
         missionInfo.pathnameOfBlock = lines.get(2);

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class BD1ManipulatorSnowBaseTest {
     @BeforeAll
     public void loadBD1() {
         assertDoesNotThrow(() -> {
-            manipulator = new BD1Manipulator(Paths.get(TARGET_DIR, "map.bd1").toString());
+            manipulator = new BD1Manipulator(Paths.get(TARGET_DIR, "map.bd1"));
         });
 
         origBlocks = new ArrayList<>();
@@ -80,9 +81,7 @@ public class BD1ManipulatorSnowBaseTest {
                 .rotate((float) Math.PI / 4.0f, 0.0f, 0.0f, 1.0f)
                 .scale(1.0f, 2.0f, 1.0f);
         manipulator.transform(mat).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "transform.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "transform.bd1")));
     }
 
     @Test
@@ -91,45 +90,35 @@ public class BD1ManipulatorSnowBaseTest {
         float amountY = 50.0f;
         float amountZ = 50.0f;
         manipulator.translate(amountX, amountY, amountZ).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "translate.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "translate.bd1")));
     }
 
     @Test
     public void rotX() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotX(amount).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot_x.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot_x.bd1")));
     }
 
     @Test
     public void rotY() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotY(amount).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot_y.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot_y.bd1")));
     }
 
     @Test
     public void rotZ() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rotZ(amount).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot_z.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot_z.bd1")));
     }
 
     @Test
     public void rot() {
         float amount = (float) Math.PI / 4.0f;
         manipulator.rot(amount, 1.0f, 1.0f, 1.0f).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rot.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rot.bd1")));
     }
 
     @Test
@@ -138,25 +127,20 @@ public class BD1ManipulatorSnowBaseTest {
         float scaleY = 2.0f;
         float scaleZ = 2.0f;
         manipulator.rescale(scaleX, scaleY, scaleZ).applyTransformation();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "rescale.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "rescale.bd1")));
     }
 
     @Test
     public void invertZ() {
         manipulator.invertZ();
-
-        var saveFilepath = Paths.get(TARGET_DIR, "invert_z.bd1").toString();
-        assertDoesNotThrow(() -> manipulator.saveAsBD1(saveFilepath));
+        assertDoesNotThrow(() -> manipulator.save(Paths.get(TARGET_DIR, "invert_z.bd1")));
     }
 
     @Test
     public void testUpdate() {
         List<BD1Block> tmpBlocks;
         try {
-            var tmpFilepath = Paths.get(TARGET_DIR, "map_2.bd1").toString();
-            var tmpManipulator = new BD1Manipulator(tmpFilepath);
+            var tmpManipulator = new BD1Manipulator(Paths.get(TARGET_DIR, "map_2.bd1"));
             tmpBlocks = tmpManipulator.getBlocks();
         } catch (IOException e) {
             fail(e);
@@ -168,15 +152,15 @@ public class BD1ManipulatorSnowBaseTest {
     }
 
     @Test
-    public void saveAsOBJ() {
-        var objFilepath = Paths.get(TARGET_DIR, "map.obj").toString();
-        var mtlFilepath = Paths.get(TARGET_DIR, "map.mtl").toString();
+    public void exportAsOBJ() {
+        Path objPath = Paths.get(TARGET_DIR, "map.obj");
+        Path mtlPath = Paths.get(TARGET_DIR, "map.mtl");
         assertDoesNotThrow(
-                () -> manipulator.saveAsOBJ(objFilepath, mtlFilepath, "map.mtl", false));
+                () -> manipulator.exportAsOBJ(objPath, mtlPath, false));
 
-        var objFlipFilepath = Paths.get(TARGET_DIR, "map_flip.obj").toString();
-        var mtlFlipFilepath = Paths.get(TARGET_DIR, "map_flip.mtl").toString();
+        Path objFlipPath = Paths.get(TARGET_DIR, "map_flip.obj");
+        Path mtlFlipPath = Paths.get(TARGET_DIR, "map_flip.mtl");
         assertDoesNotThrow(
-                () -> manipulator.saveAsOBJ(objFlipFilepath, mtlFlipFilepath, "map_flip.mtl", true));
+                () -> manipulator.exportAsOBJ(objFlipPath, mtlFlipPath, true));
     }
 }

@@ -1,7 +1,7 @@
 package com.github.dabasan.jxm.properties.weapon.openxops;
 
 import com.github.dabasan.jxm.properties.util.CPPArrayStringGenerator;
-import com.github.dabasan.jxm.properties.weapon.JXMWeapon;
+import com.github.dabasan.jxm.properties.weapon.XOPSWeapon;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class WeaponCodeGenerator {
      * @param weapons list containing weapon data
      * @return C++ code
      */
-    public String generate(List<JXMWeapon> weapons) {
+    public String generate(List<XOPSWeapon> weapons) {
         sb = new StringBuilder();
         for (int i = 0; i < weapons.size(); i++) {
             var weapon = weapons.get(i);

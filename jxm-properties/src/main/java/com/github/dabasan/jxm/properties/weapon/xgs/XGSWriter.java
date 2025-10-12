@@ -1,9 +1,11 @@
 package com.github.dabasan.jxm.properties.weapon.xgs;
 
 import com.github.dabasan.jxm.properties.weapon.*;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.addShortToBinLE;
  * @author maeda6uiui
  */
 class XGSWriter {
-    public void write(OutputStream os, JXMWeapon[] weapons) throws IOException {
+    public void write(Path path, XOPSWeapon[] weapons) throws IOException {
         var bin = new ArrayList<Byte>();
 
         bin.add((byte) 0x58);//X
@@ -33,7 +35,7 @@ class XGSWriter {
         bin.add((byte) 0x08);
         bin.add((byte) 0x00);
 
-        for (JXMWeapon weapon : weapons) {
+        for (XOPSWeapon weapon : weapons) {
             addShortToBinLE(bin, (short) weapon.attackPower);
             addShortToBinLE(bin, (short) weapon.penetration);
             addShortToBinLE(bin, (short) weapon.fireInterval);
@@ -97,9 +99,9 @@ class XGSWriter {
             bin.add((byte) 0x00);
         }
 
-        for (byte b : bin) {
-            os.write(b);
-        }
+        Byte[] boxedBytes = bin.toArray(Byte[]::new);
+        byte[] byteArray = ArrayUtils.toPrimitive(boxedBytes);
+        Files.write(path, byteArray);
     }
 
     private void addNameToBin(List<Byte> bin, String name) {

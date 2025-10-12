@@ -3,7 +3,8 @@ package com.github.dabasan.jxm.properties.weapon.ids;
 import com.github.dabasan.jxm.properties.weapon.*;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 
 import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
@@ -14,13 +15,13 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getShortFromBinLE;
  * @author maeda6uiui
  */
 class IDSReader {
-    private final JXMWeapon weapon;
+    private final XOPSWeapon weapon;
     private int pos;
 
-    public IDSReader(InputStream is) throws IOException {
-        weapon = new JXMWeapon();
+    public IDSReader(Path path) throws IOException {
+        weapon = new XOPSWeapon();
 
-        byte[] bin = is.readAllBytes();
+        byte[] bin = Files.readAllBytes(path);
         pos = 0x0000000A;
 
         weapon.attackPower = this.getShortAndIncrementPos(bin);
@@ -99,7 +100,7 @@ class IDSReader {
         return name.substring(0, firstNullPos);
     }
 
-    public JXMWeapon getWeaponData() {
+    public XOPSWeapon getWeaponData() {
         return weapon;
     }
 }

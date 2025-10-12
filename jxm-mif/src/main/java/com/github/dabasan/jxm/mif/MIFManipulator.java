@@ -1,6 +1,7 @@
 package com.github.dabasan.jxm.mif;
 
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * MIF manipulator
@@ -17,46 +18,16 @@ public class MIFManipulator {
         missionInfo = new MissionInfo();
     }
 
-    private void readConstructorBase(InputStream is, String encoding) throws IOException {
-        var reader = new MIFReader(is, encoding);
+    /**
+     * Creates a MIF manipulator and loads a MIF file.
+     *
+     * @param path     Path of the MIF file
+     * @param encoding Encoding of the MIF
+     * @throws IOException If it fails to load the MIF file
+     */
+    public MIFManipulator(Path path, String encoding) throws IOException {
+        var reader = new MIFReader(path, encoding);
         missionInfo = reader.getMissionInfo();
-    }
-
-    /**
-     * Creates a MIF manipulator and loads a MIF.
-     *
-     * @param is       input stream to load the MIF from
-     * @param encoding encoding of the MIF
-     * @throws IOException if it fails to load
-     */
-    public MIFManipulator(InputStream is, String encoding) throws IOException {
-        this.readConstructorBase(is, encoding);
-    }
-
-    /**
-     * Creates a MIF manipulator and loads a MIF.
-     *
-     * @param file     file to load the MIF from
-     * @param encoding encoding of the MIF
-     * @throws IOException if it fails to load
-     */
-    public MIFManipulator(File file, String encoding) throws IOException {
-        try (var fis = new FileInputStream(file)) {
-            this.readConstructorBase(fis, encoding);
-        }
-    }
-
-    /**
-     * Creates a MIF manipulator and loads a MIF.
-     *
-     * @param filepath filepath to load the MIF from
-     * @param encoding encoding of the MIF
-     * @throws IOException if it fails to load
-     */
-    public MIFManipulator(String filepath, String encoding) throws IOException {
-        try (var fis = new FileInputStream(filepath)) {
-            this.readConstructorBase(fis, encoding);
-        }
     }
 
     /**
@@ -77,45 +48,15 @@ public class MIFManipulator {
         this.missionInfo = missionInfo;
     }
 
-    private void saveAsMIFBase(OutputStream os, String encoding) throws IOException {
+    /**
+     * Saves the mission info in a MIF file.
+     *
+     * @param path     Path of the MIF file
+     * @param encoding Encoding of the MIF file
+     * @throws IOException If it fails to write to the file
+     */
+    public void save(Path path, String encoding) throws IOException {
         var writer = new MIFWriter();
-        writer.write(os, encoding, missionInfo);
-    }
-
-    /**
-     * Saves the mission info as a MIF.
-     *
-     * @param os       output stream to write the MIF to
-     * @param encoding encoding of the MIF
-     * @throws IOException if it fails to output
-     */
-    public void saveAsMIF(OutputStream os, String encoding) throws IOException {
-        this.saveAsMIFBase(os, encoding);
-    }
-
-    /**
-     * Saves the mission info as a MIF.
-     *
-     * @param file     file to write the MIF to
-     * @param encoding encoding of the MIF
-     * @throws IOException if it fails to output
-     */
-    public void saveAsMIF(File file, String encoding) throws IOException {
-        try (var fos = new FileOutputStream(file)) {
-            this.saveAsMIFBase(fos, encoding);
-        }
-    }
-
-    /**
-     * Saves the mission info as a MIF.
-     *
-     * @param filepath filepath
-     * @param encoding encoding of the MIF
-     * @throws IOException if it fails to output
-     */
-    public void saveAsMIF(String filepath, String encoding) throws IOException {
-        try (var fos = new FileOutputStream(filepath)) {
-            this.saveAsMIFBase(fos, encoding);
-        }
+        writer.write(path, encoding, missionInfo);
     }
 }

@@ -1,7 +1,8 @@
 package com.github.dabasan.jxm.pd1;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +16,14 @@ import static com.github.dabasan.jxm.bintools.ByteFunctions.getUnsignedShortFrom
  */
 class PD1Reader {
     private final List<PD1Point> points;
+    private int pos;
 
-    public PD1Reader(InputStream is) throws IOException {
+    public PD1Reader(Path path) throws IOException {
         points = new ArrayList<>();
 
-        //Read all bytes from a stream
-        byte[] bin = is.readAllBytes();
-
-        int pos = 0;
+        //Read all bytes
+        byte[] bin = Files.readAllBytes(path);
+        pos = 0;
 
         //Number of points
         int numPoints = getUnsignedShortFromBinLE(bin, pos);
@@ -33,16 +34,12 @@ class PD1Reader {
             var point = new PD1Point();
 
             //Point position
-            point.position.x = getFloatFromBinLE(bin, pos);
-            pos += 4;
-            point.position.y = getFloatFromBinLE(bin, pos);
-            pos += 4;
-            point.position.z = getFloatFromBinLE(bin, pos);
-            pos += 4;
+            point.position.x = this.getFloatAndIncrementPos(bin);
+            point.position.y = this.getFloatAndIncrementPos(bin);
+            point.position.z = this.getFloatAndIncrementPos(bin);
 
             //Rotation
-            point.rotation = getFloatFromBinLE(bin, pos);
-            pos += 4;
+            point.rotation = this.getFloatAndIncrementPos(bin);
 
             //Parameters
             for (int j = 0; j < 4; j++) {
@@ -52,6 +49,12 @@ class PD1Reader {
 
             points.add(point);
         }
+    }
+
+    private float getFloatAndIncrementPos(byte[] bin) {
+        float ret = getFloatFromBinLE(bin, pos);
+        pos += 4;
+        return ret;
     }
 
     public List<PD1Point> getPoints() {

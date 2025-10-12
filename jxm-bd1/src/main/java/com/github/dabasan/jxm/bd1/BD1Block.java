@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class BD1Block {
     public Vector3f[] vertexPositions;
-    public UV[] uvs;
+    public BD1UV[] uvs;
     public int[] textureIDs;
     public boolean enabled;
 
@@ -25,9 +25,9 @@ public class BD1Block {
             vertexPositions[i] = new Vector3f();
         }
 
-        uvs = new UV[24];
+        uvs = new BD1UV[24];
         for (int i = 0; i < 24; i++) {
-            uvs[i] = new UV();
+            uvs[i] = new BD1UV();
         }
 
         textureIDs = new int[6];
@@ -46,9 +46,9 @@ public class BD1Block {
             vertexPositions[i] = new Vector3f(block.vertexPositions[i]);
         }
 
-        uvs = new UV[24];
+        uvs = new BD1UV[24];
         for (int i = 0; i < 24; i++) {
-            uvs[i] = new UV(block.uvs[i]);
+            uvs[i] = new BD1UV(block.uvs[i]);
         }
 
         textureIDs = block.textureIDs.clone();
@@ -81,7 +81,7 @@ public class BD1Block {
         return this;
     }
 
-    public BD1Block setUvs(UV[] uvs) {
+    public BD1Block setUvs(BD1UV[] uvs) {
         this.uvs = uvs;
         return this;
     }

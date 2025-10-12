@@ -18,7 +18,7 @@ class BD1FaceGenerator {
 
         for (var block : blocks) {
             Vector3f[] vertexPositions = block.vertexPositions;
-            UV[] uvs = block.uvs;
+            BD1UV[] uvs = block.uvs;
             int[] textureIDs = block.textureIDs;
 
             //Calculate normals
@@ -47,7 +47,7 @@ class BD1FaceGenerator {
                 int[] uvIndices = BD1Functions.getFaceCorrespondingUVIndices(i);
 
                 var faceVertexPositions = new Vector3f[4];
-                var faceUVs = new UV[4];
+                var faceUVs = new BD1UV[4];
                 for (int j = 0; j < 4; j++) {
                     faceVertexPositions[j] = vertexPositions[vertexIndices[j]];
                     faceUVs[j] = uvs[uvIndices[j]];
