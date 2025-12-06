@@ -83,6 +83,67 @@ Supports operations of
 
 ## Code samples
 
+### Manipulation of BD1 file
+
+```java
+package com.github.dabasan.jxm.bd1;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+
+/**
+ * Example code for BD1 manipulation
+ *
+ * @author maeda6uiui
+ */
+public class BD1ManipulationExample {
+    public static void main(String[] args) {
+        BD1Manipulator manipulator;
+        try {
+            manipulator = new BD1Manipulator(Paths.get("./Data/map.bd1"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        //Get the number of blocks
+        int numBlocks = manipulator.getNumBlocks();
+        System.out.printf("Number of blocks: %d\n", numBlocks);
+
+        //Get all filenames of the textures
+        manipulator.getTextureFilenames().forEach(
+                (id, filename) -> System.out.printf("%d: %s\n", id, filename)
+        );
+
+        //Change texture filenames
+        //manipulator.setTextureFilename(0, "test.bmp");
+        //manipulator.setTextureFilename(1, "test_2.bmp");
+
+        //Transform the map
+        //The operation order is
+        //rescaling -> rotation around the y-axis -> translation
+        manipulator
+                .translate(0.0f, 100.0f, 0.0f)
+                .rotY((float) Math.toRadians(45))
+                .rescale(1.0f, 2.0f, 1.0f)
+                .applyTransformation();
+
+        //Invert z-axis (create mirrored map)
+        manipulator.invertZ();
+
+        try {
+            //Save as BD1
+            manipulator.save(Paths.get("./Data/map_2.bd1"));
+
+            //Export as OBJ
+            manipulator.exportAsOBJ(Paths.get("./Data/map.obj"), Paths.get("./Data/map.mtl"), true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
 ### Older versions
 
 - [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2)
