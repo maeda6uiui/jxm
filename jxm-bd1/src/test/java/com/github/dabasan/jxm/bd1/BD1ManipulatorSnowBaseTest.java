@@ -52,7 +52,7 @@ public class BD1ManipulatorSnowBaseTest {
     }
 
     @Test
-    public void testGetTextureFilenames() {
+    public void testGetTextureFilename() {
         var expected = new ArrayList<String>();
         expected.add("yuki.bmp");
         expected.add("jimen.bmp");
