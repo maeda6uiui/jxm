@@ -1,3 +1,5 @@
+<!-- @formatter:off -->
+
 # JXM
 
 **JXM (Java XOPSManipulator)** is a Java library to handle data related to [X operations](https://hp.vector.co.jp/authors/VA022962/xops/).
@@ -8,39 +10,49 @@ Java ≥ 17
 
 ## Installation
 
-### Maven
-
-#### BD1 module
+### BD1 module
 
 Supports operations of the BD1 format.
 
 ```xml
-<groupId>com.github.dabasan</groupId>
-<artifactId>jxm-bd1</artifactId>
-<version>2.2.0</version>
+<dependencies>
+    <dependency>
+        <groupId>io.github.maeda6uiui</groupId>
+        <artifactId>jxm-bd1</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
-#### MIF module
+### MIF module
 
 Supports operations of the MIF format.
 
 ```xml
-<groupId>com.github.dabasan</groupId>
-<artifactId>jxm-mif</artifactId>
-<version>2.2.0</version>
+<dependencies>
+    <dependency>
+        <groupId>io.github.maeda6uiui</groupId>
+        <artifactId>jxm-mif</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
-#### PD1 module
+### PD1 module
 
 Supports operations of the PD1 format.
 
 ```xml
-<groupId>com.github.dabasan</groupId>
-<artifactId>jxm-pd1</artifactId>
-<version>2.2.0</version>
+<dependencies>
+    <dependency>
+        <groupId>io.github.maeda6uiui</groupId>
+        <artifactId>jxm-pd1</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
-#### Properties module
+### Properties module
 
 Supports operations of
 
@@ -60,25 +72,35 @@ Supports operations of
   - olt19f2
 
 ```xml
-<groupId>com.github.dabasan</groupId>
-<artifactId>jxm-properties</artifactId>
-<version>2.2.0</version>
+<dependencies>
+    <dependency>
+        <groupId>io.github.maeda6uiui</groupId>
+        <artifactId>jxm-properties</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+</dependencies>
 ```
 
-## Code sample
+## Code samples
+
+### Manipulation of BD1 file
 
 ```java
+package com.github.dabasan.jxm.bd1;
+
+import java.io.IOException;
+import java.nio.file.Paths;
+
 /**
- * Readme code sample for the JXM repo
+ * Example code for BD1 manipulation
  *
  * @author maeda6uiui
  */
-public class ReadmeSample {
+public class BD1ManipulationExample {
     public static void main(String[] args) {
-        //Load BD1 file
         BD1Manipulator manipulator;
         try {
-            manipulator = new BD1Manipulator("./Data/map.bd1");
+            manipulator = new BD1Manipulator(Paths.get("./Data/map.bd1"));
         } catch (IOException e) {
             e.printStackTrace();
             return;
@@ -86,14 +108,16 @@ public class ReadmeSample {
 
         //Get the number of blocks
         int numBlocks = manipulator.getNumBlocks();
-        System.out.println(numBlocks);
+        System.out.printf("Number of blocks: %d\n", numBlocks);
 
         //Get all filenames of the textures
-        manipulator.getTextureFilenames().forEach((k, v) -> System.out.printf("%d: %s\n", k, v));
+        manipulator.getTextureFilenames().forEach(
+                (id, filename) -> System.out.printf("%d: %s\n", id, filename)
+        );
 
         //Change texture filenames
-        manipulator.setTextureFilename(0, "test.bmp");
-        manipulator.setTextureFilename(1, "test_2.bmp");
+        //manipulator.setTextureFilename(0, "test.bmp");
+        //manipulator.setTextureFilename(1, "test_2.bmp");
 
         //Transform the map
         //The operation order is
@@ -109,14 +133,10 @@ public class ReadmeSample {
 
         try {
             //Save as BD1
-            manipulator.saveAsBD1("./Data/map2.bd1");
+            manipulator.save(Paths.get("./Data/map_2.bd1"));
 
-            //Save as OBJ
-            manipulator.saveAsOBJ(
-                    "./Data/map2.obj",
-                    "./Data/map2.mtl",
-                    "map2.mtl",
-                    true);
+            //Export as OBJ
+            manipulator.exportAsOBJ(Paths.get("./Data/map.obj"), Paths.get("./Data/map.mtl"), true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,12 +144,9 @@ public class ReadmeSample {
 }
 ```
 
-## Other code samples
+### Older versions
 
-See [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2) for the code samples of JXM v2 (current version).
-
-### Previous versions
-
+- [jxm-samples-v2](https://github.com/maeda6uiui/jxm-samples-v2)
 - [jxm-samples-v1](https://github.com/maeda6uiui/jxm-samples-v1)
 
 ## For developers
@@ -159,7 +176,7 @@ Listed below is the list of files you have to prepare by yourself:
 - ./jxm-pd1/TestData/SnowBase/point_2.pd1
 
 `point.pd1` is a standard point file of SNOW BASE_EXT (from `data/map2/ext.pd1`).
-`point_2.pd1` can be any point file as long it is different from `point.pd1`. 
+`point_2.pd1` can be any point file as long it is different from `point.pd1`.
 
 #### Properties module
 

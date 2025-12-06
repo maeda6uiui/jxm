@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,7 +53,7 @@ public class BD1ManipulatorSnowBaseTest {
     }
 
     @Test
-    public void testTextureFilenames() {
+    public void testGetTextureFilename() {
         var expected = new ArrayList<String>();
         expected.add("yuki.bmp");
         expected.add("jimen.bmp");
@@ -71,6 +72,56 @@ public class BD1ManipulatorSnowBaseTest {
         }
 
         assertLinesMatch(expected, actual);
+    }
+
+    @Test
+    public void testGetTextureFilenames() {
+        var expected = new HashMap<Integer, String>();
+        expected.put(0, "yuki.bmp");
+        expected.put(1, "jimen.bmp");
+        expected.put(2, "renga.bmp");
+        expected.put(3, "kabe.bmp");
+        expected.put(4, "jyouheki.bmp");
+        expected.put(5, "kaidan.bmp");
+        expected.put(6, "mado03.bmp");
+        expected.put(7, "ki2.bmp");
+        expected.put(8, "kabegami.bmp");
+        expected.put(9, "ki.bmp");
+
+        var actual = manipulator.getTextureFilenames();
+
+        for (int i = 0; i < 10; i++) {
+            assertEquals(expected.get(i), actual.get(i));
+        }
+    }
+
+    @Test
+    public void testSetTextureFilename() {
+        for (int i = 0; i < 10; i++) {
+            String currentFilename = manipulator.getTextureFilename(i);
+            final String newTextureFilename = String.format("texture_%d.png", i);
+            manipulator.setTextureFilename(i, newTextureFilename);
+
+            assertEquals(manipulator.getTextureFilename(i), newTextureFilename);
+
+            manipulator.setTextureFilename(i, currentFilename);
+        }
+    }
+
+    @Test
+    public void testSetTextureFilenames() {
+        var currentTextureFilenames = new HashMap<>(manipulator.getTextureFilenames());
+
+        var newTextureFilenames = new HashMap<Integer, String>();
+        for (int i = 0; i < 10; i++) {
+            newTextureFilenames.put(i, String.format("texture_%d.png", i));
+        }
+        manipulator.setTextureFilenames(newTextureFilenames);
+        for (int i = 0; i < 10; i++) {
+            assertEquals(newTextureFilenames.get(i), manipulator.getTextureFilename(i));
+        }
+
+        manipulator.setTextureFilenames(currentTextureFilenames);
     }
 
     @Test
