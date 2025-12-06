@@ -52,7 +52,7 @@ public class BD1ManipulatorSnowBaseTest {
     }
 
     @Test
-    public void testTextureFilenames() {
+    public void testGetTextureFilenames() {
         var expected = new ArrayList<String>();
         expected.add("yuki.bmp");
         expected.add("jimen.bmp");
@@ -71,6 +71,19 @@ public class BD1ManipulatorSnowBaseTest {
         }
 
         assertLinesMatch(expected, actual);
+    }
+
+    @Test
+    public void testSetTextureFilename() {
+        for (int i = 0; i < 10; i++) {
+            String currentFilename = manipulator.getTextureFilename(i);
+            final String newTextureFilename = String.format("texture_%d.png", i);
+            manipulator.setTextureFilename(i, newTextureFilename);
+
+            assertEquals(manipulator.getTextureFilename(i), newTextureFilename);
+
+            manipulator.setTextureFilename(i, currentFilename);
+        }
     }
 
     @Test
