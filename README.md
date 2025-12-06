@@ -57,19 +57,19 @@ Supports operations of the PD1 format.
 Supports operations of
 
 - XMS (X operations Mod Supporter)
-    - IDS (Individual weapon data)
-    - XGS (Set of all weapon data)
-    - XCS (Set of all character data)
+  - IDS (Individual weapon data)
+  - XGS (Set of all weapon data)
+  - XCS (Set of all character data)
 - OpenXOPS source code format
-    - Weapon data
-    - Character data
+  - Weapon data
+  - Character data
 - X operations binaries
-    - 0.96
-    - 0.96t
-    - 0.97ft
-    - 0.975t
-    - olt18f2
-    - olt19f2
+  - 0.96
+  - 0.96t
+  - 0.97ft
+  - 0.975t
+  - olt18f2
+  - olt19f2
 
 ```xml
 <dependencies>
